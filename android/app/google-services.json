@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "401115732263",
+    "project_id": "sernow-7b679",
+    "storage_bucket": "sernow-7b679.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401115732263:android:d6cdd7da7e92fd758d3102",
+        "android_client_info": {
+          "package_name": "com.example.serv_now"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401115732263-qir1if3akcob5l3c9o24mb74sh247kck.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCY4ICEjS5BHc7tDLtuwio3rDEIqlYxRes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "401115732263-qir1if3akcob5l3c9o24mb74sh247kck.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "401115732263-dauem25dcmric7pflden06cft6jot0a9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.servNow"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
