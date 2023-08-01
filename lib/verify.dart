@@ -13,6 +13,7 @@ class MyVerify extends StatefulWidget {
 class _MyVerifyState extends State<MyVerify> {
 
   String? enteredCode ;
+  final pinController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -88,16 +89,30 @@ class _MyVerifyState extends State<MyVerify> {
               ),
               Pinput(
                 length: 6,
-                // defaultPinTheme: defaultPinTheme,
-                // focusedPinTheme: focusedPinTheme,
-                // submittedPinTheme: submittedPinTheme,
+                androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
+                controller: pinController,
+                 defaultPinTheme: defaultPinTheme,
+                 focusedPinTheme: focusedPinTheme,
+                 submittedPinTheme: submittedPinTheme,
 
                 showCursor: true,
-                onCompleted: (pin) {
+                // onCompleted: (pin) {
 
-                  print("pin is $pin");
-                  enteredCode =pin;
-                },
+                //   print("pin is $pin");
+                //   enteredCode = pin;
+                // },
+                hapticFeedbackType: HapticFeedbackType.lightImpact,
+              onCompleted: (pin) {
+                debugPrint('onCompleted: $pin');
+                enteredCode = pin;
+              },
+              onChanged: (value) {
+                debugPrint('onChanged: $value');
+                enteredCode = value;
+              },
+                validator: (pin) {
+                return pin == '2222' ? null : 'Pin is incorrect';
+              },
               ),
               SizedBox(
                 height: 20,
