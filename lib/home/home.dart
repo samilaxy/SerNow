@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Welcome, John Doe'), // Replace with the user's name
+        title: const Text('Welcome, John Doe'), // Replace with the user's name
         actions: [
           IconButton(
-            icon: Icon(Icons.logout),
+            icon: const Icon(Icons.logout),
             onPressed: () {
               // Implement logout functionality here
             },
@@ -16,8 +18,8 @@ class HomePage extends StatelessWidget {
         ],
       ),
       body: ListView(
-        padding: EdgeInsets.all(16),
-        children: [
+        padding: const EdgeInsets.all(16),
+        children: const [
           Text(
             'Services Available',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -42,7 +44,7 @@ class HomePage extends StatelessWidget {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
@@ -66,7 +68,7 @@ class ServiceCard extends StatelessWidget {
   final String description;
   final IconData icon;
 
-  ServiceCard({
+  const ServiceCard({super.key, 
     required this.serviceName,
     required this.description,
     required this.icon,
@@ -80,7 +82,7 @@ class ServiceCard extends StatelessWidget {
         leading: Icon(icon),
         title: Text(serviceName),
         subtitle: Text(description),
-        trailing: Icon(Icons.arrow_forward),
+        trailing: const Icon(Icons.arrow_forward),
         onTap: () {
           // Implement service details navigation here
         },
