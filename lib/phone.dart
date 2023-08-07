@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:serv_now/service.dart';
 
+
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
 
@@ -44,24 +45,24 @@ class _MyPhoneState extends State<MyPhone> {
                 width: 200,
                 height: 200,
               ),
-              SizedBox(
-                height: 18,
+              const SizedBox(
+                height: 10,
               ),
-              Text(
+              const Text(
                 "Welcome",
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Text(
+              const Text(
                 "We need to register your phone without getting started!",
                 style: TextStyle(
                   fontSize: 12,
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Container(
@@ -72,7 +73,7 @@ class _MyPhoneState extends State<MyPhone> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     SizedBox(
@@ -80,23 +81,23 @@ class _MyPhoneState extends State<MyPhone> {
                       child: TextField(
                         controller: countryController,
                         keyboardType: TextInputType.number,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: InputBorder.none,
                         ),
                       ),
                     ),
-                    Text(
+                    const Text(
                       "|",
-                      style: TextStyle(fontSize: 33, color: Colors.grey),
+                      style: TextStyle(fontSize: 20, color: Colors.grey),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Expanded(
                         child: TextField(
                           controller: numberController,
                       keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         border: InputBorder.none,
                         hintText: "Phone",
                       ),
@@ -104,7 +105,7 @@ class _MyPhoneState extends State<MyPhone> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -112,12 +113,46 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 45,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 194, 111, 3),
+                        primary: const Color.fromARGB(255, 194, 111, 3),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: ()async {
-                      Navigator.pushNamed(context, 'verify');
-                       AuthService.sendCodeToPhone(countryController.text, numberController.text);
+                    onPressed: () async {
+                       if (numberController.text.isNotEmpty) {
+
+                         Navigator.pushNamed(context, 'verify');
+                      
+                          // String? verificationCode = await AuthService.sendCodeToPhone(countryController.text, numberController.text);
+
+                          // if (verificationCode != null) {
+                          //   // Proceed with verification using the `verificationCode`
+                          //   print('Verification code received: $verificationCode');
+                          //   Navigator.pushNamed(context, 'verify');
+                          // } else {
+                          //   // Handle error if the verification code is not received
+                          //    Navigator.pushNamed(context, 'verify');
+                          //   print('Verification code not received.');
+                          // }
+                            String? verificationCode = (await AuthService.sendCodeToPhone(countryController.text, numberController.text)) as String?;
+
+  if (verificationCode != null) {
+    // Proceed with verification using the `verificationCode`
+    print('Verification code received: $verificationCode');
+
+    // Call the signInWithVerificationCode method to sign in the user
+    User? user = await AuthService.signInWithVerificationCode(verificationCode);
+
+    if (user != null) {
+      // The user is successfully signed in.
+      print('User signed in: ${user.uid}');
+    } else {
+      // Sign-in failed or verification code is invalid.
+      print('Failed to sign in.');
+    }
+  } else {
+    // Handle error if the verification code is not received
+    print('Verification code not received.');
+  }
+                       }
                     },
                     child: Text("Send the code")),
               )
@@ -127,4 +162,44 @@ class _MyPhoneState extends State<MyPhone> {
       ),
     );
   }
+
 }
+
+// class CountryCodePickerWidget extends StatefulWidget {
+//   @override
+//   _CountryCodePickerWidgetState createState() => _CountryCodePickerWidgetState();
+// }
+
+// class _CountryCodePickerWidgetState extends State<CountryCodePickerWidget> {
+//   Country _selectedCountry;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         ListTile(
+//           title: Text('Select Country'),
+//           trailing: _selectedCountry != null
+//               ? Text('+${_selectedCountry.phoneCode}')
+//               : Text('Select'),
+//           onTap: _openCountryPicker,
+//         ),
+//       ],
+//     );
+//   }
+
+//   void _openCountryPicker() {
+//     showDialog(
+//       context: context,
+//       builder: (BuildContext context) {
+//         return CountryPickerDialog(
+//           onValuePicked: (Country country) {
+//             setState(() {
+//               _selectedCountry = country;
+//             });
+//           },
+//         );
+//       },
+//     );
+//   }
+// }

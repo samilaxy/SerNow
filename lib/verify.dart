@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:serv_now/home/home.dart';
 import 'package:serv_now/service.dart';
 
 class MyVerify extends StatefulWidget {
@@ -13,6 +14,7 @@ class MyVerify extends StatefulWidget {
 class _MyVerifyState extends State<MyVerify> {
 
   String? enteredCode ;
+  final pinController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -47,7 +49,7 @@ class _MyVerifyState extends State<MyVerify> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_rounded,
             color: Colors.black,
           ),
@@ -66,14 +68,14 @@ class _MyVerifyState extends State<MyVerify> {
                 width: 200,
                 height: 200,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Text(
                 "Phone Verification",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Text(
@@ -83,23 +85,36 @@ class _MyVerifyState extends State<MyVerify> {
                 ),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Pinput(
                 length: 6,
-                // defaultPinTheme: defaultPinTheme,
-                // focusedPinTheme: focusedPinTheme,
-                // submittedPinTheme: submittedPinTheme,
+                androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
+                controller: pinController,
+                 defaultPinTheme: defaultPinTheme,
+                 focusedPinTheme: focusedPinTheme,
+                 submittedPinTheme: submittedPinTheme,
+                  errorPinTheme: defaultPinTheme.copyBorderWith(
+                border: Border.all(color: Colors.redAccent),
+              ),
 
                 showCursor: true,
+                hapticFeedbackType: HapticFeedbackType.lightImpact,
                 onCompleted: (pin) {
-
-                  print("pin is $pin");
-                  enteredCode =pin;
-                },
+                debugPrint('onCompleted: $pin');
+                enteredCode = pin;
+              },
+              onChanged: (value) {
+                debugPrint('onChanged: $value');
+                enteredCode = value;
+              },
+              //   validator: (pin) {
+              //     print("pin is $pin and code is $enteredCode");
+              //   return pin == 'enteredCode' ? null : 'Pin is incorrect';
+              // },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               SizedBox(
@@ -107,12 +122,14 @@ class _MyVerifyState extends State<MyVerify> {
                 height: 45,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Color.fromARGB(255, 194, 111, 3),
+                        primary: const Color.fromARGB(255, 194, 111, 3),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
-                    onPressed: () {
-                      if(AuthService.verifySmsCode(enteredCode)){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=>Center(child: Text("success full"),)));
+                    onPressed: () async {
+                     //  Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
+                      if(await AuthService.signInWithVerificationCode(enteredCode!) != null){
+                        Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
+                        print("Hereeeeeeeeeeeeeeeeeeeeee........\...");
                       }
                     },
                     child: Text("Verify Phone Number")),
@@ -128,7 +145,7 @@ class _MyVerifyState extends State<MyVerify> {
                         );
                       
                       },
-                      child: Text(
+                      child: const Text(
                         "Edit Phone Number ?",
                         style: TextStyle(color: Colors.black),
                       ))
