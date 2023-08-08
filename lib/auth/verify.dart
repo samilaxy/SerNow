@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:serv_now/home/home.dart';
-import 'package:serv_now/service.dart';
+import 'package:serv_now/viewModels/service.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -126,11 +126,11 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(10))),
                     onPressed: () async {
-                     //  Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
-                      if(await AuthService.signInWithVerificationCode(enteredCode!) != null){
-                        Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
-                        print("Hereeeeeeeeeeeeeeeeeeeeee........\...");
-                      }
+                       Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
+                      // if(await AuthService.signInWithVerificationCode(enteredCode!) != null){
+                      //   Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
+                      //   print("Hereeeeeeeeeeeeeeeeeeeeee........\...");
+                      // }
                     },
                     child: Text("Verify Phone Number")),
               ),

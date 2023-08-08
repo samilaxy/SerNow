@@ -54,8 +54,8 @@ class HomePage extends StatelessWidget {
             label: 'History',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Settings',
+            icon: Icon(Icons.person_2_rounded),
+            label: 'Profile',
           ),
         ],
       ),
