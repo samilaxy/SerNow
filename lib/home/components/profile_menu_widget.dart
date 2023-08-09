@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
-import 'package:serv_now/utilities/constants.dart;
+import '../../Utilities/constants.dart';
 
 
 class ProfileMenuWidget extends StatelessWidget {
@@ -24,7 +23,7 @@ class ProfileMenuWidget extends StatelessWidget {
   Widget build(BuildContext context) {
 
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    var iconColor = isDark ? tPrimaryColor : tAccentColor;
+    var iconColor =  Colors.grey ;// isDark ? Colors.black : Colors.white;
 
     return ListTile(
       onTap: onPress,

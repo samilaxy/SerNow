@@ -1,49 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:serv_now/home/profile_page.dart';
 
-class HomePage extends StatelessWidget {
+import 'Home_screen.dart';
+import 'history_screen.dart';
+
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int _currentIndex = 0;
+
+  final List<Widget> _screens = [
+    const HomeScreen(),
+    HistoryScreen(),
+    const ProfileScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Welcome, John Doe'), // Replace with the user's name
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () {
-              // Implement logout functionality here
-            },
-          ),
-        ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: const [
-          Text(
-            'Services Available',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 16),
-          ServiceCard(
-            serviceName: 'Haircut',
-            description: 'Get a stylish haircut from our experienced barbers.',
-            icon: Icons.cut,
-          ),
-          ServiceCard(
-            serviceName: 'Plumbing',
-            description: 'Professional plumbing services for your home.',
-            icon: Icons.plumbing,
-          ),
-          ServiceCard(
-            serviceName: 'Tailoring',
-            description: 'Custom clothing design and alterations.',
-            icon: Icons.create,
-          ),
-          // Add more ServiceCards as needed
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Welcome, John Doe'), // Replace with the user's name
+      //   actions: [
+      //     IconButton(
+      //       icon: const Icon(Icons.logout),
+      //       onPressed: () {
+      //         // Implement logout functionality here
+      //       },
+      //     ),
+      //   ],
+      // ),
+      body: _screens[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        selectedItemColor: const Color.fromARGB(255, 194, 111, 3), // Set your desired accent color here
+        unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -90,3 +90,4 @@ class ServiceCard extends StatelessWidget {
     );
   }
 }
+
