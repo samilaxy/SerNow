@@ -2,7 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:serv_now/home/home.dart';
-import 'package:serv_now/viewModels/service.dart';
+import 'package:serv_now/controllers/service.dart';
+
+import '../Utilities/constants.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -119,12 +121,12 @@ class _MyVerifyState extends State<MyVerify> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 45,
+                height: 50,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 194, 111, 3),
+                       backgroundColor: mainColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
                        Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
                       // if(await AuthService.signInWithVerificationCode(enteredCode!) != null){

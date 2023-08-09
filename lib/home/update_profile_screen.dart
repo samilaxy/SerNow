@@ -13,10 +13,7 @@ class UpdateProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
    //   final controller = Get.put(ProfileController());
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: () => Navigator.pushNamed(context, 'profile'), icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text(tEditProfile, style: Theme.of(context).textTheme.headline4),
-      ),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(15),
@@ -30,7 +27,7 @@ class UpdateProfileScreen extends StatelessWidget {
                     height: 120,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage("tProfileImage"))),
+                        child: const Image(image: AssetImage(tProfileImage))),
                   ),
                   Positioned(
                     bottom: 0,
@@ -39,7 +36,7 @@ class UpdateProfileScreen extends StatelessWidget {
                       width: 35,
                       height: 35,
                       decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.black),
+                      BoxDecoration(borderRadius: BorderRadius.circular(100), color: mainColor),
                       child: const Icon(LineAwesomeIcons.camera, color: Colors.black, size: 20),
                     ),
                   ),
@@ -52,41 +49,52 @@ class UpdateProfileScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     TextFormField(
-                      decoration: const InputDecoration(
-                          label: Text("Full Name"), prefixIcon: Icon(LineAwesomeIcons.user)),
-                    ),
-                    const SizedBox(height: 70 - 20),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                           label: Text("Email"), prefixIcon: Icon(LineAwesomeIcons.envelope_1)),
-                    ),
-                    const SizedBox(height: 70 - 20),
-                    TextFormField(
-                      decoration: const InputDecoration(
-                          label: Text("Phone"), prefixIcon: Icon(LineAwesomeIcons.phone)),
-                    ),
-                    const SizedBox(height: 70 - 20),
-                    TextFormField(
-                      obscureText: true,
+                      cursorColor: Colors.grey,
                       decoration: InputDecoration(
-                        label: const Text("Password"),
-                        prefixIcon: const Icon(Icons.fingerprint),
-                        suffixIcon:
-                        IconButton(icon: const Icon(LineAwesomeIcons.eye_slash), onPressed: () {}),
-                      ),
+                        
+                        labelStyle: TextStyle(color: Colors.grey),
+                        focusedBorder: OutlineInputBorder(
+                          
+                          borderSide: BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(100)),
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                          label  : const Text("Full Name"), prefixIcon: const Icon(LineAwesomeIcons.user,color: Colors.grey,)),
                     ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                           label: const Text("Email"), prefixIcon: const Icon(LineAwesomeIcons.envelope_1)),
+                    ),
+                    const SizedBox(height: 10),
+                    TextFormField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                          label: const Text("Phone"), prefixIcon: const Icon(LineAwesomeIcons.phone)),
+                    ),
+                    const SizedBox(height: 10),
+                    // TextFormField(
+                    //   obscureText: true,
+                    //   decoration: InputDecoration(
+                    //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
+                    //     label: const Text("Password"),
+                    //     prefixIcon: const Icon(Icons.fingerprint),
+                    //     suffixIcon:
+                    //     IconButton(icon: const Icon(LineAwesomeIcons.eye_slash), onPressed: () {}),
+                    //   ),
+                    // ),
                     const SizedBox(height: 20),
 
                     // -- Form Submit Button
                     SizedBox(
                       width: double.infinity,
+                      height: 50,
                       child: ElevatedButton(
-                        onPressed: () =>Navigator.pushNamed(context, 'updateProfile'),
+                        onPressed: () => Navigator.pushNamed(context, 'updateProfile'),
                         style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.black,
+                            backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text(tEditProfile, style: TextStyle(color: Colors.black)),
+                        child: const Text("Update", style: TextStyle(color: Colors.black)),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -101,7 +109,7 @@ class UpdateProfileScreen extends StatelessWidget {
                             style: TextStyle(fontSize: 12),
                             children: [
                               TextSpan(
-                                  text: "JoinedAt",
+                                  text: "  May 23",
                                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
                             ],
                           ),
@@ -127,4 +135,28 @@ class UpdateProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomAppBar extends StatelessWidget  implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: SizedBox( height: kToolbarHeight,
+        child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    
+        children: [
+          IconButton(onPressed: () => Navigator.pushNamed(context, 'profile') , icon: const Icon(LineAwesomeIcons.angle_left)),
+          Text("Edit Profile", style: Theme.of(context).textTheme.titleSmall),
+          Container() 
+        ],
+      ),
+      ),
+    );
+  }
+  
+  @override
+  
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

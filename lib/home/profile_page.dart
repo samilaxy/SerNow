@@ -26,13 +26,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+   
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(onPressed: () => Navigator.pushNamed(context, 'home') , icon: const Icon(LineAwesomeIcons.angle_left)),
-        title: Text("Profile", style: Theme.of(context).textTheme.headline4),
-        actions: [IconButton(onPressed: () {}, icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))],
-      ),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
           padding: const EdgeInsets.all(10),
@@ -54,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                     child: Container(
                       width: 35,
                       height: 35,
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: Colors.blue),
+                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: mainColor),
                       child: const Icon(
                         LineAwesomeIcons.alternate_pencil,
                         color: Colors.black,
@@ -75,8 +71,8 @@ class ProfileScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () => Navigator.pushNamed(context, 'update'),
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white, side: BorderSide.none, shape: const StadiumBorder()),
-                  child: const Text("Edit", style: TextStyle(color: Colors.black)),
+                      backgroundColor: mainColor, side: BorderSide.none, shape: const StadiumBorder()),
+                  child: const Text("Edit Profile", style: TextStyle(color: Colors.black)),
                 ),
               ),
               const SizedBox(height: 30),
@@ -118,4 +114,29 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+class CustomAppBar extends StatelessWidget  implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    return SafeArea(
+      child: Container( height: kToolbarHeight,
+        child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    
+        children: [
+          IconButton(onPressed: () => Navigator.pushNamed(context, 'home') , icon: const Icon(LineAwesomeIcons.angle_left)),
+          Text("Profile", style: Theme.of(context).textTheme.titleSmall),
+          IconButton(onPressed: () {}, icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
+        ],
+      ),
+      ),
+    );
+  }
+  
+  @override
+  
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

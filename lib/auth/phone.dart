@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:serv_now/viewModels/service.dart';
+import 'package:serv_now/controllers/service.dart';
 import '../Utilities/constants.dart';
 
 class MyPhone extends StatefulWidget {
@@ -68,7 +68,7 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 50,
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(100)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -109,12 +109,12 @@ class _MyPhoneState extends State<MyPhone> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 45,
+                height: 50,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 194, 111, 3),
+                        backgroundColor:  mainColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
                       Navigator.pushNamed(context, 'verify');
 
