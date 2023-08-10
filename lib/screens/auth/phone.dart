@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:serv_now/service.dart';
-
+import 'package:serv_now/controllers/service.dart';
+import '../../Utilities/constants.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
@@ -13,7 +13,6 @@ class MyPhone extends StatefulWidget {
 class _MyPhoneState extends State<MyPhone> {
   TextEditingController countryController = TextEditingController();
   TextEditingController numberController = TextEditingController();
-  
 
   @override
   void initState() {
@@ -25,8 +24,8 @@ class _MyPhoneState extends State<MyPhone> {
 
   @override
   void dispose() {
-   countryController.dispose();
-   numberController.dispose();
+    countryController.dispose();
+    numberController.dispose();
     super.dispose();
   }
 
@@ -41,7 +40,7 @@ class _MyPhoneState extends State<MyPhone> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset(
-                'assets/img1.png',
+                logoImg,
                 width: 200,
                 height: 200,
               ),
@@ -69,7 +68,7 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 50,
                 decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(10)),
+                    borderRadius: BorderRadius.circular(100)),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -95,7 +94,7 @@ class _MyPhoneState extends State<MyPhone> {
                     ),
                     Expanded(
                         child: TextField(
-                          controller: numberController,
+                      controller: numberController,
                       keyboardType: TextInputType.phone,
                       decoration: const InputDecoration(
                         border: InputBorder.none,
@@ -110,49 +109,44 @@ class _MyPhoneState extends State<MyPhone> {
               ),
               SizedBox(
                 width: double.infinity,
-                height: 45,
+                height: 50,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: const Color.fromARGB(255, 194, 111, 3),
+                        backgroundColor:  mainColor,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10))),
+                            borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                       if (numberController.text.isNotEmpty) {
+                      Navigator.pushNamed(context, 'verify');
 
-                         Navigator.pushNamed(context, 'verify');
-                      
-                          // String? verificationCode = await AuthService.sendCodeToPhone(countryController.text, numberController.text);
+                      // if (numberController.text.isNotEmpty) {
+                      //   Navigator.pushNamed(context, 'verify');
+                      //   String? verificationCode =
+                      //       (await AuthService.sendCodeToPhone(
+                      //           countryController.text,
+                      //           numberController.text)) as String?;
 
-                          // if (verificationCode != null) {
-                          //   // Proceed with verification using the `verificationCode`
-                          //   print('Verification code received: $verificationCode');
-                          //   Navigator.pushNamed(context, 'verify');
-                          // } else {
-                          //   // Handle error if the verification code is not received
-                          //    Navigator.pushNamed(context, 'verify');
-                          //   print('Verification code not received.');
-                          // }
-                            String? verificationCode = (await AuthService.sendCodeToPhone(countryController.text, numberController.text)) as String?;
+                      //   if (verificationCode != null) {
+                      //     // Proceed with verification using the `verificationCode`
+                      //     print(
+                      //         'Verification code received: $verificationCode');
 
-  if (verificationCode != null) {
-    // Proceed with verification using the `verificationCode`
-    print('Verification code received: $verificationCode');
+                      //     // Call the signInWithVerificationCode method to sign in the user
+                      //     User? user =
+                      //         await AuthService.signInWithVerificationCode(
+                      //             verificationCode);
 
-    // Call the signInWithVerificationCode method to sign in the user
-    User? user = await AuthService.signInWithVerificationCode(verificationCode);
-
-    if (user != null) {
-      // The user is successfully signed in.
-      print('User signed in: ${user.uid}');
-    } else {
-      // Sign-in failed or verification code is invalid.
-      print('Failed to sign in.');
-    }
-  } else {
-    // Handle error if the verification code is not received
-    print('Verification code not received.');
-  }
-                       }
+                      //     if (user != null) {
+                      //       // The user is successfully signed in.
+                      //       print('User signed in: ${user.uid}');
+                      //     } else {
+                      //       // Sign-in failed or verification code is invalid.
+                      //       print('Failed to sign in.');
+                      //     }
+                      //   } else {
+                      //     // Handle error if the verification code is not received
+                      //     print('Verification code not received.');
+                      //   }
+                      // }
                     },
                     child: Text("Send the code")),
               )
@@ -162,7 +156,6 @@ class _MyPhoneState extends State<MyPhone> {
       ),
     );
   }
-
 }
 
 // class CountryCodePickerWidget extends StatefulWidget {
@@ -203,3 +196,5 @@ class _MyPhoneState extends State<MyPhone> {
 //     );
 //   }
 // }
+
+
