@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 
-import 'package:serv_now/auth/phone.dart';
-import 'package:serv_now/auth/verify.dart';
+import 'package:serv_now/screens/auth/phone.dart';
+import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:serv_now/home/home.dart';
 import 'package:serv_now/home/profile_page.dart';

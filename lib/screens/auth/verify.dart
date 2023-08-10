@@ -4,7 +4,7 @@ import 'package:pinput/pinput.dart';
 import 'package:serv_now/home/home.dart';
 import 'package:serv_now/controllers/service.dart';
 
-import '../Utilities/constants.dart';
+import '../../Utilities/constants.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
