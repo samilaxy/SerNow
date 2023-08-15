@@ -7,7 +7,7 @@
 //  final _db = FirebaseFirestore.instance;
 //  String _message = "";
 //  String get message => _message;
- 
+
 //   void createUser(UserModel user,  BuildContext context) async {
 //    await   _db.collection("Users").add(user.toJson()).whenComplete(() {
 //       _message = "Saved Successfully!";
@@ -17,7 +17,7 @@
 //       dismissDirection: DismissDirection.down,);
 //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
 //     }
-    
+
 //     ).catchError((error, stackTrace) {
 //       _message = "Failed, Try again";
 //       print(message);
@@ -25,22 +25,27 @@
 //       backgroundColor: Color.fromARGB(10, 244, 67, 54),
 //       dismissDirection: DismissDirection.down,);
 //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-//     }); 
+//     });
 //     notifyListeners();
 //   }
 // }
 
-
 import 'package:flutter/material.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import '../repository/shared_preference.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   String _message = "";
+  String contact = "";
   String get message => _message;
+  Map<String, dynamic>? profileData; // Store retrieved contact information
 
+  ProfileProvider() {
+    loadprofileData(); // Automatically load contact information when the provider is created
+  }
   Future<void> createUser(UserModel user, BuildContext context) async {
     try {
       _message = "Saving...";
@@ -74,5 +79,24 @@ class ProfileProvider extends ChangeNotifier {
       dismissDirection: DismissDirection.up,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  // Save contact information using SharedPreferencesHelper
+  Future<void> saveContact(String name, String phoneNumber) async {
+    await SharedPreferencesHelper.saveContact(name, phoneNumber);
+  }
+
+  // Get contact information using SharedPreferencesHelper
+  Future<void> loadprofileData() async {
+    profileData = await SharedPreferencesHelper.getContact();
+    if (profileData != null) {
+       contact = profileData!['phoneNumber'];
+    }
+    notifyListeners();
+  }
+
+  // Clear contact information using SharedPreferencesHelper
+  Future<void> clearContact() async {
+    await SharedPreferencesHelper.clearContact();
   }
 }

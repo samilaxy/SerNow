@@ -18,7 +18,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
+  late final TextEditingController phoneController = TextEditingController();
+ 
 
   @override
   void dispose() {
@@ -27,16 +28,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     phoneController.dispose();
     super.dispose();
   }
-  Future<void> _loadPhoneNumber() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? savedPhoneNumber = prefs.getString('phone');
-    if (savedPhoneNumber != null) {
-      phoneController.text = savedPhoneNumber;
-    }
-  }
+
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
+     // Pre-fill phoneController if contact information is available
+    phoneController.text = profileProvider.contact;
 
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -217,4 +214,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+
 }
