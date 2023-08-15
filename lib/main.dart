@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 import 'package:serv_now/screens/auth/phone.dart';
@@ -7,9 +8,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:serv_now/home/home.dart';
 import 'package:serv_now/home/profile_page.dart';
 import 'package:serv_now/home/update_profile_screen.dart';
+import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
-// ...
+
+
 
 void main()async {
 
@@ -18,7 +21,11 @@ await WidgetsFlutterBinding.ensureInitialized();
 await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
 );
-  runApp(MaterialApp(
+
+runApp( ChangeNotifierProvider<ProfileProvider>(
+      create: (_) => ProfileProvider(),
+      // we use `builder` to obtain a new `BuildContext` that has access to the provider
+     child: MaterialApp(
     initialRoute: 'phone',
     debugShowCheckedModeBanner: false,
      theme: ThemeData(
@@ -32,6 +39,8 @@ await Firebase.initializeApp(
       'profile': (context) => const ProfileScreen(),
       'update': (context) => const UpdateProfileScreen()
     },
-  ));
+  ),
+    ));
+  
 }
 

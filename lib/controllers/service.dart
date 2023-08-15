@@ -1,8 +1,10 @@
 
 
 import 'dart:async'; // Import the async library for Completer
+import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class AuthService {
@@ -71,4 +73,23 @@ class AuthService {
 
     return completer.future;
   }
+
+  static Future saveContact(String name, String phoneNumber) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
+  // Create a map to represent the contact
+  Map<String, dynamic> contact = {
+    'name': name,
+    'phoneNumber': phoneNumber,
+  };
+
+  // Convert the contact map to a JSON string
+  String contactJson = jsonEncode(contact);
+
+  // Save the JSON string to shared preferences
+  await prefs.setString('contact', contactJson);
+
+  print('Contact saved to shared preferences.');
+}
+
 }

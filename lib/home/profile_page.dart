@@ -80,17 +80,19 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 10),
 
               /// -- MENU
-              ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
-              ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
+            //  ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
+            //  ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
+              const Text("Bio", style: TextStyle(color: Colors.black)),
               const Divider(),
               const SizedBox(height: 10),
-              ProfileMenuWidget(title: "Information", icon: LineAwesomeIcons.info, onPress: () {}),
+           //   ProfileMenuWidget(title: "Information", icon: LineAwesomeIcons.info, onPress: () {}),
               ProfileMenuWidget(
                   title: "Logout",
                   icon: LineAwesomeIcons.alternate_sign_out,
                   textColor: Colors.red,
                   endIcon: false,
                   onPress: () {
+                    Navigator.pushNamed(context, 'phone');
                     // Get.defaultDialog(
                     //   title: "LOGOUT",
                     //   titleStyle: const TextStyle(fontSize: 20),

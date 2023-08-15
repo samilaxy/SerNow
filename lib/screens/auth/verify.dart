@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:serv_now/home/home.dart';
 import 'package:serv_now/controllers/service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Utilities/constants.dart';
 
@@ -128,7 +129,12 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                       Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
+                   //  await AuthService.saveContact();
+                   // Save the phone number to SharedPreferences
+                     AuthService.saveContact('phone', "+233249058525");
+                     Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
+                      
+                   
                       // if(await AuthService.signInWithVerificationCode(enteredCode!) != null){
                       //   Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
                       //   print("Hereeeeeeeeeeeeeeeeeeeeee........\...");

@@ -1,17 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:riverpod/riverpod.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import "../Utilities/constants.dart";
+import '../controllers/profile_proviver.dart';
+import '../models/user_model.dart';
 
-final nameProvider = StateProvider<String?>((ref) => null);
-final emailProvider = StateProvider<String?>((ref) => null);
-
-class UpdateProfileScreen extends StatelessWidget {
+class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
 
   @override
+  _UpdateProfileScreenState createState() => _UpdateProfileScreenState();
+}
+
+
+class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  @override
+  void dispose() {
+    fullNameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    super.dispose();
+  }
+  Future<void> _loadPhoneNumber() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? savedPhoneNumber = prefs.getString('phone');
+    if (savedPhoneNumber != null) {
+      phoneController.text = savedPhoneNumber;
+    }
+  }
+  @override
   Widget build(BuildContext context) {
-   //   final controller = Get.put(ProfileController());
+    final profileProvider = Provider.of<ProfileProvider>(context);
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -35,9 +61,11 @@ class UpdateProfileScreen extends StatelessWidget {
                     child: Container(
                       width: 35,
                       height: 35,
-                      decoration:
-                      BoxDecoration(borderRadius: BorderRadius.circular(100), color: mainColor),
-                      child: const Icon(LineAwesomeIcons.camera, color: Colors.black, size: 20),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(100),
+                          color: mainColor),
+                      child: const Icon(LineAwesomeIcons.camera,
+                          color: Colors.black, size: 20),
                     ),
                   ),
                 ],
@@ -50,26 +78,37 @@ class UpdateProfileScreen extends StatelessWidget {
                   children: [
                     TextFormField(
                       cursorColor: Colors.grey,
+                      controller: fullNameController,
                       decoration: InputDecoration(
-                        
-                        labelStyle: TextStyle(color: Colors.grey),
-                        focusedBorder: OutlineInputBorder(
-                          
-                          borderSide: BorderSide(color: Colors.grey),borderRadius: BorderRadius.circular(100)),
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                          label  : const Text("Full Name"), prefixIcon: const Icon(LineAwesomeIcons.user,color: Colors.grey,)),
+                          labelStyle: const TextStyle(color: Colors.grey),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(100)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                          label: const Text("Full Name"),
+                          prefixIcon: const Icon(
+                            LineAwesomeIcons.user,
+                            color: Colors.grey,
+                          )),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: emailController,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                           label: const Text("Email"), prefixIcon: const Icon(LineAwesomeIcons.envelope_1)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                          label: const Text("Email"),
+                          prefixIcon: const Icon(LineAwesomeIcons.envelope_1)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
+                      controller: phoneController,
                       decoration: InputDecoration(
-                        border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Phone"), prefixIcon: const Icon(LineAwesomeIcons.phone)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                          label: const Text("Phone"),
+                          prefixIcon: const Icon(LineAwesomeIcons.phone)),
                     ),
                     const SizedBox(height: 10),
                     // TextFormField(
@@ -89,12 +128,26 @@ class UpdateProfileScreen extends StatelessWidget {
                       width: double.infinity,
                       height: 50,
                       child: ElevatedButton(
-                        onPressed: () => Navigator.pushNamed(context, 'updateProfile'),
+                        onPressed: () {
+                          final fullName = fullNameController.text.trim();
+                          final email = emailController.text.trim();
+                          final phone = phoneController.text.trim();
+                          if (_formKey.currentState!.validate()) {
+                            final userModel = UserModel(
+                                fullName: fullName,
+                                email: email,
+                                phone: phone,
+                                bio: "I'm a barber");
+                            profileProvider.createUser(userModel, context);
+                            Navigator.pushNamed(context, 'updateProfile');
+                          }
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Update", style: TextStyle(color: Colors.black)),
+                        child: const Text("Update",
+                            style: TextStyle(color: Colors.black)),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -110,14 +163,17 @@ class UpdateProfileScreen extends StatelessWidget {
                             children: [
                               TextSpan(
                                   text: "  May 23",
-                                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 12))
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 12))
                             ],
                           ),
                         ),
                         ElevatedButton(
                           onPressed: () {},
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.redAccent.withOpacity(0.1),
+                              backgroundColor:
+                                  Colors.redAccent.withOpacity(0.1),
                               elevation: 0,
                               foregroundColor: Colors.red,
                               shape: const StadiumBorder(),
@@ -137,26 +193,28 @@ class UpdateProfileScreen extends StatelessWidget {
   }
 }
 
-class CustomAppBar extends StatelessWidget  implements PreferredSizeWidget {
+class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: SizedBox( height: kToolbarHeight,
-        child: Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    
-        children: [
-          IconButton(onPressed: () => Navigator.pushNamed(context, 'profile') , icon: const Icon(LineAwesomeIcons.angle_left)),
-          Text("Edit Profile", style: Theme.of(context).textTheme.titleSmall),
-          Container() 
-        ],
-      ),
+      child: SizedBox(
+        height: kToolbarHeight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () => Navigator.pushNamed(context, 'profile'),
+                icon: const Icon(LineAwesomeIcons.angle_left)),
+            Text("Edit Profile", style: Theme.of(context).textTheme.titleSmall),
+            Container()
+          ],
+        ),
       ),
     );
   }
-  
+
   @override
-  
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }

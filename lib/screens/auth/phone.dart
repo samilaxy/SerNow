@@ -112,7 +112,7 @@ class _MyPhoneState extends State<MyPhone> {
                 height: 50,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor:  mainColor,
+                        backgroundColor: mainColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {

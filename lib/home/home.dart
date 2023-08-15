@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:serv_now/home/profile_page.dart';
+import 'package:serv_now/utilities/constants.dart';
 
 import 'Home_screen.dart';
 import 'history_screen.dart';
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
             _currentIndex = index;
           });
         },
-        selectedItemColor: const Color.fromARGB(255, 194, 111, 3), // Set your desired accent color here
+        selectedItemColor: mainColor, // Set your desired accent color here
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(
