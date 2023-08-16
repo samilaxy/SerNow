@@ -13,13 +13,11 @@ class UpdateProfileScreen extends StatefulWidget {
   _UpdateProfileScreenState createState() => _UpdateProfileScreenState();
 }
 
-
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   late final TextEditingController phoneController = TextEditingController();
- 
 
   @override
   void dispose() {
@@ -32,7 +30,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
-     // Pre-fill phoneController if contact information is available
+    // Pre-fill phoneController if contact information is available
     phoneController.text = profileProvider.contact;
 
     return Scaffold(
@@ -81,7 +79,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           return 'Phone is required';
                         }
                         return null;
-                        },
+                      },
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -135,16 +133,18 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           final fullName = fullNameController.text.trim();
                           final email = emailController.text.trim();
                           final phone = phoneController.text.trim();
-                          if (_formKey.currentState!.validate()) {
+
+                       //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
                             final userModel = UserModel(
-                                fullName: fullName,
-                                email: email,
-                                phone: phone,
-                                bio: "I'm a barber");
+                              fullName: fullName,
+                              email: email,
+                              phone: phone,
+                              bio: "I'm a barber",
+                            );
                             profileProvider.createUser(userModel, context);
-                            Navigator.pushNamed(context, 'updateProfile');
-                          }
-                        },
+                          //  Navigator.pushNamed(context, 'profile');
+                          },
+                      //  },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
@@ -220,5 +220,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-
 }
