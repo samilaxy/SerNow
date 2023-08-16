@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 
@@ -20,6 +22,8 @@ class SharedPreferencesHelper {
     await prefs.setString(_keyContact, contactJson);
   }
 
+
+
   static Future<Map<String, dynamic>?> getContact() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -41,4 +45,10 @@ class SharedPreferencesHelper {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.remove(_keyContact);
   }
+
+    static Future<void> isLogin(Bool isLogin) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setBool("login", isLogin as bool);
+  }
+  
 }
