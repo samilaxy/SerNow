@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
+import 'package:provider/provider.dart';
 import 'package:serv_now/home/home.dart';
-import 'package:serv_now/controllers/service.dart';
+import 'package:serv_now/controllers/auth_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Utilities/constants.dart';
@@ -20,6 +21,7 @@ class _MyVerifyState extends State<MyVerify> {
   final pinController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+     final authService = Provider.of<AuthProvider>(context);
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
@@ -129,16 +131,12 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                   //  await AuthService.saveContact();
-                   // Save the phone number to SharedPreferences
-                     AuthService.saveContact('phone', "+233249058525");
-                     Navigator.push(context, MaterialPageRoute(builder: (_)=> const HomePage()));
-                      
-                   
-                      // if(await AuthService.signInWithVerificationCode(enteredCode!) != null){
-                      //   Navigator.push(context, MaterialPageRoute(builder: (_)=> HomePage()));
-                      //   print("Hereeeeeeeeeeeeeeeeeeeeee........\...");
-                      // }
+
+                      if(await authService.signInWithVerificationCode(enteredCode!) != null){
+              
+                        Navigator.pushNamed(context, 'home');
+                        print("Hereeeeeeeeeeeeeeeeeeeeee...........");
+                      }
                     },
                     child: Text("Verify Phone Number")),
               ),

@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:serv_now/controllers/service.dart';
+import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/auth_provider.dart';
 import '../../Utilities/constants.dart';
 
 class MyPhone extends StatefulWidget {
@@ -31,6 +32,7 @@ class _MyPhoneState extends State<MyPhone> {
 
   @override
   Widget build(BuildContext context) {
+    final authService = Provider.of<AuthProvider>(context);
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 25, right: 25),
@@ -116,37 +118,36 @@ class _MyPhoneState extends State<MyPhone> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      Navigator.pushNamed(context, 'verify');
+                      //  Navigator.pushNamed(context, 'verify');
 
-                      // if (numberController.text.isNotEmpty) {
-                      //   Navigator.pushNamed(context, 'verify');
-                      //   String? verificationCode =
-                      //       (await AuthService.sendCodeToPhone(
-                      //           countryController.text,
-                      //           numberController.text)) as String?;
+                      if (numberController.text.isNotEmpty) {
+                        String? verificationCode =
+                            (await authService.sendCodeToPhone(
+                                countryController.text,
+                                numberController.text)) as String?;
+Navigator.pushNamed(context, 'verify');
+                        if (verificationCode != null) {
+                          // Proceed with verification using the `verificationCode`
+                          print(
+                              'Verification code received: $verificationCode');
 
-                      //   if (verificationCode != null) {
-                      //     // Proceed with verification using the `verificationCode`
-                      //     print(
-                      //         'Verification code received: $verificationCode');
-
-                      //     // Call the signInWithVerificationCode method to sign in the user
-                      //     User? user =
-                      //         await AuthService.signInWithVerificationCode(
-                      //             verificationCode);
-
-                      //     if (user != null) {
-                      //       // The user is successfully signed in.
-                      //       print('User signed in: ${user.uid}');
-                      //     } else {
-                      //       // Sign-in failed or verification code is invalid.
-                      //       print('Failed to sign in.');
-                      //     }
-                      //   } else {
-                      //     // Handle error if the verification code is not received
-                      //     print('Verification code not received.');
-                      //   }
-                      // }
+                          // Call the signInWithVerificationCode method to sign in the user
+                          User? user = await authService
+                              .signInWithVerificationCode(verificationCode);
+                          
+                          if (user != null) {
+                            // The user is successfully signed in.
+                            Navigator.pushNamed(context, 'verify');
+                            print('User signed in: ${user.uid}');
+                          } else {
+                            // Sign-in failed or verification code is invalid.
+                            print('Failed to sign in.');
+                          }
+                        } else {
+                          // Handle error if the verification code is not received
+                          print('Verification code not received.');
+                        }
+                      }
                     },
                     child: Text("Send the code")),
               )
