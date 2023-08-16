@@ -40,13 +40,35 @@ class ProfileProvider extends ChangeNotifier {
 
   String _message = "";
   String contact = "";
+  String name = "";
+  String email = "";
+  String bio = "";
   String get message => _message;
   Map<String, dynamic>? profileData; // Store retrieved contact information
 
   ProfileProvider() {
-    loadprofileData(); // Automatically load contact information when the provider is created
+   // Automatically load contact information when the provider is created
+    fetchUserData();
+    loadprofileData(); 
   }
+
   Future<void> createUser(UserModel user, BuildContext context) async {
+    final fullName = user.fullName.trim();
+    final email = user.email.trim();
+    final phone = user.phone.trim();
+
+    if (fullName.isEmpty || email.isEmpty || phone.isEmpty) {
+      _message = "Please fill in all fields";
+      showErrorSnackbar(context, _message);
+      return; // Exit early if any field is empty
+    }
+
+    if (!isEmailValid(email)) {
+      _message = "Invalid email format";
+      showErrorSnackbar(context, _message);
+      return; // Exit early if email format is invalid
+    }
+
     try {
       _message = "Saving...";
       notifyListeners();
@@ -54,19 +76,27 @@ class ProfileProvider extends ChangeNotifier {
       await _db.collection("Users").add(user.toJson());
 
       _message = "Saved Successfully!";
-      showSuccessSnackbar(context, "Saved Successfully!");
+      showSuccessSnackbar(context, _message);
     } catch (error) {
       _message = "Failed, Try again";
-      showErrorSnackbar(context, "Failed!");
+      print("Firestore Error: $error"); // Print the Firestore error
+      showErrorSnackbar(context, _message);
     } finally {
       notifyListeners();
     }
   }
 
+  bool isEmailValid(String email) {
+    // Use a regular expression to validate email format
+    final emailRegex = RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
+    return emailRegex.hasMatch(email);
+  }
+
   void showSuccessSnackbar(BuildContext context, String message) {
     final snackBar = SnackBar(
       content: Text(message),
-      backgroundColor: Color.fromARGB(10, 76, 175, 79),
+      behavior: SnackBarBehavior.floating,
+      backgroundColor: Colors.green,
       dismissDirection: DismissDirection.up,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -75,25 +105,55 @@ class ProfileProvider extends ChangeNotifier {
   void showErrorSnackbar(BuildContext context, String message) {
     final snackBar = SnackBar(
       content: Text(message),
-      backgroundColor: Colors.grey,
-      dismissDirection: DismissDirection.up,
+      backgroundColor: Colors.red,
+      behavior: SnackBarBehavior.floating,
+     // dismissDirection: DismissDirection.endToStart,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
   // Save contact information using SharedPreferencesHelper
-  Future<void> saveContact(String name, String phoneNumber) async {
-    await SharedPreferencesHelper.saveContact(name, phoneNumber);
+  Future<void> saveProfile(String name, String phoneNumber, String bio, String email) async {
+    await SharedPreferencesHelper.saveProfile(name, phoneNumber, bio, email);
   }
 
   // Get contact information using SharedPreferencesHelper
   Future<void> loadprofileData() async {
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
-       contact = profileData!['phoneNumber'];
+      name = profileData!['name'] ?? '';
+      contact = profileData!['phoneNumber'] ?? '';
+      email = profileData!['email'] ?? '';
+      bio = profileData!['`bio'] ?? '';
     }
     notifyListeners();
   }
+
+  Future<void> fetchUserData() async {
+  try {
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("Users").get();
+
+    final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents = querySnapshot.docs;
+
+    // Process the documents as needed
+    for (var document in documents) {
+      // Access document data using document.data()
+      final userData = document.data();
+      print('my data $userData'); // Print user data // Save user data using the saveContact function
+      
+      saveProfile(
+        userData['name'] ?? '',
+        userData['phoneNumber'] ?? '',
+        userData['bio']?? '',
+        userData['email']?? '',
+      );
+
+    }
+  } catch (error) {
+    print("Firestore Error: $error");
+  }
+}
+
 
   // Clear contact information using SharedPreferencesHelper
   Future<void> clearContact() async {

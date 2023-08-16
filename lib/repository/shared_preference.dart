@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
@@ -6,13 +5,15 @@ import 'dart:convert';
 class SharedPreferencesHelper {
   static const String _keyContact = 'contact';
 
-  static Future<void> saveContact(String name, String phoneNumber) async {
+  static Future<void> saveProfile(String name, String phoneNumber, String bio, String email) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    print('skdjj ---1');
     // Create a map to represent the contact
     Map<String, dynamic> contact = {
       'name': name,
       'phoneNumber': phoneNumber,
+      'bio': bio,
+      'email': email
     };
 
     // Convert the contact map to a JSON string
@@ -20,6 +21,7 @@ class SharedPreferencesHelper {
 
     // Save the JSON string to shared preferences
     await prefs.setString(_keyContact, contactJson);
+    print('skdjj $contactJson');
   }
 
 
@@ -46,7 +48,7 @@ class SharedPreferencesHelper {
     await prefs.remove(_keyContact);
   }
 
-    static Future<void> isLogin(Bool isLogin) async {
+    static Future<void> isLogin(bool isLogin) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setBool("login", isLogin as bool);
   }

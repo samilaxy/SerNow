@@ -96,7 +96,7 @@ AuthProvider() {
 
   // Save contact information using SharedPreferencesHelper
   Future<void> saveContact(String phoneNumber) async {
-    await SharedPreferencesHelper.saveContact("phone", phoneNumber);
+    await SharedPreferencesHelper.saveProfile("name",phoneNumber, "bio","email");
   }
 
   void isLogin(bool login) async {
@@ -108,7 +108,7 @@ AuthProvider() {
   Future<bool> loginState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     //Return bool
-    _isLoggedIn = prefs.getBool('login')!;
+    _isLoggedIn = prefs.getBool('login') ?? false;
     print("loginstatus: $_isLoggedIn");
     notifyListeners();
     return _isLoggedIn;
