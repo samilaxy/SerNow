@@ -17,7 +17,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
-  late final TextEditingController phoneController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+  final TextEditingController bioController = TextEditingController();
 
   @override
   void dispose() {
@@ -31,8 +32,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
     // Pre-fill phoneController if contact information is available
+    fullNameController.text = profileProvider.name;
+    emailController.text = profileProvider.email;
     phoneController.text = profileProvider.contact;
-
+    bioController.text = profileProvider.bio;
+    
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -112,16 +116,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           prefixIcon: const Icon(LineAwesomeIcons.phone)),
                     ),
                     const SizedBox(height: 10),
-                    // TextFormField(
-                    //   obscureText: true,
-                    //   decoration: InputDecoration(
-                    //     border: OutlineInputBorder(borderRadius: BorderRadius.circular(100)),
-                    //     label: const Text("Password"),
-                    //     prefixIcon: const Icon(Icons.fingerprint),
-                    //     suffixIcon:
-                    //     IconButton(icon: const Icon(LineAwesomeIcons.eye_slash), onPressed: () {}),
-                    //   ),
-                    // ),
+                    TextFormField(
+                      controller: bioController,
+                      maxLines: 5, // Declare a TextEditingController
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        label: const Text("Bio"),
+                        prefixIcon: const Icon(LineAwesomeIcons.info_circle),
+                      ),
+                    ),
+
                     const SizedBox(height: 20),
 
                     // -- Form Submit Button
@@ -134,17 +139,17 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           final email = emailController.text.trim();
                           final phone = phoneController.text.trim();
 
-                       //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-                            final userModel = UserModel(
-                              fullName: fullName,
-                              email: email,
-                              phone: phone,
-                              bio: "I'm a barber",
-                            );
-                            profileProvider.createUser(userModel, context);
+                          //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+                          final userModel = UserModel(
+                            fullName: fullName,
+                            email: email,
+                            phone: phone,
+                            bio: "I'm a barber",
+                          );
+                          profileProvider.createUser(userModel, context);
                           //  Navigator.pushNamed(context, 'profile');
-                          },
-                      //  },
+                        },
+                        //  },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
