@@ -43,6 +43,7 @@ class ProfileProvider extends ChangeNotifier {
   String name = "";
   String email = "";
   String bio = "";
+  bool isDark = false;
   String get message => _message;
   Map<String, dynamic>? profileData; // Store retrieved contact information
 
@@ -124,8 +125,9 @@ class ProfileProvider extends ChangeNotifier {
       name = profileData!['name'] ?? '';
       contact = profileData!['phoneNumber'] ?? '';
       email = profileData!['email'] ?? '';
-      bio = profileData!['`bio'] ?? '';
+      bio = profileData!['bio'] ?? '';
     }
+    print("profileData $profileData");
     notifyListeners();
   }
 
@@ -143,9 +145,9 @@ class ProfileProvider extends ChangeNotifier {
       
       saveProfile(
         userData['name'] ?? '',
-        userData['phoneNumber'] ?? '',
-        userData['bio']?? '',
-        userData['email']?? '',
+        userData['phone'] ?? '',
+        userData['bio'] ?? '',
+        userData['email'] ?? '',
       );
 
     }
@@ -154,6 +156,10 @@ class ProfileProvider extends ChangeNotifier {
   }
 }
 
+void colorMode() {
+  isDark = isDark == true ? false : true;
+  notifyListeners();
+}
 
   // Clear contact information using SharedPreferencesHelper
   Future<void> clearContact() async {

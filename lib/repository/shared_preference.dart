@@ -24,8 +24,6 @@ class SharedPreferencesHelper {
     print('skdjj $contactJson');
   }
 
-
-
   static Future<Map<String, dynamic>?> getContact() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
