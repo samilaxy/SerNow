@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -24,7 +26,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
-
+    Uint8List? image = profileProvider.image;
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -42,6 +44,20 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         child: const Image(image: AssetImage(tProfileImage))),
                   ),
+                  image != null
+                      ? CircleAvatar(
+                          radius: 64,
+                          backgroundImage: MemoryImage(image),
+                        )
+                      : SizedBox(
+                          width: 120,
+                          height: 120,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: const Image(
+                                  image: AssetImage(tProfileImage))),
+                        ),
+
                   // Positioned(
                   //   bottom: 0,
                   //   right: 0,
@@ -86,25 +102,29 @@ class ProfileScreen extends StatelessWidget {
               /// -- MENU
               //  ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
               //  ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
-               Row(children: [
-               
+              Row(children: [
                 const Text("Bio", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 40),
-                child: Text(profileProvider.bio, style: const TextStyle(color: Colors.black)))
-                
+                Padding(
+                    padding: const EdgeInsets.only(left: 40),
+                    child: Text(profileProvider.bio,
+                        style: const TextStyle(color: Colors.black)))
               ]),
               const SizedBox(height: 30),
               const Divider(),
               Row(children: [
                 const Text("Phone", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 20),
-                child: Text(profileProvider.contact, style: const TextStyle(color: Colors.black)))
+                Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(profileProvider.contact,
+                        style: const TextStyle(color: Colors.black)))
               ]),
               const Divider(),
               Row(children: [
                 const Text("Email", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 25),
-                child: Text(profileProvider.email, style: const TextStyle(color: Colors.black)))
+                Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Text(profileProvider.email,
+                        style: const TextStyle(color: Colors.black)))
               ]),
               const Divider(),
               const SizedBox(height: 10),
@@ -159,7 +179,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Text("Profile", style: Theme.of(context).textTheme.titleSmall),
             IconButton(
                 onPressed: () {
-               // ProfileProvider.colorMode();
+                  // ProfileProvider.colorMode();
                 },
                 icon:
                     Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
