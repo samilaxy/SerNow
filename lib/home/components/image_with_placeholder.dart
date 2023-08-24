@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
-import 'package:transparent_image/transparent_image.dart';
-
-// class ImageWithPlaceholder extends StatelessWidget {
-//   final String imageUrl;
-//   final String placeholderUrl;
-  
-//   ImageWithPlaceholder({ required this.imageUrl, required this.placeholderUrl });
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return FadeInImage(
-//       placeholder: AssetImage(placeholderUrl), // Placeholder image
-//       image: NetworkImage(imageUrl), // Network image
-//       fit: BoxFit.cover,
-//     );
-//   }
-// }
 
 class ImageWithPlaceholder extends StatelessWidget {
   final String imageUrl;
@@ -30,7 +13,7 @@ class ImageWithPlaceholder extends StatelessWidget {
       future: Future.delayed(Duration(seconds: 0), () => imageUrl),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return ShimmerLoadingIndicator(); // Show a loading indicator during the delay
+          return const ShimmerLoadingIndicator(); // Show a loading indicator during the delay
         }
 
         if (snapshot.hasError) {

@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import "../Utilities/constants.dart";
 import '../controllers/profile_proviver.dart';
 import '../models/user_model.dart';
+import 'components/image_with_placeholder.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
@@ -68,8 +69,10 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           height: 120,
                           child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
-                              child: const Image(
-                                  image: AssetImage(tProfileImage))),
+                              child: ImageWithPlaceholder(
+                                  imageUrl: profileProvider.imageUrl,
+                                  placeholderUrl:
+                                      tProfileImage)),
                         ),
                   Positioned(
                     bottom: 0,

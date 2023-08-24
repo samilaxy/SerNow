@@ -9,7 +9,9 @@ class AuthProvider extends ChangeNotifier {
   static String? error;
   bool _isLoggedIn = false;
   bool get isLoggedIn => _isLoggedIn;
-
+  User? _user;
+  User? get user => _user;
+  
 AuthProvider() {
   loginState();
 }
