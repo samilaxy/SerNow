@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../Utilities/constants.dart';
+import '../controllers/auth_provider.dart';
 import '../controllers/profile_proviver.dart';
 import 'components/image_with_placeholder.dart';
 import 'components/profile_menu_widget.dart';
@@ -27,6 +28,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
     Uint8List? image = profileProvider.image;
     return Scaffold(
       appBar: const CustomAppBar(),
@@ -161,7 +164,8 @@ class ProfileScreen extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {
                         print("Logout");
-                        // Navigator.pushNamed(context, 'phone');
+                        authProvider.logout();
+                         Navigator.pushNamed(context, 'phone');
                       },
                       icon: const Icon(
                         LineAwesomeIcons.alternate_sign_out,
