@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:serv_now/models/user_model.dart';
 import 'package:serv_now/repository/shared_preference.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -9,9 +10,9 @@ class AuthProvider extends ChangeNotifier {
   static String? error;
   bool _isLoggedIn = false;
   bool get isLoggedIn => _isLoggedIn;
-  User? _user;
-  User? get user => _user;
-  
+  UserModel? _user;
+  UserModel? get user => _user;
+
 AuthProvider() {
   loginState();
 }
@@ -49,12 +50,9 @@ AuthProvider() {
               'Verification code sent. Verification ID: $verificationId, Resend token: $resendToken');
         },
         codeAutoRetrievalTimeout: (String verificationId) {
-          AuthProvider.verificationId = verificationId;
-          completer.complete(
-              null); // Complete with null when code auto-retrieval times out
-          print(
-              'Code auto-retrieval timeout. Verification ID: $verificationId');
-        },
+        AuthProvider.verificationId = verificationId;
+        print('Code auto-retrieval timeout. Verification ID: $verificationId');
+      },
       );
 
       return completer.future;
@@ -101,6 +99,7 @@ AuthProvider() {
      final prefs = await SharedPreferences.getInstance();
     final savedPhoneNumber = prefs.getString('phoneNumber');
     if (savedPhoneNumber == null) {
+    _user = UserModel(fullName: "fullName", phone: phoneNumber);
     await SharedPreferencesHelper.saveProfile("",phoneNumber, "","","");
     }
   }
@@ -111,12 +110,18 @@ AuthProvider() {
     notifyListeners();
   }
 
-  Future<bool> loginState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    //Return bool
-    _isLoggedIn = prefs.getBool('login') ?? false;
-    print("loginstatus: $_isLoggedIn");
+  void logout() {
+    _user = null;
     notifyListeners();
-    return _isLoggedIn;
   }
+
+Future<bool> loginState() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isLoggedIn = prefs.getBool('login') ?? false;
+  print("loginstatus: $isLoggedIn");
+  return isLoggedIn;
+}
+
+
+
 }

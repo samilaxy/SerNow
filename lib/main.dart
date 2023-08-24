@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +21,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  AuthProvider authProvider = AuthProvider();
+  bool userLoggedIn = await authProvider.loginState();
+
+  String initialRoute = userLoggedIn ? 'home' : 'phone';
 
   runApp(
     MultiProvider(
@@ -30,28 +36,23 @@ void main() async {
           create: (_) => ProfileProvider(),
         ),
       ],
-      child: const MyApp(),
+      child: MyApp(initialRoute: initialRoute),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute; // Add this line to declare the initialRoute parameter
+
+  const MyApp({Key? key, required this.initialRoute}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
-    
-    
-    String initialRoute = authProvider.isLoggedIn ? 'phone' : 'home';
-
     return MaterialApp(
-      initialRoute: initialRoute,
+      initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
-        // Set the primary color of your app
-        // hintColor: Colors.green, // Set the accent color of your app
       ),
       routes: {
         'phone': (context) => const MyPhone(),
