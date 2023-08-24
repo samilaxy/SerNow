@@ -42,51 +42,54 @@ class ProfileScreen extends StatelessWidget {
               Stack(
                 children: [
                   SizedBox(
-                    width: 120,
-                    height: 120,
+                    width: 130,
+                    height: 130,
                     child: ClipRRect(
                         borderRadius: BorderRadius.circular(100),
                         child: const Image(image: AssetImage(tProfileImage))),
                   ),
                   image != null
-                      ? CircleAvatar(
-                          radius: 64,
-                          backgroundImage: MemoryImage(image),
+                      ? Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            border: Border.all(
+                              color: Colors.black, // Set the border color
+                              width: 2, // Set the border width
+                            ),
+                          ),
+                          child: CircleAvatar(
+                            radius: 64,
+                            backgroundImage: MemoryImage(image),
+                          ),
                         )
                       : SizedBox(
-                          width: 120,
-                          height: 120,
-                          child: ClipRRect(
+                          width: 130,
+                          height: 130,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              border: Border.all(
+                                color: mainColor, // Set the border color
+                                width: 1, // Set the border width
+                              ),
+                            ),
+                            child: ClipRRect(
                               borderRadius: BorderRadius.circular(100),
                               child: ImageWithPlaceholder(
-                                  imageUrl: profileProvider.imageUrl,
-                                  placeholderUrl:
-                                      tProfileImage) //profileProvider.imageUrl
+                                imageUrl: profileProvider.imageUrl,
+                                placeholderUrl: tProfileImage,
                               ),
+                            ),
+                          ),
                         ),
-                  // Positioned(
-                  //   bottom: 0,
-                  //   right: 0,
-                  //   child: Container(
-                  //     width: 35,
-                  //     height: 35,
-                  //     decoration: BoxDecoration(
-                  //         borderRadius: BorderRadius.circular(100),
-                  //         color: mainColor),
-                  //     // child: const Icon(
-                  //     //   LineAwesomeIcons.alternate_pencil,
-                  //     //   color: Colors.black,
-                  //     //   size: 20,
-                  //     // ),
-                  //   ),
-                  // ),
                 ],
               ),
               const SizedBox(height: 10),
               Text(profileProvider.name,
                   style: Theme.of(context).textTheme.headline4),
+              const SizedBox(height: 5),
               Text("Barber", style: Theme.of(context).textTheme.bodyText2),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
 
               /// -- BUTTON
               SizedBox(
@@ -165,7 +168,7 @@ class ProfileScreen extends StatelessWidget {
                       onPressed: () {
                         print("Logout");
                         authProvider.logout();
-                         Navigator.pushNamed(context, 'phone');
+                        Navigator.pushNamed(context, 'phone');
                       },
                       icon: const Icon(
                         LineAwesomeIcons.alternate_sign_out,
