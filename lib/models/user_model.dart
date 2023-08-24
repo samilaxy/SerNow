@@ -1,16 +1,17 @@
 class UserModel  {
   final String? id;
   final String fullName;
-  final String email;
+  final String? email;
   final String phone;
   final String? bio;
-
+  final String? img;
   UserModel({
     this.id, 
     required this.fullName, 
-    required this.email, 
+    this.email, 
     required this.phone,
     this.bio,
+    this.img
     });
 
     toJson() {
@@ -18,7 +19,8 @@ class UserModel  {
         "name" : fullName,
         "email" : email,
         "phone" : phone,
-        "bio": bio
+        "bio": bio,
+        "img": img
       };
     }
 }

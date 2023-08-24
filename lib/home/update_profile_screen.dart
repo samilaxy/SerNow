@@ -40,6 +40,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     phoneController.text = profileProvider.contact;
     bioController.text = profileProvider.bio;
     Uint8List? image = profileProvider.image;
+    String? imgUrl = profileProvider.imageUrl;
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -159,13 +160,15 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           final fullName = fullNameController.text.trim();
                           final email = emailController.text.trim();
                           final phone = phoneController.text.trim();
+                          final bio = bioController.text.trim();
 
                           //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
                           final userModel = UserModel(
                             fullName: fullName,
                             email: email,
                             phone: phone,
-                            bio: "I'm a barber",
+                            bio: bio,
+                            img: imgUrl
                           );
                           profileProvider.createUser(userModel, context);
                           //  Navigator.pushNamed(context, 'profile');
