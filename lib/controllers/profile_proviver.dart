@@ -38,36 +38,43 @@ class ProfileProvider extends ChangeNotifier {
     // Automatically load contact information when the provider is created
     fetchUserData();
     loadprofileData();
-    print("provider.....");
   }
 
   Future<void> createUser(UserModel user, BuildContext context) async {
-    final fullName = user.fullName.trim();
-    final email = user.email?.trim();
-    final phone = user.phone.trim();
+  final fullName = user.fullName.trim();
+  final email = user.email?.trim();
+  final phone = user.phone.trim();
 
-    if (fullName.isEmpty || phone.isEmpty) {
-      _message = "Please fill in all fields";
+  if (fullName.isEmpty || phone.isEmpty) {
+    _message = "Please fill in all fields";
+    showErrorSnackbar(context, _message);
+    return;
+    // Exit early if any field is empty
+  }
+
+  if (email != null) {
+    if (!isEmailValid(email)) {
+      _message = "Invalid email format";
       showErrorSnackbar(context, _message);
-      return; 
-      // Exit early if any field is empty
+      return; // Exit early if email format is invalid
     }
+  }
 
-    if (email != null) {
-      if (!isEmailValid(email)) {
-        _message = "Invalid email format";
-        showErrorSnackbar(context, _message);
-        return; // Exit early if email format is invalid
-      }
-    }
-    print(user.toJson());
-    try {
-      _message = "Saving...";
-     showSuccessSnackbar(context, _message);
- if (await isPhoneExists(contact)) {
+  try {
+    _message = "Updating...";
+    saveProfile(
+            user.fullName,
+            user.phone,
+            user.bio ?? '',
+            user.email ?? '',
+            user.img ?? '');
+            
+    showLoadingDialog(context); // Show loading spinner
+
+    if (await isPhoneExists(contact)) {
       // Phone number exists, update user
       print("old user");
-     updateUserInfo(contact, user, context);
+      updateUserInfo(contact, user, context);
     } else {
       // Phone number doesn't exist, create user
       print("new user");
@@ -75,17 +82,35 @@ class ProfileProvider extends ChangeNotifier {
       _message = "Saved Successfully!";
     }
 
-      showSuccessSnackbar(context, _message);
-    } catch (error) {
-      _message = "Failed, Try again";
-      print("Firestore Error here..: $error"); // Print the Firestore error
-      showErrorSnackbar(context, _message);
-    } finally {
-      loadprofileData();
-      notifyListeners();
-    }
-    
+    Navigator.pop(context); // Hide loading spinner
+    showSuccessSnackbar(context, _message);
+  } catch (error) {
+    _message = "Failed, Try again"; // Print the Firestore error
+    showErrorSnackbar(context, _message);
+  } finally {
+    loadprofileData();
+    notifyListeners();
   }
+  delayLoad();
+}
+
+void showLoadingDialog(BuildContext context) {
+  showDialog(
+    context: context,
+    barrierDismissible: false,
+    builder: (BuildContext context) {
+      return const Center(
+        child: CircularProgressIndicator(), // Show loading spinner
+      );
+    },
+  );
+}
+
+Future<void> delayLoad() async {
+  await Future.delayed(Duration(seconds: 1)); // Delay for one second
+  // Call the method you want to execute after the delay
+  loadprofileData();
+}
 
   Future<void> fetchUserData() async {
     try {

@@ -5,6 +5,7 @@ class UserModel  {
   final String phone;
   final String? bio;
   final String? img;
+  
   UserModel({
     this.id, 
     required this.fullName, 
