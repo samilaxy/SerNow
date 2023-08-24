@@ -96,7 +96,11 @@ AuthProvider() {
 
   // Save contact information using SharedPreferencesHelper
   Future<void> saveContact(String phoneNumber) async {
-    await SharedPreferencesHelper.saveProfile("name",phoneNumber, "bio","email");
+     final prefs = await SharedPreferences.getInstance();
+    final savedPhoneNumber = prefs.getString('phoneNumber');
+    if (savedPhoneNumber == null) {
+    await SharedPreferencesHelper.saveProfile("",phoneNumber, "","","");
+    }
   }
 
   void isLogin(bool login) async {

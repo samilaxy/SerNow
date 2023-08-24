@@ -5,7 +5,7 @@ import 'dart:convert';
 class SharedPreferencesHelper {
   static const String _keyContact = 'contact';
 
-  static Future<void> saveProfile(String name, String phoneNumber, String bio, String email) async {
+  static Future<void> saveProfile(String name, String phoneNumber, String bio, String email, String img) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     print('skdjj ---1');
     // Create a map to represent the contact
@@ -13,7 +13,8 @@ class SharedPreferencesHelper {
       'name': name,
       'phoneNumber': phoneNumber,
       'bio': bio,
-      'email': email
+      'email': email,
+      'img': img
     };
 
     // Convert the contact map to a JSON string
@@ -52,3 +53,4 @@ class SharedPreferencesHelper {
   }
   
 }
+
