@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +19,10 @@ class ProfileProvider extends ChangeNotifier {
   String _name = "";
   String _email = "";
   String _bio = "";
+  String _userId = "";
   bool isDark = false;
   Uint8List? _image;
+  String _imageBase64 = "";
 
   String _imageUrl = "";
   String get imageUrl => _imageUrl;
@@ -28,9 +31,10 @@ class ProfileProvider extends ChangeNotifier {
   String get message => _message;
   String get email => _email;
   String get bio => _bio;
+  String get userId => _userId;
   Uint8List? get image => _image;
-
-  String _imageBase64 = "";
+  
+  
   String? get imageBase64 => _imageBase64;
   Map<String, dynamic>? profileData; // Store retrieved contact information
 
@@ -106,7 +110,7 @@ void showLoadingDialog(BuildContext context) {
   );
 }
 
-Future<void> delayLoad() async {
+  Future<void> delayLoad() async {
   await Future.delayed(Duration(seconds: 1)); // Delay for one second
   // Call the method you want to execute after the delay
   loadprofileData();
@@ -123,8 +127,9 @@ Future<void> delayLoad() async {
         for (var document in documents) {
         // Access document data using document.data()
         final userData = document.data();
+        _userId = document.id;
         print(
-            'my data $userData'); // Print user data // Save user data using the saveContact function
+            'my userId $userId'); // Print user data // Save user data using the saveContact function
         saveProfile(
             userData['name'] ?? '',
             userData['phone'] ?? '',
@@ -138,10 +143,12 @@ Future<void> delayLoad() async {
   }
 
   Future<void> updateUserInfo(String userId, UserModel updatedUser, BuildContext context) async {
+    
     try {
+
       await _db
           .collection("users")
-          .doc("HK43YNeZfZZmf9ZgSiTN")
+          .doc(_userId)
           .update(updatedUser.toJson());
       _message = "Info updated successfully.";
       showSuccessSnackbar(context, _message);
@@ -242,7 +249,7 @@ Future<void> delayLoad() async {
     }
   }
 
-  Future<void> uploadImageToStorage(Uint8List? img) async {
+  Future<void> uploadImageToStorage(Uint8List? img) async {   
     if (img != null) {
       try {
   
