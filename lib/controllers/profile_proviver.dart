@@ -1,91 +1,152 @@
-// import 'package:flutter/material.dart';
-// import 'package:serv_now/models/user_model.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:convert';
+import 'dart:typed_data';
 
-// class ProfileProvider extends ChangeNotifier {
-
-//  final _db = FirebaseFirestore.instance;
-//  String _message = "";
-//  String get message => _message;
-
-//   void createUser(UserModel user,  BuildContext context) async {
-//    await   _db.collection("Users").add(user.toJson()).whenComplete(() {
-//       _message = "Saved Successfully!";
-//       print(message);
-//       const snackBar = SnackBar(content: Text('Saved Successfully!'),
-//       backgroundColor: Color.fromARGB(10, 76, 175, 79),
-//       dismissDirection: DismissDirection.down,);
-//       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-//     }
-
-//     ).catchError((error, stackTrace) {
-//       _message = "Failed, Try again";
-//       print(message);
-//       const snackBar = SnackBar(content: Text('Failed!'),
-//       backgroundColor: Color.fromARGB(10, 244, 67, 54),
-//       dismissDirection: DismissDirection.down,);
-//       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-//     });
-//     notifyListeners();
-//   }
-// }
-
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../repository/shared_preference.dart';
+import '../Utilities/util.dart';
 
 class ProfileProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   String _message = "";
-  String contact = "";
-  String name = "";
-  String email = "";
-  String bio = "";
+  String _contact = "";
+  String _name = "";
+  String _email = "";
+  String _bio = "";
   bool isDark = false;
+  Uint8List? _image;
+
+  String _imageUrl = "";
+  String get imageUrl => _imageUrl;
+  String get name => _name;
+  String get contact => _contact;
   String get message => _message;
+  String get email => _email;
+  String get bio => _bio;
+  Uint8List? get image => _image;
+
+  String _imageBase64 = "";
+  String? get imageBase64 => _imageBase64;
   Map<String, dynamic>? profileData; // Store retrieved contact information
 
   ProfileProvider() {
-   // Automatically load contact information when the provider is created
+    // Automatically load contact information when the provider is created
     fetchUserData();
-    loadprofileData(); 
+    loadprofileData();
+    print("provider.....");
   }
 
   Future<void> createUser(UserModel user, BuildContext context) async {
     final fullName = user.fullName.trim();
-    final email = user.email.trim();
+    final email = user.email?.trim();
     final phone = user.phone.trim();
 
-    if (fullName.isEmpty || email.isEmpty || phone.isEmpty) {
+    if (fullName.isEmpty || phone.isEmpty) {
       _message = "Please fill in all fields";
       showErrorSnackbar(context, _message);
-      return; // Exit early if any field is empty
+      return; 
+      // Exit early if any field is empty
     }
 
-    if (!isEmailValid(email)) {
-      _message = "Invalid email format";
-      showErrorSnackbar(context, _message);
-      return; // Exit early if email format is invalid
+    if (email != null) {
+      if (!isEmailValid(email)) {
+        _message = "Invalid email format";
+        showErrorSnackbar(context, _message);
+        return; // Exit early if email format is invalid
+      }
     }
-
+    print(user.toJson());
     try {
       _message = "Saving...";
-      notifyListeners();
-
-      await _db.collection("Users").add(user.toJson());
-
+     showSuccessSnackbar(context, _message);
+ if (await isPhoneExists(contact)) {
+      // Phone number exists, update user
+      print("old user");
+     updateUserInfo(contact, user, context);
+    } else {
+      // Phone number doesn't exist, create user
+      print("new user");
+      await _db.collection("users").add(user.toJson());
       _message = "Saved Successfully!";
+    }
+
       showSuccessSnackbar(context, _message);
     } catch (error) {
       _message = "Failed, Try again";
-      print("Firestore Error: $error"); // Print the Firestore error
+      print("Firestore Error here..: $error"); // Print the Firestore error
       showErrorSnackbar(context, _message);
     } finally {
+      loadprofileData();
       notifyListeners();
     }
+    
   }
+
+  Future<void> fetchUserData() async {
+    try {
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance.collection("users").get();
+
+      final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
+          querySnapshot.docs; 
+      // Process the documents as needed
+        for (var document in documents) {
+        // Access document data using document.data()
+        final userData = document.data();
+        print(
+            'my data $userData'); // Print user data // Save user data using the saveContact function
+        saveProfile(
+            userData['name'] ?? '',
+            userData['phone'] ?? '',
+            userData['bio'] ?? '',
+            userData['email'] ?? '',
+            userData['img'] ?? '');
+      }
+    } catch (error) {
+      print("Firestore Error1 fetch: $error");
+    }
+  }
+
+  Future<void> updateUserInfo(String userId, UserModel updatedUser, BuildContext context) async {
+    try {
+      await _db
+          .collection("users")
+          .doc("HK43YNeZfZZmf9ZgSiTN")
+          .update(updatedUser.toJson());
+      _message = "Info updated successfully.";
+      showSuccessSnackbar(context, _message);
+    } catch (error) {
+      _message = "Update Failed, Try again.";
+       showErrorSnackbar(context, _message);
+      // Handle error as needed
+    }
+  }
+
+  Future<void> saveProfile(String name, String phoneNumber, String bio,
+      String email, String img) async {
+    await SharedPreferencesHelper.saveProfile(
+        name, phoneNumber, bio, email, img);     
+  }
+
+  Future<bool> isPhoneExists(String phoneNumber) async {
+  try {
+    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+        await FirebaseFirestore.instance
+            .collection("users")
+            .where("phone", isEqualTo: phoneNumber)
+            .get();
+
+    return querySnapshot.docs.isNotEmpty;
+  } catch (error) {
+    print("Firestore Error: $error");
+    return false; // Return false on error or if phone number doesn't exist
+  }
+}
 
   bool isEmailValid(String email) {
     // Use a regular expression to validate email format
@@ -108,61 +169,64 @@ class ProfileProvider extends ChangeNotifier {
       content: Text(message),
       backgroundColor: Colors.red,
       behavior: SnackBarBehavior.floating,
-     // dismissDirection: DismissDirection.endToStart,
+      // dismissDirection: DismissDirection.endToStart,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  // Save contact information using SharedPreferencesHelper
-  Future<void> saveProfile(String name, String phoneNumber, String bio, String email) async {
-    await SharedPreferencesHelper.saveProfile(name, phoneNumber, bio, email);
-  }
-
   // Get contact information using SharedPreferencesHelper
   Future<void> loadprofileData() async {
+    fetchUserData();
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
-      name = profileData!['name'] ?? '';
-      contact = profileData!['phoneNumber'] ?? '';
-      email = profileData!['email'] ?? '';
-      bio = profileData!['bio'] ?? '';
+      _name = profileData!['name'] ?? '';
+      _contact = profileData!['phoneNumber'] ?? '';
+      _email = profileData!['email'] ?? '';
+      _bio = profileData!['bio'] ?? '';
+      _imageUrl = profileData!['img'] ?? '';
+      //  _image = base64Decode(_imageBase64);
     }
     print("profileData $profileData");
     notifyListeners();
   }
 
-  Future<void> fetchUserData() async {
-  try {
-    final QuerySnapshot<Map<String, dynamic>> querySnapshot = await FirebaseFirestore.instance.collection("Users").get();
-
-    final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents = querySnapshot.docs;
-
-    // Process the documents as needed
-    for (var document in documents) {
-      // Access document data using document.data()
-      final userData = document.data();
-      print('my data $userData'); // Print user data // Save user data using the saveContact function
-      
-      saveProfile(
-        userData['name'] ?? '',
-        userData['phone'] ?? '',
-        userData['bio'] ?? '',
-        userData['email'] ?? '',
-      );
-
-    }
-  } catch (error) {
-    print("Firestore Error: $error");
+  Future<void> colorMode() async {
+    isDark = isDark == true ? false : true;
+    notifyListeners();
   }
-}
-
-void colorMode() {
-  isDark = isDark == true ? false : true;
-  notifyListeners();
-}
 
   // Clear contact information using SharedPreferencesHelper
   Future<void> clearContact() async {
     await SharedPreferencesHelper.clearContact();
+  }
+
+  Future<void> selectImg() async {
+    Uint8List img = await pickImage(ImageSource.gallery);
+    //uploadImageToStorage(_image);
+    _image = img;
+    _imageBase64 = base64Encode(img);
+    await uploadImageToStorage(_image);
+    notifyListeners();
+  }
+
+  pickImage(ImageSource src) async {
+    final ImagePicker imgPicker = ImagePicker();
+    XFile? file = await imgPicker.pickImage(source: src);
+    if (file != null) {
+      return await file.readAsBytes();
+    }
+  }
+
+  Future<void> uploadImageToStorage(Uint8List? img) async {
+    if (img != null) {
+      try {
+  
+        _imageUrl = await UtilityClass.uploadedImg("profileImages", img);
+      } catch (err) {
+        _message = err.toString();
+        print(_message);
+      }
+    }
+    notifyListeners();
   }
 }

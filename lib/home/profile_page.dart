@@ -1,8 +1,11 @@
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../Utilities/constants.dart';
 import '../controllers/profile_proviver.dart';
+import 'components/image_with_placeholder.dart';
 import 'components/profile_menu_widget.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -24,7 +27,7 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
-
+    Uint8List? image = profileProvider.image;
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -42,6 +45,22 @@ class ProfileScreen extends StatelessWidget {
                         borderRadius: BorderRadius.circular(100),
                         child: const Image(image: AssetImage(tProfileImage))),
                   ),
+                  image != null
+                      ? CircleAvatar(
+                          radius: 64,
+                          backgroundImage: MemoryImage(image),
+                        )
+                      : SizedBox(
+                          width: 120,
+                          height: 120,
+                          child: ClipRRect(
+                              borderRadius: BorderRadius.circular(100),
+                              child: ImageWithPlaceholder(
+                                  imageUrl: profileProvider.imageUrl,
+                                  placeholderUrl:
+                                      tProfileImage) //profileProvider.imageUrl
+                              ),
+                        ),
                   // Positioned(
                   //   bottom: 0,
                   //   right: 0,
@@ -81,58 +100,80 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 30),
               const Divider(),
-              const SizedBox(height: 10),
+              const SizedBox(height: 8),
 
               /// -- MENU
               //  ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
               //  ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
-               Row(children: [
-               
+              Row(children: [
                 const Text("Bio", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 40),
-                child: Text(profileProvider.bio, style: const TextStyle(color: Colors.black)))
-                
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 41),
+                      child: Text(profileProvider.bio,
+                          textAlign: TextAlign.left,
+                          softWrap: true,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 3,
+                          style: const TextStyle(
+                              color: Colors.black, fontSize: 16))),
+                )
               ]),
               const SizedBox(height: 30),
-              const Divider(),
+              const Padding(
+                padding: EdgeInsets.only(left: 60),
+                child: Divider(),
+              ),
+              const SizedBox(height: 5),
               Row(children: [
                 const Text("Phone", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 20),
-                child: Text(profileProvider.contact, style: const TextStyle(color: Colors.black)))
+                Padding(
+                    padding: const EdgeInsets.only(left: 20),
+                    child: Text(profileProvider.contact,
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 16)))
               ]),
-              const Divider(),
+              const SizedBox(height: 8),
+              const Padding(
+                padding: EdgeInsets.only(left: 60),
+                child: Divider(),
+              ),
+              const SizedBox(height: 8),
               Row(children: [
                 const Text("Email", style: TextStyle(color: Colors.grey)),
-                Padding(padding: const EdgeInsets.only(left: 25),
-                child: Text(profileProvider.email, style: const TextStyle(color: Colors.black)))
+                Padding(
+                    padding: const EdgeInsets.only(left: 25),
+                    child: Text(profileProvider.email,
+                        style:
+                            const TextStyle(color: Colors.black, fontSize: 16)))
               ]),
+              const SizedBox(height: 8),
               const Divider(),
-              const SizedBox(height: 10),
-              //   ProfileMenuWidget(title: "Information", icon: LineAwesomeIcons.info, onPress: () {}),
-              ProfileMenuWidget(
-                  title: "Logout",
-                  icon: LineAwesomeIcons.alternate_sign_out,
-                  textColor: Colors.red,
-                  endIcon: false,
-                  onPress: () {
-                    Navigator.pushNamed(context, 'phone');
-                    // Get.defaultDialog(
-                    //   title: "LOGOUT",
-                    //   titleStyle: const TextStyle(fontSize: 20),
-                    //   content: const Padding(
-                    //     padding: EdgeInsets.symmetric(vertical: 15.0),
-                    //     child: Text("Are you sure, you want to Logout?"),
-                    //   ),
-                    //   confirm: Expanded(
-                    //     child: ElevatedButton(
-                    //       onPressed: () => AuthenticationRepository.instance.logout(),
-                    //       style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent, side: BorderSide.none),
-                    //       child: const Text("Yes"),
-                    //     ),
-                    //   ),
-                    //   cancel: OutlinedButton(onPressed: () => Get.back(), child: const Text("No")),
-                    // );
-                  }),
+              const SizedBox(height: 30),
+              Row(children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.2),
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        print("Logout");
+                        // Navigator.pushNamed(context, 'phone');
+                      },
+                      icon: const Icon(
+                        LineAwesomeIcons.alternate_sign_out,
+                        size: 20,
+                      ),
+                      color: Colors.grey),
+                ),
+                const Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text("Logout",
+                        style: TextStyle(color: Colors.red, fontSize: 16)))
+              ]),
             ],
           ),
         ),
@@ -159,7 +200,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             Text("Profile", style: Theme.of(context).textTheme.titleSmall),
             IconButton(
                 onPressed: () {
-               // ProfileProvider.colorMode();
+                  // ProfileProvider.colorMode();
                 },
                 icon:
                     Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
