@@ -23,8 +23,8 @@ class ProfileProvider extends ChangeNotifier {
   bool isDark = false;
   Uint8List? _image;
   String _imageBase64 = "";
-
   String _imageUrl = "";
+  
   String get imageUrl => _imageUrl;
   String get name => _name;
   String get contact => _contact;
@@ -40,8 +40,8 @@ class ProfileProvider extends ChangeNotifier {
 
   ProfileProvider() {
     // Automatically load contact information when the provider is created
-    fetchUserData();
     loadprofileData();
+    
   }
 
   Future<void> createUser(UserModel user, BuildContext context) async {
@@ -119,7 +119,10 @@ void showLoadingDialog(BuildContext context) {
   Future<void> fetchUserData() async {
     try {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await FirebaseFirestore.instance.collection("users").get();
+          await FirebaseFirestore.instance
+              .collection("users")
+               .where("phone", isEqualTo: contact)
+              .get();
 
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
           querySnapshot.docs; 
@@ -208,7 +211,7 @@ void showLoadingDialog(BuildContext context) {
 
   // Get contact information using SharedPreferencesHelper
   Future<void> loadprofileData() async {
-    fetchUserData();
+   // fetchUserData();
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
       _name = profileData!['name'] ?? '';
@@ -219,6 +222,7 @@ void showLoadingDialog(BuildContext context) {
       //  _image = base64Decode(_imageBase64);
     }
     print("profileData $profileData");
+    fetchUserData();
     notifyListeners();
   }
 

@@ -1,10 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
-import 'package:serv_now/home/home.dart';
 import 'package:serv_now/controllers/auth_provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../Utilities/constants.dart';
 
@@ -22,27 +19,28 @@ class _MyVerifyState extends State<MyVerify> {
   @override
   Widget build(BuildContext context) {
      final authService = Provider.of<AuthProvider>(context);
+     String? contact = authService.contact;
     final defaultPinTheme = PinTheme(
       width: 56,
       height: 56,
-      textStyle: TextStyle(
+      textStyle: const TextStyle(
           fontSize: 20,
           color: Color.fromRGBO(30, 60, 87, 1),
           fontWeight: FontWeight.w600),
       decoration: BoxDecoration(
-        border: Border.all(color: Color.fromRGBO(234, 239, 243, 1)),
+        border: Border.all(color: const Color.fromRGBO(234, 239, 243, 1)),
         borderRadius: BorderRadius.circular(20),
       ),
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: Color.fromRGBO(114, 178, 238, 1)),
+      border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
       borderRadius: BorderRadius.circular(8),
     );
 
     final submittedPinTheme = defaultPinTheme.copyWith(
       decoration: defaultPinTheme.decoration?.copyWith(
-        color: Color.fromRGBO(234, 239, 243, 1),
+        color: const Color.fromRGBO(234, 239, 243, 1),
       ),
     );
 
@@ -62,7 +60,7 @@ class _MyVerifyState extends State<MyVerify> {
         elevation: 0,
       ),
       body: Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
@@ -76,7 +74,7 @@ class _MyVerifyState extends State<MyVerify> {
               const SizedBox(
                 height: 25,
               ),
-              Text(
+              const Text(
                 "Phone Verification",
                 style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
               ),
@@ -84,8 +82,8 @@ class _MyVerifyState extends State<MyVerify> {
                 height: 10,
               ),
               Text(
-                "We need to register your phone without getting started!",
-                style: TextStyle(
+                "Enter the verification code sent to\n$contact",
+                style: const TextStyle(
                   fontSize: 12,
                 ),
                 textAlign: TextAlign.center,
@@ -138,7 +136,7 @@ class _MyVerifyState extends State<MyVerify> {
                         print("Hereeeeeeeeeeeeeeeeeeeeee...........");
                       }
                     },
-                    child: Text("Verify Phone Number")),
+                    child: const Text("Verify Phone Number")),
               ),
               Row(
                 children: [
