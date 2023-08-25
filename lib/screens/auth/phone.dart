@@ -60,57 +60,18 @@ class _MyPhoneState extends State<MyPhone> {
               const Text(
                 "Add your number. We will send you a \nverification code!",
                 style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 13,
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
                 height: 30,
               ),
-              Container(
-                height: 50,
-                decoration: BoxDecoration(
-                    border: Border.all(width: 1, color: Colors.grey),
-                    borderRadius: BorderRadius.circular(100)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 40,
-                      child: TextField(
-                        controller: countryController,
-                        keyboardType: TextInputType.number,
-                        decoration: const InputDecoration(
-                          border: InputBorder.none,
-                        ),
-                      ),
-                    ),
-                    const Text(
-                      "|",
-                      style: TextStyle(fontSize: 20, color: Colors.grey),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
-                        child: TextField(
-                      controller: numberController,
-                      keyboardType: TextInputType.phone,
-                      decoration: const InputDecoration(
-                        border: InputBorder.none,
-                        hintText: "Phone",
-                      ),
-                    ))
-                  ],
-                ),
-              ),
               IntlPhoneField(
                 decoration: InputDecoration(
+                  labelStyle: const TextStyle(color: Colors.grey),
                   focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.grey),
+                              borderSide: const BorderSide(color: mainColor),
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
@@ -180,44 +141,4 @@ class _MyPhoneState extends State<MyPhone> {
     );
   }
 }
-
-// class CountryCodePickerWidget extends StatefulWidget {
-//   @override
-//   _CountryCodePickerWidgetState createState() => _CountryCodePickerWidgetState();
-// }
-
-// class _CountryCodePickerWidgetState extends State<CountryCodePickerWidget> {
-//   Country _selectedCountry;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Column(
-//       children: [
-//         ListTile(
-//           title: Text('Select Country'),
-//           trailing: _selectedCountry != null
-//               ? Text('+${_selectedCountry.phoneCode}')
-//               : Text('Select'),
-//           onTap: _openCountryPicker,
-//         ),
-//       ],
-//     );
-//   }
-
-//   void _openCountryPicker() {
-//     showDialog(
-//       context: context,
-//       builder: (BuildContext context) {
-//         return CountryPickerDialog(
-//           onValuePicked: (Country country) {
-//             setState(() {
-//               _selectedCountry = country;
-//             });
-//           },
-//         );
-//       },
-//     );
-//   }
-// }
-
 
