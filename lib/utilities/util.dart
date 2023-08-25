@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:geocoding/geocoding.dart';
+import 'package:geolocator/geolocator.dart';
 
 final FirebaseStorage _storage = FirebaseStorage.instance;
 
@@ -15,6 +17,26 @@ String uniqueFilename = "${DateTime.now().millisecondsSinceEpoch}_${Random().nex
  String imgUrl = await snapshot.ref.getDownloadURL();
  return imgUrl;
 }
+
+static Future<String> getCurrentLocation() async {
+   String defaultCountry = '';
+    try {
+      Position position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
+      
+      // Determine the country based on the user's location
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+          position.latitude, position.longitude);
+      
+      if (placemarks.isNotEmpty) {
+        String? countryCode = placemarks[0].isoCountryCode;
+        defaultCountry = countryCode ?? 'US';
+      }
+    } catch (e) {
+      print('Error getting location: $e');
+    }
+    return defaultCountry;
+  }
 
 // Future<String> saveData({
 //   required String name,

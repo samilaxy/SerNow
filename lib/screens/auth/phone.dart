@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/auth_provider.dart';
 import '../../Utilities/constants.dart';
@@ -54,12 +55,12 @@ class _MyPhoneState extends State<MyPhone> {
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               const Text(
-                "We need to register your phone without getting started!",
+                "Add your number. We will send you a \nverification code!",
                 style: TextStyle(
-                  fontSize: 12,
+                  fontSize: 15,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -106,6 +107,27 @@ class _MyPhoneState extends State<MyPhone> {
                   ],
                 ),
               ),
+              IntlPhoneField(
+                decoration: InputDecoration(
+                  focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(100)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                  labelText: "Phone",
+                  // border: OutlineInputBorder(
+                  //   borderSide: BorderSide()
+                  // )
+                ),
+                 initialCountryCode: authService.code,
+                 languageCode: "en",
+                  onChanged: (phone) {
+                    authService.contact = phone.completeNumber;
+                  },
+                  onCountryChanged: (country) {
+                    print('Country changed to: ' + country.name);
+                  },
+              ),
               const SizedBox(
                 height: 20,
               ),
@@ -125,7 +147,7 @@ class _MyPhoneState extends State<MyPhone> {
                             (await authService.sendCodeToPhone(
                                 countryController.text,
                                 numberController.text)) as String?;
-Navigator.pushNamed(context, 'verify');
+                        Navigator.pushNamed(context, 'verify');
                         if (verificationCode != null) {
                           // Proceed with verification using the `verificationCode`
                           print(
@@ -134,7 +156,7 @@ Navigator.pushNamed(context, 'verify');
                           // Call the signInWithVerificationCode method to sign in the user
                           User? user = await authService
                               .signInWithVerificationCode(verificationCode);
-                          
+
                           if (user != null) {
                             // The user is successfully signed in.
                             Navigator.pushNamed(context, 'verify');
@@ -149,7 +171,7 @@ Navigator.pushNamed(context, 'verify');
                         }
                       }
                     },
-                    child: Text("Send the code")),
+                    child: const Text("Login")),
               )
             ],
           ),

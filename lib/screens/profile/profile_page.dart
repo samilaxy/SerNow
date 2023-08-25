@@ -3,11 +3,11 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import '../Utilities/constants.dart';
-import '../controllers/auth_provider.dart';
-import '../controllers/profile_proviver.dart';
-import 'components/image_with_placeholder.dart';
-import 'components/profile_menu_widget.dart';
+import '../../Utilities/constants.dart';
+import '../../controllers/auth_provider.dart';
+import '../../controllers/profile_proviver.dart';
+import '../../main.dart';
+import '../components/image_with_placeholder.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -167,8 +167,8 @@ class ProfileScreen extends StatelessWidget {
                   child: IconButton(
                       onPressed: () {
                         print("Logout");
-                        authProvider.logout();
-                        Navigator.pushNamed(context, 'phone');
+                        authProvider.isLogin(false);
+                        navigatorKey.currentState!.pushNamed('phone');
                       },
                       icon: const Icon(
                         LineAwesomeIcons.alternate_sign_out,

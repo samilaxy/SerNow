@@ -1,14 +1,11 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import "../Utilities/constants.dart";
-import '../controllers/profile_proviver.dart';
-import '../models/user_model.dart';
-import 'components/image_with_placeholder.dart';
+import '../../Utilities/constants.dart';
+import '../../controllers/profile_proviver.dart';
+import '../../models/user_model.dart';
+import '../components/image_with_placeholder.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
@@ -29,19 +26,22 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     fullNameController.dispose();
     emailController.dispose();
     phoneController.dispose();
+    bioController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
-    // Pre-fill phoneController if contact information is available
+
+    // Pre-fill profile if information is available
     fullNameController.text = profileProvider.name;
     emailController.text = profileProvider.email;
     phoneController.text = profileProvider.contact;
     bioController.text = profileProvider.bio;
     Uint8List? image = profileProvider.image;
     String? imgUrl = profileProvider.imageUrl;
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -125,6 +125,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
@@ -134,6 +135,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     const SizedBox(height: 10),
                     TextFormField(
                       controller: phoneController,
+                      keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),

@@ -1,25 +1,35 @@
 import 'dart:async';
+import 'dart:ffi';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:serv_now/repository/shared_preference.dart';
+import 'package:serv_now/utilities/util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthProvider extends ChangeNotifier {
   static String? verificationId;
   static String? error;
-  bool _isLoggedIn = false;
-  bool get isLoggedIn => _isLoggedIn;
+  String? _contact = "";
+  String? get contact => _contact;
+  String _code = "";
+  String get code => _code;
   UserModel? _user;
   UserModel? get user => _user;
 
+
+set contact(String? value) {
+    _contact = value;
+    notifyListeners();
+  }
+  
 AuthProvider() {
   loginState();
 }
   // Update the return type to use Future<User?> for sign-in
   Future<User?> sendCodeToPhone(String countryCode, String number) async {
     Completer<User?> completer = Completer<User?>();
-
+    _contact = number;
     try {
       await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: "$countryCode$number",
@@ -78,6 +88,7 @@ AuthProvider() {
           await FirebaseAuth.instance.signInWithCredential(credential);
       // Save the user's phone number after verification
       String? phoneNumber = userCredential.user?.phoneNumber;
+      
       if (phoneNumber != null) {
         saveContact(phoneNumber);
       }
@@ -116,12 +127,16 @@ AuthProvider() {
   }
 
 Future<bool> loginState() async {
+ // getCode();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isLoggedIn = prefs.getBool('login') ?? false;
   print("loginstatus: $isLoggedIn");
   return isLoggedIn;
 }
 
-
+Future<void> getCode() async {
+   String countryCode = await UtilityClass.getCurrentLocation();
+  _code = countryCode;
+}
 
 }
