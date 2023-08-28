@@ -4,6 +4,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/auth_provider.dart';
 import '../../Utilities/constants.dart';
+import '../../main.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
@@ -33,7 +34,10 @@ class _MyPhoneState extends State<MyPhone> {
 
   @override
   Widget build(BuildContext context) {
+    FocusNode focusNode = FocusNode();
+
     final authService = Provider.of<AuthProvider>(context);
+    //numberController.text = authService.contact;
     return Scaffold(
       body: Container(
         margin: EdgeInsets.only(left: 25, right: 25),
@@ -55,42 +59,45 @@ class _MyPhoneState extends State<MyPhone> {
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               const Text(
-                "Add your number. We will send you a \nverification code!",
+                "Add your number. We will send you a verification code!",
                 style: TextStyle(
                   fontSize: 13,
                 ),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: 30,
+                height: 25,
               ),
-              IntlPhoneField(
-                decoration: InputDecoration(
-                  labelStyle: const TextStyle(color: Colors.grey),
-                  focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: mainColor),
-                              borderRadius: BorderRadius.circular(100)),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(100)),
-                  labelText: "Phone",
-                  // border: OutlineInputBorder(
-                  //   borderSide: BorderSide()
-                  // )
-                ),
-                 initialCountryCode: authService.code,
-                 languageCode: "en",
-                  onChanged: (phone) {
-                    authService.contact = phone.completeNumber;
-                  },
-                  onCountryChanged: (country) {
-                    print('Country changed to: ' + country.name);
-                  },
-              ),
+              SizedBox(
+                  height: 70,
+                  child: IntlPhoneField(
+                    controller: numberController,
+                    focusNode: focusNode,
+                    cursorColor: mainColor,
+                    decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.grey),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(100)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(100)),
+                      labelText: "Phone",
+                    ),
+                    initialCountryCode: authService.code,
+                    languageCode: "en",
+                    onChanged: (phone) {
+                      authService.contact = phone.completeNumber;
+                     // numberController.text = phone.completeNumber;
+                    },
+                    onCountryChanged: (country) {
+                      print('Country changed to: ' + country.name);
+                    },
+                  )),
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
               SizedBox(
                 width: double.infinity,
@@ -104,11 +111,9 @@ class _MyPhoneState extends State<MyPhone> {
                       //  Navigator.pushNamed(context, 'verify');
 
                       if (numberController.text.isNotEmpty) {
-                        String? verificationCode =
-                            (await authService.sendCodeToPhone(
-                                countryController.text,
-                                numberController.text)) as String?;
-                        Navigator.pushNamed(context, 'verify');
+                        String? verificationCode = (await authService
+                            .sendCodeToPhone(authService.contact!)) as String?;
+                       // navigatorKey.currentState!.pushNamed('verify');
                         if (verificationCode != null) {
                           // Proceed with verification using the `verificationCode`
                           print(
@@ -120,20 +125,20 @@ class _MyPhoneState extends State<MyPhone> {
 
                           if (user != null) {
                             // The user is successfully signed in.
-                            Navigator.pushNamed(context, 'verify');
+                            navigatorKey.currentState!.pushNamed('verify');
                             print('User signed in: ${user.uid}');
                           } else {
                             // Sign-in failed or verification code is invalid.
                             print('Failed to sign in.');
                           }
-                        } else {
-                          // Handle error if the verification code is not received
-                          print('Verification code not received.');
                         }
                       }
                     },
                     child: const Text("Login")),
-              )
+              ),
+              const SizedBox(
+                height: 100,
+              ),
             ],
           ),
         ),
@@ -141,4 +146,3 @@ class _MyPhoneState extends State<MyPhone> {
     );
   }
 }
-

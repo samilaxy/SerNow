@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/auth_provider.dart';
 
 import '../../Utilities/constants.dart';
+import '../../main.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class _MyVerifyState extends State<MyVerify> {
     );
 
     final focusedPinTheme = defaultPinTheme.copyDecorationWith(
-      border: Border.all(color: const Color.fromRGBO(114, 178, 238, 1)),
+      border: Border.all(color: mainColor),
       borderRadius: BorderRadius.circular(8),
     );
 
@@ -76,15 +77,15 @@ class _MyVerifyState extends State<MyVerify> {
               ),
               const Text(
                 "Phone Verification",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Text(
                 "Enter the verification code sent to\n$contact",
                 style: const TextStyle(
-                  fontSize: 12,
+                  fontSize: 13,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -98,7 +99,7 @@ class _MyVerifyState extends State<MyVerify> {
                  defaultPinTheme: defaultPinTheme,
                  focusedPinTheme: focusedPinTheme,
                  submittedPinTheme: submittedPinTheme,
-                  errorPinTheme: defaultPinTheme.copyBorderWith(
+                 errorPinTheme: defaultPinTheme.copyBorderWith(
                 border: Border.all(color: Colors.redAccent),
               ),
 
@@ -111,11 +112,12 @@ class _MyVerifyState extends State<MyVerify> {
               onChanged: (value) {
                 debugPrint('onChanged: $value');
                 enteredCode = value;
+                // Perform verification of the entered code here
               },
-              //   validator: (pin) {
-              //     print("pin is $pin and code is $enteredCode");
-              //   return pin == 'enteredCode' ? null : 'Pin is incorrect';
-              // },
+                validator: (pin) {
+                  print("pin is $pin and code is $enteredCode");
+                return pin == 'enteredCode' ? null : 'Pin is incorrect';
+              },
               ),
               const SizedBox(
                 height: 20,
@@ -129,10 +131,10 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-
+                    _showSnackBar(context, "Verification code is incorrect.");
                       if(await authService.signInWithVerificationCode(enteredCode!) != null){
               
-                        Navigator.pushNamed(context, 'home');
+                        navigatorKey.currentState!.pushNamed('home');
                         print("Hereeeeeeeeeeeeeeeeeeeeee...........");
                       }
                     },
@@ -154,11 +156,22 @@ class _MyVerifyState extends State<MyVerify> {
                         style: TextStyle(color: Colors.black),
                       ))
                 ],
-              )
+              ),
+               const SizedBox(
+                height: 100,
+              ),
             ],
           ),
         ),
       ),
     );
   }
+  void _showSnackBar(BuildContext context, String message) {
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(message),
+      duration: Duration(seconds: 2), // Adjust the duration as needed
+    ),
+  );
+}
 }

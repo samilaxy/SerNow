@@ -1,11 +1,14 @@
 import 'dart:async';
-import 'dart:ffi';
+import 'dart:js';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:serv_now/repository/shared_preference.dart';
 import 'package:serv_now/utilities/util.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../main.dart';
 
 class AuthProvider extends ChangeNotifier {
   static String? verificationId;
@@ -14,6 +17,8 @@ class AuthProvider extends ChangeNotifier {
   String? get contact => _contact;
   String _code = "";
   String get code => _code;
+  String _userPin = "";
+  String get coduserPine => _userPin;
   UserModel? _user;
   UserModel? get user => _user;
 
@@ -27,12 +32,12 @@ AuthProvider() {
   loginState();
 }
   // Update the return type to use Future<User?> for sign-in
-  Future<User?> sendCodeToPhone(String countryCode, String number) async {
+  Future<User?> sendCodeToPhone(String number) async {
     Completer<User?> completer = Completer<User?>();
     _contact = number;
     try {
       await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: "$countryCode$number",
+        phoneNumber: number,
         verificationCompleted: (PhoneAuthCredential credential) async {
           try {
             UserCredential userCredential =
@@ -49,11 +54,13 @@ AuthProvider() {
         verificationFailed: (FirebaseAuthException e) {
           error = e.message;
           completer.complete(
-              null); // Complete with null in case of verification failure
-          print('Verification failed: ${e.message}');
+              null); 
+            throw Exception(e.message);
         },
         codeSent: (String verificationId, int? resendToken) {
           AuthProvider.verificationId = verificationId;
+          _userPin = verificationId;
+          navigatorKey.currentState!.pushNamed('verify');
           completer.complete(
               null); // Complete with null when the verification code is sent
           print(
@@ -76,6 +83,7 @@ AuthProvider() {
 
   // Sign in the user using the verification code
   Future<User?> signInWithVerificationCode(String verificationCode) async {
+   
     Completer<User?> completer = Completer<User?>();
 
     try {
@@ -127,7 +135,7 @@ AuthProvider() {
   }
 
 Future<bool> loginState() async {
- // getCode();
+  getCode();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isLoggedIn = prefs.getBool('login') ?? false;
   print("loginstatus: $isLoggedIn");
