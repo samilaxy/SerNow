@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:js';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -135,7 +134,7 @@ AuthProvider() {
   }
 
 Future<bool> loginState() async {
-  getCode();
+  //getCode();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isLoggedIn = prefs.getBool('login') ?? false;
   print("loginstatus: $isLoggedIn");
