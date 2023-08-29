@@ -1,3 +1,5 @@
+
+import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 import 'dart:typed_data';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -19,24 +21,36 @@ String uniqueFilename = "${DateTime.now().millisecondsSinceEpoch}_${Random().nex
 }
 
 static Future<String> getCurrentLocation() async {
-   String defaultCountry = '';
-    try {
+  String defaultCountry = '';
+  try {
+    // Request location permission
+    PermissionStatus status = await Permission.location.request();
+
+    if (status.isGranted) {
       Position position = await Geolocator.getCurrentPosition(
-          desiredAccuracy: LocationAccuracy.high);
-      
+        desiredAccuracy: LocationAccuracy.high,
+      );
+
       // Determine the country based on the user's location
       List<Placemark> placemarks = await placemarkFromCoordinates(
-          position.latitude, position.longitude);
-      
+        position.latitude,
+        position.longitude,
+      );
+
       if (placemarks.isNotEmpty) {
         String? countryCode = placemarks[0].isoCountryCode;
         defaultCountry = countryCode ?? 'US';
       }
-    } catch (e) {
-      print('Error getting location: $e');
+    } else {
+      print('Location permission denied');
     }
-    return defaultCountry;
+  } catch (e) {
+    print('Error getting location: $e');
   }
+  return defaultCountry;
+}
+
+
 
 // Future<String> saveData({
 //   required String name,
