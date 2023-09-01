@@ -227,7 +227,7 @@ void showLoadingDialog(BuildContext context) {
   }
 
   Future<void> colorMode() async {
-    isDark = isDark == true ? false : true;
+    isDark == true ? false : true;
     notifyListeners();
   }
 
