@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../Utilities/constants.dart';
@@ -86,9 +87,9 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               Text(profileProvider.name,
-                  style: Theme.of(context).textTheme.headline4),
+                  style: GoogleFonts.poppins(fontSize: 18)),
               const SizedBox(height: 5),
-              Text("Barber", style: Theme.of(context).textTheme.bodyText2),
+              Text("Barber", style: GoogleFonts.poppins(fontSize: 12)),
               const SizedBox(height: 8),
 
               /// -- BUTTON
@@ -100,8 +101,8 @@ class ProfileScreen extends StatelessWidget {
                       backgroundColor: mainColor,
                       side: BorderSide.none,
                       shape: const StadiumBorder()),
-                  child: const Text("Edit Profile",
-                      style: TextStyle(color: Colors.white70)),
+                  child:  Text("Edit Profile",
+                     style: GoogleFonts.poppins(fontSize: 13, color: Colors.white70)),
                 ),
               ),
               const SizedBox(height: 30),
@@ -112,7 +113,7 @@ class ProfileScreen extends StatelessWidget {
               //  ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
               //  ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
               Row(children: [
-                const Text("Bio", style: TextStyle(color: Colors.grey)),
+                 Text("Bio", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Expanded(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 41),
@@ -121,8 +122,7 @@ class ProfileScreen extends StatelessWidget {
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
                           maxLines: 3,
-                          style: const TextStyle(
-                              color: Colors.black, fontSize: 16))),
+                          style: GoogleFonts.poppins(fontSize: 14))),
                 )
               ]),
               const SizedBox(height: 30),
@@ -132,12 +132,11 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Row(children: [
-                const Text("Phone", style: TextStyle(color: Colors.grey)),
+                 Text("Phone", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(profileProvider.contact,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 16)))
+                        style: GoogleFonts.poppins(fontSize: 14)))
               ]),
               const SizedBox(height: 8),
               const Padding(
@@ -146,12 +145,11 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Row(children: [
-                const Text("Email", style: TextStyle(color: Colors.grey)),
+                 Text("Email", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Text(profileProvider.email,
-                        style:
-                            const TextStyle(color: Colors.black, fontSize: 16)))
+                            style: GoogleFonts.poppins(fontSize: 14)))
               ]),
               const SizedBox(height: 8),
               const Divider(),
@@ -176,10 +174,10 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       color: Colors.grey),
                 ),
-                const Padding(
+                 Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text("Logout",
-                        style: TextStyle(color: Colors.red, fontSize: 16)))
+                        style: GoogleFonts.poppins(fontSize: 14, color: Colors.red)))
               ]),
             ],
           ),

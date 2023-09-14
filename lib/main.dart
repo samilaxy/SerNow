@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
@@ -11,9 +10,6 @@ import 'controllers/auth_provider.dart';
 import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
-
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -22,7 +18,7 @@ void main() async {
   AuthProvider authProvider = AuthProvider();
   // ProfileProvider proProvider = ProfileProvider();
   // proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
-  
+
   bool userLoggedIn = await authProvider.loginState();
 
   String initialRoute = userLoggedIn ? 'home' : 'home';
@@ -41,10 +37,12 @@ void main() async {
     ),
   );
 }
+
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 class MyApp extends StatelessWidget {
-  final String initialRoute; // Add this line to declare the initialRoute parameter
+  final String
+      initialRoute; // Add this line to declare the initialRoute parameter
 
   const MyApp({Key? key, required this.initialRoute}) : super(key: key);
 
@@ -55,6 +53,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        brightness: Brightness.light,
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
       ),
       routes: {

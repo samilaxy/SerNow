@@ -14,96 +14,114 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   List<ServiceCard> data = [
-   const ServiceCard(
-      serviceName: 'Haircut',
+    const ServiceCard(
+      serviceName: 'Haircut Haircut Haircut',
+      location: "Tema",
       description: 'Get a stylish haircut from our experienced barbers.',
-      icon: Icons.cut,
+      icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
+       location: "Tema",
       description: 'Professional plumbing services for your home.',
-      icon: Icons.plumbing,
+      icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
-    ),
-    const ServiceCard(
-      serviceName: 'Haircut',
-      description: 'Get a stylish haircut from our experienced barbers.',
-      icon: Icons.cut,
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      description: 'Professional plumbing services for your home.',
-      icon: Icons.plumbing,
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
+       location: "Accra",
+      icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
       description: 'Get a stylish haircut from our experienced barbers.',
-      icon: Icons.cut,
+       location: "Takoradi",
+      icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
       description: 'Professional plumbing services for your home.',
-      icon: Icons.plumbing,
+       location: "Tema",
+      icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
-    ), 
+       location: "Accra",
+      icon: "Icons.create",
+    ),
     const ServiceCard(
       serviceName: 'Tailoring',
+       location: "Adenta",
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
+      icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
+       location: "Kumasi",
       description: 'Get a stylish haircut from our experienced barbers.',
-      icon: Icons.cut,
+      icon: "Icons.cut",
+    ),
+    const ServiceCard(
+      serviceName: 'Plumbing',
+       location: "Ho",
+      description: 'Professional plumbing services for your home.',
+      icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
+       location: "Tamale",
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
+      icon: "Icons.create",
+    ),
+    const ServiceCard(
+      serviceName: 'Tailoring',
+       location: "Tema",
+      description: 'Custom clothing design and alterations.',
+      icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
+       location: "Tema",
       description: 'Get a stylish haircut from our experienced barbers.',
-      icon: Icons.cut,
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      description: 'Professional plumbing services for your home.',
-      icon: Icons.plumbing,
+      icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
+       location: "Hohoe",
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
-    ), 
+      icon: "Icons.create",
+    ),
+    const ServiceCard(
+      serviceName: 'Haircut',
+       location: "Kpone",
+      description: 'Get a stylish haircut from our experienced barbers.',
+      icon: "Icons.cut",
+    ),
     const ServiceCard(
       serviceName: 'Plumbing',
+       location: "Teshi",
       description: 'Professional plumbing services for your home.',
-      icon: Icons.plumbing,
+      icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
+       location: "Nungua",
       description: 'Custom clothing design and alterations.',
-      icon: Icons.create,
-    )  // Add more ServiceCards as needed
+      icon: "Icons.create",
+    ),
+    const ServiceCard(
+      serviceName: 'Plumbing',
+       location: "Osu",
+      description: 'Professional plumbing services for your home.',
+      icon: "Icons.plumbing",
+    ),
+    const ServiceCard(
+      serviceName: 'Tailoring',
+       location: "London",
+      description: 'Custom clothing design and alterations.',
+      icon: "Icons.create",
+    ) // Add more ServiceCards as needed
   ];
 
   @override
@@ -122,7 +140,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return ServiceCard(
                   serviceName: data[index].serviceName,
                   description: data[index].description,
-                  icon: data[index].icon);
+                  icon: data[index].icon, location: data[index].location,);
             }));
   }
 }
