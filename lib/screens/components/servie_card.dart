@@ -37,8 +37,6 @@ class ServiceCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(
-              // height: 50,
-
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -50,7 +48,7 @@ class ServiceCard extends StatelessWidget {
                           child: Container(
                               color: Colors.grey,
                               child: ImageWithPlaceholder(
-                                  imageUrl: defualtImg,
+                                  imageUrl: "",
                                   placeholderUrl: tProfileImage)))),
                   Expanded(
                     child: Padding(
@@ -87,7 +85,7 @@ class ServiceCard extends StatelessWidget {
                     flex: 1,
                     child: Text(location, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.poppins(fontSize: 10, color: Colors.grey))),
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: EdgeInsets.symmetric(horizontal: 5.0),
                     child: Icon(size: 12, Icons.location_on),
                   ),
                
