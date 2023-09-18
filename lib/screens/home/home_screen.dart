@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../Utilities/constants.dart';
-import '../../controllers/profile_proviver.dart';
 import '../components/servie_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,110 +14,110 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<ServiceCard> data = [
     const ServiceCard(
-      serviceName: 'Haircut Haircut Haircut',
+      serviceName: 'Haircut Haircut',
       location: "Tema",
       description: 'Get a stylish haircut from our experienced barbers.',
       icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
-       location: "Tema",
+      location: "Tema",
       description: 'Professional plumbing services for your home.',
       icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
       description: 'Custom clothing design and alterations.',
-       location: "Accra",
+      location: "Accra",
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
       description: 'Get a stylish haircut from our experienced barbers.',
-       location: "Takoradi",
+      location: "Takoradi",
       icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
       description: 'Professional plumbing services for your home.',
-       location: "Tema",
+      location: "Tema",
       icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
       description: 'Custom clothing design and alterations.',
-       location: "Accra",
+      location: "Accra",
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "Adenta",
+      location: "Adenta",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
-       location: "Kumasi",
+      location: "Kumasi",
       description: 'Get a stylish haircut from our experienced barbers.',
       icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
-       location: "Ho",
+      location: "Ho",
       description: 'Professional plumbing services for your home.',
       icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "Tamale",
+      location: "Tamale",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "Tema",
+      location: "Tema",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
-       location: "Tema",
+      location: "Tema",
       description: 'Get a stylish haircut from our experienced barbers.',
       icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "Hohoe",
+      location: "Hohoe",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Haircut',
-       location: "Kpone",
+      location: "Kpone",
       description: 'Get a stylish haircut from our experienced barbers.',
       icon: "Icons.cut",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
-       location: "Teshi",
+      location: "Teshi",
       description: 'Professional plumbing services for your home.',
       icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "Nungua",
+      location: "Nungua",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ),
     const ServiceCard(
       serviceName: 'Plumbing',
-       location: "Osu",
+      location: "Osu",
       description: 'Professional plumbing services for your home.',
       icon: "Icons.plumbing",
     ),
     const ServiceCard(
       serviceName: 'Tailoring',
-       location: "London",
+      location: "London London London London",
       description: 'Custom clothing design and alterations.',
       icon: "Icons.create",
     ) // Add more ServiceCards as needed
@@ -132,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.95,
                 crossAxisSpacing: 5.0),
             padding: const EdgeInsets.all(10),
             itemCount: data.length,
@@ -140,7 +139,8 @@ class _HomeScreenState extends State<HomeScreen> {
               return ServiceCard(
                   serviceName: data[index].serviceName,
                   description: data[index].description,
-                  icon: data[index].icon, location: data[index].location,);
+                  icon: data[index].icon,
+                  location: data[index].location);
             }));
   }
 }
@@ -158,7 +158,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
                 logoImg,
                 width: 70,
