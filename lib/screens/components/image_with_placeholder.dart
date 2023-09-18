@@ -1,32 +1,34 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageWithPlaceholder extends StatelessWidget {
   final String imageUrl;
   final String placeholderUrl;
-  
+
   ImageWithPlaceholder({required this.imageUrl, required this.placeholderUrl});
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: Future.delayed(Duration(seconds: 0), () => imageUrl),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const ShimmerLoadingIndicator(); // Show a loading indicator during the delay
-        }
-
-        if (snapshot.hasError) {
-          return const Text('Error loading image'); // Show an error message if delay fails
-        }
-
-        return FadeInImage(
-          placeholder: AssetImage(placeholderUrl), // Placeholder image
-          image: NetworkImage(snapshot.data.toString()), // Network image
-          fit: BoxFit.cover,
+    return CachedNetworkImage(
+        imageUrl: imageUrl,
+        imageBuilder: (context, ImageProvider) => Container(
+              width: double.infinity,
+              height: double.infinity,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: ImageProvider, fit: BoxFit.fitWidth)),
+            ),
+        errorWidget: (context, url, error) {
+          print("ERROR IS $error and url is $url");
+          return  Image.asset(placeholderUrl);
+        },
+        placeholder: (context, url) => Container(
+              alignment: Alignment.center,
+              child: Image.asset(placeholderUrl),
+            ) // Widget to display in case of an error.
         );
-      },
-    );
   }
 }
 
@@ -40,7 +42,7 @@ class ShimmerLoadingIndicator extends StatelessWidget {
       highlightColor: Colors.grey[100]!,
       child: Container(
         width: double.infinity,
-        height: 200,
+        height: double.infinity,
         color: Colors.white,
       ),
     );
