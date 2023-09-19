@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:serv_now/screens/home/create_service_page.dart';
 import 'package:serv_now/utilities/constants.dart';
 
 import '../home/Home_screen.dart';
@@ -20,6 +21,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
     const HomeScreen(),
     HistoryScreen(),
     const ProfileScreen(),
+    const CreateServicePage(),
   ];
 
   final PageStorageBucket bucket =  PageStorageBucket();
@@ -42,7 +44,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
       floatingActionButton:
           FloatingActionButton(
           child: const Icon(LineAwesomeIcons.plus), 
-          onPressed: () { print("add");},
+          onPressed: () { onItemTapped(0, const CreateServicePage());},
           backgroundColor: mainColor,),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(

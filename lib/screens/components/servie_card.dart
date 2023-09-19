@@ -33,7 +33,7 @@ class ServiceCard extends StatelessWidget {
               height: 120,
               color: Colors.grey,
               child: ImageWithPlaceholder(
-                  imageUrl: "", placeholderUrl: barberImg)),
+                  imageUrl: "", placeholderUrl: noImg)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(

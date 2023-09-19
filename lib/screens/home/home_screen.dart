@@ -3,6 +3,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 
 import '../../Utilities/constants.dart';
 import '../components/servie_card.dart';
+import 'service_details_page.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -136,11 +137,23 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(10),
             itemCount: data.length,
             itemBuilder: (BuildContext context, int index) {
-              return ServiceCard(
-                  serviceName: data[index].serviceName,
-                  description: data[index].description,
-                  icon: data[index].icon,
-                  location: data[index].location);
+              return GestureDetector(
+            onTap: () {
+              // Navigate to the details page here, passing data[index] as a parameter
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ServiceDetailsPage(data[index]),
+                ),
+              );
+            },
+            child: ServiceCard(
+              serviceName: data[index].serviceName,
+              description: data[index].description,
+              icon: data[index].icon,
+              location: data[index].location,
+            ),
+          );
             }));
   }
 }
@@ -184,3 +197,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
+

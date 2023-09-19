@@ -18,11 +18,11 @@ class ImageWithPlaceholder extends StatelessWidget {
               height: double.infinity,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: ImageProvider, fit: BoxFit.fitWidth)),
+                      image: ImageProvider, fit: BoxFit.cover)),
             ),
         errorWidget: (context, url, error) {
           print("ERROR IS $error and url is $url");
-          return  Image.asset(placeholderUrl);
+          return  Image.asset(placeholderUrl, fit: BoxFit.cover);
         },
         placeholder: (context, url) => Container(
               alignment: Alignment.center,

@@ -193,25 +193,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-    return SafeArea(
-      child: Container(
-        height: kToolbarHeight,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            IconButton(
+    return AppBar(
+      elevation: 0,
+      leading: IconButton(
                 onPressed: () => Navigator.pushNamed(context, 'home'),
-                icon: const Icon(LineAwesomeIcons.angle_left)),
-            Text("Profile", style: Theme.of(context).textTheme.titleSmall),
-            IconButton(
+                icon: Icon(LineAwesomeIcons.angle_left, color: Theme.of(context).iconTheme.color)) ,
+      centerTitle: true,
+      backgroundColor: Colors.transparent,
+      title: Text("Profile", style: GoogleFonts.poppins(textStyle: TextStyle(color: Theme.of(context).iconTheme.color), fontSize: 15, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal)),
+      actions: [IconButton(
                 onPressed: () {
                   // ProfileProvider.colorMode();
                 },
                 icon:
-                    Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
-          ],
-        ),
-      ),
+                    Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon, color: Theme.of(context).iconTheme.color))],
     );
   }
 

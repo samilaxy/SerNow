@@ -1,22 +1,17 @@
-import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:provider/provider.dart';
-import '../../Utilities/constants.dart';
-import '../../controllers/profile_proviver.dart';
-import '../../models/user_model.dart';
-import '../components/image_with_placeholder.dart';
 
-class UpdateProfileScreen extends StatefulWidget {
-  const UpdateProfileScreen({Key? key}) : super(key: key);
+import '../../Utilities/constants.dart';
+
+class CreateServicePage extends StatefulWidget {
+  const CreateServicePage({Key? key}) : super(key: key);
 
   @override
- State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
+  State<CreateServicePage> createState() => _CreateServicePageState();
 }
 
-class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+class _CreateServicePageState extends State<CreateServicePage> {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -33,16 +28,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final profileProvider = Provider.of<ProfileProvider>(context);
-
-    // Pre-fill profile if information is available
-    fullNameController.text = profileProvider.name;
-    emailController.text = profileProvider.email;
-    phoneController.text = profileProvider.contact;
-    bioController.text = profileProvider.bio;
-    Uint8List? image = profileProvider.image;
-    String? imgUrl = profileProvider.imageUrl;
-
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -51,50 +36,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           child: Column(
             children: [
               // -- IMAGE with ICON
-              Stack(
-                children: [
-                  SizedBox(
-                    width: 120,
-                    height: 120,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage(tProfileImage))),
-                  ),
-                  image != null
-                      ? CircleAvatar(
-                          radius: 64,
-                          backgroundImage: MemoryImage(image),
-                        )
-                      : SizedBox(
-                          width: 120,
-                          height: 120,
-                          child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: ImageWithPlaceholder(
-                                  imageUrl: profileProvider.imageUrl,
-                                  placeholderUrl:
-                                      tProfileImage)),
-                        ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                        width: 35,
-                        height: 35,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(100),
-                            color: mainColor),
-                        child: IconButton(
-                          onPressed: () {
-                            profileProvider.selectImg();
-                          },
-                          icon: const Icon(LineAwesomeIcons.camera,
-                          color: Colors.white,
-                          size: 20,),
-                        )),
-                  ),
-                ],
-              ),
               const SizedBox(height: 50),
 
               // -- Form Fields
@@ -169,14 +110,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           final bio = bioController.text.trim();
 
                           //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-                          final userModel = UserModel(
-                            fullName: fullName,
-                            email: email,
-                            phone: phone,
-                            bio: bio,
-                            img: imgUrl
-                          );
-                          profileProvider.createUser(userModel, context);
+                          // final userModel = UserModel(
+                          //   fullName: fullName,
+                          //   email: email,
+                          //   phone: phone,
+                          //   bio: bio,
+                          //   img: imgUrl
+                          // );
+                          // profileProvider.createUser(userModel, context);
                           //  Navigator.pushNamed(context, 'profile');
                         },
                         //  },
@@ -188,38 +129,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             style: TextStyle(color: Colors.black)),
                       ),
                     ),
-                    const SizedBox(height: 20),
-
-                    // -- Created Date and Delete Button
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text.rich(
-                          TextSpan(
-                            text: "Joined",
-                            style: TextStyle(fontSize: 12),
-                            children: [
-                              TextSpan(
-                                  text: "  May 23",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 12))
-                            ],
-                          ),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor:
-                                  Colors.redAccent.withOpacity(0.1),
-                              elevation: 0,
-                              foregroundColor: Colors.red,
-                              shape: const StadiumBorder(),
-                              side: BorderSide.none),
-                          child: const Text("Delete"),
-                        ),
-                      ],
-                    )
+                    const SizedBox(height: 20)
                   ],
                 ),
               ),
@@ -239,11 +149,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, 'profile'),
+                onPressed: () => Navigator.pushNamed(context, 'home'),
                 icon: Icon(LineAwesomeIcons.angle_left, color: Theme.of(context).iconTheme.color)) ,
       centerTitle: true,
       backgroundColor: Colors.transparent,
-      title: Text("Edit Profile", style: GoogleFonts.poppins(textStyle: TextStyle(color: Theme.of(context).iconTheme.color), fontSize: 15, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal)),
+      title: Text("Create Service", style: GoogleFonts.poppins(textStyle: TextStyle(color: Theme.of(context).iconTheme.color), fontSize: 15, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal)),
     );
   }
 
