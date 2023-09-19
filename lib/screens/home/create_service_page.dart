@@ -58,11 +58,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Full Name"),
-                          prefixIcon: const Icon(
-                            LineAwesomeIcons.user,
-                            color: Colors.grey,
-                          )),
+                          label: const Text("Title"),
+                          prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -72,7 +69,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
                           label: const Text("Email"),
-                          prefixIcon: const Icon(LineAwesomeIcons.envelope_1)),
+                          prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -82,7 +79,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
                           label: const Text("Phone"),
-                          prefixIcon: const Icon(LineAwesomeIcons.phone)),
+                          prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -125,8 +122,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Update",
-                            style: TextStyle(color: Colors.black)),
+                        child: const Text("Create",
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 20)

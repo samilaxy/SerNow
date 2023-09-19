@@ -101,8 +101,9 @@ class ProfileScreen extends StatelessWidget {
                       backgroundColor: mainColor,
                       side: BorderSide.none,
                       shape: const StadiumBorder()),
-                  child:  Text("Edit Profile",
-                     style: GoogleFonts.poppins(fontSize: 13, color: Colors.white70)),
+                  child: Text("Edit Profile",
+                      style: GoogleFonts.poppins(
+                          fontSize: 13, color: Colors.white70)),
                 ),
               ),
               const SizedBox(height: 30),
@@ -113,7 +114,9 @@ class ProfileScreen extends StatelessWidget {
               //  ProfileMenuWidget(title: "Settings", icon: LineAwesomeIcons.cog, onPress: () {}),
               //  ProfileMenuWidget(title: "User Management", icon: LineAwesomeIcons.user_check, onPress: () {}),
               Row(children: [
-                 Text("Bio", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
+                Text("Bio",
+                    style:
+                        GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Expanded(
                   child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 41),
@@ -132,7 +135,9 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 5),
               Row(children: [
-                 Text("Phone", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
+                Text("Phone",
+                    style:
+                        GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Padding(
                     padding: const EdgeInsets.only(left: 20),
                     child: Text(profileProvider.contact,
@@ -145,11 +150,13 @@ class ProfileScreen extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               Row(children: [
-                 Text("Email", style: GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
+                Text("Email",
+                    style:
+                        GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
                 Padding(
                     padding: const EdgeInsets.only(left: 25),
                     child: Text(profileProvider.email,
-                            style: GoogleFonts.poppins(fontSize: 14)))
+                        style: GoogleFonts.poppins(fontSize: 14)))
               ]),
               const SizedBox(height: 8),
               const Divider(),
@@ -174,10 +181,11 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       color: Colors.grey),
                 ),
-                 Padding(
+                Padding(
                     padding: EdgeInsets.only(left: 20),
                     child: Text("Logout",
-                        style: GoogleFonts.poppins(fontSize: 14, color: Colors.red)))
+                        style: GoogleFonts.poppins(
+                            fontSize: 14, color: Colors.red)))
               ]),
             ],
           ),
@@ -196,17 +204,25 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, 'home'),
-                icon: Icon(LineAwesomeIcons.angle_left, color: Theme.of(context).iconTheme.color)) ,
+          onPressed: () => Navigator.pushNamed(context, 'home'),
+          icon: Icon(LineAwesomeIcons.angle_left,
+              color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,
-      title: Text("Profile", style: GoogleFonts.poppins(textStyle: TextStyle(color: Theme.of(context).iconTheme.color), fontSize: 15, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal)),
-      actions: [IconButton(
-                onPressed: () {
-                  // ProfileProvider.colorMode();
-                },
-                icon:
-                    Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon, color: Theme.of(context).iconTheme.color))],
+      title: Text("Profile",
+          style: GoogleFonts.poppins(
+              textStyle: TextStyle(color: Theme.of(context).iconTheme.color),
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal)),
+      actions: [
+        IconButton(
+            onPressed: () {
+              // ProfileProvider.colorMode();
+            },
+            icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
+                color: Theme.of(context).iconTheme.color))
+      ],
     );
   }
 
