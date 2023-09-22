@@ -88,8 +88,7 @@ class ServiceCard extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 5.0),
                     child: Icon(size: 12, Icons.location_on),
                   ),
-               
-                ],
+              ],
               ),
             ),
           ),

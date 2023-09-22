@@ -29,6 +29,8 @@ class ImageWithPlaceholder extends StatelessWidget {
         },
         placeholder: (context, url) => Container(
               alignment: Alignment.center,
+              width: double.infinity,
+              height: double.infinity,
               child: Image.asset(placeholderUrl),
             ) // Widget to display in case of an error.
         );

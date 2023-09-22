@@ -14,20 +14,27 @@ class CreateServicePage extends StatefulWidget {
 }
 
 class _CreateServicePageState extends State<CreateServicePage> {
-  final TextEditingController fullNameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController bioController = TextEditingController();
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController catController = TextEditingController();
+  final TextEditingController priceController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+  final TextEditingController cityController = TextEditingController();
+  final TextEditingController areaController = TextEditingController();
+  final TextEditingController desController = TextEditingController();
+
   String? _selectedOption;
   // Options for the dropdown menu
-  final List<String> _dropdownOptions = ['Option 1', 'Option 2', 'Option 3'];
+  final List<String> _dropdownOptions = ['Barber','Hair Dresser','Plumber', 'Fashion', 'Mechanic'];
 
   @override
   void dispose() {
-    fullNameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    bioController.dispose();
+    titleController.dispose();
+    catController.dispose();
+    priceController.dispose();
+    countryController.dispose();
+    cityController.dispose();
+    areaController.dispose();
+    desController.dispose();
     super.dispose();
   }
 
@@ -49,7 +56,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                   children: [
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: fullNameController,
+                      controller: titleController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Phone is required';
@@ -97,7 +104,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: emailController,
+                      controller: priceController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
@@ -112,7 +119,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: emailController,
+                      controller: countryController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
@@ -127,7 +134,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: phoneController,
+                      controller: cityController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
@@ -142,8 +149,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: phoneController,
-                      keyboardType: TextInputType.phone,
+                      controller: areaController,
+                      keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -157,7 +164,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: bioController,
+                      controller: desController,
                       maxLines: 10, // Declare a TextEditingController
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
@@ -192,7 +199,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(height: 10),
                     ImageUploadField(),
                     const SizedBox(height: 20),
                     // -- Form Submit Button
@@ -201,12 +208,14 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          final fullName = fullNameController.text.trim();
-                          final email = emailController.text.trim();
-                          final phone = phoneController.text.trim();
-                          final bio = bioController.text.trim();
-                          String? selectedOption = _selectedOption;
-                          print('Selected Option: $selectedOption');
+                          final title = titleController.text.trim();
+                          final price = priceController.text.trim();
+                          final country = countryController.text.trim();
+                          final city = cityController.text.trim();
+                          final area = areaController.text.trim();
+                          final images = [];
+                          String? category = _selectedOption;
+                          print('Selected Option: $category');
                           //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
                           // final userModel = UserModel(
                           //   fullName: fullName,
@@ -227,7 +236,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),
-                    const SizedBox(height: 100)
+                    const SizedBox(height: 80)
                   ],
                 ),
               ),

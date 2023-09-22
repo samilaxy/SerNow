@@ -168,26 +168,27 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
                 logoImg,
-                width: 70,
-                height: 70,
+                width: 80,
+                height: 80,
               ),
             ),
-            IconButton(
-                onPressed: () {
-                  // ProfileProvider.colorMode();
-                },
-                icon: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Icon(isDark
-                      ? LineAwesomeIcons.sun
-                      : LineAwesomeIcons.horizontal_ellipsis),
-                ))
+            // IconButton(
+            //     onPressed: () {
+            //       // ProfileProvider.colorMode();
+            //     },
+            //     icon: Padding(
+            //       padding: const EdgeInsets.only(right: 20),
+            //       child: Icon(isDark
+            //           ? LineAwesomeIcons.sun
+            //           : LineAwesomeIcons.horizontal_ellipsis),
+            //     ))
           ],
         ),
       ),
