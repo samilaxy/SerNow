@@ -231,7 +231,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                       width: double.infinity,
                                       color: Colors.grey,
                                       child: IconButton(
-                                          onPressed:() { serviceProvider.pickImages(); } ,
+                                          onPressed:() { serviceProvider.pickImages(context); } ,
                                           icon: const Icon(Icons.add)),
                                     ),
                                   )

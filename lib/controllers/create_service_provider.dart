@@ -8,6 +8,7 @@ import 'package:multi_image_picker/multi_image_picker.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
+import '../Utilities/util.dart';
 import '../models/service_model.dart';
 
 class CreateServiceProvider extends ChangeNotifier {
@@ -19,14 +20,15 @@ class CreateServiceProvider extends ChangeNotifier {
   String _price = "";
   String _location = "";
   String _description = "";
+  String _imgUrl = "";
   String _userId = "";
   bool isDark = false;
   Uint8List? _image;
-  String _imageBase64 = "";
   List<File> _imgs = [];
   List _imgUrls = [];
 
   String get message => _message;
+  String get imgUrl => _imgUrl;
   List get imageUrls => _imgUrls;
   List get imgs => _imgs;
   String get title => _title;
@@ -35,23 +37,21 @@ class CreateServiceProvider extends ChangeNotifier {
   String get location => _location;
   String get description => _description;
   String get userId => _userId;
-  Uint8List? get image => _image;
-  final MultiImagePicker imgPicker = MultiImagePicker();
   final ImagePicker _imgPicker = ImagePicker();
 
   Future<void> createService(ServiceModel serv, BuildContext context) async {
-    final title = serv.title.trim();
-    final category = serv.category.trim();
-    final price = serv.price.trim();
-    final location = serv.location.trim();
-    final description = serv.description.trim();
+     _title = serv.title.trim();
+    _category = serv.category.trim();
+    _price = serv.price.trim();
+    _location = serv.location.trim();
+    _description = serv.description.trim();
     print(serv.imgUrls);
 
-    if (title.isEmpty ||
-        category.isEmpty ||
-        price.isEmpty ||
-        location.isEmpty ||
-        description.isEmpty) {
+    if (_title.isEmpty ||
+        _category.isEmpty ||
+        _price.isEmpty ||
+        _location.isEmpty ||
+        _description.isEmpty) {
       _message = "Please fill in all fields";
       showErrorSnackbar(context, _message);
       return;
@@ -68,7 +68,7 @@ class CreateServiceProvider extends ChangeNotifier {
     showLoadingDialog(context); // Show loading spinner
 
     try {
-      await Future.delayed(const Duration(seconds: 1));
+      delayUpdate();
       await _db.collection("services").add(serv.toJson());
 
       _message = "Created Successfully!";
@@ -115,23 +115,50 @@ class CreateServiceProvider extends ChangeNotifier {
     );
   }
 
-  Future<void> delayLoad() async {
-    await Future.delayed(Duration(seconds: 1)); // Delay for one second
+  Future<void> delayUpdate() async {
+    await Future.delayed(const Duration(seconds: 2)); // Delay for one second
     // Call the method you want to execute after the delay
     // loadprofileData();
   }
-Future<void> pickImages() async {
+
+Future<void> pickImages(BuildContext context) async {
+ //_imgs = [];
   final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
-  if (pickedImgs != null) {
+ // if (_imgs.length + pickedImgs.length <= 5) {
+ // if (_imgs != null){
     for (var e in pickedImgs) {
       _imgs.add(File(e.path));
       notifyListeners();
     }
-    print(_imgs.length);
-  }
+    uploadImageToStorage();
+//}
+  // }else {
+  //     // Handle the case where the maximum limit is exceeded
+  //     // You can display an error message or take appropriate action
+  //     _message = "Images limit exceeded!";
+  //     showErrorSnackbar(context, _message);
+  //   }
   notifyListeners();
 }
 
+Future<void> uploadImageToStorage() async { 
+
+  if (_imgs != []) {
+      try {
+   for (var img in _imgs) {
+     Uint8List fileBytes = await img.readAsBytes(); // Read file contents
+          _imgUrl = await UtilityClass.uploadedImg("serviceImgs", fileBytes);
+          _imgUrls.add(_imgUrl);
+       }
+
+      } catch (err) {
+        _message = err.toString();
+        print(_message);
+      }
+    } 
+  
+
+}
 
 // Future<void> retrieveLostData() async {
 //   final List<LostData> lostData = await MultiImagePicker.getLostData();

@@ -17,8 +17,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   AuthProvider authProvider = AuthProvider();
-  ProfileProvider proProvider = ProfileProvider();
-  proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
+  // ProfileProvider proProvider = ProfileProvider();
+  // proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
 
   bool userLoggedIn = await authProvider.loginState();
 
