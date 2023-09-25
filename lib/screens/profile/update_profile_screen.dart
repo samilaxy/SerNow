@@ -185,7 +185,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text("Update",
-                            style: TextStyle(color: Colors.black)),
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 20),
