@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/create_service_provider.dart';
 
 import '../../Utilities/constants.dart';
 import 'package:multi_image_picker/multi_image_picker.dart';
+
+import '../../models/service_model.dart';
 
 class CreateServicePage extends StatefulWidget {
   const CreateServicePage({Key? key}) : super(key: key);
@@ -20,11 +24,17 @@ class _CreateServicePageState extends State<CreateServicePage> {
   final TextEditingController countryController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
   final TextEditingController areaController = TextEditingController();
-  final TextEditingController desController = TextEditingController();
+  final TextEditingController descController = TextEditingController();
 
   String? _selectedOption;
   // Options for the dropdown menu
-  final List<String> _dropdownOptions = ['Barber','Hair Dresser','Plumber', 'Fashion', 'Mechanic'];
+  final List<String> _dropdownOptions = [
+    'Barber',
+    'Hair Dresser',
+    'Plumber',
+    'Fashion',
+    'Mechanic'
+  ];
 
   @override
   void dispose() {
@@ -34,12 +44,15 @@ class _CreateServicePageState extends State<CreateServicePage> {
     countryController.dispose();
     cityController.dispose();
     areaController.dispose();
-    desController.dispose();
+    descController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final serviceProvider =
+        Provider.of<CreateServiceProvider>(context);
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -158,13 +171,13 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Area"),
+                          label: const Text("Sub"),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
-                      controller: desController,
+                      controller: descController,
                       maxLines: 10, // Declare a TextEditingController
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
@@ -199,8 +212,39 @@ class _CreateServicePageState extends State<CreateServicePage> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    ImageUploadField(),
+                    const SizedBox(height: 20),
+                    SizedBox(
+                      height: 200,
+                      child: GridView.builder(
+                          itemCount: serviceProvider.imgs.length + 1,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 6,
+                                  mainAxisSpacing: 8.0,
+                                  childAspectRatio: 1.1,
+                                  crossAxisSpacing: 8.0),
+                          itemBuilder: ((context, index) {
+                            return index == 0
+                                ? Center(
+                                    child: Container(
+                                      height: double.infinity,
+                                      width: double.infinity,
+                                      color: Colors.grey,
+                                      child: IconButton(
+                                          onPressed:() { serviceProvider.pickImages(); } ,
+                                          icon: const Icon(Icons.add)),
+                                    ),
+                                  )
+                                : Container(
+                                    margin: const EdgeInsets.all(0),
+                                    decoration: BoxDecoration(
+                                        image: DecorationImage(
+                                            image: FileImage(serviceProvider
+                                                .imgs[index - 1]),
+                                                fit: BoxFit.cover)),
+                                  );
+                          })),
+                    ),
                     const SizedBox(height: 20),
                     // -- Form Submit Button
                     SizedBox(
@@ -213,18 +257,22 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           final country = countryController.text.trim();
                           final city = cityController.text.trim();
                           final area = areaController.text.trim();
-                          final images = [];
+                          final description = descController.text.trim();
+                          final images = [defualtUrl];
                           String? category = _selectedOption;
                           print('Selected Option: $category');
                           //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
-                          // final userModel = UserModel(
-                          //   fullName: fullName,
-                          //   email: email,
-                          //   phone: phone,
-                          //   bio: bio,
-                          //   img: imgUrl
-                          // );
-                          // profileProvider.createUser(userModel, context);
+                          final serviceModel = ServiceModel(
+                            userId: "",
+                            title: title,
+                            category: category ?? "",
+                            price: price,
+                            location: "$country-$city, $area.",
+                            description: description,
+                            imgUrls: images,
+                            status: "pending",
+                          );
+                          serviceProvider.createService(serviceModel, context);
                           //  Navigator.pushNamed(context, 'profile');
                         },
                         //  },
@@ -272,94 +320,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
-}
-
-class ImageUploadField extends StatefulWidget {
-  @override
-  _ImageUploadFieldState createState() => _ImageUploadFieldState();
-}
-
-class _ImageUploadFieldState extends State<ImageUploadField> {
-  List<Asset> _images = [];
-// Request camera and storage permissions
-  Future<void> loadAssets() async {
-    // Check and request permissions
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.camera,
-      Permission.storage,
-    ].request();
-
-    // Check if permissions are granted before proceeding
-    if (statuses[Permission.camera]?.isGranted == true &&
-        statuses[Permission.storage]?.isGranted == true) {
-      List<Asset> resultList = [];
-      try {
-        resultList = await MultiImagePicker.pickImages(
-          maxImages: 5, // Set the maximum number of images allowed
-          enableCamera: false, // Enable the camera for capturing new images
-          selectedAssets: _images,
-        );
-      } on Exception catch (e) {
-        // Handle any errors that might occur
-        print(e);
-      }
-
-      if (!mounted) return;
-
-      setState(() {
-        _images = resultList;
-      });
-    } else {
-      // Handle the case where one or both permissions are not granted
-      if (statuses[Permission.camera]?.isGranted == false) {
-        // Handle camera permission not granted
-      }
-      if (statuses[Permission.storage]?.isGranted == false) {
-        // Handle storage permission not granted
-      }
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Container(
-          height: 50,
-          alignment: Alignment.center,
-          width: 50,
-          color: Color.fromARGB(225, 174, 168, 168),
-          child: IconButton(
-            icon: const Icon(LineAwesomeIcons.plus),
-            onPressed: () {
-              loadAssets();
-            },
-          ),
-        ),
-        // ElevatedButton(
-        //   onPressed: loadAssets,
-        //   child: const Text("Select Images"),
-        // ),
-        const SizedBox(height: 10.0),
-        GridView.builder(
-          shrinkWrap: true,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            mainAxisSpacing: 5.0,
-            crossAxisSpacing: 5.0,
-          ),
-          itemCount: _images.length,
-          itemBuilder: (BuildContext context, int index) {
-            Asset asset = _images[index];
-            return AssetThumb(
-              asset: asset,
-              width: 300,
-              height: 300,
-            );
-          },
-        ),
-      ],
-    );
-  }
 }

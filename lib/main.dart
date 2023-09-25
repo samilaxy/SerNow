@@ -7,6 +7,7 @@ import 'package:serv_now/screens/home/home.dart';
 import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
+import 'controllers/create_service_provider.dart';
 import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
@@ -16,8 +17,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   AuthProvider authProvider = AuthProvider();
-  // ProfileProvider proProvider = ProfileProvider();
-  // proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
+  ProfileProvider proProvider = ProfileProvider();
+  proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
 
   bool userLoggedIn = await authProvider.loginState();
 
@@ -31,6 +32,9 @@ void main() async {
         ),
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
+        ),
+         ChangeNotifierProvider<CreateServiceProvider>(
+          create: (_) => CreateServiceProvider(),
         ),
       ],
       child: MyApp(initialRoute: initialRoute),
