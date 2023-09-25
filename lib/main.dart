@@ -22,7 +22,7 @@ void main() async {
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'home';
+  String initialRoute = userLoggedIn ? 'home' : 'phone';
 
   runApp(
     MultiProvider(
