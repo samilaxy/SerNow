@@ -1,3 +1,4 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
@@ -16,13 +17,14 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseAppCheck.instance.activate();
   AuthProvider authProvider = AuthProvider();
-  ProfileProvider proProvider = ProfileProvider();
-  proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
+  // ProfileProvider proProvider = ProfileProvider();
+  // proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'home';
+  String initialRoute = userLoggedIn ? 'home' : 'phone';
 
   runApp(
     MultiProvider(
@@ -57,7 +59,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.dark ,
+        brightness: Brightness.light ,
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
       ),
       routes: {

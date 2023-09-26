@@ -4,10 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
-
+import '../Utilities/util.dart';
 import '../models/service_model.dart';
 
 class CreateServiceProvider extends ChangeNotifier {
@@ -19,14 +16,14 @@ class CreateServiceProvider extends ChangeNotifier {
   String _price = "";
   String _location = "";
   String _description = "";
+  String _imgUrl = "";
   String _userId = "";
   bool isDark = false;
-  Uint8List? _image;
-  String _imageBase64 = "";
-  List<File> _imgs = [];
+  final List<File> _imgs = [];
   List _imgUrls = [];
 
   String get message => _message;
+  String get imgUrl => _imgUrl;
   List get imageUrls => _imgUrls;
   List get imgs => _imgs;
   String get title => _title;
@@ -35,29 +32,27 @@ class CreateServiceProvider extends ChangeNotifier {
   String get location => _location;
   String get description => _description;
   String get userId => _userId;
-  Uint8List? get image => _image;
-  final MultiImagePicker imgPicker = MultiImagePicker();
   final ImagePicker _imgPicker = ImagePicker();
 
   Future<void> createService(ServiceModel serv, BuildContext context) async {
-    final title = serv.title.trim();
-    final category = serv.category.trim();
-    final price = serv.price.trim();
-    final location = serv.location.trim();
-    final description = serv.description.trim();
+     _title = serv.title.trim();
+    _category = serv.category.trim();
+    _price = serv.price.trim();
+    _location = serv.location.trim();
+    _description = serv.description.trim();
     print(serv.imgUrls);
 
-    if (title.isEmpty ||
-        category.isEmpty ||
-        price.isEmpty ||
-        location.isEmpty ||
-        description.isEmpty) {
+    if (_title.isEmpty ||
+        _category.isEmpty ||
+        _price.isEmpty ||
+        _location.isEmpty ||
+        _description.isEmpty) {
       _message = "Please fill in all fields";
       showErrorSnackbar(context, _message);
       return;
       // Exit early if any field is empty
     }
-    if (imageUrls == []) {
+    if (imageUrls.isEmpty) {
       _message = "Upload atleast 1 photo for this service";
       showErrorSnackbar(context, _message);
       return;
@@ -68,7 +63,7 @@ class CreateServiceProvider extends ChangeNotifier {
     showLoadingDialog(context); // Show loading spinner
 
     try {
-      await Future.delayed(const Duration(seconds: 1));
+      delayUpdate();
       await _db.collection("services").add(serv.toJson());
 
       _message = "Created Successfully!";
@@ -115,23 +110,47 @@ class CreateServiceProvider extends ChangeNotifier {
     );
   }
 
-  Future<void> delayLoad() async {
-    await Future.delayed(Duration(seconds: 1)); // Delay for one second
+  Future<void> delayUpdate() async {
+    await Future.delayed(const Duration(seconds: 2)); // Delay for one second
     // Call the method you want to execute after the delay
     // loadprofileData();
   }
-Future<void> pickImages() async {
+
+Future<void> pickImages(BuildContext context) async {
+ //_imgs = [];
   final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
-  if (pickedImgs != null) {
-    for (var e in pickedImgs) {
-      _imgs.add(File(e.path));
+    for (var img in pickedImgs) {
+      _imgs.add(File(img.path));
       notifyListeners();
     }
-    print(_imgs.length);
-  }
-  notifyListeners();
+    // Upload images in the background using microtask
+  Future.microtask(() async {
+    await uploadImageToStorage();
+    // Optionally, you can show a completion message or perform other actions when the upload is done.
+    // For example, you can show a snackbar:
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Images uploaded successfully')),
+    );
+  });
 }
 
+Future<void> uploadImageToStorage() async {
+  if (_imgs.isNotEmpty) {
+    try {
+      final List<Future<String>> uploadFutures = _imgs.map((img) async {
+        final fileBytes = await img.readAsBytes(); // Read file contents
+        return UtilityClass.uploadedImg("serviceImgs", fileBytes);
+      }).toList();
+
+      _imgUrls = await Future.wait(uploadFutures);
+
+      print("urls: $_imgUrls");
+    } catch (err) {
+      _message = err.toString();
+      print(_message);
+    }
+  }
+}
 
 // Future<void> retrieveLostData() async {
 //   final List<LostData> lostData = await MultiImagePicker.getLostData();

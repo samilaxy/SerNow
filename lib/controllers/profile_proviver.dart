@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -257,7 +254,7 @@ void showLoadingDialog(BuildContext context) {
     if (img != null) {
       try {
   
-        _imageUrl = await UtilityClass.uploadedImg("profileImages", img);
+        _imageUrl = await UtilityClass.uploadedImg("profilImages", img);
       } catch (err) {
         _message = err.toString();
         print(_message);
