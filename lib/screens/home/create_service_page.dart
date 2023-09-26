@@ -258,7 +258,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           final city = cityController.text.trim();
                           final area = areaController.text.trim();
                           final description = descController.text.trim();
-                          final images = [defualtUrl];
+                          final images = serviceProvider.imageUrls;
                           String? category = _selectedOption;
                           print('Selected Option: $category');
                           //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {

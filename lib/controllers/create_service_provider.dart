@@ -4,10 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:permission_handler/permission_handler.dart';
-
 import '../Utilities/util.dart';
 import '../models/service_model.dart';
 
@@ -23,8 +19,7 @@ class CreateServiceProvider extends ChangeNotifier {
   String _imgUrl = "";
   String _userId = "";
   bool isDark = false;
-  Uint8List? _image;
-  List<File> _imgs = [];
+  final List<File> _imgs = [];
   List _imgUrls = [];
 
   String get message => _message;
@@ -57,7 +52,7 @@ class CreateServiceProvider extends ChangeNotifier {
       return;
       // Exit early if any field is empty
     }
-    if (imageUrls == []) {
+    if (imageUrls.isEmpty) {
       _message = "Upload atleast 1 photo for this service";
       showErrorSnackbar(context, _message);
       return;
@@ -124,40 +119,37 @@ class CreateServiceProvider extends ChangeNotifier {
 Future<void> pickImages(BuildContext context) async {
  //_imgs = [];
   final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
- // if (_imgs.length + pickedImgs.length <= 5) {
- // if (_imgs != null){
-    for (var e in pickedImgs) {
-      _imgs.add(File(e.path));
+    for (var img in pickedImgs) {
+      _imgs.add(File(img.path));
       notifyListeners();
     }
-    uploadImageToStorage();
-//}
-  // }else {
-  //     // Handle the case where the maximum limit is exceeded
-  //     // You can display an error message or take appropriate action
-  //     _message = "Images limit exceeded!";
-  //     showErrorSnackbar(context, _message);
-  //   }
-  notifyListeners();
+    // Upload images in the background using microtask
+  Future.microtask(() async {
+    await uploadImageToStorage();
+    // Optionally, you can show a completion message or perform other actions when the upload is done.
+    // For example, you can show a snackbar:
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Images uploaded successfully')),
+    );
+  });
 }
 
-Future<void> uploadImageToStorage() async { 
+Future<void> uploadImageToStorage() async {
+  if (_imgs.isNotEmpty) {
+    try {
+      final List<Future<String>> uploadFutures = _imgs.map((img) async {
+        final fileBytes = await img.readAsBytes(); // Read file contents
+        return UtilityClass.uploadedImg("serviceImgs", fileBytes);
+      }).toList();
 
-  if (_imgs != []) {
-      try {
-   for (var img in _imgs) {
-     Uint8List fileBytes = await img.readAsBytes(); // Read file contents
-          _imgUrl = await UtilityClass.uploadedImg("serviceImgs", fileBytes);
-          _imgUrls.add(_imgUrl);
-       }
+      _imgUrls = await Future.wait(uploadFutures);
 
-      } catch (err) {
-        _message = err.toString();
-        print(_message);
-      }
-    } 
-  
-
+      print("urls: $_imgUrls");
+    } catch (err) {
+      _message = err.toString();
+      print(_message);
+    }
+  }
 }
 
 // Future<void> retrieveLostData() async {
