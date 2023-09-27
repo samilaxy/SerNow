@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:serv_now/models/service_model.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/utilities/constants.dart';
 
-import '../components/servie_card.dart';
-
 class ServiceDetailsPage extends StatelessWidget {
-  final ServiceCard serviceData;
+  final ServiceModel serviceData;
 
   ServiceDetailsPage(this.serviceData);
 
@@ -25,8 +24,8 @@ class ServiceDetailsPage extends StatelessWidget {
                     height: 200,
                     width: double.maxFinite,
                     child: ImageWithPlaceholder(
-                        imageUrl: serviceData.icon, placeholderUrl: noImg)),
-                Text(serviceData.serviceName),
+                        imageUrl: serviceData.imgUrls[0], placeholderUrl: noImg)),
+                Text(serviceData.title),
                 Text(serviceData.description),
                 // Add more details about the service here
               ],

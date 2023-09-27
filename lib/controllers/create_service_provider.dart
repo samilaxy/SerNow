@@ -1,9 +1,10 @@
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:serv_now/repository/shared_preference.dart';
+import 'package:uuid/uuid.dart';
 import '../Utilities/util.dart';
 import '../models/service_model.dart';
 
@@ -16,14 +17,13 @@ class CreateServiceProvider extends ChangeNotifier {
   String _price = "";
   String _location = "";
   String _description = "";
-  String _imgUrl = "";
   String _userId = "";
   bool isDark = false;
-  final List<File> _imgs = [];
+  List<File> _imgs = [];
   List _imgUrls = [];
+  final List<String> _dropdownOptions = [];
 
   String get message => _message;
-  String get imgUrl => _imgUrl;
   List get imageUrls => _imgUrls;
   List get imgs => _imgs;
   String get title => _title;
@@ -33,9 +33,16 @@ class CreateServiceProvider extends ChangeNotifier {
   String get description => _description;
   String get userId => _userId;
   final ImagePicker _imgPicker = ImagePicker();
+  Map<String, dynamic>? profileData;
+
+  List get dropdownOptions => _dropdownOptions;
+
+  CreateServiceProvider() {
+    loadprofileData();
+  }
 
   Future<void> createService(ServiceModel serv, BuildContext context) async {
-     _title = serv.title.trim();
+    _title = serv.title.trim();
     _category = serv.category.trim();
     _price = serv.price.trim();
     _location = serv.location.trim();
@@ -60,7 +67,7 @@ class CreateServiceProvider extends ChangeNotifier {
     }
     _message = "Wait...";
 
-    showLoadingDialog(context); // Show loading spinner
+    //showLoadingDialog(context); // Show loading spinner
 
     try {
       delayUpdate();
@@ -76,6 +83,12 @@ class CreateServiceProvider extends ChangeNotifier {
     } finally {
       notifyListeners();
     }
+  }
+
+  String generateUniqueId() {
+    const uuid = Uuid();
+    return uuid
+        .v4(); // Generates a random UUID (e.g., "6c84fb90-12c4-11e1-840d-7b25c5ee775a")
   }
 
   void showSuccessSnackbar(BuildContext context, String message) {
@@ -110,47 +123,56 @@ class CreateServiceProvider extends ChangeNotifier {
     );
   }
 
+  Future<void> loadprofileData() async {
+    profileData = await SharedPreferencesHelper.getContact();
+    if (profileData != null) {
+      _userId = profileData!['userId'] ?? '';
+    }
+    print("profileData $profileData");
+    notifyListeners();
+  }
+
   Future<void> delayUpdate() async {
     await Future.delayed(const Duration(seconds: 2)); // Delay for one second
     // Call the method you want to execute after the delay
     // loadprofileData();
   }
 
-Future<void> pickImages(BuildContext context) async {
- //_imgs = [];
-  final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
+  Future<void> pickImages(BuildContext context) async {
+    _imgs = [];
+    final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
       _imgs.add(File(img.path));
       notifyListeners();
     }
     // Upload images in the background using microtask
-  Future.microtask(() async {
-    await uploadImageToStorage();
-    // Optionally, you can show a completion message or perform other actions when the upload is done.
-    // For example, you can show a snackbar:
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Images uploaded successfully')),
-    );
-  });
-}
+    Future.microtask(() async {
+      await uploadImageToStorage();
+      // Optionally, you can show a completion message or perform other actions when the upload is done.
+      // For example, you can show a snackbar:
+      // ScaffoldMessenger.of(context).showSnackBar(
+      //   SnackBar(content: Text('Images uploaded successfully')),
+      // );
+    });
+  }
 
-Future<void> uploadImageToStorage() async {
-  if (_imgs.isNotEmpty) {
-    try {
-      final List<Future<String>> uploadFutures = _imgs.map((img) async {
-        final fileBytes = await img.readAsBytes(); // Read file contents
-        return UtilityClass.uploadedImg("serviceImgs", fileBytes);
-      }).toList();
+  Future<void> uploadImageToStorage() async {
+    if (_imgs.isNotEmpty) {
+      try {
+        final List<Future<String>> uploadFutures = _imgs.map((img) async {
+          final fileBytes = await img.readAsBytes(); // Read file contents
+          return UtilityClass.uploadedImg("serviceImgs", fileBytes);
+        }).toList();
 
-      _imgUrls = await Future.wait(uploadFutures);
+        _imgUrls = await Future.wait(uploadFutures);
 
-      print("urls: $_imgUrls");
-    } catch (err) {
-      _message = err.toString();
-      print(_message);
+        print("urls: $_imgUrls");
+      } catch (err) {
+        _message = err.toString();
+        print(_message);
+      }
     }
   }
-}
 
 // Future<void> retrieveLostData() async {
 //   final List<LostData> lostData = await MultiImagePicker.getLostData();

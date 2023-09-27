@@ -1,6 +1,7 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/home_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -24,13 +25,16 @@ void main() async {
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'phone';
+  String initialRoute = userLoggedIn ? 'home' : 'home';
 
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
+        ),
+         ChangeNotifierProvider<HomeProvider>(
+          create: (_) => HomeProvider(),
         ),
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
