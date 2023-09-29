@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/create_service_provider.dart';
-
 import '../../Utilities/constants.dart';
-import 'package:multi_image_picker/multi_image_picker.dart';
-
 import '../../models/service_model.dart';
 
 class CreateServicePage extends StatefulWidget {
@@ -33,7 +29,10 @@ class _CreateServicePageState extends State<CreateServicePage> {
     'Hair Dresser',
     'Plumber',
     'Fashion',
-    'Mechanic'
+    'Mechanic',
+    "Home Service",
+    "Health & Fitness",
+    "Others"
   ];
 
   @override
@@ -54,6 +53,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
         Provider.of<CreateServiceProvider>(context);
 
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
@@ -62,7 +62,6 @@ class _CreateServicePageState extends State<CreateServicePage> {
             children: [
               // -- IMAGE with ICON
               const SizedBox(height: 30),
-
               // -- Form Fields
               Form(
                 child: Column(
@@ -70,12 +69,6 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: titleController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Phone is required';
-                        }
-                        return null;
-                      },
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -83,7 +76,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Title*"),
+                          label: Text("Title*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -98,7 +91,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       items: _dropdownOptions.map((option) {
                         return DropdownMenuItem(
                           value: option,
-                          child: Container(
+                          child: SizedBox(
                             width: 200, // Set the width of the container
                             child: Text(option),
                           ),
@@ -126,14 +119,14 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Price*"),
+                          label:  Text("Price*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: countryController,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -141,14 +134,14 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Country*"),
+                          label: Text("Country*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: cityController,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -156,14 +149,14 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("City*"),
+                          label:  Text("City*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: areaController,
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.name,
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -171,7 +164,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Sub"),
+                          label: Text("Sub",style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -186,7 +179,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          label: const Text("Description*"),
+                          label:  Text("Description*",style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 20),
@@ -214,7 +207,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     ),
                     const SizedBox(height: 20),
                     SizedBox(
-                      height: 200,
+                      height: 120,
                       child: GridView.builder(
                           itemCount: serviceProvider.imgs.length + 1,
                           gridDelegate:
@@ -252,6 +245,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
+                          String uniqueId = serviceProvider.generateUniqueId();
+                          final userId = serviceProvider.userId;
                           final title = titleController.text.trim();
                           final price = priceController.text.trim();
                           final country = countryController.text.trim();
@@ -260,22 +255,22 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           final description = descController.text.trim();
                           final images = serviceProvider.imageUrls;
                           String? category = _selectedOption;
-                          print('Selected Option: $category');
-                          //   if (_formKey.currentState != null && _formKey.currentState!.validate()) {
+
                           final serviceModel = ServiceModel(
-                            userId: "",
+                            id: uniqueId,
+                            userId: userId,
                             title: title,
                             category: category ?? "",
                             price: price,
-                            location: "$country-$city, $area.",
+                            location: "$country-$city, $area",
                             description: description,
+                            isFavorite: false,
                             imgUrls: images,
                             status: "pending",
                           );
                           serviceProvider.createService(serviceModel, context);
-                          //  Navigator.pushNamed(context, 'profile');
+                           // Navigator.pushNamed(context, 'home');
                         },
-                        //  },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,

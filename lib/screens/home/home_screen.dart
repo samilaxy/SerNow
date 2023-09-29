@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/details_page_provider.dart';
+import 'package:serv_now/controllers/home_provider.dart';
 
 import '../../Utilities/constants.dart';
 import '../components/servie_card.dart';
@@ -13,147 +16,38 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<ServiceCard> data = [
-    const ServiceCard(
-      serviceName: 'Haircut Haircut',
-      location: "Tema",
-      description: 'Get a stylish haircut from our experienced barbers.',
-      icon: "Icons.cut",
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      location: "Tema",
-      description: 'Professional plumbing services for your home.',
-      icon: "Icons.plumbing",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      description: 'Custom clothing design and alterations.',
-      location: "Accra",
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Haircut',
-      description: 'Get a stylish haircut from our experienced barbers.',
-      location: "Takoradi",
-      icon: "Icons.cut",
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      description: 'Professional plumbing services for your home.',
-      location: "Tema",
-      icon: "Icons.plumbing",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      description: 'Custom clothing design and alterations.',
-      location: "Accra",
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "Adenta",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Haircut',
-      location: "Kumasi",
-      description: 'Get a stylish haircut from our experienced barbers.',
-      icon: "Icons.cut",
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      location: "Ho",
-      description: 'Professional plumbing services for your home.',
-      icon: "Icons.plumbing",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "Tamale",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "Tema",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Haircut',
-      location: "Tema",
-      description: 'Get a stylish haircut from our experienced barbers.',
-      icon: "Icons.cut",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "Hohoe",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Haircut',
-      location: "Kpone",
-      description: 'Get a stylish haircut from our experienced barbers.',
-      icon: "Icons.cut",
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      location: "Teshi",
-      description: 'Professional plumbing services for your home.',
-      icon: "Icons.plumbing",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "Nungua",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ),
-    const ServiceCard(
-      serviceName: 'Plumbing',
-      location: "Osu",
-      description: 'Professional plumbing services for your home.',
-      icon: "Icons.plumbing",
-    ),
-    const ServiceCard(
-      serviceName: 'Tailoring',
-      location: "London London London London",
-      description: 'Custom clothing design and alterations.',
-      icon: "Icons.create",
-    ) // Add more ServiceCards as needed
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeProvider>(context);
+    final detailsProvider = Provider.of<DetailsPageProvider>(context);
+
     return Scaffold(
         appBar: const CustomAppBar(),
         body: GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.9,
                 crossAxisSpacing: 5.0),
             padding: const EdgeInsets.all(10),
-            itemCount: data.length,
+            itemCount: homeProvider.data.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-            onTap: () {
-              // Navigate to the details page here, passing data[index] as a parameter
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ServiceDetailsPage(data[index]),
+                onTap: () {
+                  detailsProvider.serviceData = homeProvider.data[index];
+                  // Navigate to the details page here, passing data[index] as a parameter
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ServiceDetailsPage(),
+                      //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+                    ),
+                  );
+                },
+                child: ServiceCard(
+                  service: homeProvider.data[index],
                 ),
               );
-            },
-            child: ServiceCard(
-              serviceName: data[index].serviceName,
-              description: data[index].description,
-              icon: data[index].icon,
-              location: data[index].location,
-            ),
-          );
             }));
   }
 }
@@ -168,8 +62,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -179,16 +73,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 80,
               ),
             ),
-            // IconButton(
-            //     onPressed: () {
-            //       // ProfileProvider.colorMode();
-            //     },
-            //     icon: Padding(
-            //       padding: const EdgeInsets.only(right: 20),
-            //       child: Icon(isDark
-            //           ? LineAwesomeIcons.sun
-            //           : LineAwesomeIcons.horizontal_ellipsis),
-            //     ))
+            IconButton(
+                onPressed: () {
+                  // ProfileProvider.colorMode();
+                },
+                icon: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Icon(isDark
+                      ? LineAwesomeIcons.sun
+                      : LineAwesomeIcons.horizontal_ellipsis),
+                ))
           ],
         ),
       ),
@@ -198,4 +92,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-

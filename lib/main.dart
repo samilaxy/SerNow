@@ -1,6 +1,7 @@
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/home_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +10,7 @@ import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
 import 'controllers/create_service_provider.dart';
+import 'controllers/details_page_provider.dart';
 import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
@@ -24,7 +26,7 @@ void main() async {
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'phone';
+  String initialRoute = userLoggedIn ? 'home' : 'home';
 
   runApp(
     MultiProvider(
@@ -32,11 +34,17 @@ void main() async {
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
         ),
+         ChangeNotifierProvider<HomeProvider>(
+          create: (_) => HomeProvider(),
+        ),
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
         ),
          ChangeNotifierProvider<CreateServiceProvider>(
           create: (_) => CreateServiceProvider(),
+        ),
+         ChangeNotifierProvider<DetailsPageProvider>(
+          create: (_) => DetailsPageProvider(),
         ),
       ],
       child: MyApp(initialRoute: initialRoute),

@@ -1,24 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:serv_now/models/service_model.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 
 import '../../Utilities/constants.dart';
 
 class ServiceCard extends StatelessWidget {
-  final String serviceName;
-  final String description;
-  final String location;
-  final String icon;
 
-  const ServiceCard({
+  ServiceModel service;
+
+   ServiceCard({
     super.key,
-    required this.serviceName,
-    required this.description,
-    required this.location,
-    required this.icon,
+    required this.service
   });
+  
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +30,7 @@ class ServiceCard extends StatelessWidget {
               height: 120,
               color: Colors.grey,
               child: ImageWithPlaceholder(
-                  imageUrl: "", placeholderUrl: noImg)),
+                  imageUrl: service.imgUrls[0], placeholderUrl: noImg)),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: SizedBox(
@@ -48,7 +45,7 @@ class ServiceCard extends StatelessWidget {
                           child: Container(
                               color: Colors.grey,
                               child: ImageWithPlaceholder(
-                                  imageUrl: "",
+                                  imageUrl: service.user?.img ?? "",
                                   placeholderUrl: tProfileImage)))),
                   Expanded(
                     child: Padding(
@@ -56,10 +53,10 @@ class ServiceCard extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(serviceName,
+                          Text(service.user?.fullName ?? "",
                               maxLines: 1,
                               style: GoogleFonts.poppins(fontSize: 12)),
-                          Text(serviceName,
+                          Text(service.category,
                               maxLines: 1,
                               style: GoogleFonts.poppins(fontSize: 8)),
                         ],
@@ -68,7 +65,7 @@ class ServiceCard extends StatelessWidget {
                   ),
                   IconButton(
                       onPressed: () {},
-                      icon: const Icon(size: 20, LineAwesomeIcons.bookmark, color: Colors.grey))
+                      icon: Icon(size: 20, Icons.bookmark, color: service.isFavorite ? mainColor : Colors.grey))
                 ],
               ),
             ),
@@ -83,7 +80,7 @@ class ServiceCard extends StatelessWidget {
                 children: [
                   Flexible(
                     flex: 1,
-                    child: Text(location, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.poppins(fontSize: 10, color: Colors.grey))),
+                    child: Text(service.location, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.poppins(fontSize: 10, color: Colors.grey))),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 5.0),
                     child: Icon(size: 12, Icons.location_on),
@@ -92,6 +89,7 @@ class ServiceCard extends StatelessWidget {
               ),
             ),
           ),
+        
         ],
       ),
     );

@@ -31,7 +31,7 @@ class ImageWithPlaceholder extends StatelessWidget {
               alignment: Alignment.center,
               width: double.infinity,
               height: double.infinity,
-              child: Image.asset(placeholderUrl),
+              child: Image.asset(placeholderUrl, fit: BoxFit.cover),
             ) // Widget to display in case of an error.
         );
   }

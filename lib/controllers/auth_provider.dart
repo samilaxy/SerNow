@@ -118,7 +118,7 @@ AuthProvider() {
     final savedPhoneNumber = prefs.getString('phoneNumber');
     if (savedPhoneNumber == null) {
     _user = UserModel(fullName: "fullName", phone: phoneNumber);
-    await SharedPreferencesHelper.saveProfile("",phoneNumber, "","","");
+    await SharedPreferencesHelper.saveProfile("","",phoneNumber, "","","");
     }
   }
 
