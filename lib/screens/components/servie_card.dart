@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:serv_now/models/service_model.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 
@@ -9,9 +8,9 @@ import '../../Utilities/constants.dart';
 
 class ServiceCard extends StatelessWidget {
 
-  ServiceModel service;
+  final ServiceModel service;
 
-   ServiceCard({
+   const ServiceCard({
     super.key,
     required this.service
   });
@@ -63,15 +62,21 @@ class ServiceCard extends StatelessWidget {
                       ),
                     ),
                   ),
-                  IconButton(
-                      onPressed: () {},
-                      icon: Icon(size: 20, Icons.bookmark, color: service.isFavorite ? mainColor : Colors.grey))
+                  SizedBox(
+                    width: 25,
+                    child: Padding(
+                      padding: const EdgeInsets.only(right:0.0),
+                      child: IconButton(
+                          onPressed: () {},
+                          icon: Icon(size: 20, Icons.bookmark, color: service.isFavorite ? mainColor : Colors.grey)),
+                    ),
+                  )
                 ],
               ),
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 43.0, right: 16),
+            padding: const EdgeInsets.only(left: 43.0, right: 10),
             child: SizedBox(
               // height: 10,
               child: Row(
@@ -82,7 +87,7 @@ class ServiceCard extends StatelessWidget {
                     flex: 1,
                     child: Text(service.location, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.poppins(fontSize: 10, color: Colors.grey))),
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.0),
+                    padding: EdgeInsets.symmetric(horizontal: 3.0),
                     child: Icon(size: 12, Icons.location_on),
                   ),
               ],

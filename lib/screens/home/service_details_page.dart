@@ -189,7 +189,7 @@ class ServiceDetailsPage extends StatelessWidget {
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   bool isFavorite;
-  CustomAppBar(
+   CustomAppBar(
     this.isFavorite, {
     super.key,
   });

@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ImageWithPlaceholder extends StatelessWidget {
@@ -14,21 +13,19 @@ class ImageWithPlaceholder extends StatelessWidget {
     return CachedNetworkImage(
         imageUrl: imageUrl,
         imageBuilder: (context, ImageProvider) => Container(
-              width: double.infinity,
+              width: MediaQuery.of(context).size.width,
               height: double.infinity,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: ImageProvider, fit: BoxFit.cover)),
             ),
         errorWidget: (context, url, error) {
-          print("ERROR IS $error and url is $url");
-          return  Container(
+          return  SizedBox(
             width: double.infinity,
               height: double.infinity,
             child: Image.asset(placeholderUrl, fit: BoxFit.cover));
         },
-        placeholder: (context, url) => Container(
-              alignment: Alignment.center,
+        placeholder: (context, url) => SizedBox(
               width: double.infinity,
               height: double.infinity,
               child: Image.asset(placeholderUrl, fit: BoxFit.cover),

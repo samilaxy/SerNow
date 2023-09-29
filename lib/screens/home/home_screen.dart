@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
-                childAspectRatio: 0.9,
+                childAspectRatio: 0.8,
                 crossAxisSpacing: 5.0),
             padding: const EdgeInsets.all(10),
             itemCount: homeProvider.data.length,
@@ -35,11 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
               return GestureDetector(
                 onTap: () {
                   detailsProvider.serviceData = homeProvider.data[index];
+                  detailsProvider.fetchDiscoverServices();
                   // Navigate to the details page here, passing data[index] as a parameter
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ServiceDetailsPage(),
+                      builder: (context) => const ServiceDetailsPage(),
                       //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
                     ),
                   );
