@@ -9,9 +9,9 @@ import '../../Utilities/constants.dart';
 
 class ServiceCard extends StatelessWidget {
 
-  final ServiceModel service;
+  ServiceModel service;
 
-  const ServiceCard({
+   ServiceCard({
     super.key,
     required this.service
   });
@@ -89,6 +89,7 @@ class ServiceCard extends StatelessWidget {
               ),
             ),
           ),
+        
         ],
       ),
     );

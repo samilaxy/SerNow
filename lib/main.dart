@@ -10,6 +10,7 @@ import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
 import 'controllers/create_service_provider.dart';
+import 'controllers/details_page_provider.dart';
 import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
@@ -41,6 +42,9 @@ void main() async {
         ),
          ChangeNotifierProvider<CreateServiceProvider>(
           create: (_) => CreateServiceProvider(),
+        ),
+         ChangeNotifierProvider<DetailsPageProvider>(
+          create: (_) => DetailsPageProvider(),
         ),
       ],
       child: MyApp(initialRoute: initialRoute),

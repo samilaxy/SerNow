@@ -62,7 +62,6 @@ class _CreateServicePageState extends State<CreateServicePage> {
             children: [
               // -- IMAGE with ICON
               const SizedBox(height: 30),
-
               // -- Form Fields
               Form(
                 child: Column(
@@ -77,7 +76,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Title*"),
+                          label: Text("Title*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -92,7 +91,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       items: _dropdownOptions.map((option) {
                         return DropdownMenuItem(
                           value: option,
-                          child: Container(
+                          child: SizedBox(
                             width: 200, // Set the width of the container
                             child: Text(option),
                           ),
@@ -120,7 +119,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Price*"),
+                          label:  Text("Price*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -135,7 +134,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Country*"),
+                          label: Text("Country*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -150,7 +149,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("City*"),
+                          label:  Text("City*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -165,7 +164,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: const Text("Sub"),
+                          label: Text("Sub",style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -180,7 +179,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          label: const Text("Description*"),
+                          label:  Text("Description*",style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 20),

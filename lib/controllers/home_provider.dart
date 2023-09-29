@@ -5,10 +5,10 @@ import 'package:serv_now/models/user_model.dart';
 
 class HomeProvider extends ChangeNotifier {
   final List<ServiceModel> _data = [];
-  String _userId = "";
+  bool _dataState = false;
   Map<String, dynamic>? profileData;
   List get data => _data;
-  String get userId => _userId;
+  bool get userId => _dataState;
   UserModel? _userModel;
   
   UserModel? get userModel => _userModel;
@@ -23,13 +23,15 @@ class HomeProvider extends ChangeNotifier {
     final QuerySnapshot<Map<String, dynamic>> querySnapshot =
         await FirebaseFirestore.instance.collection("services").get();
 
+
     final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
         querySnapshot.docs;
+// if (querySnapshot.exists) {
 
     final List<Future<void>> fetchUserDataTasks = [];
 
     // Process the documents and add fetchUserData tasks
-    documents.forEach((document) {
+    for (var document in documents) {
       final serviceData = document.data();
       final userId = serviceData["userId"];
 
@@ -48,26 +50,30 @@ class HomeProvider extends ChangeNotifier {
             imgUrls: serviceData["imgUrls"],
             user: _userModel,
           );
-
           _data.add(serviceCard);
+          notifyListeners();
         }),
       );
-    });
+    //}
 
     // Wait for all fetchUserData tasks to complete concurrently
     await Future.wait(fetchUserDataTasks);
-
-    print('print data beloved: $_data');
+ }
     notifyListeners();
   } catch (error) {
-    print("Firestore Error fetching services: $error");
+    if (_data.isEmpty) {
+    _dataState = false;
+    }
   }
 }
 
  Future<void> fetchUserData(String documentId) async {
   try {
     final DocumentSnapshot<Map<String, dynamic>> documentSnapshot =
-        await FirebaseFirestore.instance.collection("users").doc(documentId).get();
+        await FirebaseFirestore.instance
+        .collection("users")
+        .doc(documentId)
+        .get();
 
     if (documentSnapshot.exists) {
       final Map<String, dynamic> data = documentSnapshot.data()!;
@@ -79,43 +85,13 @@ class HomeProvider extends ChangeNotifier {
         img: data['img'] ?? '',
         fullName: data['name'] ?? '',
       );
-      print("Fetched user data: $_userModel");
     } else {
       // Handle the case where the document does not exist
     }
   } catch (error) {
-    print("Firestore Error fetching user data: $error");
+    _dataState = false;
   }
+   notifyListeners();
 }
 
-  Future<UserModel?> fetchUser(String documentId) async {
-  try {
-    final DocumentSnapshot<Map<String, dynamic>> documentSnapshot = await FirebaseFirestore.instance
-        .collection("users") // Replace with your Firestore collection name
-        .doc(documentId) // Specify the document ID you want to fetch
-        .get();
-
-    if (documentSnapshot.exists) {
-      // Document exists, you can access its data
-      final Map<String, dynamic> userData = documentSnapshot.data()!;
-      final userModel = UserModel(
-          // Print user data // Save user data using the saveContact function
-          id: _userId,
-          phone: userData['phone'] ?? '',
-          bio: userData['bio'] ?? '',
-          email: userData['email'] ?? '',
-          img: userData['img'] ?? '',
-          fullName: userData['name'] ?? '',
-        );
-      return userModel;
-    } else {
-      // Document does not exist
-      return null;
-    }
-  } catch (e) {
-    // Handle any errors that might occur
-    print("Error fetching document: $e");
-    return null;
-  }
-}
 }

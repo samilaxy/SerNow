@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/details_page_provider.dart';
 import 'package:serv_now/controllers/home_provider.dart';
 
 import '../../Utilities/constants.dart';
@@ -14,10 +16,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
+    final detailsProvider = Provider.of<DetailsPageProvider>(context);
 
     return Scaffold(
         appBar: const CustomAppBar(),
@@ -31,19 +33,21 @@ class _HomeScreenState extends State<HomeScreen> {
             itemCount: homeProvider.data.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-            onTap: () {
-              // Navigate to the details page here, passing data[index] as a parameter
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+                onTap: () {
+                  detailsProvider.serviceData = homeProvider.data[index];
+                  // Navigate to the details page here, passing data[index] as a parameter
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ServiceDetailsPage(),
+                      //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+                    ),
+                  );
+                },
+                child: ServiceCard(
+                  service: homeProvider.data[index],
                 ),
               );
-            },
-            child: ServiceCard(
-                service: homeProvider.data[index],
-            ),
-          );
             }));
   }
 }
@@ -58,8 +62,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -69,16 +73,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 80,
               ),
             ),
-            // IconButton(
-            //     onPressed: () {
-            //       // ProfileProvider.colorMode();
-            //     },
-            //     icon: Padding(
-            //       padding: const EdgeInsets.only(right: 20),
-            //       child: Icon(isDark
-            //           ? LineAwesomeIcons.sun
-            //           : LineAwesomeIcons.horizontal_ellipsis),
-            //     ))
+            IconButton(
+                onPressed: () {
+                  // ProfileProvider.colorMode();
+                },
+                icon: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Icon(isDark
+                      ? LineAwesomeIcons.sun
+                      : LineAwesomeIcons.horizontal_ellipsis),
+                ))
           ],
         ),
       ),
@@ -88,4 +92,3 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
-
