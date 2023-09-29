@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -40,8 +37,7 @@ class ProfileProvider extends ChangeNotifier {
 
   ProfileProvider() {
     // Automatically load contact information when the provider is created
-    loadprofileData();
-    
+    loadprofileData(); 
   }
 
   Future<void> createUser(UserModel user, BuildContext context) async {
@@ -67,6 +63,7 @@ class ProfileProvider extends ChangeNotifier {
   try {
     _message = "Updating...";
     saveProfile(
+            _userId,
             user.fullName,
             user.phone,
             user.bio ?? '',
@@ -134,6 +131,7 @@ void showLoadingDialog(BuildContext context) {
         print(
             'my userId $userId'); // Print user data // Save user data using the saveContact function
         saveProfile(
+            _userId,
             userData['name'] ?? '',
             userData['phone'] ?? '',
             userData['bio'] ?? '',
@@ -162,10 +160,10 @@ void showLoadingDialog(BuildContext context) {
     }
   }
 
-  Future<void> saveProfile(String name, String phoneNumber, String bio,
+  Future<void> saveProfile(String userId, String name, String phoneNumber, String bio,
       String email, String img) async {
     await SharedPreferencesHelper.saveProfile(
-        name, phoneNumber, bio, email, img);     
+        userId, name, phoneNumber, bio, email, img);     
   }
 
   Future<bool> isPhoneExists(String phoneNumber) async {
@@ -211,7 +209,7 @@ void showLoadingDialog(BuildContext context) {
 
   // Get contact information using SharedPreferencesHelper
   Future<void> loadprofileData() async {
-   // fetchUserData();
+    fetchUserData();
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
       _name = profileData!['name'] ?? '';
@@ -257,7 +255,7 @@ void showLoadingDialog(BuildContext context) {
     if (img != null) {
       try {
   
-        _imageUrl = await UtilityClass.uploadedImg("profileImages", img);
+        _imageUrl = await UtilityClass.uploadedImg("profilImages", img);
       } catch (err) {
         _message = err.toString();
         print(_message);

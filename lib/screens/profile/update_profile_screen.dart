@@ -104,12 +104,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: fullNameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Phone is required';
-                        }
-                        return null;
-                      },
                       decoration: InputDecoration(
                           labelStyle: const TextStyle(color: Colors.grey),
                           focusedBorder: OutlineInputBorder(
@@ -185,7 +179,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: const Text("Update",
-                            style: TextStyle(color: Colors.black)),
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 20),

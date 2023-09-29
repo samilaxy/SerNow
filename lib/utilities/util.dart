@@ -11,13 +11,18 @@ final FirebaseStorage _storage = FirebaseStorage.instance;
 class UtilityClass {
 
 static Future<String> uploadedImg(String imageName, Uint8List file) async {
-String uniqueFilename = "${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(999999)}.jpg";
+  String uniqueFilename = "${DateTime.now().millisecondsSinceEpoch}_${Random().nextInt(999999)}.jpg";
+  Reference ref = FirebaseStorage.instance.ref().child(imageName).child(uniqueFilename);
+  UploadTask uploadTask = ref.putData(file);
 
- Reference ref = _storage.ref().child(imageName).child(uniqueFilename);
- UploadTask uploadTask = ref.putData(file);
- TaskSnapshot snapshot = await uploadTask;
- String imgUrl = await snapshot.ref.getDownloadURL();
- return imgUrl;
+  try {
+    await uploadTask;
+    String imgUrl = await ref.getDownloadURL();
+    return imgUrl;
+  } catch (e) {
+    print("Error uploading image: $e");
+    throw FirebaseImageUploadException("Image upload failed");
+  }
 }
 
 static Future<String> getCurrentLocation() async {
@@ -67,4 +72,10 @@ static Future<String> getCurrentLocation() async {
 //     return resp;
 //   }
 // }
+}
+
+class FirebaseImageUploadException implements Exception {
+  final String message;
+
+  FirebaseImageUploadException(this.message);
 }

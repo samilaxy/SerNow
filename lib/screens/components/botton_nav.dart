@@ -44,8 +44,10 @@ class _BottomNarBarState extends State<BottomNarBar> {
       floatingActionButton:
           FloatingActionButton(
           child: const Icon(LineAwesomeIcons.plus), 
+          
           onPressed: () { onItemTapped(0, const CreateServicePage());},
           backgroundColor: mainColor,),
+          resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),

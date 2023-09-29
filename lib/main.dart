@@ -1,5 +1,7 @@
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/home_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -7,6 +9,8 @@ import 'package:serv_now/screens/home/home.dart';
 import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
+import 'controllers/create_service_provider.dart';
+import 'controllers/details_page_provider.dart';
 import 'controllers/profile_proviver.dart';
 import 'firebase_options.dart';
 
@@ -15,6 +19,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await FirebaseAppCheck.instance.activate();
   AuthProvider authProvider = AuthProvider();
   // ProfileProvider proProvider = ProfileProvider();
   // proProvider.saveProfile("name", "+233249058525", "bio", "email", "img");
@@ -29,8 +34,17 @@ void main() async {
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
         ),
+         ChangeNotifierProvider<HomeProvider>(
+          create: (_) => HomeProvider(),
+        ),
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
+        ),
+         ChangeNotifierProvider<CreateServiceProvider>(
+          create: (_) => CreateServiceProvider(),
+        ),
+         ChangeNotifierProvider<DetailsPageProvider>(
+          create: (_) => DetailsPageProvider(),
         ),
       ],
       child: MyApp(initialRoute: initialRoute),
@@ -53,7 +67,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
+        brightness: Brightness.light ,
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
       ),
       routes: {
