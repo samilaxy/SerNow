@@ -4,6 +4,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/details_page_provider.dart';
 import 'package:serv_now/models/service_model.dart';
+import 'package:serv_now/screens/components/discover_card.dart';
 import 'package:serv_now/screens/components/image_slider.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/utilities/constants.dart';
@@ -28,7 +29,7 @@ class ServiceDetailsPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  color: Colors.grey,
+                    color: Colors.grey,
                     height: 200,
                     width: double.maxFinite,
                     child: MyImageSlider(imageUrls: serviceData.imgUrls)),
@@ -127,12 +128,47 @@ class ServiceDetailsPage extends StatelessWidget {
                                 fontSize: 14, color: Colors.grey)),
                         Text(serviceData.title,
                             style: GoogleFonts.poppins(fontSize: 18)),
-                        const SizedBox(height: 10),
-                        Text("Description",
-                            textAlign: TextAlign.start,
-                            style: GoogleFonts.poppins(
-                                fontSize: 14, color: Colors.grey)),
-                        Text(serviceData.description),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                          Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Category",
+                                    textAlign: TextAlign.start,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14, color: Colors.grey)),
+                                Text(serviceData.category,
+                                    style: GoogleFonts.poppins(fontSize: 16))
+                              ]),
+                               Column(
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Text("Contact",
+                                    textAlign: TextAlign.end,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 14, color: Colors.grey)),
+                                Text(serviceData.user!.phone,
+                                    style: GoogleFonts.poppins(fontSize: 16))
+                              ])
+                        ]),
+                        const SizedBox(height: 30),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Description",
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14, color: Colors.grey)),
+                                    const SizedBox(height: 5),
+                                    Text(serviceData.description,
+                                textAlign: TextAlign.start,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 14)),
+                          ],
+                        ),
+                       
                         const SizedBox(height: 20),
                         const Divider(thickness: 2),
                         const SizedBox(height: 10),
@@ -148,17 +184,24 @@ class ServiceDetailsPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                Container(
-                  color: Colors.amberAccent,
+                SizedBox(
                   height: 200,
                   width: double.infinity,
-                  child: const Center(child: Text("Under construction")),
+                  child: Center(
+                      child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: detailsProvider.discover.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return DiscoverCard(
+                          service: detailsProvider.discover[index]);
+                    },
+                  )),
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
                   width: double.infinity,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal:20.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -166,15 +209,14 @@ class ServiceDetailsPage extends StatelessWidget {
                             maxLines: 1,
                             style: GoogleFonts.poppins(
                                 fontSize: 15, fontWeight: FontWeight.bold)),
-                                 Text("Thess are other services offered by the provider",
-                        textAlign: TextAlign.start,
-                        style:
-                            GoogleFonts.poppins(fontSize: 12, color: Colors.grey)),
+                        Text("Thess are other services offered by the provider",
+                            textAlign: TextAlign.start,
+                            style: GoogleFonts.poppins(
+                                fontSize: 12, color: Colors.grey)),
                       ],
                     ),
                   ),
                 ),
-               
                 const SizedBox(
                   height: 100,
                 )
@@ -189,7 +231,7 @@ class ServiceDetailsPage extends StatelessWidget {
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   bool isFavorite;
-   CustomAppBar(
+  CustomAppBar(
     this.isFavorite, {
     super.key,
   });

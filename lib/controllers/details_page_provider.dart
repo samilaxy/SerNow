@@ -7,7 +7,7 @@ class DetailsPageProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   ServiceModel? _serviceData;
   DiscoverModel? _discoverData;
-  final List<DiscoverModel> _discover = [];
+  List<DiscoverModel> _discover = [];
 
   ServiceModel? get serviceData => _serviceData;
   DiscoverModel? get discoverData => _discoverData;
@@ -32,6 +32,8 @@ class DetailsPageProvider extends ChangeNotifier {
           .get();
 
       //if (querySnapshot.exists) {
+        //reset discovered items array
+          _discover = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
         DiscoverModel service = DiscoverModel(
