@@ -23,16 +23,12 @@ class _DiscoverCardState extends State<DiscoverCard> {
   Widget build(BuildContext context) {
     String currency = "\$";
     return Card(
-      elevation: 1.0,
+      clipBehavior: Clip.antiAlias,
+      elevation: 0.0,
       child: Container(
          width: 160.0,
-        decoration: const BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius:  BorderRadius.only(
-                       bottomLeft: Radius.circular(10.0),
-                      bottomRight: Radius.circular(10.0),
-                      topLeft: Radius.circular(10.0),
-                      topRight: Radius.circular(10.0),
+        decoration:  BoxDecoration(
+                    borderRadius:  BorderRadius.circular(10,
                     )),
            // margin: const EdgeInsets.all(1.0),
             // Set the width of each card
@@ -40,10 +36,11 @@ class _DiscoverCardState extends State<DiscoverCard> {
               alignment: Alignment.bottomLeft,
               children: [
                 SizedBox(
-                 
                    width: double.infinity,
-                    height: 180.0,
-                  child: ImageWithPlaceholder(imageUrl: widget.service.img, placeholderUrl: noImg),
+                   // height: 180.0,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: ImageWithPlaceholder(imageUrl: widget.service.img, placeholderUrl: noImg)),
                 ),
                 Container(
                   padding: const EdgeInsets.all(16.0),
@@ -61,6 +58,8 @@ class _DiscoverCardState extends State<DiscoverCard> {
                     children: [
                       Text(
                         widget.service.title,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 13.0,

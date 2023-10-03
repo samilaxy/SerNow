@@ -27,7 +27,7 @@ class _MyImageSliderState extends State<MyImageSlider> {
           CarouselSlider(
             carouselController: _carouselController,
             options: CarouselOptions(
-              height: 200.0,
+              height: 220.0,
               aspectRatio: 16 / 9,
               autoPlay: false,
               autoPlayInterval: const Duration(seconds: 3),

@@ -30,7 +30,7 @@ class ServiceDetailsPage extends StatelessWidget {
               children: [
                 Container(
                     color: Colors.grey,
-                    height: 200,
+                    height: 220,
                     width: double.maxFinite,
                     child: MyImageSlider(imageUrls: serviceData.imgUrls)),
                 const SizedBox(height: 10),
@@ -122,7 +122,7 @@ class ServiceDetailsPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Ttle",
+                        Text("Title",
                             textAlign: TextAlign.start,
                             style: GoogleFonts.poppins(
                                 fontSize: 14, color: Colors.grey)),
@@ -180,6 +180,7 @@ class ServiceDetailsPage extends StatelessWidget {
                             textAlign: TextAlign.start,
                             style: GoogleFonts.poppins(
                                 fontSize: 12, color: Colors.grey)),
+                                
                       ],
                     ),
                   ),
