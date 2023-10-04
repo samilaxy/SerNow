@@ -26,7 +26,7 @@ class _DiscoverCardState extends State<DiscoverCard> {
       clipBehavior: Clip.antiAlias,
       elevation: 0.0,
       child: Container(
-         width: 160.0,
+         width: 150.0,
         decoration:  BoxDecoration(
                     borderRadius:  BorderRadius.circular(10,
                     )),
@@ -43,7 +43,7 @@ class _DiscoverCardState extends State<DiscoverCard> {
                     child: ImageWithPlaceholder(imageUrl: widget.service.img, placeholderUrl: noImg)),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(8.0),
                    width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.black.withOpacity(0.6),

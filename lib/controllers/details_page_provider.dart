@@ -9,8 +9,8 @@ class DetailsPageProvider extends ChangeNotifier {
   ServiceModel? _serviceData;
   DiscoverModel? _discoverData;
   List<DiscoverModel> _discover = [];
-  final List<ServiceModel> _related = [];
-   bool _dataState = false;
+  List<ServiceModel> _related = [];
+  bool _dataState = true;
   UserModel? _userModel;
 
   UserModel? get userModel => _userModel;
@@ -41,7 +41,7 @@ class DetailsPageProvider extends ChangeNotifier {
           .where('userId', isEqualTo: _serviceData?.userId) // Replace with the user's ID
           .get();
 
-      //if (querySnapshot.exists) {
+
         //reset discovered items array
           _discover = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
@@ -49,28 +49,22 @@ class DetailsPageProvider extends ChangeNotifier {
         DiscoverModel service = DiscoverModel(
           title: data['title'] ?? '',
           price: data['price'] ?? '',
-          img: data['img'] ?? '',
+          img: data['imgUrls'][0] ?? '',
         );
         _discover.add(service);
         if (_discover.isNotEmpty) {
               print("here ${_discover.length}");
-               _dataState = true;
+               _dataState = false;
             }
       }
 
-      
-
-      print(" jkvdk: ${_discover.length}");
-      // } else {
-      //   // Handle the case where the document does not exist
-      // }
     } catch (error) {
       // _dataState = false;
     }
     notifyListeners();
   }
   Future<void> fetchRelatedServices() async {
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
     print("category: ${_serviceData?.category}");
     _dataState = true;
     try {
@@ -81,7 +75,7 @@ class DetailsPageProvider extends ChangeNotifier {
 
       //if (querySnapshot.exists) {
         //reset discovered items array
-          _discover = [];
+          _related = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> serviceData = document.data() as Map<String, dynamic>;
         final userId = serviceData["userId"];
