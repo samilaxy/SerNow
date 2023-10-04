@@ -17,8 +17,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> fetchAllServices() async {
-   
-    print("here1");
+
     try {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await FirebaseFirestore.instance.collection("services").get();

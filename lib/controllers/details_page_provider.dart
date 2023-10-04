@@ -63,6 +63,7 @@ class DetailsPageProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+  
   Future<void> fetchRelatedServices() async {
     await Future.delayed(const Duration(seconds: 3));
     print("category: ${_serviceData?.category}");
