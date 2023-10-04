@@ -81,6 +81,7 @@ class MyApp extends StatelessWidget {
         'verify': (context) => const MyVerify(),
         'profile': (context) => const ProfileScreen(),
         'update': (context) => const UpdateProfileScreen(),
+        'myAdverts': (context) => const MyAdverts(),
       },
     );
   }
