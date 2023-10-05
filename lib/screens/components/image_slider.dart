@@ -2,6 +2,7 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/utilities/constants.dart';
 
@@ -26,25 +27,26 @@ class _MyImageSliderState extends State<MyImageSlider> {
           CarouselSlider(
             carouselController: _carouselController,
             options: CarouselOptions(
-              height: 200.0,
+              height: 220.0,
               aspectRatio: 16 / 9,
-              autoPlay: true,
-              autoPlayInterval: Duration(seconds: 3),
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
+              autoPlay: false,
+              autoPlayInterval: const Duration(seconds: 3),
+              autoPlayAnimationDuration: const Duration(milliseconds: 800),
               autoPlayCurve: Curves.fastOutSlowIn,
-              enlargeCenterPage: true,
+              enlargeCenterPage: false,
               scrollDirection: Axis.horizontal,
             ),
             items: widget.imageUrls.map((imageUrl) {
               return Builder(
                 builder: (BuildContext context) {
                   return Container(
+                    color: Colors.grey,
                     width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    child: Image.network(
-                      imageUrl,
-                      fit: BoxFit.cover,
-                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                    child: ImageWithPlaceholder(
+                                imageUrl: imageUrl,
+                                placeholderUrl: noImg,
+                              ),
                   );
                 },
               );
@@ -58,7 +60,7 @@ class _MyImageSliderState extends State<MyImageSlider> {
               onPressed: () {
                 _carouselController.previousPage();
               },
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(LineAwesomeIcons.angle_left),
             ),
           ),
           Positioned(
@@ -69,7 +71,7 @@ class _MyImageSliderState extends State<MyImageSlider> {
               onPressed: () {
                 _carouselController.nextPage();
               },
-              icon: Icon(Icons.arrow_forward),
+              icon: const Icon(LineAwesomeIcons.angle_right),
             ),
           ),
         ],

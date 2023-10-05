@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/details_page_provider.dart';
 import 'package:serv_now/controllers/home_provider.dart';
+import 'package:serv_now/screens/components/shimmer_loader.dart';
 
 import '../../Utilities/constants.dart';
 import '../components/servie_card.dart';
@@ -23,11 +25,31 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
         appBar: const CustomAppBar(),
-        body: GridView.builder(
+        body: homeProvider.dataState ?
+        Center(
+          child:  
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
+              const SizedBox(height: 10),
+              Text(
+                "Please wait, while services load...",
+                maxLines: 1,
+                style: GoogleFonts.poppins(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ],
+          ),
+        ):
+        GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
-                childAspectRatio: 0.9,
+                childAspectRatio: 0.8,
                 crossAxisSpacing: 5.0),
             padding: const EdgeInsets.all(10),
             itemCount: homeProvider.data.length,
@@ -35,17 +57,19 @@ class _HomeScreenState extends State<HomeScreen> {
               return GestureDetector(
                 onTap: () {
                   detailsProvider.serviceData = homeProvider.data[index];
+                  detailsProvider.fetchDiscoverServices();
+                  detailsProvider.fetchRelatedServices();
                   // Navigate to the details page here, passing data[index] as a parameter
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ServiceDetailsPage(),
+                      builder: (context) => const ServiceDetailsPage(),
                       //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
                     ),
                   );
                 },
-                child: ServiceCard(
-                  service: homeProvider.data[index],
+                child: homeProvider.dataState ? const LoadingIndicator() : ServiceCard(
+                  service: homeProvider.data[index] 
                 ),
               );
             }));
@@ -62,8 +86,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       child: SizedBox(
         height: kToolbarHeight,
         child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Padding(
               padding: const EdgeInsets.only(left: 16),
@@ -73,16 +97,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 80,
               ),
             ),
-            IconButton(
-                onPressed: () {
-                  // ProfileProvider.colorMode();
-                },
-                icon: Padding(
-                  padding: const EdgeInsets.only(right: 20),
-                  child: Icon(isDark
-                      ? LineAwesomeIcons.sun
-                      : LineAwesomeIcons.horizontal_ellipsis),
-                ))
+            // IconButton(
+            //     onPressed: () {
+            //       // ProfileProvider.colorMode();
+            //     },
+            //     icon: Padding(
+            //       padding: const EdgeInsets.only(right: 20),
+            //       child: Icon(isDark
+            //           ? LineAwesomeIcons.sun
+            //           : LineAwesomeIcons.horizontal_ellipsis),
+            //     ))
           ],
         ),
       ),

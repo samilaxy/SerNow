@@ -2,10 +2,12 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/home_provider.dart';
+import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:serv_now/screens/home/home.dart';
+import 'package:serv_now/screens/home/my_adverts.dart';
 import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
@@ -46,6 +48,9 @@ void main() async {
          ChangeNotifierProvider<DetailsPageProvider>(
           create: (_) => DetailsPageProvider(),
         ),
+        ChangeNotifierProvider<MyAdvertsProvider>(
+          create: (_) => MyAdvertsProvider(),
+        ),
       ],
       child: MyApp(initialRoute: initialRoute),
     ),
@@ -67,7 +72,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light ,
+        brightness: Brightness.light,
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
       ),
       routes: {
@@ -76,6 +81,7 @@ class MyApp extends StatelessWidget {
         'verify': (context) => const MyVerify(),
         'profile': (context) => const ProfileScreen(),
         'update': (context) => const UpdateProfileScreen(),
+        'myAdverts': (context) => const MyAdverts(),
       },
     );
   }

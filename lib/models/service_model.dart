@@ -10,7 +10,7 @@ class ServiceModel  {
   final String location;
   final String description;
   late final bool isFavorite;
-  final String status;
+  final bool status;
   final List imgUrls;
   final UserModel? user;
   

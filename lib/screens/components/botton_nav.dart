@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:serv_now/screens/home/create_service_page.dart';
+import 'package:serv_now/screens/home/my_adverts.dart';
 import 'package:serv_now/utilities/constants.dart';
 
 import '../home/Home_screen.dart';
-import '../home/history_screen.dart';
 import '../profile/profile_page.dart';
 
 class BottomNarBar extends StatefulWidget {
@@ -19,7 +20,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
 
   final List<Widget> screens = [
     const HomeScreen(),
-    HistoryScreen(),
+    const MyAdverts(),
     const ProfileScreen(),
     const CreateServicePage(),
   ];
@@ -43,10 +44,9 @@ class _BottomNarBarState extends State<BottomNarBar> {
       ),
       floatingActionButton:
           FloatingActionButton(
-          child: const Icon(LineAwesomeIcons.plus), 
-          
           onPressed: () { onItemTapped(0, const CreateServicePage());},
-          backgroundColor: mainColor,),
+          backgroundColor: mainColor,
+          child: const Icon(LineAwesomeIcons.plus),),
           resizeToAvoidBottomInset: false,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
@@ -108,7 +108,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                   MaterialButton(
                     minWidth: 40,
                     onPressed: () {
-                     onItemTapped(2, const HomeScreen());
+                     onItemTapped(2, const MyAdverts());
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -154,3 +154,4 @@ class _BottomNarBarState extends State<BottomNarBar> {
     );
   }
 }
+
