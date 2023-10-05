@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/create_service_provider.dart';
+import 'package:serv_now/controllers/update_service_provider.dart';
 import '../../Utilities/constants.dart';
 import '../../models/service_model.dart';
 
@@ -246,8 +247,8 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          String uniqueId = serviceProvider.generateUniqueId();
-                          final userId = serviceProvider.userId;
+                         // String uniqueId = serviceProvider.generateUniqueId();
+                         // final userId = serviceProvider.userId;
                           final title = titleController.text.trim();
                           final price = priceController.text.trim();
                           final country = countryController.text.trim();
@@ -258,8 +259,8 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                           String? category = _selectedOption;
 
                           final serviceModel = ServiceModel(
-                            id: uniqueId,
-                            userId: userId,
+                            //id: uniqueId,
+                          //  userId: userId,
                             title: title,
                             category: category ?? "",
                             price: price,
@@ -269,14 +270,14 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                             imgUrls: images,
                             status: false,
                           );
-                          serviceProvider.createService(serviceModel, context);
+                          serviceProvider.updateService(serviceModel, context);
                            // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Create",
+                        child: const Text("Update",
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),

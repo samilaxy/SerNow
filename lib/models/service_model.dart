@@ -3,7 +3,7 @@ import 'package:serv_now/models/user_model.dart';
 
 class ServiceModel  {
   final String? id;
-  final String userId;
+  final String?userId;
   final String title;
   final String category;
   final String price;
@@ -16,7 +16,7 @@ class ServiceModel  {
   
   ServiceModel( {
     this.id, 
-    required this.userId,
+    this.userId,
     required this.title, 
     required this.category,
     required this.price,

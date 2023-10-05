@@ -16,7 +16,7 @@ class DiscoverModel  {
 
     toJson() {
       return {
-        "userId": id,
+        "id": id,
         "name" : title,
         "price" : price,
         "img": img,

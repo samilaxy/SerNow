@@ -47,6 +47,7 @@ class DetailsPageProvider extends ChangeNotifier {
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
         DiscoverModel service = DiscoverModel(
+          id: data['id'],
           title: data['title'] ?? '',
           price: data['price'] ?? '',
           img: data['imgUrls'][0] ?? '',

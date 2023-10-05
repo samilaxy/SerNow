@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:serv_now/main.dart';
 import 'package:serv_now/repository/shared_preference.dart';
+import 'package:serv_now/utilities/constants.dart';
 import 'package:uuid/uuid.dart';
 import '../Utilities/util.dart';
 import '../models/service_model.dart';
@@ -17,11 +19,13 @@ class CreateServiceProvider extends ChangeNotifier {
   String _price = "";
   String _location = "";
   String _description = "";
+  String _servId = "";
   String _userId = "";
   bool isDark = false;
   List<File> _imgs = [];
   List _imgUrls = [];
   final List<String> _dropdownOptions = [];
+  ServiceModel? _serviceData;
 
   String get message => _message;
   List get imageUrls => _imgUrls;
@@ -31,11 +35,18 @@ class CreateServiceProvider extends ChangeNotifier {
   String get price => _price;
   String get location => _location;
   String get description => _description;
+  String get servId => _servId;
   String get userId => _userId;
   final ImagePicker _imgPicker = ImagePicker();
   Map<String, dynamic>? profileData;
+  ServiceModel? get serviceData => _serviceData;
 
   List get dropdownOptions => _dropdownOptions;
+
+  set servId(String value) {
+    _servId = value;
+    notifyListeners();
+  }
 
   CreateServiceProvider() {
     loadprofileData();
@@ -47,7 +58,6 @@ class CreateServiceProvider extends ChangeNotifier {
     _price = serv.price.trim();
     _location = serv.location.trim();
     _description = serv.description.trim();
-    print(serv.imgUrls);
 
     if (_title.isEmpty ||
         _category.isEmpty ||
@@ -67,7 +77,7 @@ class CreateServiceProvider extends ChangeNotifier {
     }
     _message = "Wait...";
 
-    //showLoadingDialog(context); // Show loading spinner
+    showLoadingDialog(context); // Show loading spinner
 
     try {
       delayUpdate();
@@ -76,12 +86,27 @@ class CreateServiceProvider extends ChangeNotifier {
       _message = "Created Successfully!";
       Navigator.pop(context);
       showSuccessSnackbar(context, _message);
+      navigatorKey.currentState!.pushNamed('home');
     } catch (error) {
       _message = "Something went wrong, Try again!";
       showErrorSnackbar(context, _message);
       // Handle error as needed
     } finally {
       notifyListeners();
+    }
+  }
+
+  Future<void> updateService(ServiceModel service, BuildContext context) async {
+    try {
+      delayUpdate();
+      await _db.collection("services").doc(servId).update(service.toJson());
+      _message = "Service updated successfully.";
+      showSuccessSnackbar(context, _message);
+      navigatorKey.currentState!.pushNamed('myAdverts');
+    } catch (error) {
+      _message = "Update Failed, Try again.";
+      showErrorSnackbar(context, _message);
+      // Handle error as needed
     }
   }
 
@@ -117,7 +142,7 @@ class CreateServiceProvider extends ChangeNotifier {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return const Center(
-          child: CircularProgressIndicator(), // Show loading spinner
+          child: CircularProgressIndicator(color: mainColor), // Show loading spinner
         );
       },
     );
