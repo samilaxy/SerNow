@@ -23,8 +23,6 @@ class _DiscoverCardState extends State<DiscoverCard> {
   Widget build(BuildContext context) {
     String currency = "\$";
     return Card(
-      clipBehavior: Clip.antiAlias,
-      elevation: 0.0,
       child: Container(
          width: 150.0,
         decoration:  BoxDecoration(

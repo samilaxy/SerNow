@@ -4,7 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/Utilities/constants.dart';
-import 'package:serv_now/controllers/my_adverts.dart';
+import 'package:serv_now/controllers/my_adverts_provider.dart';
+import 'package:serv_now/screens/components/my_advert_card.dart';
 import 'package:serv_now/screens/home/create_service_page.dart';
 
 
@@ -23,14 +24,33 @@ class _MyAdvertsState extends State<MyAdverts> {
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: GridView.builder(
+      body: myAdvert.dataState ?
+        Center(
+          child:  
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
+              const SizedBox(height: 10),
+              Text(
+                "Please wait, while services load...",
+                maxLines: 1,
+                style: GoogleFonts.poppins(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ],
+          ),
+        ):GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 5.0,
                 childAspectRatio: 01,
                 crossAxisSpacing: 5.0),
             padding: const EdgeInsets.all(10),
-            itemCount: 5,
+            itemCount: myAdvert.data.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
                 onTap: () {
@@ -46,12 +66,10 @@ class _MyAdvertsState extends State<MyAdverts> {
                     ),
                   );
                 },
-                child:  Container(
-                  color: mainColor,
-                  child: Center(child: Text("Data ${index + 1}")))
-                //  DiscoverCard(
-                //   service: homeProvider.data[index] 
-                // ),
+                child:  
+                 MyAdvertCard(
+                  service: myAdvert.data[index] 
+                ),
               );
             })
     );

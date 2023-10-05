@@ -50,6 +50,7 @@ class DetailsPageProvider extends ChangeNotifier {
           title: data['title'] ?? '',
           price: data['price'] ?? '',
           img: data['imgUrls'][0] ?? '',
+          status: data['status'],
         );
         _discover.add(service);
         if (_discover.isNotEmpty) {

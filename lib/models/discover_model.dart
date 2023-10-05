@@ -4,12 +4,14 @@ class DiscoverModel  {
   final String title;
   final String price;
   final String img;
+  final bool status;
   
   DiscoverModel({
     this.id, 
     required this.title, 
     required this.price,
-    required this.img
+    required this.img,
+    required this.status,
     });
 
     toJson() {
@@ -17,7 +19,8 @@ class DiscoverModel  {
         "userId": id,
         "name" : title,
         "price" : price,
-        "img": img
+        "img": img,
+        "status": status
       };
     }
 }

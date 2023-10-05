@@ -10,24 +10,26 @@ class MyAdvertsProvider extends ChangeNotifier {
 
   final List<DiscoverModel> _data = [];
   bool _dataState = true;
-   String _userId = "";
+  bool _noData = false;
+  String _userId = "";
   
   List get data => _data;
   UserModel? _userModel;
   Map<String, dynamic>? profileData;
   String get userId => _userId;
   UserModel? get userModel => _userModel;
- bool get dataState => _dataState;
+  bool get dataState => _dataState;
+  bool get noData => _noData;
 
 
 MyAdvertsProvider() {
-    fetchDiscoverServices();
+    fetchServices();
   }
 
 
- Future<void> fetchDiscoverServices() async {
+ Future<void> fetchServices() async {
      loadprofileData();
-    await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 0));
     print(" userId: ${_userId}");
     _dataState = true;
     try {
@@ -43,11 +45,14 @@ MyAdvertsProvider() {
           title: data['title'] ?? '',
           price: data['price'] ?? '',
           img: data['imgUrls'][0] ?? '',
+          status: data['status'],
         );
         _data.add(service);
         if (_data.isNotEmpty) {
               print("here ${_data.length}");
                _dataState = false;
+            } else {
+              _noData = true;
             }
       }
 

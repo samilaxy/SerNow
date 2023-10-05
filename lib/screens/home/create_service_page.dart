@@ -266,7 +266,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             description: description,
                             isFavorite: false,
                             imgUrls: images,
-                            status: "pending",
+                            status: false,
                           );
                           serviceProvider.createService(serviceModel, context);
                            // Navigator.pushNamed(context, 'home');

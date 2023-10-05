@@ -2,7 +2,7 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/home_provider.dart';
-import 'package:serv_now/controllers/my_adverts.dart';
+import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
