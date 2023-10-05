@@ -8,6 +8,7 @@ import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:serv_now/screens/home/home.dart';
 import 'package:serv_now/screens/home/my_adverts.dart';
+import 'package:serv_now/screens/home/update_service_page.dart';
 import 'package:serv_now/screens/profile/profile_page.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
 import 'controllers/auth_provider.dart';
@@ -82,6 +83,7 @@ class MyApp extends StatelessWidget {
         'profile': (context) => const ProfileScreen(),
         'update': (context) => const UpdateProfileScreen(),
         'myAdverts': (context) => const MyAdverts(),
+        'updateAdvert': (context) => const UpdateServicePage(),
       },
     );
   }

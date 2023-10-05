@@ -300,7 +300,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-          onPressed: () => Navigator.pushNamed(context, 'home'),
+          onPressed: () => Navigator.pushNamed(context, 'myAdverts'),
           icon: Icon(LineAwesomeIcons.angle_left,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,

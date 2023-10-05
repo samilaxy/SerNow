@@ -105,7 +105,9 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                         color: Colors.red,
                       )),
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, 'updateAdvert');
+                      },
                       icon: const Icon(
                         size: 20,
                         LineAwesomeIcons.edit,
