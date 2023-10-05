@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:serv_now/main.dart';
 import 'package:serv_now/models/discover_model.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/utilities/constants.dart';
@@ -106,7 +107,7 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                       )),
                   IconButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, 'updateAdvert');
+                        navigatorKey.currentState!.pushNamed('updateAdvert');
                       },
                       icon: const Icon(
                         size: 20,

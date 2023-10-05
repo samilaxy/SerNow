@@ -114,10 +114,10 @@ class _BottomNarBarState extends State<BottomNarBar> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Icon(
-                          LineAwesomeIcons.tags,
+                          LineAwesomeIcons.bookmark,
                           color: currentTab == 2 ? mainColor : Colors.grey,
                         ),
-                        Text("My Adverts", 
+                        Text("Bookmarks", 
                         style: TextStyle(color: currentTab == 2 ? mainColor : Colors.grey , fontSize: 8),)
                       ],
                     ),

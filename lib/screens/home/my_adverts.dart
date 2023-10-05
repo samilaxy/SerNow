@@ -5,6 +5,7 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/Utilities/constants.dart';
 import 'package:serv_now/controllers/my_adverts_provider.dart';
+import 'package:serv_now/main.dart';
 import 'package:serv_now/screens/components/my_advert_card.dart';
 import 'package:serv_now/screens/home/create_service_page.dart';
 
@@ -58,13 +59,7 @@ class _MyAdvertsState extends State<MyAdverts> {
                   // detailsProvider.fetchDiscoverServices();
                   // detailsProvider.fetchRelatedServices();
                   // Navigate to the details page here, passing data[index] as a parameter
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const CreateServicePage(),
-                      //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
-                    ),
-                  );
+                  navigatorKey.currentState!.pushNamed('createService');
                 },
                 child:  
                  MyAdvertCard(
@@ -84,7 +79,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-          onPressed: () => Navigator.pushNamed(context, 'home'),
+          onPressed: () => navigatorKey.currentState!.pushNamed('profile'),
           icon: Icon(LineAwesomeIcons.angle_left,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,

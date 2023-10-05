@@ -160,7 +160,33 @@ class ProfileScreen extends StatelessWidget {
               ]),
               const SizedBox(height: 8),
               const Divider(),
-              const SizedBox(height: 30),
+              const SizedBox(height: 40),
+              Row(children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    color: Colors.grey.withOpacity(0.2),
+                  ),
+                  child: IconButton(
+                      onPressed: () {
+                        authProvider.isLogin(false);
+                        navigatorKey.currentState!.pushNamed('myAdverts');
+                      },
+                      icon: const Icon(
+                        LineAwesomeIcons.tags,
+                        size: 20,
+                      ),
+                      color: Colors.grey),
+                ),
+                Padding(
+                    padding: EdgeInsets.only(left: 20),
+                    child: Text("My Adverts",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15)))
+              ]),
+              const SizedBox(height: 20),
               Row(children: [
                 Container(
                   width: 40,
@@ -185,7 +211,7 @@ class ProfileScreen extends StatelessWidget {
                     padding: EdgeInsets.only(left: 20),
                     child: Text("Logout",
                         style: GoogleFonts.poppins(
-                            fontSize: 14, color: Colors.red)))
+                            fontSize: 15, color: Colors.red)))
               ]),
             const SizedBox(height: 80),
             ],
