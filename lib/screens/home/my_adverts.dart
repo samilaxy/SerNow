@@ -4,14 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/Utilities/constants.dart';
-import 'package:serv_now/controllers/create_service_provider.dart';
 import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/main.dart';
 import 'package:serv_now/screens/components/my_advert_card.dart';
-import 'package:serv_now/screens/home/create_service_page.dart';
 
 
-class MyAdverts extends StatefulWidget {
+class MyAdverts extends StatefulWidget with WidgetsBindingObserver {
   const MyAdverts({super.key});
 
   @override
@@ -23,6 +21,7 @@ class _MyAdvertsState extends State<MyAdverts> {
   Widget build(BuildContext context) {
       final myAdvert =
         Provider.of<MyAdvertsProvider>(context);
+
     return Scaffold(
       appBar: const CustomAppBar(),
       body: myAdvert.dataState ?
@@ -59,7 +58,8 @@ class _MyAdvertsState extends State<MyAdverts> {
                   // detailsProvider.fetchDiscoverServices();
                   // detailsProvider.fetchRelatedServices();
                   // Navigate to the details page here, passing data[index] as a parameter
-                  myAdvert.servId = myAdvert.data[index]['id'];
+                 // myAdvert.servId = myAdvert.data[index]['id'];
+                  print('myAdvert.servId: ${myAdvert.servId}');
                   navigatorKey.currentState!.pushNamed('createService');
                 },
                 child:  

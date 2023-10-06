@@ -218,7 +218,7 @@ class ServiceDetailsPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        "These are other services offered by the provider",
+                        "These are similar services offered by other providers",
                         textAlign: TextAlign.start,
                         style: GoogleFonts.poppins(
                           fontSize: 12,

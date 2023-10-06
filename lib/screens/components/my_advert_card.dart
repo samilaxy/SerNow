@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/main.dart';
 import 'package:serv_now/models/discover_model.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
@@ -16,9 +18,12 @@ class MyAdvertCard extends StatefulWidget {
 }
 
 class _MyAdvertCardState extends State<MyAdvertCard> {
+
   @override
   Widget build(BuildContext context) {
-    String currency = "\GHS ";
+    final myAdvert =
+        Provider.of<MyAdvertsProvider>(context);
+    String currency = "GHS ";
     return Card(
       elevation: 1.0,
       child: Container(
@@ -107,6 +112,9 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                       )),
                   IconButton(
                       onPressed: () {
+                        //myAdvert.servId = widget.service.id!;
+                        myAdvert.fetchService(widget.service.id ?? "");
+                        print('myAdvert.servId: ${widget.service.id}');
                         navigatorKey.currentState!.pushNamed('updateAdvert');
                       },
                       icon: const Icon(

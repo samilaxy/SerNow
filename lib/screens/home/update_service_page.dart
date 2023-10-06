@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/create_service_provider.dart';
+import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/controllers/update_service_provider.dart';
 import '../../Utilities/constants.dart';
 import '../../models/service_model.dart';
@@ -24,7 +25,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController areaController = TextEditingController();
   final TextEditingController descController = TextEditingController();
 
-  String? _selectedOption;
+  String? _selectedOption ;
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
     'Barber',
@@ -51,8 +52,15 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
 
   @override
   Widget build(BuildContext context) {
-    final serviceProvider =
-        Provider.of<CreateServiceProvider>(context);
+    final service =
+        Provider.of<MyAdvertsProvider>(context);
+titleController.text = service.title;
+_selectedOption = service.category;
+priceController.text = service.price;
+countryController.text = service.country;
+cityController.text = service.city;
+areaController.text = service.area ?? '';
+descController.text = service.description;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -211,7 +219,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                     SizedBox(
                       height: 120,
                       child: GridView.builder(
-                          itemCount: serviceProvider.imgs.length + 1,
+                          itemCount: service.imgUrls.length + 1,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 6,
@@ -226,7 +234,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                                       width: double.infinity,
                                       color: Colors.grey,
                                       child: IconButton(
-                                          onPressed:() { serviceProvider.pickImages(context); } ,
+                                          onPressed:() { service.pickImages(context); } ,
                                           icon: const Icon(Icons.add)),
                                     ),
                                   )
@@ -234,8 +242,8 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                                     margin: const EdgeInsets.all(0),
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
-                                            image: FileImage(serviceProvider
-                                                .imgs[index - 1]),
+                                            image: FileImage(service
+                                                .imgUrls[index - 1]),
                                                 fit: BoxFit.cover)),
                                   );
                           })),
@@ -255,7 +263,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                           final city = cityController.text.trim();
                           final area = areaController.text.trim();
                           final description = descController.text.trim();
-                          final images = serviceProvider.imageUrls;
+                          final images = service.imgUrls;
                           String? category = _selectedOption;
 
                           final serviceModel = ServiceModel(
@@ -270,7 +278,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                             imgUrls: images,
                             status: false,
                           );
-                          serviceProvider.updateService(serviceModel, context);
+                          service.updateService(serviceModel, context);
                            // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
