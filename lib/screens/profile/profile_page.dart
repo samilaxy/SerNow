@@ -161,58 +161,57 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 8),
               const Divider(),
               const SizedBox(height: 40),
-              Row(children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.grey.withOpacity(0.2),
+              GestureDetector(
+                 onTap: () {
+navigatorKey.currentState!.pushNamed('myAdverts');
+                 },
+                child: Row(children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.grey.withOpacity(0.2),
+                    ),
+                    child: const Icon(
+                          LineAwesomeIcons.tags,
+                          size: 20, color: Colors.grey,
+                        ),
                   ),
-                  child: IconButton(
-                      onPressed: () {
-                        authProvider.isLogin(false);
-                        navigatorKey.currentState!.pushNamed('myAdverts');
-                      },
-                      icon: const Icon(
-                        LineAwesomeIcons.tags,
-                        size: 20,
-                      ),
-                      color: Colors.grey),
-                ),
-                Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text("My Adverts",
-                        style: GoogleFonts.poppins(
-                            fontSize: 15)))
-              ]),
+                  Padding(
+                      padding: const EdgeInsets.only(left: 20),
+                      child: Text("My Adverts",
+                          style: GoogleFonts.poppins(
+                              fontSize: 15)))
+                ]),
+              ),
               const SizedBox(height: 20),
-              Row(children: [
-                Container(
-                  width: 40,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(100),
-                    color: Colors.grey.withOpacity(0.2),
+              GestureDetector(
+                onTap: () {
+                    print("Logout");
+                          authProvider.isLogin(false);
+                          navigatorKey.currentState!.pushNamed('phone');
+                },
+                child: Row(children: [
+                  Container(
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(100),
+                      color: Colors.grey.withOpacity(0.2),
+                    ),
+                    child: const Icon(
+                          LineAwesomeIcons.alternate_sign_out,
+                          size: 20, color: Colors.grey,
+                        )
                   ),
-                  child: IconButton(
-                      onPressed: () {
-                        print("Logout");
-                        authProvider.isLogin(false);
-                        navigatorKey.currentState!.pushNamed('phone');
-                      },
-                      icon: const Icon(
-                        LineAwesomeIcons.alternate_sign_out,
-                        size: 20,
-                      ),
-                      color: Colors.grey),
-                ),
-                Padding(
-                    padding: EdgeInsets.only(left: 20),
-                    child: Text("Logout",
-                        style: GoogleFonts.poppins(
-                            fontSize: 15, color: Colors.red)))
-              ]),
+                  Padding(
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text("Logout",
+                          style: GoogleFonts.poppins(
+                              fontSize: 15, color: Colors.red)))
+                ]),
+              ),
             const SizedBox(height: 80),
             ],
           ),

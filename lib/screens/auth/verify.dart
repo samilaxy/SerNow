@@ -115,8 +115,9 @@ class _MyVerifyState extends State<MyVerify> {
                 // Perform verification of the entered code here
               },
                 validator: (pin) {
-                  print("pin is $pin and code is $enteredCode");
-                return pin == 'enteredCode' ? null : 'Pin is incorrect';
+
+                  print("pin is $pin and code is $enteredCode  htere ${authService.code}");
+                return pin == enteredCode ? null : 'Pin is idcddcdccncorrect';
               },
               ),
               const SizedBox(

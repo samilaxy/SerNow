@@ -46,27 +46,15 @@ class _MyAdvertsState extends State<MyAdverts> {
         ):GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 5.0,
-                childAspectRatio: 01,
-                crossAxisSpacing: 5.0),
-            padding: const EdgeInsets.all(10),
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 1,
+                crossAxisSpacing: 10.0),
+            padding: const EdgeInsets.all(20),
             itemCount: myAdvert.data.length,
             itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  // detailsProvider.serviceData = homeProvider.data[index];
-                  // detailsProvider.fetchDiscoverServices();
-                  // detailsProvider.fetchRelatedServices();
-                  // Navigate to the details page here, passing data[index] as a parameter
-                 // myAdvert.servId = myAdvert.data[index]['id'];
-                  print('myAdvert.servId: ${myAdvert.servId}');
-                  navigatorKey.currentState!.pushNamed('createService');
-                },
-                child:  
-                 MyAdvertCard(
-                  service: myAdvert.data[index] 
-                ),
-              );
+              return MyAdvertCard(
+               service: myAdvert.data[index] 
+                );
             })
     );
   }

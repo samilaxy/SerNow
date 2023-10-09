@@ -142,7 +142,8 @@ class CreateServiceProvider extends ChangeNotifier {
       barrierDismissible: false,
       builder: (BuildContext context) {
         return const Center(
-          child: CircularProgressIndicator(color: mainColor), // Show loading spinner
+          child: CircularProgressIndicator(
+              color: mainColor), // Show loading spinner
         );
       },
     );
@@ -199,25 +200,10 @@ class CreateServiceProvider extends ChangeNotifier {
     }
   }
 
-// Future<void> retrieveLostData() async {
-//   final List<LostData> lostData = await MultiImagePicker.getLostData();
-
-//   for (LostData data in lostData) {
-//     if (data.isEmpty) {
-//       continue;
-//     }
-
-//     if (data.file != null) {
-//       // Handle the lost image data, for example:
-//       final File lostImageFile = File(data.file.path);
-//       _imgs.add(lostImageFile);
-//     } else {
-//       // Handle other lost data types, if necessary
-//       print('Lost data: ${data.exception}');
-//     }
-//   }
-
-//   // Notify listeners after handling lost data
-//   notifyListeners();
-// }
+  void removeImg(int index) {
+    _imgUrls.removeAt(index);
+    notifyListeners();
+    _imgs.removeAt(index);
+    notifyListeners();
+  }
 }

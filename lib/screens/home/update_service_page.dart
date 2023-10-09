@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/create_service_provider.dart';
 import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/controllers/update_service_provider.dart';
+import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import '../../Utilities/constants.dart';
 import '../../models/service_model.dart';
 
@@ -240,11 +241,12 @@ descController.text = service.description;
                                   )
                                 : Container(
                                     margin: const EdgeInsets.all(0),
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: FileImage(service
-                                                .imgUrls[index - 1]),
-                                                fit: BoxFit.cover)),
+                                    child: 
+                                  //  service.imgs.isNotEmpty ? Stack(children: [Image(image: service.imgs[index - 1]), IconButton(onPressed: (){service.removeImg(index - 1); }, icon: const Icon(Icons.delete_outline, color: Colors.red,))]) : 
+                                    Stack(
+                                      children: [ImageWithPlaceholder(imageUrl: service
+                                                  .imgUrls[index - 1], placeholderUrl: noImg), IconButton(onPressed: (){service.removeImg(index - 1);}, icon: const Icon(Icons.delete_outline, color: Colors.red,))],
+                                    ),
                                   );
                           })),
                     ),

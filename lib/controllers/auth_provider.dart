@@ -38,28 +38,17 @@ AuthProvider() {
       await FirebaseAuth.instance.verifyPhoneNumber(
         phoneNumber: number,
         verificationCompleted: (PhoneAuthCredential credential) async {
-          try {
-            UserCredential userCredential =
-                await FirebaseAuth.instance.signInWithCredential(credential);
-            completer.complete(
-                userCredential.user); // Complete with the signed-in user
-            print('User automatically signed in: ${userCredential.user?.uid}');
-          } catch (e) {
-            completer
-                .complete(null); // Complete with null in case of sign-in error
-            print('Error auto-signing in: $e');
-          }
+         _code = credential.smsCode ?? '';
         },
         verificationFailed: (FirebaseAuthException e) {
-          error = e.message;
-          completer.complete(
-              null); 
-            throw Exception(e.message);
         },
-        codeSent: (String verificationId, int? resendToken) {
+        codeSent: (String verificationId, int? resendToken) async {
           AuthProvider.verificationId = verificationId;
           _userPin = verificationId;
-          navigatorKey.currentState!.pushNamed('verify');
+          
+          print("pin code sent ${_code}");
+          notifyListeners();
+          await navigatorKey.currentState!.pushNamed('verify');
           completer.complete(
               null); // Complete with null when the verification code is sent
           print(

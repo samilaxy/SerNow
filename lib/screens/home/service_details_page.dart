@@ -277,7 +277,7 @@ class MyGridview extends StatelessWidget {
             },
             child:
                 //detailsProvider.dataState ? const LoadingIndicator() :
-                ServiceCard(service: detailsProvider.related[index]),
+                Expanded(child: ServiceCard(service: detailsProvider.related[index])),
           );
         });
   }

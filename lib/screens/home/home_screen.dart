@@ -48,10 +48,10 @@ class _HomeScreenState extends State<HomeScreen> {
         GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
-                mainAxisSpacing: 5.0,
+                mainAxisSpacing: 10.0,
                 childAspectRatio: 0.8,
-                crossAxisSpacing: 5.0),
-            padding: const EdgeInsets.all(10),
+                crossAxisSpacing: 10.0),
+            padding: const EdgeInsets.all(16.0),
             itemCount: homeProvider.data.length,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
@@ -68,8 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 },
-                child: homeProvider.dataState ? const LoadingIndicator() : ServiceCard(
-                  service: homeProvider.data[index] 
+                child: homeProvider.dataState ? const LoadingIndicator() : Flexible(
+                  child: ServiceCard(
+                    service: homeProvider.data[index] 
+                  ),
                 ),
               );
             }));

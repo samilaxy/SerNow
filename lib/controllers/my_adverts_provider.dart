@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,10 +28,11 @@ class MyAdvertsProvider extends ChangeNotifier {
   String _city = "";
   String? _area = "";
   String _description = "";
-
+  List<File> _imgs = [];
   List _imgUrls = [];
 
   List get data => _data;
+   List get imgs => _imgs;
   UserModel? _userModel;
   Map<String, dynamic>? profileData;
   String get userId => _userId;
@@ -218,10 +220,10 @@ class MyAdvertsProvider extends ChangeNotifier {
   }
 
   Future<void> pickImages(BuildContext context) async {
-    _imgUrls = [];
+   // _imgUrls = [];
     final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
-      _imgUrls.add(File(img.path));
+      _imgs.add(File(img.path));
       notifyListeners();
     }
     // Upload images in the background using microtask
@@ -236,20 +238,28 @@ class MyAdvertsProvider extends ChangeNotifier {
   }
 
   Future<void> uploadImageToStorage() async {
-    if (_imgUrls.isNotEmpty) {
+    print("urls count : ${_imgUrls.length}");
+    if (_imgs.isNotEmpty) {
       try {
         final List<Future<String>> uploadFutures = _imgUrls.map((img) async {
           final fileBytes = await img.readAsBytes(); // Read file contents
           return UtilityClass.uploadedImg("serviceImgs", fileBytes);
         }).toList();
 
-        _imgUrls = await Future.wait(uploadFutures);
-
-        print("urls: $_imgUrls");
+        _imgUrls += await Future.wait(uploadFutures);
+        notifyListeners(); 
+        print("urls count 1: ${_imgUrls.length}");
       } catch (err) {
         _message = err.toString();
         print(_message);
       }
     }
   }
+void removeImg(int index) {
+  _imgUrls.removeAt(index);
+   notifyListeners();
+  _imgs.removeAt(index);
+  notifyListeners();
+}
+
 }
