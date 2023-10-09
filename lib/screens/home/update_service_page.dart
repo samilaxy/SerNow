@@ -26,7 +26,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController areaController = TextEditingController();
   final TextEditingController descController = TextEditingController();
 
-  String? _selectedOption ;
+  String? _selectedOption = "Barber";
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
     'Barber',
@@ -100,10 +100,10 @@ descController.text = service.description;
                         });
                       },
                       items: _dropdownOptions.map((option) {
-                        return DropdownMenuItem(
+                        return DropdownMenuItem<String>(
                           value: option,
                           child: SizedBox(
-                            width: 200, // Set the width of the container
+                            width: 100, // Set the width of the container
                             child: Text(option),
                           ),
                         );
@@ -236,7 +236,7 @@ descController.text = service.description;
                                       color: Colors.grey,
                                       child: IconButton(
                                           onPressed:() { service.pickImages(context); } ,
-                                          icon: const Icon(Icons.add)),
+                                          icon: const Icon(Icons.add, color: Color.fromARGB(255, 87, 84, 84),)),
                                     ),
                                   )
                                 : Container(
