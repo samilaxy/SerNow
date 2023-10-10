@@ -16,12 +16,12 @@ class MyPhone extends StatefulWidget {
 class _MyPhoneState extends State<MyPhone> {
   TextEditingController countryController = TextEditingController();
   TextEditingController numberController = TextEditingController();
-
+  
   @override
   void initState() {
     // TODO: implement initState
     countryController.text = "+233";
-
+   
     super.initState();
   }
 
@@ -40,7 +40,7 @@ class _MyPhoneState extends State<MyPhone> {
     //numberController.text = authService.contact;
     return Scaffold(
       body: Container(
-        margin: EdgeInsets.only(left: 25, right: 25),
+        margin: const EdgeInsets.only(left: 25, right: 25),
         alignment: Alignment.center,
         child: SingleChildScrollView(
           child: Column(
@@ -134,7 +134,7 @@ class _MyPhoneState extends State<MyPhone> {
                         }
                       }
                     },
-                    child: const Text("Login")),
+                    child: const Text("Send Code")),
               ),
               const SizedBox(
                 height: 100,

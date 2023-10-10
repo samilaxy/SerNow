@@ -25,8 +25,8 @@ void main() async {
   );
   await FirebaseAppCheck.instance.activate();
   AuthProvider authProvider = AuthProvider();
-  ProfileProvider proProvider = ProfileProvider();
-  proProvider.saveProfile("","name", "+233501370334", "bio", "email", "img");
+ // ProfileProvider proProvider = ProfileProvider();
+  //proProvider.saveProfile("","name", "+233501370334", "bio", "email", "img");
 
   bool userLoggedIn = await authProvider.loginState();
 

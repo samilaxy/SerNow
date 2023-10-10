@@ -28,7 +28,9 @@ set contact(String? value) {
   }
   
 AuthProvider() {
+  getCode();
   loginState();
+  notifyListeners();
 }
   // Update the return type to use Future<User?> for sign-in
   Future<User?> sendCodeToPhone(String number) async {
@@ -84,7 +86,7 @@ AuthProvider() {
           await FirebaseAuth.instance.signInWithCredential(credential);
       // Save the user's phone number after verification
       String? phoneNumber = userCredential.user?.phoneNumber;
-      
+      notifyListeners();
       if (phoneNumber != null) {
         saveContact(phoneNumber);
       }
@@ -107,6 +109,7 @@ AuthProvider() {
     final savedPhoneNumber = prefs.getString('phoneNumber');
     if (savedPhoneNumber == null) {
     _user = UserModel(fullName: "fullName", phone: phoneNumber);
+    notifyListeners();
     await SharedPreferencesHelper.saveProfile("","",phoneNumber, "","","");
     }
   }
@@ -127,12 +130,16 @@ Future<bool> loginState() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isLoggedIn = prefs.getBool('login') ?? false;
   print("loginstatus: $isLoggedIn");
+  notifyListeners();
   return isLoggedIn;
 }
 
 Future<void> getCode() async {
    String countryCode = await UtilityClass.getCurrentLocation();
+  //await Future.delayed(const Duration(seconds: 2));
   _code = countryCode;
+  notifyListeners();
+  print('my code: $_code');
 }
 
 }

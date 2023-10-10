@@ -26,7 +26,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController areaController = TextEditingController();
   final TextEditingController descController = TextEditingController();
 
-  String? _selectedOption = "Barber";
+ // String? _selectedOption = "Barber";
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
     'Barber',
@@ -56,7 +56,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     final service =
         Provider.of<MyAdvertsProvider>(context);
 titleController.text = service.title;
-_selectedOption = service.category;
+String? selectedOption = service.category;
 priceController.text = service.price;
 countryController.text = service.country;
 cityController.text = service.city;
@@ -93,10 +93,10 @@ descController.text = service.description;
                     const SizedBox(height: 10),
 
                     DropdownButtonFormField(
-                      value: _selectedOption,
+                      value: selectedOption,
                       onChanged: (String? newValue) {
                         setState(() {
-                          _selectedOption = newValue;
+                          selectedOption = newValue;
                         });
                       },
                       items: _dropdownOptions.map((option) {
@@ -131,7 +131,13 @@ descController.text = service.description;
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
                           label:  Text("Price*", style: GoogleFonts.poppins()),
-                          prefixIcon: Container(width: 10)),
+                          prefixIcon: Container(width: 10),
+                          suffix: Padding(
+                            padding: const EdgeInsets.only(right: 16.0),
+                            child: Text("GHS", style: GoogleFonts.poppins(color: Colors.grey, fontSize: 12)),
+                          )
+                          )
+                          ,
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -266,7 +272,7 @@ descController.text = service.description;
                           final area = areaController.text.trim();
                           final description = descController.text.trim();
                           final images = service.imgUrls;
-                          String? category = _selectedOption;
+                          String? category = selectedOption;
 
                           final serviceModel = ServiceModel(
                             //id: uniqueId,

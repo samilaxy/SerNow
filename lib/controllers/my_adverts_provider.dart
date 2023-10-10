@@ -21,7 +21,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   String _servId = "";
   String _message = "";
   String _title = "";
-  String _category = "";
+  String _category = "Barber";
   String _price = "";
   String _location = "";
   String _country = "";
