@@ -1,11 +1,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl_phone_field/countries.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:serv_now/controllers/create_service_provider.dart';
 import 'package:serv_now/controllers/my_adverts_provider.dart';
-import 'package:serv_now/controllers/update_service_provider.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import '../../Utilities/constants.dart';
 import '../../models/service_model.dart';
@@ -27,6 +27,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController descController = TextEditingController();
 
  // String? _selectedOption = "Barber";
+  Country? _selectedCountry;
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
     'Barber',
@@ -62,7 +63,7 @@ countryController.text = service.country;
 cityController.text = service.city;
 areaController.text = service.area ?? '';
 descController.text = service.description;
-
+FocusNode focusNode = FocusNode();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),
@@ -119,6 +120,31 @@ descController.text = service.description;
                               borderRadius: BorderRadius.circular(100))),
                     ),
                     const SizedBox(height: 10),
+                   const SizedBox.shrink(),
+                    SizedBox(
+                  height: 90,
+                  child: IntlPhoneField(
+                    controller: countryController,
+                    focusNode: focusNode,
+                    cursorColor: mainColor,
+                    decoration: InputDecoration(
+                      labelStyle: const TextStyle(color: Colors.grey),
+                      focusedBorder: OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey),
+                          borderRadius: BorderRadius.circular(100)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(100)),
+                      labelText: "Country*",
+                    ),
+                    initialCountryCode:  '+233',//authService.code,
+                    languageCode: "en",
+                    onCountryChanged: (country) {
+                      print('Country changed to: ' + country.name);
+                      countryController.text = country.name;
+                    
+                    },
+                    showCountryFlag: true,
+                  )),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: priceController,
@@ -140,6 +166,7 @@ descController.text = service.description;
                           ,
                     ),
                     const SizedBox(height: 10),
+                    
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: countryController,
@@ -223,6 +250,7 @@ descController.text = service.description;
                       ),
                     ),
                     const SizedBox(height: 20),
+                    if (service.uploading) const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
                     SizedBox(
                       height: 120,
                       child: GridView.builder(
@@ -274,7 +302,7 @@ descController.text = service.description;
                           final images = service.imgUrls;
                           String? category = selectedOption;
 
-                          final serviceModel = ServiceModel(
+                          final serviceModel = UpdateModel(
                             //id: uniqueId,
                           //  userId: userId,
                             title: title,
@@ -282,9 +310,7 @@ descController.text = service.description;
                             price: price,
                             location: "$country-$city, $area",
                             description: description,
-                            isFavorite: false,
                             imgUrls: images,
-                            status: false,
                           );
                           service.updateService(serviceModel, context);
                            // Navigator.pushNamed(context, 'home');

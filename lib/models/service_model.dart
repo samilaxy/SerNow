@@ -44,3 +44,32 @@ class ServiceModel  {
       };
     }
 }
+
+class UpdateModel  {
+  final String title;
+  final String category;
+  final String price;
+  final String location;
+  final String description;
+  final List imgUrls;
+  
+  UpdateModel( {
+    required this.title, 
+    required this.category,
+    required this.price,
+    required this.location,    
+    required this.description,
+    required this.imgUrls,
+    });
+
+    toJson() {
+      return {
+        "title" : title,
+        "category" : category,
+        "price" : price,
+        "location": location,
+        "description": description,
+        "imgUrls": imgUrls
+      };
+    }
+}

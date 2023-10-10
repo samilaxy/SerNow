@@ -17,8 +17,10 @@ class MyAdvertsProvider extends ChangeNotifier {
   final List<DiscoverModel> _data = [];
   bool _dataState = true;
   bool _noData = false;
+  bool _uploading = false;
   String _userId = "";
   String _servId = "";
+  String _docId = "";
   String _message = "";
   String _title = "";
   String _category = "Barber";
@@ -37,9 +39,11 @@ class MyAdvertsProvider extends ChangeNotifier {
   Map<String, dynamic>? profileData;
   String get userId => _userId;
   String get servId => _servId;
+  String get docId => _docId;
   UserModel? get userModel => _userModel;
   bool get dataState => _dataState;
   bool get noData => _noData;
+  bool get uploading => _uploading;
   String get message => _message;
   List get imgUrls => _imgUrls;
   String get title => _title;
@@ -60,7 +64,6 @@ class MyAdvertsProvider extends ChangeNotifier {
   MyAdvertsProvider() {
     print('myAdvert.servId2: ${_servId}');
     fetchServices();
-    // fetchService();
   }
 
   Future<void> fetchServices() async {
@@ -122,6 +125,8 @@ class MyAdvertsProvider extends ChangeNotifier {
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
+        _docId = document.id;
+        print('doc id is..: $_docId');
         _servId = data['id'] ?? '';
         _title = data['title'] ?? '';
         _category = data['category'] ?? '';
@@ -148,7 +153,7 @@ class MyAdvertsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> updateService(ServiceModel serv, BuildContext context) async {
+  Future<void> updateService(UpdateModel serv, BuildContext context) async {
     _title = serv.title.trim();
     _category = serv.category.trim();
     _price = serv.price.trim();
@@ -171,12 +176,14 @@ class MyAdvertsProvider extends ChangeNotifier {
       return;
       // Exit early if any field is empty
     }
-    _message = "Wait...";
 
     try {
       // delayUpdate();
+      print('serv id is..: $_servId');
+      //_uploading = true; 
       await Future.delayed(const Duration(seconds: 2));
-      await _db.collection("services").doc(servId).update(serv.toJson());
+      await _db.collection("services").doc(_docId).update(serv.toJson());
+      _uploading = false; 
       _message = "Service updated successfully.";
       showSuccessSnackbar(context, _message);
       navigatorKey.currentState!.pushNamed('myAdverts');
@@ -220,15 +227,18 @@ class MyAdvertsProvider extends ChangeNotifier {
   }
 
   Future<void> pickImages(BuildContext context) async {
-   // _imgUrls = [];
+     _imgs = [];
     final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
       _imgs.add(File(img.path));
       notifyListeners();
     }
+     print('images count ${_imgs.length}');
     // Upload images in the background using microtask
     Future.microtask(() async {
+      
       await uploadImageToStorage();
+      notifyListeners(); 
       // Optionally, you can show a completion message or perform other actions when the upload is done.
       // For example, you can show a snackbar:
       // ScaffoldMessenger.of(context).showSnackBar(
@@ -238,17 +248,17 @@ class MyAdvertsProvider extends ChangeNotifier {
   }
 
   Future<void> uploadImageToStorage() async {
-    print("urls count : ${_imgUrls.length}");
+    
     if (_imgs.isNotEmpty) {
+      _uploading = true;
       try {
-        final List<Future<String>> uploadFutures = _imgUrls.map((img) async {
+        final List<Future<String>> uploadFutures = _imgs.map((img) async {
           final fileBytes = await img.readAsBytes(); // Read file contents
           return UtilityClass.uploadedImg("serviceImgs", fileBytes);
         }).toList();
-
         _imgUrls += await Future.wait(uploadFutures);
+        _uploading = false;
         notifyListeners(); 
-        print("urls count 1: ${_imgUrls.length}");
       } catch (err) {
         _message = err.toString();
         print(_message);
