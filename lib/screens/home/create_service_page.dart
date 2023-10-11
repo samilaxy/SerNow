@@ -225,16 +225,34 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                       color: Colors.grey,
                                       child: IconButton(
                                           onPressed:() { serviceProvider.pickImages(context); } ,
-                                          icon: const Icon(Icons.add)),
+                                          icon: const Icon(Icons.add,  color:
+                                                Color.fromARGB(255, 87, 84, 84))),
                                     ),
                                   )
                                 : Container(
                                     margin: const EdgeInsets.all(0),
-                                    decoration: BoxDecoration(
+                                    // decoration: BoxDecoration(
+                                    //     image: DecorationImage(
+                                    //         image: FileImage(serviceProvider
+                                    //             .imgs[index - 1]),
+                                    //             fit: BoxFit.cover)),
+                                    child: Stack(children: [
+                                      Container(
+                                        decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: FileImage(serviceProvider
                                                 .imgs[index - 1]),
-                                                fit: BoxFit.cover)),
+                                                fit: BoxFit.cover))
+                                      ),
+                                       IconButton(
+                                            onPressed: () {
+                                              serviceProvider.removeImg(index - 1);
+                                            },
+                                            icon: const Icon(
+                                              Icons.delete_outline,
+                                              color: Colors.red,
+                                            ))
+                                    ]),
                                   );
                           })),
                     ),
@@ -268,14 +286,24 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             imgUrls: images,
                             status: false,
                           );
-                          serviceProvider.createService(serviceModel, context);
+                          
+                          serviceProvider.isloading
+                              ? null
+                              : serviceProvider.createService(serviceModel, context);
                            // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Create",
+                        child: serviceProvider.isloading
+                            ?  const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child:  CircularProgressIndicator(
+                                  color: Colors.black26),
+                            )
+                            : const Text("Create",
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),

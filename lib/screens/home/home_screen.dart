@@ -49,8 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 0.8,
+                childAspectRatio: 0.77,
                 crossAxisSpacing: 10.0),
+                shrinkWrap: true,
             padding: const EdgeInsets.all(16.0),
             itemCount: homeProvider.data.length,
             itemBuilder: (BuildContext context, int index) {
@@ -95,8 +96,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.only(left: 16),
               child: Image.asset(
                 logoImg,
-                width: 80,
-                height: 80,
+                width: 100,
+                height: 100,
               ),
             ),
             // IconButton(

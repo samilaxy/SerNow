@@ -55,11 +55,11 @@ AuthProvider() {
               null); // Complete with null when the verification code is sent
           print(
               'Verification code sent. Verification ID: $verificationId, Resend token: $resendToken');
-        },
-        codeAutoRetrievalTimeout: (String verificationId) {
-        AuthProvider.verificationId = verificationId;
-        print('Code auto-retrieval timeout. Verification ID: $verificationId');
-      },
+        }, codeAutoRetrievalTimeout: (String verificationId) {  },
+      //   codeAutoRetrievalTimeout: (String verificationId) {
+      //   AuthProvider.verificationId = verificationId;
+      //   print('Code auto-retrieval timeout. Verification ID: $verificationId');
+      // },
       );
 
       return completer.future;
@@ -108,9 +108,9 @@ AuthProvider() {
      final prefs = await SharedPreferences.getInstance();
     final savedPhoneNumber = prefs.getString('phoneNumber');
     if (savedPhoneNumber == null) {
-    _user = UserModel(fullName: "fullName", phone: phoneNumber);
+    _user = UserModel(fullName: "fullName", phone: phoneNumber, bio: '');
+    await SharedPreferencesHelper.saveProfile("","",phoneNumber, "","","", false);
     notifyListeners();
-    await SharedPreferencesHelper.saveProfile("","",phoneNumber, "","","");
     }
   }
 

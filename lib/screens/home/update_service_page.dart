@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/countries.dart';
@@ -26,7 +25,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController areaController = TextEditingController();
   final TextEditingController descController = TextEditingController();
 
- // String? _selectedOption = "Barber";
+  // String? _selectedOption = "Barber";
   Country? _selectedCountry;
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
@@ -54,22 +53,21 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
 
   @override
   Widget build(BuildContext context) {
-    final service =
-        Provider.of<MyAdvertsProvider>(context);
-titleController.text = service.title;
-String? selectedOption = service.category;
-priceController.text = service.price;
-countryController.text = service.country;
-cityController.text = service.city;
-areaController.text = service.area ?? '';
-descController.text = service.description;
-FocusNode focusNode = FocusNode();
+    final service = Provider.of<MyAdvertsProvider>(context);
+    titleController.text = service.title;
+    String? selectedOption = service.category;
+    priceController.text = service.price;
+    countryController.text = service.country;
+    cityController.text = service.city;
+    areaController.text = service.area ?? '';
+    descController.text = service.description;
+    FocusNode focusNode = FocusNode();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Container(
-          padding: const EdgeInsets.all(15),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               // -- IMAGE with ICON
@@ -120,31 +118,31 @@ FocusNode focusNode = FocusNode();
                               borderRadius: BorderRadius.circular(100))),
                     ),
                     const SizedBox(height: 10),
-                   const SizedBox.shrink(),
+                    const SizedBox.shrink(),
                     SizedBox(
-                  height: 90,
-                  child: IntlPhoneField(
-                    controller: countryController,
-                    focusNode: focusNode,
-                    cursorColor: mainColor,
-                    decoration: InputDecoration(
-                      labelStyle: const TextStyle(color: Colors.grey),
-                      focusedBorder: OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey),
-                          borderRadius: BorderRadius.circular(100)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(100)),
-                      labelText: "Country*",
-                    ),
-                    initialCountryCode:  '+233',//authService.code,
-                    languageCode: "en",
-                    onCountryChanged: (country) {
-                      print('Country changed to: ' + country.name);
-                      countryController.text = country.name;
-                    
-                    },
-                    showCountryFlag: true,
-                  )),
+                        height: 90,
+                        child: IntlPhoneField(
+                          controller: countryController,
+                          focusNode: focusNode,
+                          cursorColor: mainColor,
+                          decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.grey),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(100)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            labelText: "Country*",
+                          ),
+                          initialCountryCode: '+233', //authService.code,
+                          languageCode: "en",
+                          onCountryChanged: (country) {
+                            print('Country changed to: ' + country.name);
+                            countryController.text = country.name;
+                          },
+                          showCountryFlag: true,
+                        )),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: priceController,
@@ -156,17 +154,17 @@ FocusNode focusNode = FocusNode();
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label:  Text("Price*", style: GoogleFonts.poppins()),
+                          label: Text("Price*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10),
                           suffix: Padding(
                             padding: const EdgeInsets.only(right: 16.0),
-                            child: Text("GHS", style: GoogleFonts.poppins(color: Colors.grey, fontSize: 12)),
-                          )
-                          )
-                          ,
+                            child: Text("GHS",
+                                style: GoogleFonts.poppins(
+                                    color: Colors.grey, fontSize: 12)),
+                          )),
                     ),
                     const SizedBox(height: 10),
-                    
+
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: countryController,
@@ -193,7 +191,7 @@ FocusNode focusNode = FocusNode();
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label:  Text("City*", style: GoogleFonts.poppins()),
+                          label: Text("City*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -208,7 +206,7 @@ FocusNode focusNode = FocusNode();
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: Text("Sub",style: GoogleFonts.poppins()),
+                          label: Text("Sub", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -223,7 +221,8 @@ FocusNode focusNode = FocusNode();
                               borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          label:  Text("Description*",style: GoogleFonts.poppins()),
+                          label: Text("Description*",
+                              style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 20),
@@ -250,7 +249,9 @@ FocusNode focusNode = FocusNode();
                       ),
                     ),
                     const SizedBox(height: 20),
-                    if (service.uploading) const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
+                    if (service.uploading)
+                      const CircularProgressIndicator(
+                          color: mainColor, strokeWidth: 6),
                     SizedBox(
                       height: 120,
                       child: GridView.builder(
@@ -269,17 +270,35 @@ FocusNode focusNode = FocusNode();
                                       width: double.infinity,
                                       color: Colors.grey,
                                       child: IconButton(
-                                          onPressed:() { service.pickImages(context); } ,
-                                          icon: const Icon(Icons.add, color: Color.fromARGB(255, 87, 84, 84),)),
+                                          onPressed: () {
+                                            service.pickImages(context);
+                                          },
+                                          icon: const Icon(
+                                            Icons.add,
+                                            color:
+                                                Color.fromARGB(255, 87, 84, 84),
+                                          )),
                                     ),
                                   )
                                 : Container(
                                     margin: const EdgeInsets.all(0),
-                                    child: 
-                                  //  service.imgs.isNotEmpty ? Stack(children: [Image(image: service.imgs[index - 1]), IconButton(onPressed: (){service.removeImg(index - 1); }, icon: const Icon(Icons.delete_outline, color: Colors.red,))]) : 
-                                    Stack(
-                                      children: [ImageWithPlaceholder(imageUrl: service
-                                                  .imgUrls[index - 1], placeholderUrl: noImg), IconButton(onPressed: (){service.removeImg(index - 1);}, icon: const Icon(Icons.delete_outline, color: Colors.red,))],
+                                    child:
+                                        //  service.imgs.isNotEmpty ? Stack(children: [Image(image: service.imgs[index - 1]), IconButton(onPressed: (){service.removeImg(index - 1); }, icon: const Icon(Icons.delete_outline, color: Colors.red,))]) :
+                                        Stack(
+                                      children: [
+                                        ImageWithPlaceholder(
+                                            imageUrl:
+                                                service.imgUrls[index - 1],
+                                            placeholderUrl: noImg),
+                                        IconButton(
+                                            onPressed: () {
+                                              service.removeImg(index - 1);
+                                            },
+                                            icon: const Icon(
+                                              Icons.delete_outline,
+                                              color: Colors.red,
+                                            ))
+                                      ],
                                     ),
                                   );
                           })),
@@ -291,8 +310,8 @@ FocusNode focusNode = FocusNode();
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                         // String uniqueId = serviceProvider.generateUniqueId();
-                         // final userId = serviceProvider.userId;
+                          // String uniqueId = serviceProvider.generateUniqueId();
+                          // final userId = serviceProvider.userId;
                           final title = titleController.text.trim();
                           final price = priceController.text.trim();
                           final country = countryController.text.trim();
@@ -304,7 +323,7 @@ FocusNode focusNode = FocusNode();
 
                           final serviceModel = UpdateModel(
                             //id: uniqueId,
-                          //  userId: userId,
+                            //  userId: userId,
                             title: title,
                             category: category ?? "",
                             price: price,
@@ -312,15 +331,25 @@ FocusNode focusNode = FocusNode();
                             description: description,
                             imgUrls: images,
                           );
-                          service.updateService(serviceModel, context);
-                           // Navigator.pushNamed(context, 'home');
+                          service.isloading
+                              ? null
+                              : service.updateService(serviceModel, context);
+
+                          // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Update",
-                            style: TextStyle(color: Colors.white)),
+                        child: service.isloading
+                            ?  const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child:  CircularProgressIndicator(
+                                  color: Colors.black26),
+                            )
+                            : const Text("Update",
+                                style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 80)

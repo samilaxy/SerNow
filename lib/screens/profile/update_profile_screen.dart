@@ -168,9 +168,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             email: email,
                             phone: phone,
                             bio: bio,
-                            img: imgUrl
+                            img: imgUrl, 
+                            isUser: true,
                           );
-                          profileProvider.createUser(userModel, context);
+                          profileProvider.isLoading
+                              ? null
+                              :profileProvider.createUser(userModel, context);
                           //  Navigator.pushNamed(context, 'profile');
                         },
                         //  },
@@ -178,7 +181,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
-                        child: const Text("Update",
+                        child: profileProvider.isLoading
+                            ?  const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child:  CircularProgressIndicator(
+                                  color: Colors.black26),
+                            )
+                            : const Text("Update",
                             style: TextStyle(color: Colors.white)),
                       ),
                     ),

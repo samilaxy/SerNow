@@ -23,12 +23,17 @@ class _DiscoverCardState extends State<DiscoverCard> {
   Widget build(BuildContext context) {
     String currency = "\$";
     return Flexible(
-      child: Card(
+      child: Padding(
+        padding: const EdgeInsets.only(left:8.0),
         child: Container(
            width: 150.0,
           decoration:  BoxDecoration(
                       borderRadius:  BorderRadius.circular(10,
-                      )),
+                      ),
+                      border: Border.all(
+                            color: Colors.grey, // Set the border color
+                            width: 0.5, // Set the border width
+                          ),),
              // margin: const EdgeInsets.all(1.0),
               // Set the width of each card
               child: Stack(
@@ -78,8 +83,8 @@ class _DiscoverCardState extends State<DiscoverCard> {
                   ),
                 ],
               ),
-            )
             ),
+      ),
     );
         }  
 }

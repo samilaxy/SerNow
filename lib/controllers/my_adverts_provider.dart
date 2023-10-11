@@ -9,6 +9,7 @@ import 'package:serv_now/models/discover_model.dart';
 import 'package:serv_now/models/service_model.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:serv_now/repository/shared_preference.dart';
+import 'package:serv_now/utilities/constants.dart';
 import 'package:serv_now/utilities/util.dart';
 
 class MyAdvertsProvider extends ChangeNotifier {
@@ -18,6 +19,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   bool _dataState = true;
   bool _noData = false;
   bool _uploading = false;
+  bool _isloading = false;
   String _userId = "";
   String _servId = "";
   String _docId = "";
@@ -44,6 +46,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   bool get dataState => _dataState;
   bool get noData => _noData;
   bool get uploading => _uploading;
+  bool get isloading => _isloading;
   String get message => _message;
   List get imgUrls => _imgUrls;
   String get title => _title;
@@ -61,47 +64,55 @@ class MyAdvertsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+
   MyAdvertsProvider() {
-    print('myAdvert.servId2: ${_servId}');
     fetchServices();
   }
 
-  Future<void> fetchServices() async {
-    loadprofileData();
-    print('myAdvert.servId4: ${_servId}');
-    await Future.delayed(const Duration(seconds: 1));
-    print("userId: ${_userId}");
-    _dataState = true;
-    try {
-      QuerySnapshot querySnapshot = await _db
-          .collection('services')
-          .where('userId', isEqualTo: _userId) // Replace with the user's ID
-          .get();
+Future<void> fetchServices() async {
+  loadprofileData();
+  await Future.delayed(const Duration(seconds: 1));
+  _dataState = true;
 
-      //reset discovered items array
-      for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        DiscoverModel service = DiscoverModel(
-          id: data['id'],
-          title: data['title'] ?? '',
-          price: data['price'] ?? '',
-          img: data['imgUrls'][0] ?? '',
-          status: data['status'],
-        );
-        _data.add(service);
-        if (_data.isNotEmpty) {
-          print("here ${_data.length}");
-          _dataState = false;
-        } else {
-          _noData = true;
-        }
-      }
-    } catch (error) {
-      // _dataState = false;
+  try {
+    QuerySnapshot querySnapshot = await _db
+        .collection('services')
+        .where('userId', isEqualTo: _userId) // Replace with the user's ID
+        .get();
+
+    _data.clear(); // Reset the _data array
+
+    for (QueryDocumentSnapshot document in querySnapshot.docs) {
+      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      DiscoverModel service = DiscoverModel(
+        id: data['id'],
+        title: data['title'] ?? '',
+        price: data['price'] ?? '',
+        img: data['imgUrls'][0] ?? '',
+        status: data['status'],
+      );
+      _data.add(service);
+      notifyListeners();
     }
-    notifyListeners();
-  }
 
+    if (_data.isNotEmpty) {
+      _dataState = false; // Data is available
+      _noData = false;
+    } else {
+      _dataState = false; // No data available
+      _noData = true;
+      print('_noData $_noData');
+      print('_dataState $_dataState');
+    }
+
+  } catch (error) {
+    // Handle errors here
+    _dataState = false;
+    _noData = true;
+  }
+  
+  notifyListeners();
+}
   Future<void> loadprofileData() async {
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
@@ -176,17 +187,22 @@ class MyAdvertsProvider extends ChangeNotifier {
       return;
       // Exit early if any field is empty
     }
-
+  //  showLoadingDialog(context);
+    _isloading = true; 
+    notifyListeners();
     try {
-      // delayUpdate();
-      print('serv id is..: $_servId');
-      //_uploading = true; 
+      
       await Future.delayed(const Duration(seconds: 2));
       await _db.collection("services").doc(_docId).update(serv.toJson());
-      _uploading = false; 
+      await Future.delayed(const Duration(seconds: 2));
+      _isloading = false; 
       _message = "Service updated successfully.";
+      fetchServices();
+      notifyListeners();
       showSuccessSnackbar(context, _message);
-      navigatorKey.currentState!.pushNamed('myAdverts');
+   
+      
+      await navigatorKey.currentState!.pushNamed('myAdverts');
     } catch (error) {
       _message = "Update Failed, Try again.";
       showErrorSnackbar(context, _message);
@@ -217,10 +233,10 @@ class MyAdvertsProvider extends ChangeNotifier {
   void showLoadingDialog(BuildContext context) {
     showDialog(
       context: context,
-      barrierDismissible: false,
+      barrierDismissible: true,
       builder: (BuildContext context) {
         return const Center(
-          child: CircularProgressIndicator(), // Show loading spinner
+          child: CircularProgressIndicator(color: mainColor), // Show loading spinner
         );
       },
     );

@@ -162,8 +162,8 @@ class ServiceDetailsPage extends StatelessWidget {
                         textAlign: TextAlign.start,
                         style: GoogleFonts.poppins(fontSize: 14)),
                     const SizedBox(height: 20),
-                    const Divider(thickness: 2),
-                    const SizedBox(height: 10),
+                    const Divider(thickness: 1.5),
+                    const SizedBox(height: 25),
                     Text("Discover more Services",
                         maxLines: 1,
                         style: GoogleFonts.poppins(
@@ -196,12 +196,12 @@ class ServiceDetailsPage extends StatelessWidget {
                 },
               )),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             const Padding(
               padding:  EdgeInsets.symmetric(horizontal: 16.0),
               child:  Divider(thickness: 1.5),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
             SizedBox(
               width: double.infinity,
               child: Padding(
@@ -249,16 +249,15 @@ class MyGridview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("length : ${detailsProvider.related.length}");
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-            mainAxisSpacing: 5.0,
+            mainAxisSpacing: 10.0,
             childAspectRatio: 0.8,
-            crossAxisSpacing: 5.0),
+            crossAxisSpacing: 10.0),
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.all(16),
         itemCount: detailsProvider.related.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(

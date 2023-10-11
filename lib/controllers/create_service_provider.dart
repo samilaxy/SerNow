@@ -19,6 +19,8 @@ class CreateServiceProvider extends ChangeNotifier {
   String _price = "";
   String _location = "";
   String _description = "";
+  bool _uploading = false;
+  bool _isloading = false;
   String _servId = "";
   String _userId = "";
   bool isDark = false;
@@ -40,6 +42,8 @@ class CreateServiceProvider extends ChangeNotifier {
   final ImagePicker _imgPicker = ImagePicker();
   Map<String, dynamic>? profileData;
   ServiceModel? get serviceData => _serviceData;
+  bool get uploading => _uploading;
+  bool get isloading => _isloading;
 
   List get dropdownOptions => _dropdownOptions;
 
@@ -75,18 +79,19 @@ class CreateServiceProvider extends ChangeNotifier {
       return;
       // Exit early if any field is empty
     }
-    _message = "Wait...";
 
-    showLoadingDialog(context); // Show loading spinner
+   // showLoadingDialog(context); // Show loading spinner
+     _isloading = true; 
+    notifyListeners();
 
     try {
-      delayUpdate();
+      
       await _db.collection("services").add(serv.toJson());
-
+      await Future.delayed(const Duration(seconds: 4));
+      _isloading = false;
       _message = "Created Successfully!";
-      Navigator.pop(context);
       showSuccessSnackbar(context, _message);
-      navigatorKey.currentState!.pushNamed('home');
+     await navigatorKey.currentState!.pushNamed('home');
     } catch (error) {
       _message = "Something went wrong, Try again!";
       showErrorSnackbar(context, _message);
@@ -165,7 +170,6 @@ class CreateServiceProvider extends ChangeNotifier {
   }
 
   Future<void> pickImages(BuildContext context) async {
-    _imgs = [];
     final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
       _imgs.add(File(img.path));
@@ -184,14 +188,16 @@ class CreateServiceProvider extends ChangeNotifier {
 
   Future<void> uploadImageToStorage() async {
     if (_imgs.isNotEmpty) {
+       _uploading = true;
       try {
         final List<Future<String>> uploadFutures = _imgs.map((img) async {
           final fileBytes = await img.readAsBytes(); // Read file contents
           return UtilityClass.uploadedImg("serviceImgs", fileBytes);
         }).toList();
 
-        _imgUrls = await Future.wait(uploadFutures);
-
+        _imgUrls += await Future.wait(uploadFutures);
+        _uploading = false;
+        _imgs.remove;
         print("urls: $_imgUrls");
       } catch (err) {
         _message = err.toString();

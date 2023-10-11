@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:serv_now/main.dart';
 import 'package:serv_now/models/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../repository/shared_preference.dart';
@@ -17,114 +18,115 @@ class ProfileProvider extends ChangeNotifier {
   String _email = "";
   String _bio = "";
   String _userId = "";
-  bool isDark = false;
+  bool _isDark = false;
+  bool _isLoading = false;
+  bool _isUser = false;
   Uint8List? _image;
   String _imageBase64 = "";
   String _imageUrl = "";
-  
+
   String get imageUrl => _imageUrl;
   String get name => _name;
+  bool get isUser => _isUser;
+  bool get isDark => _isDark;
+  bool get isLoading => _isLoading;
   String get contact => _contact;
   String get message => _message;
   String get email => _email;
   String get bio => _bio;
   String get userId => _userId;
   Uint8List? get image => _image;
-  
-  
+
   String? get imageBase64 => _imageBase64;
   Map<String, dynamic>? profileData; // Store retrieved contact information
 
   ProfileProvider() {
     // Automatically load contact information when the provider is created
-    loadprofileData(); 
+    loadprofileData();
   }
 
   Future<void> createUser(UserModel user, BuildContext context) async {
-  final fullName = user.fullName.trim();
-  final email = user.email?.trim();
-  final phone = user.phone.trim();
+    final fullName = user.fullName.trim();
+    final email = user.email?.trim();
+    final phone = user.phone.trim();
 
-  if (fullName.isEmpty || phone.isEmpty) {
-    _message = "Please fill in all fields";
-    showErrorSnackbar(context, _message);
-    return;
-    // Exit early if any field is empty
-  }
-
-  if (email != null) {
-    if (!isEmailValid(email)) {
-      _message = "Invalid email format";
+    if (fullName.isEmpty || phone.isEmpty) {
+      _message = "Please fill in all fields";
       showErrorSnackbar(context, _message);
-      return; // Exit early if email format is invalid
-    }
-  }
-
-  try {
-    _message = "Updating...";
-    saveProfile(
-            _userId,
-            user.fullName,
-            user.phone,
-            user.bio ?? '',
-            user.email ?? '',
-            user.img ?? '');
-            
-    showLoadingDialog(context); // Show loading spinner
-
-    if (await isPhoneExists(contact)) {
-      // Phone number exists, update user
-      print("old user");
-      updateUserInfo(contact, user, context);
-    } else {
-      // Phone number doesn't exist, create user
-      print("new user");
-      await _db.collection("users").add(user.toJson());
-      _message = "Saved Successfully!";
+      return;
+      // Exit early if any field is empty
     }
 
-    Navigator.pop(context); // Hide loading spinner
-    showSuccessSnackbar(context, _message);
-  } catch (error) {
-    _message = "Failed, Try again"; // Print the Firestore error
-    showErrorSnackbar(context, _message);
-  } finally {
-    loadprofileData();
+    if (email != null) {
+      if (!isEmailValid(email)) {
+        _message = "Invalid email format";
+        showErrorSnackbar(context, _message);
+        return; // Exit early if email format is invalid
+      }
+    }
+   _isLoading = true; 
     notifyListeners();
-  }
-  delayLoad();
-}
+    try {
+      saveProfile(_userId, user.fullName, user.phone, user.bio ?? '',
+          user.email ?? '', user.img ?? '', true);
 
-void showLoadingDialog(BuildContext context) {
-  showDialog(
-    context: context,
-    barrierDismissible: false,
-    builder: (BuildContext context) {
-      return const Center(
-        child: CircularProgressIndicator(), // Show loading spinner
-      );
-    },
-  );
-}
+      //showLoadingDialog(context); // Show loading spinner
+
+      if (await isPhoneExists(contact)) {
+        // Phone number exists, update user
+        updateUserInfo(contact, user, context);
+
+      } else {
+        // Phone number doesn't exist, create user
+        print("new user");
+        await _db.collection("users").add(user.toJson());
+        _message = "Saved Successfully!";
+         await navigatorKey.currentState!.pushNamed('profile');
+      }
+
+      await Future.delayed(const Duration(seconds: 3));
+      _isLoading = false; // Hide loading spinner
+      showSuccessSnackbar(context, _message);
+    } catch (error) {
+      _message = "Failed, Try again"; // Print the Firestore error
+      showErrorSnackbar(context, _message);
+    } finally {
+      loadprofileData();
+      notifyListeners();
+    }
+    delayLoad();
+  }
+
+  void showLoadingDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return const Center(
+          child: CircularProgressIndicator(), // Show loading spinner
+        );
+      },
+    );
+  }
 
   Future<void> delayLoad() async {
-  await Future.delayed(Duration(seconds: 1)); // Delay for one second
-  // Call the method you want to execute after the delay
-  loadprofileData();
-}
+    await Future.delayed(Duration(seconds: 1)); // Delay for one second
+    // Call the method you want to execute after the delay
+    loadprofileData();
+  }
 
   Future<void> fetchUserData() async {
     try {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await FirebaseFirestore.instance
               .collection("users")
-               .where("phone", isEqualTo: contact)
+              .where("phone", isEqualTo: contact)
               .get();
 
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
-          querySnapshot.docs; 
+          querySnapshot.docs;
       // Process the documents as needed
-        for (var document in documents) {
+      for (var document in documents) {
         // Access document data using document.data()
         final userData = document.data();
         _userId = document.id;
@@ -136,50 +138,48 @@ void showLoadingDialog(BuildContext context) {
             userData['phone'] ?? '',
             userData['bio'] ?? '',
             userData['email'] ?? '',
-            userData['img'] ?? '');
+            userData['img'] ?? '',
+            userData['isUser'] ?? '');
       }
     } catch (error) {
       print("Firestore Error1 fetch: $error");
     }
   }
 
-  Future<void> updateUserInfo(String userId, UserModel updatedUser, BuildContext context) async {
-    
+  Future<void> updateUserInfo(
+      String userId, UserModel updatedUser, BuildContext context) async {
     try {
-
-      await _db
-          .collection("users")
-          .doc(_userId)
-          .update(updatedUser.toJson());
+      await _db.collection("users").doc(_userId).update(updatedUser.toJson());
       _message = "Info updated successfully.";
       showSuccessSnackbar(context, _message);
+      await navigatorKey.currentState!.pushNamed('profile');
     } catch (error) {
       _message = "Update Failed, Try again.";
-       showErrorSnackbar(context, _message);
+      showErrorSnackbar(context, _message);
       // Handle error as needed
     }
   }
 
-  Future<void> saveProfile(String userId, String name, String phoneNumber, String bio,
-      String email, String img) async {
+  Future<void> saveProfile(String userId, String name, String phoneNumber,
+      String bio, String email, String img, bool isUser) async {
     await SharedPreferencesHelper.saveProfile(
-        userId, name, phoneNumber, bio, email, img);     
+        userId, name, phoneNumber, bio, email, img, isUser);
   }
 
   Future<bool> isPhoneExists(String phoneNumber) async {
-  try {
-    final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-        await FirebaseFirestore.instance
-            .collection("users")
-            .where("phone", isEqualTo: phoneNumber)
-            .get();
+    try {
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
+          await FirebaseFirestore.instance
+              .collection("users")
+              .where("phone", isEqualTo: phoneNumber)
+              .get();
 
-    return querySnapshot.docs.isNotEmpty;
-  } catch (error) {
-    print("Firestore Error: $error");
-    return false; // Return false on error or if phone number doesn't exist
+      return querySnapshot.docs.isNotEmpty;
+    } catch (error) {
+      print("Firestore Error: $error");
+      return false; // Return false on error or if phone number doesn't exist
+    }
   }
-}
 
   bool isEmailValid(String email) {
     // Use a regular expression to validate email format
@@ -217,6 +217,8 @@ void showLoadingDialog(BuildContext context) {
       _email = profileData!['email'] ?? '';
       _bio = profileData!['bio'] ?? '';
       _imageUrl = profileData!['img'] ?? '';
+      _isUser = profileData!['isUser'] ?? false;
+      print('user..$_isUser');
       //  _image = base64Decode(_imageBase64);
     }
     print("profileData $profileData");
@@ -251,10 +253,9 @@ void showLoadingDialog(BuildContext context) {
     }
   }
 
-  Future<void> uploadImageToStorage(Uint8List? img) async {   
+  Future<void> uploadImageToStorage(Uint8List? img) async {
     if (img != null) {
       try {
-  
         _imageUrl = await UtilityClass.uploadedImg("profilImages", img);
       } catch (err) {
         _message = err.toString();

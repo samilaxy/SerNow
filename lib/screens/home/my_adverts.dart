@@ -24,30 +24,46 @@ class _MyAdvertsState extends State<MyAdverts> {
 
     return Scaffold(
       appBar: const CustomAppBar(),
-      body: myAdvert.dataState ?
+      body: 
         Center(
           child:  
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
+          Stack(
             children: [
-              const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
-              const SizedBox(height: 10),
-              Text(
-                "Please wait, while services load...",
-                maxLines: 1,
-                style: GoogleFonts.poppins(
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-        ):GridView.builder(
+               if (myAdvert.noData) Center(
+             child: Text(
+                    "No service created yet",
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+           ),
+              myAdvert.dataState ? 
+              SizedBox(
+                child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
+                  const SizedBox(height: 10),
+                  Text(
+                    "Please wait, while services load...",
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                      fontSize: 13.0,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ],
+                          ),
+              ):
+          
+           GridView.builder(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10.0,
-                childAspectRatio: 1,
+                childAspectRatio: 0.90,
                 crossAxisSpacing: 10.0),
             padding: const EdgeInsets.all(20),
             itemCount: myAdvert.data.length,
@@ -56,6 +72,9 @@ class _MyAdvertsState extends State<MyAdverts> {
                service: myAdvert.data[index] 
                 );
             })
+           ],
+          ),
+        )
     );
   }
 }
