@@ -180,7 +180,7 @@ navigatorKey.currentState!.pushNamed('myAdverts');
                   ),
                   Padding(
                       padding: const EdgeInsets.only(left: 20),
-                      child: Text("My Adverts",
+                      child: Text("My Services",
                           style: GoogleFonts.poppins(
                               fontSize: 15)))
                 ])

@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        brightness: Brightness.light,
+        brightness: Brightness.dark,
         primaryColor: const Color.fromARGB(255, 194, 111, 3),
       ),
       routes: {

@@ -61,6 +61,7 @@ dependencies:
   uuid: ^3.0.7
   carousel_slider: ^4.2.1
   country_picker: ^2.0.21
+  connectivity_plus: ^5.0.0
 
 
 dev_dependencies:
