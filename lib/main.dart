@@ -6,6 +6,7 @@ import 'package:serv_now/controllers/my_adverts_provider.dart';
 import 'package:serv_now/screens/auth/phone.dart';
 import 'package:serv_now/screens/auth/verify.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:serv_now/screens/home/boomark_page.dart';
 import 'package:serv_now/screens/home/create_service_page.dart';
 import 'package:serv_now/screens/home/home.dart';
 import 'package:serv_now/screens/home/my_adverts.dart';
@@ -86,6 +87,7 @@ class MyApp extends StatelessWidget {
         'myAdverts': (context) => const MyAdverts(),
         'updateAdvert': (context) => const UpdateServicePage(),
         'createService': (context) => const CreateServicePage(),
+        'bookmark': (context) => const BookmarkPage(),
       },
     );
   }

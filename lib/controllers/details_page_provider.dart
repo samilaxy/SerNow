@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:serv_now/models/discover_model.dart';
@@ -8,6 +10,7 @@ class DetailsPageProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
   ServiceModel? _serviceData;
   DiscoverModel? _discoverData;
+  String _serId = '';
   List<DiscoverModel> _discover = [];
   List<ServiceModel> _related = [];
   bool _dataState = true;
@@ -17,6 +20,7 @@ class DetailsPageProvider extends ChangeNotifier {
   ServiceModel? get serviceData => _serviceData;
   DiscoverModel? get discoverData => _discoverData;
   List get discover => _discover;
+  String get serId => _serId;
   List get related => _related;
 
   bool get dataState => _dataState;
@@ -43,7 +47,7 @@ class DetailsPageProvider extends ChangeNotifier {
           .get();
 
       //reset discovered items array
-      _discover.remove;
+      _discover = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
         DiscoverModel service = DiscoverModel(
@@ -55,19 +59,17 @@ class DetailsPageProvider extends ChangeNotifier {
         );
         _discover.add(service);
         if (_discover.isNotEmpty) {
-          print("here ${_discover.length}");
           _dataState = false;
         }
       }
     } catch (error) {
-      // _dataState = false;
+     _dataState = false;
     }
     notifyListeners();
   }
 
   Future<void> fetchRelatedServices() async {
     await Future.delayed(const Duration(seconds: 3));
-    print("category: ${_serviceData?.category}");
     _dataState = true;
     try {
       QuerySnapshot querySnapshot = await _db
@@ -79,7 +81,7 @@ class DetailsPageProvider extends ChangeNotifier {
       //if (querySnapshot.exists) {
       //reset discovered items array
       final List<Future<void>> fetchUserDataTasks = [];
-      _related.remove;
+      _related = [];
 
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> serviceData =
@@ -102,15 +104,57 @@ class DetailsPageProvider extends ChangeNotifier {
         );
         _related.add(service);
         if (_related.isNotEmpty) {
-          print("here ${_related.length}");
           _dataState = true;
         }
         }),
         );
       }
     } catch (error) {
-      // _dataState = false;
+      _dataState = false;
     }
+    notifyListeners();
+  }
+
+ Future<void> fetchService(int index) async {
+    // await Future.delayed(const Duration(seconds: 2));
+    // _dataState = true;
+    _serId = discover[index].id;
+    try {
+      QuerySnapshot querySnapshot = await _db
+          .collection('services')
+          .where('id', isEqualTo: _serId) // Replace with the user's ID
+          .get();
+
+      //reset discovered items array
+      //  _discover = []; 
+     // if (querySnapshot.exists) {}
+     final List<Future<void>> fetchUserDataTasks = [];
+      for (QueryDocumentSnapshot document in querySnapshot.docs) {
+        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+final userId = data["userId"];
+fetchUserDataTasks.add(
+        fetchUserData(userId).then((userModel) {
+        final service = ServiceModel(
+          userId: userId,
+          title: data["title"],
+          category: data["category"],
+          price: data["price"],
+          location: data["location"],
+          description: data["description"],
+          isFavorite: data["isFavorite"],
+          status: data["status"],
+          imgUrls: data["imgUrls"],
+          user: _userModel,
+        );
+        _serviceData = service;
+        notifyListeners();
+        }),
+        );
+         notifyListeners();
+      }
+    // ignore: empty_catches
+    } catch (error) {}
+
     notifyListeners();
   }
 

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';  
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -111,9 +111,9 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                 IconButton(
                     onPressed: () {
                       //myAdvert.servId = widget.service.id!;
-                      myAdvert.fetchService(widget.service.id ?? "");
-                      print('myAdvert.servId: ${widget.service.id}');
-                      navigatorKey.currentState!.pushNamed('updateAdvert');
+                      myAdvert.fetchService(widget.service.id ?? "", context);
+                     
+                     if (myAdvert.isInternet){navigatorKey.currentState!.pushNamed('updateAdvert');}
                     },
                     icon: const Icon(
                       size: 20,

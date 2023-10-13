@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/profile_proviver.dart';
+import 'package:serv_now/screens/home/boomark_page.dart';
 import 'package:serv_now/screens/home/create_service_page.dart';
 import 'package:serv_now/screens/home/my_adverts.dart';
 import 'package:serv_now/screens/profile/update_profile_screen.dart';
@@ -128,7 +129,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                     MaterialButton(
                       minWidth: 40,
                       onPressed: () {
-                        onItemTapped(2, const MyAdverts());
+                        onItemTapped(2, const BookmarkPage());
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

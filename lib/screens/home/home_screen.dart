@@ -24,15 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
     final detailsProvider = Provider.of<DetailsPageProvider>(context);
 
     return Scaffold(
-        appBar: const CustomAppBar(),
-        body: homeProvider.dataState ?
-        Center(
-          child:  
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
+  appBar: const CustomAppBar(),
+  body: 
+  Container(
+    child: homeProvider.dataState
+      ? Center(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
+              const CircularProgressIndicator(
+                color: mainColor,
+                strokeWidth: 6,
+              ),
               const SizedBox(height: 10),
               Text(
                 "Please wait, while services load...",
@@ -44,38 +47,73 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        ):
-        GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                childAspectRatio: 0.77,
-                crossAxisSpacing: 10.0),
-                shrinkWrap: true,
-            padding: const EdgeInsets.all(16.0),
-            itemCount: homeProvider.data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return GestureDetector(
-                onTap: () {
-                  detailsProvider.serviceData = homeProvider.data[index];
-                  detailsProvider.fetchDiscoverServices();
-                  detailsProvider.fetchRelatedServices();
-                  // Navigate to the details page here, passing data[index] as a parameter
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const ServiceDetailsPage(),
-                      //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
-                    ),
-                  );
-                },
-                child: homeProvider.dataState ? const LoadingIndicator() : Flexible(
-                  child: ServiceCard(
-                    service: homeProvider.data[index] 
-                  ),
+        )
+      : MainView(homeProvider: homeProvider, detailsProvider: detailsProvider),
+  ) 
+); 
+  }
+}
+
+class MainView extends StatelessWidget {
+  const MainView({
+    super.key,
+    required this.homeProvider,
+    required this.detailsProvider,
+  });
+
+  final HomeProvider homeProvider;
+  final DetailsPageProvider detailsProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(child: MainGridView(homeProvider: homeProvider, detailsProvider: detailsProvider));
+  }
+}
+
+class MainGridView extends StatelessWidget {
+  const MainGridView({
+    super.key,
+    required this.homeProvider,
+    required this.detailsProvider,
+  });
+
+  final HomeProvider homeProvider;
+  final DetailsPageProvider detailsProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            mainAxisSpacing: 10.0,
+            childAspectRatio: 0.77,
+            crossAxisSpacing: 10.0),
+            shrinkWrap: true,
+             physics: const NeverScrollableScrollPhysics(),
+        padding: const EdgeInsets.all(16.0),
+        itemCount: homeProvider.data.length,
+        itemBuilder: (BuildContext context, int index) {
+          return GestureDetector(
+            onTap: () {
+              detailsProvider.serviceData = homeProvider.data[index];
+              detailsProvider.fetchDiscoverServices();
+              detailsProvider.fetchRelatedServices();
+              // Navigate to the details page here, passing data[index] as a parameter
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ServiceDetailsPage(),
+                  //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
                 ),
               );
-            }));
+            },
+            child: homeProvider.dataState ? const LoadingIndicator() : Flexible(
+              child: ServiceCard(
+                service: homeProvider.data[index] 
+              ),
+            ),
+          );
+        });
   }
 }
 

@@ -163,7 +163,7 @@ class ServiceDetailsPage extends StatelessWidget {
                         style: GoogleFonts.poppins(fontSize: 14)),
                     const SizedBox(height: 20),
                     const Divider(thickness: 1.5),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 20),
                     Text("Discover more Services",
                         maxLines: 1,
                         style: GoogleFonts.poppins(
@@ -176,6 +176,7 @@ class ServiceDetailsPage extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 5),
             SizedBox(
               height: 200,
               width: double.infinity,
@@ -185,7 +186,11 @@ class ServiceDetailsPage extends StatelessWidget {
                 itemCount: detailsProvider.discover.length,
                 itemBuilder: (BuildContext context, int index) {
                   return detailsProvider.dataState
-                      ? DiscoverCard(service: detailsProvider.discover[index])
+                      ? GestureDetector(
+                         onTap: () {
+                          detailsProvider.fetchService(index);
+                         },
+                        child: DiscoverCard(service: detailsProvider.discover[index]))
                       : const SizedBox(
                           height: 200,
                           width: 160,
@@ -265,14 +270,15 @@ class MyGridview extends StatelessWidget {
               detailsProvider.serviceData = detailsProvider.related[index];
               detailsProvider.fetchDiscoverServices();
               detailsProvider.fetchRelatedServices();
+              print('current data: ${detailsProvider.serviceData?.title}');
               // Navigate to the details page here, passing data[index] as a parameter
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ServiceDetailsPage(),
-                  //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
-                ),
-              );
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(
+              //     builder: (context) => const ServiceDetailsPage(),
+              //     //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+              //   ),
+              // );
             },
             child:
                 //detailsProvider.dataState ? const LoadingIndicator() :

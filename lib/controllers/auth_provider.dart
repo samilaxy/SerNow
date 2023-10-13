@@ -28,7 +28,6 @@ set contact(String? value) {
   }
   
 AuthProvider() {
-  getCode();
   loginState();
   notifyListeners();
 }
@@ -48,7 +47,6 @@ AuthProvider() {
           AuthProvider.verificationId = verificationId;
           _userPin = verificationId;
           
-          print("pin code sent ${_code}");
           notifyListeners();
           await navigatorKey.currentState!.pushNamed('verify');
           completer.complete(
@@ -64,7 +62,6 @@ AuthProvider() {
 
       return completer.future;
     } catch (e) {
-      print('An error occurred during verification: $e');
       completer
           .complete(null); // Complete with null in case of verification error
       return completer.future;
@@ -93,10 +90,7 @@ AuthProvider() {
       // save login state
       isLogin(true);
       completer.complete(userCredential.user);
-      print(
-          'User signed in with verification code: ${userCredential.user?.uid}');
     } catch (e) {
-      print('Error signing in with verification code: $e');
       completer.complete(null); // Complete with null in case of sign-in error
     }
 
@@ -126,10 +120,10 @@ AuthProvider() {
   }
 
 Future<bool> loginState() async {
-  //getCode();
+ 
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool isLoggedIn = prefs.getBool('login') ?? false;
-  print("loginstatus: $isLoggedIn");
+   if (!isLoggedIn) {getCode();}
   notifyListeners();
   return isLoggedIn;
 }
@@ -139,7 +133,6 @@ Future<void> getCode() async {
   //await Future.delayed(const Duration(seconds: 2));
   _code = countryCode;
   notifyListeners();
-  print('my code: $_code');
 }
 
 }

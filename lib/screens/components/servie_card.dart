@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:serv_now/models/service_model.dart';
@@ -6,51 +5,56 @@ import 'package:serv_now/screens/components/image_with_placeholder.dart';
 
 import '../../Utilities/constants.dart';
 
-class ServiceCard extends StatelessWidget {
-
+class ServiceCard extends StatefulWidget {
   final ServiceModel service;
 
-   const ServiceCard({
-    super.key,
-    required this.service
-  });
-  
+  const ServiceCard({super.key, required this.service});
+
+  @override
+  State<ServiceCard> createState() => _ServiceCardState();
+}
+
+class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     String currency = "GHS ";
     return Container(
-     // width: double.infinity,
+      // width: double.infinity,
       decoration: BoxDecoration(
-                         // shape: BoxShape.circle,
-                         borderRadius: const BorderRadius.all( Radius.circular(10.0)),
-                          border: Border.all(
-                            color: Colors.grey, // Set the border color
-                            width: 0.2, // Set the border width
-                          ),
-                        ),
+        // shape: BoxShape.circle,
+        borderRadius: const BorderRadius.all(Radius.circular(10.0)),
+        border: Border.all(
+          color: Colors.grey, // Set the border color
+          width: 0.2, // Set the border width
+        ),
+      ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-              height: 130,
-              child: Stack(
+            height: 130,
+            child: Stack(
               alignment: Alignment.bottomLeft,
               children: [
                 SizedBox(
-                   width: double.infinity,
-                    height: 180.0,
-                  child: ClipRRect( borderRadius: const BorderRadius.only( topLeft: Radius.circular(5), topRight: Radius.circular(5)),
-                    child: ImageWithPlaceholder(imageUrl: service.imgUrls[0], placeholderUrl: noImg)),
+                  width: double.infinity,
+                  height: 180.0,
+                  child: ClipRRect(
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(5),
+                          topRight: Radius.circular(5)),
+                      child: ImageWithPlaceholder(
+                          imageUrl: widget.service.imgUrls[0],
+                          placeholderUrl: noImg)),
                 ),
                 Container(
                   padding: const EdgeInsets.all(8.0),
                   height: 55,
-                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.6)
-                  ),
+                  width: double.infinity,
+                  decoration:
+                      BoxDecoration(color: Colors.black.withOpacity(0.6)),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
@@ -58,7 +62,7 @@ class ServiceCard extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
                         child: Text(
-                          service.title,
+                          widget.service.title,
                           maxLines: 1,
                           style: GoogleFonts.poppins(
                             color: Colors.white,
@@ -68,7 +72,7 @@ class ServiceCard extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        '$currency${service.price}',
+                        '$currency${widget.service.price}',
                         style: GoogleFonts.poppins(
                           color: Colors.white,
                           fontSize: 13.0,
@@ -78,8 +82,9 @@ class ServiceCard extends StatelessWidget {
                   ),
                 ),
               ],
-            ),),
-          SizedBox( 
+            ),
+          ),
+          SizedBox(
             child: Column(
               children: [
                 Padding(
@@ -96,7 +101,8 @@ class ServiceCard extends StatelessWidget {
                                 child: Container(
                                     color: Colors.grey,
                                     child: ImageWithPlaceholder(
-                                        imageUrl: service.user?.img ?? "",
+                                        imageUrl:
+                                            widget.service.user?.img ?? "",
                                         placeholderUrl: tProfileImage)))),
                         Expanded(
                           child: Padding(
@@ -104,10 +110,10 @@ class ServiceCard extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(service.user?.fullName ?? "",
+                                Text(widget.service.user?.fullName ?? "",
                                     maxLines: 1,
                                     style: GoogleFonts.poppins(fontSize: 12)),
-                                Text(service.category,
+                                Text(widget.service.category,
                                     maxLines: 1,
                                     style: GoogleFonts.poppins(fontSize: 8)),
                               ],
@@ -117,40 +123,53 @@ class ServiceCard extends StatelessWidget {
                         SizedBox(
                           width: 25,
                           child: Padding(
-                            padding: const EdgeInsets.only(right:0.0),
+                            padding: const EdgeInsets.only(right: 0.0),
                             child: IconButton(
-                                onPressed: () {},
-                                icon: Icon(size: 20, Icons.bookmark, color: service.isFavorite ? mainColor : Colors.grey)),
+                                onPressed: () {
+                                  setState(() {
+                                    widget.service.isFavorite =
+                                        !widget.service.isFavorite;
+                                  });
+                                },
+                                icon: Icon(
+                                    size: 20,
+                                    Icons.bookmark,
+                                    color: widget.service.isFavorite
+                                        ? mainColor
+                                        : Colors.grey)),
                           ),
                         )
                       ],
                     ),
                   ),
                 ),
-                 Padding(
-              padding: const EdgeInsets.only(left: 40.0, right: 10),
-              child: SizedBox(
-                // height: 10,
-                width: double.infinity ,
-                child: Row(
-                 mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Flexible(
-                      flex: 1,
-                      child: Text(service.location, maxLines: 1, overflow: TextOverflow.ellipsis, style: GoogleFonts.poppins(fontSize: 10, color: Colors.grey))),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 3.0),
-                      child: Icon(size: 12, Icons.location_on),
+                Padding(
+                  padding: const EdgeInsets.only(left: 40.0, right: 10),
+                  child: SizedBox(
+                    // height: 10,
+                    width: double.infinity,
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                            flex: 1,
+                            child: Text(widget.service.location,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 10, color: Colors.grey))),
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 3.0),
+                          child: Icon(size: 12, Icons.location_on),
+                        ),
+                      ],
                     ),
-                ],
-                ),
-              ),             
-            )
+                  ),
+                )
               ],
             ),
           ),
-         
         ],
       ),
     );

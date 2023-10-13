@@ -183,7 +183,7 @@ navigatorKey.currentState!.pushNamed('myAdverts');
                       child: Text("My Adverts",
                           style: GoogleFonts.poppins(
                               fontSize: 15)))
-                ]),
+                ])
               ),
               const SizedBox(height: 20),
               GestureDetector(

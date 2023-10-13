@@ -1,4 +1,4 @@
-import 'dart:ffi';
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -20,6 +20,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   bool _noData = false;
   bool _uploading = false;
   bool _isloading = false;
+  bool _isInternet = false;
   String _userId = "";
   String _servId = "";
   String _docId = "";
@@ -36,7 +37,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   List _imgUrls = [];
 
   List get data => _data;
-   List get imgs => _imgs;
+  List get imgs => _imgs;
   UserModel? _userModel;
   Map<String, dynamic>? profileData;
   String get userId => _userId;
@@ -47,6 +48,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   bool get noData => _noData;
   bool get uploading => _uploading;
   bool get isloading => _isloading;
+  bool get isInternet => _isInternet;
   String get message => _message;
   List get imgUrls => _imgUrls;
   String get title => _title;
@@ -101,8 +103,6 @@ Future<void> fetchServices() async {
     } else {
       _dataState = false; // No data available
       _noData = true;
-      print('_noData $_noData');
-      print('_dataState $_dataState');
     }
 
   } catch (error) {
@@ -118,11 +118,10 @@ Future<void> fetchServices() async {
     if (profileData != null) {
       _userId = profileData!['userId'] ?? '';
     }
-    print("profileData $profileData");
     notifyListeners();
   }
 
-  Future<void> fetchService(String servId) async {
+  Future<void> fetchService(String servId, BuildContext context) async {
     // await Future.delayed(const Duration(seconds: 2));
     // _dataState = true;
     try {
@@ -132,12 +131,12 @@ Future<void> fetchServices() async {
           .get();
 
       //reset discovered items array
-      //  _discover = [];
+      //  _discover = []; 
+     // if (querySnapshot.exists) {}
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
         _docId = document.id;
-        print('doc id is..: $_docId');
         _servId = data['id'] ?? '';
         _title = data['title'] ?? '';
         _category = data['category'] ?? '';
@@ -157,10 +156,18 @@ Future<void> fetchServices() async {
         List<String> subParts = citySubParts[1].split('.');
         // Extract the sub (the second part of citySubParts)
         _area = subParts[0].trim();
+        _isInternet = true;
+         notifyListeners();
       }
     } catch (error) {
-      // _dataState = false;
+      _isInternet = false;
+      _message = "No internet Connection, Try again later.";
+      showErrorSnackbar(context, _message);
+      notifyListeners();
     }
+     _message = "No internet Connection, Try again later.";
+      showErrorSnackbar(context, _message);
+    print(' message: $_message');
     notifyListeners();
   }
 
@@ -204,10 +211,16 @@ Future<void> fetchServices() async {
       
       await navigatorKey.currentState!.pushNamed('myAdverts');
     } catch (error) {
+       _isloading = false;
       _message = "Update Failed, Try again.";
+      print(' code message : $error');
+       notifyListeners();
       showErrorSnackbar(context, _message);
       // Handle error as needed
     }
+     print(' code message : $_message');
+    // _isloading = true; 
+    // notifyListeners();
   }
 
   void showSuccessSnackbar(BuildContext context, String message) {
