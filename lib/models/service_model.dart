@@ -9,7 +9,7 @@ class ServiceModel  {
   final String price;
   final String location;
   final String description;
-  late final bool isFavorite;
+  bool isFavorite;
   final bool status;
   final List imgUrls;
   final UserModel? user;

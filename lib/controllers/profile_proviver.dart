@@ -218,16 +218,14 @@ class ProfileProvider extends ChangeNotifier {
       _bio = profileData!['bio'] ?? '';
       _imageUrl = profileData!['img'] ?? '';
       _isUser = profileData!['isUser'] ?? false;
-      print('user..$_isUser');
       //  _image = base64Decode(_imageBase64);
     }
-    print("profileData $profileData");
     fetchUserData();
     notifyListeners();
   }
 
-  Future<void> colorMode() async {
-    isDark == true ? false : true;
+   Future<void> colorMode(BuildContext context) async {
+   _isDark = !isDark;
     notifyListeners();
   }
 
@@ -238,7 +236,6 @@ class ProfileProvider extends ChangeNotifier {
 
   Future<void> selectImg() async {
     Uint8List img = await pickImage(ImageSource.gallery);
-    //uploadImageToStorage(_image);
     _image = img;
     _imageBase64 = base64Encode(img);
     await uploadImageToStorage(_image);
@@ -259,9 +256,19 @@ class ProfileProvider extends ChangeNotifier {
         _imageUrl = await UtilityClass.uploadedImg("profilImages", img);
       } catch (err) {
         _message = err.toString();
-        print(_message);
       }
     }
+    notifyListeners();
+  }
+}
+
+class ThemeProvider with ChangeNotifier {
+  bool _isDarkMode = false;
+
+  ThemeMode get currentTheme => _isDarkMode ? ThemeMode.dark : ThemeMode.light;
+
+  void toggleTheme() {
+    _isDarkMode = !_isDarkMode;
     notifyListeners();
   }
 }

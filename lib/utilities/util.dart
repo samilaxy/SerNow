@@ -1,4 +1,5 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 import 'dart:typed_data';
@@ -6,7 +7,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
-final FirebaseStorage _storage = FirebaseStorage.instance;
+final FirebaseFirestore _db = FirebaseFirestore.instance;
 
 class UtilityClass {
 
@@ -20,7 +21,6 @@ static Future<String> uploadedImg(String imageName, Uint8List file) async {
     String imgUrl = await ref.getDownloadURL();
     return imgUrl;
   } catch (e) {
-    print("Error uploading image: $e");
     throw FirebaseImageUploadException("Image upload failed");
   }
 }
@@ -56,26 +56,38 @@ static Future<String> getCurrentLocation() async {
 }
 
 
+  static Future<void> bookmarkService(String? servId, bool isFavorite) async {
+  bool isBookmark = !isFavorite;
+  BookmarkModel bookmark = BookmarkModel(isFavorite: isBookmark);
+    
+    try {
+      
+     // await Future.delayed(const Duration(seconds: 01));
+      await _db.collection("services").doc(servId).update(bookmark.toJson());
+      
+    } catch (error) {
+      print(error.toString());
+    }
 
-// Future<String> saveData({
-//   required String name,
-//   required String bio,
-//   required Uint8List file
-// }) async {
-//   String resp = " Some Error Occurred ";
-
-//   try {
-//     await uploadedImgToStorage("profileImages", file);
-//   }
-//   catch(err) {
-//     resp = err.toString();
-//     return resp;
-//   }
-// }
+  }
 }
 
 class FirebaseImageUploadException implements Exception {
   final String message;
 
   FirebaseImageUploadException(this.message);
+}
+
+class BookmarkModel  {
+  final bool isFavorite;
+  
+  BookmarkModel({
+    required this.isFavorite,
+    });
+
+    toJson() {
+      return {
+        "isFavorite": isFavorite,
+      };
+    }
 }

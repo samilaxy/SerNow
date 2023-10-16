@@ -27,7 +27,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> fetchAllServices() async {
-
+print("all servicesv");
     try {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await _db.collection("services")
@@ -38,16 +38,17 @@ class HomeProvider extends ChangeNotifier {
 // if (querySnapshot.exists) {
 
       final List<Future<void>> fetchUserDataTasks = [];
-
+      _data = []; 
       // Process the documents and add fetchUserData tasks
       for (var document in documents) {
         final serviceData = document.data();
         final userId = serviceData["userId"];
-
+       
         // Add a task to fetch user data concurrently
         fetchUserDataTasks.add(
           fetchUserData(userId).then((userModel) {
             final serviceCard = ServiceModel(
+              id: document.id,
               userId: userId,
               title: serviceData["title"],
               category: serviceData["category"],
@@ -85,6 +86,7 @@ class HomeProvider extends ChangeNotifier {
   }
 
  Future<void> fetchBookmarkServices() async {
+  await Future.delayed(const Duration(seconds: 1));
    try {
       QuerySnapshot querySnapshot = await _db
         .collection('services')
@@ -93,10 +95,11 @@ class HomeProvider extends ChangeNotifier {
         
       
 // if (querySnapshot.exists) {
-
+      _bookmarkData = [];
       final List<Future<void>> fetchUserDataTasks = [];
 
       // Process the documents and add fetchUserData tasks
+      
       for (var document in querySnapshot.docs) {
         final serviceData = document.data() as Map<String, dynamic>;;
         final userId = serviceData["userId"];
@@ -105,6 +108,7 @@ class HomeProvider extends ChangeNotifier {
         fetchUserDataTasks.add(
           fetchUserData(userId).then((userModel) {
             final serviceCard = ServiceModel(
+              id: document.id,
               userId: userId,
               title: serviceData["title"],
               category: serviceData["category"],
@@ -116,9 +120,8 @@ class HomeProvider extends ChangeNotifier {
               imgUrls: serviceData["imgUrls"],
               user: _userModel,
             );
-
             _bookmarkData.add(serviceCard);
-            print('object count: ${_bookmarkData.length}');
+             notifyListeners();
           }),
         );
         //}

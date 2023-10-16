@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:serv_now/controllers/home_provider.dart';
 import 'package:serv_now/models/service_model.dart';
+
+import '../../utilities/util.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 
 import '../../Utilities/constants.dart';
 
 class ServiceCard extends StatefulWidget {
   final ServiceModel service;
+  
 
   const ServiceCard({super.key, required this.service});
 
@@ -18,6 +23,8 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     String currency = "GHS ";
+    final homeProvider = Provider.of<HomeProvider>(context);
+    
     return Container(
       // width: double.infinity,
       decoration: BoxDecoration(
@@ -127,8 +134,13 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    widget.service.isFavorite =
-                                        !widget.service.isFavorite;
+                                    UtilityClass.bookmarkService(widget.service.id, widget.service.isFavorite);
+                                    widget.service.isFavorite = !widget.service.isFavorite;
+                                    //  widget.service = widget.service.copyWith(isFavorite: !widget.service.isFavorite);
+                                        print(' favorite bool:${widget.service.id}');
+                                       // homeProvider.fetchAllServices();
+                                        homeProvider.fetchBookmarkServices();
+
                                   });
                                 },
                                 icon: Icon(

@@ -226,7 +226,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+    final profileProvider = Provider.of<ProfileProvider>(context);
+    
+    //var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return AppBar(
       elevation: 0,
       leading: IconButton(
@@ -244,9 +246,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
             onPressed: () {
-              // ProfileProvider.colorMode();
+               profileProvider.colorMode(context);
+               context.read<ThemeProvider>().toggleTheme();
             },
-            icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
+            icon: Icon(profileProvider.isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
                 color: Theme.of(context).iconTheme.color))
       ],
     );

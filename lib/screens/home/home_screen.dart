@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now/controllers/details_page_provider.dart';
 import 'package:serv_now/controllers/home_provider.dart';
+import 'package:serv_now/main.dart';
 import 'package:serv_now/screens/components/shimmer_loader.dart';
-
 import '../../Utilities/constants.dart';
 import '../components/servie_card.dart';
 import 'service_details_page.dart';
@@ -17,40 +16,55 @@ class HomeScreen extends StatefulWidget {
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> with RouteAware {
+  
+  @override
+  void didPush() {
+    final homeProvider = Provider.of<HomeProvider>(context);
+    homeProvider.fetchAllServices();
+    super.didPush();
+  }
+  
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
     final detailsProvider = Provider.of<DetailsPageProvider>(context);
 
     return Scaffold(
-  appBar: const CustomAppBar(),
-  body: 
-  Container(
-    child: homeProvider.dataState
-      ? Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const CircularProgressIndicator(
-                color: mainColor,
-                strokeWidth: 6,
-              ),
-              const SizedBox(height: 10),
-              Text(
-                "Please wait, while services load...",
-                maxLines: 1,
-                style: GoogleFonts.poppins(
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ],
-          ),
-        )
-      : MainView(homeProvider: homeProvider, detailsProvider: detailsProvider),
-  ) 
-); 
+        appBar: const CustomAppBar(),
+        body: Container(
+          child: homeProvider.dataState
+              ? Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const CircularProgressIndicator(
+                        color: mainColor,
+                        strokeWidth: 6,
+                      ),
+                      const SizedBox(height: 10),
+                      Text(
+                        "Please wait, while services load...",
+                        maxLines: 1,
+                        style: GoogleFonts.poppins(
+                          fontSize: 13.0,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              : MainView(
+                  homeProvider: homeProvider, detailsProvider: detailsProvider),
+        ));
   }
 }
 
@@ -66,7 +80,9 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(child: MainGridView(homeProvider: homeProvider, detailsProvider: detailsProvider));
+    return SingleChildScrollView(
+        child: MainGridView(
+            homeProvider: homeProvider, detailsProvider: detailsProvider));
   }
 }
 
@@ -82,14 +98,16 @@ class MainGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10.0,
             childAspectRatio: 0.77,
             crossAxisSpacing: 10.0),
-            shrinkWrap: true,
-             physics: const NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         padding: const EdgeInsets.all(16.0),
         itemCount: homeProvider.data.length,
         itemBuilder: (BuildContext context, int index) {
@@ -107,11 +125,11 @@ class MainGridView extends StatelessWidget {
                 ),
               );
             },
-            child: homeProvider.dataState ? const LoadingIndicator() : Flexible(
-              child: ServiceCard(
-                service: homeProvider.data[index] 
-              ),
-            ),
+            child: homeProvider.dataState
+                ? const LoadingIndicator()
+                : Flexible(
+                    child: ServiceCard(service: homeProvider.data[index]),
+                  ),
           );
         });
   }

@@ -9,14 +9,30 @@ import 'package:serv_now/main.dart';
 import 'package:serv_now/screens/components/my_advert_card.dart';
 
 
-class MyAdverts extends StatefulWidget with WidgetsBindingObserver {
+class MyAdverts extends StatefulWidget {
   const MyAdverts({super.key});
 
   @override
   State<MyAdverts> createState() => _MyAdvertsState();
 }
 
-class _MyAdvertsState extends State<MyAdverts> {
+class _MyAdvertsState extends State<MyAdverts> with RouteAware {
+  @override
+  void didPush() {
+   final myAdvert =
+        Provider.of<MyAdvertsProvider>(context);
+         myAdvert.fetchServices();
+    super.didPush();
+  }
+  
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+    super.initState();
+  }
+  
   @override
   Widget build(BuildContext context) {
       final myAdvert =

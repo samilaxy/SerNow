@@ -26,7 +26,7 @@ void main() async {
   );
   await FirebaseAppCheck.instance.activate();
   AuthProvider authProvider = AuthProvider();
- // ProfileProvider proProvider = ProfileProvider();
+  //ProfileProvider proProvider = ProfileProvider();
   //proProvider.saveProfile("","name", "+233501370334", "bio", "email", "img");
 
   bool userLoggedIn = await authProvider.loginState();
@@ -39,21 +39,24 @@ void main() async {
         ChangeNotifierProvider<AuthProvider>(
           create: (_) => AuthProvider(),
         ),
-         ChangeNotifierProvider<HomeProvider>(
+        ChangeNotifierProvider<HomeProvider>(
           create: (_) => HomeProvider(),
         ),
         ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
         ),
-         ChangeNotifierProvider<CreateServiceProvider>(
+        ChangeNotifierProvider<CreateServiceProvider>(
           create: (_) => CreateServiceProvider(),
         ),
-         ChangeNotifierProvider<DetailsPageProvider>(
+        ChangeNotifierProvider<DetailsPageProvider>(
           create: (_) => DetailsPageProvider(),
         ),
         ChangeNotifierProvider<MyAdvertsProvider>(
           create: (_) => MyAdvertsProvider(),
         ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
+        )
       ],
       child: MyApp(initialRoute: initialRoute),
     ),
@@ -61,23 +64,28 @@ void main() async {
 }
 
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
-
+final RouteObserver<ModalRoute> routeObserver = RouteObserver<ModalRoute>();
 class MyApp extends StatelessWidget {
-  final String
-      initialRoute; // Add this line to declare the initialRoute parameter
+  final String initialRoute; // Add this line to declare the initialRoute parameter
 
   const MyApp({Key? key, required this.initialRoute}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    ProfileProvider proProvider = ProfileProvider();
+    
     return MaterialApp(
       navigatorKey: navigatorKey,
       initialRoute: initialRoute, // Use the provided initialRoute
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: const Color.fromARGB(255, 194, 111, 3),
-      ),
+      navigatorObservers: [routeObserver],
+      themeMode: context.watch<ThemeProvider>().currentTheme,
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      // theme: ThemeData(
+      //   brightness: proProvider.isDark ? Brightness.dark : Brightness.light ,
+      //   primaryColor: const Color.fromARGB(255, 194, 111, 3),
+      // ),
       routes: {
         'phone': (context) => const MyPhone(),
         'home': (context) => const HomePage(),

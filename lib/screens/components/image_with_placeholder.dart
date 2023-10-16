@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ImageWithPlaceholder extends StatelessWidget {
   final String imageUrl;
@@ -12,12 +11,12 @@ class ImageWithPlaceholder extends StatelessWidget {
   Widget build(BuildContext context) {
     return CachedNetworkImage(
         imageUrl: imageUrl,
-        imageBuilder: (context, ImageProvider) => Container(
+        imageBuilder: (context, imgProvider) => Container(
               width: MediaQuery.of(context).size.width,
               height: double.infinity,
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: ImageProvider, fit: BoxFit.cover)),
+                      image: imgProvider, fit: BoxFit.cover)),
             ),
         errorWidget: (context, url, error) {
           return  SizedBox(

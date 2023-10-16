@@ -263,7 +263,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                          String uniqueId = serviceProvider.generateUniqueId();
+                        //  String uniqueId = serviceProvider.generateUniqueId();
                           final userId = serviceProvider.userId;
                           final title = titleController.text.trim();
                           final price = priceController.text.trim();
@@ -275,7 +275,6 @@ class _CreateServicePageState extends State<CreateServicePage> {
                           String? category = _selectedOption;
 
                           final serviceModel = ServiceModel(
-                            id: uniqueId,
                             userId: userId,
                             title: title,
                             category: category ?? "",

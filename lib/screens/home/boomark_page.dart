@@ -67,7 +67,6 @@ class _BookmarkPageState extends State<BookmarkPage> {
                           childAspectRatio: 0.77,
                           crossAxisSpacing: 10.0),
                   shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.all(16.0),
                   itemCount: homeProvider.bookmarkData.length,
                   itemBuilder: (BuildContext context, int index) {
@@ -75,9 +74,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                       onTap: () {
                         detailsProvider.serviceData =
                             homeProvider.bookmarkData[index];
-
                         detailsProvider.fetchDiscoverServices();
-
                         detailsProvider.fetchRelatedServices();
 
                         // Navigate to the details page here, passing data[index] as a parameter
@@ -111,7 +108,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-          onPressed: () => navigatorKey.currentState!.pushNamed('profile'),
+          onPressed: () => navigatorKey.currentState!.pushNamed('home'),
           icon: Icon(LineAwesomeIcons.angle_left,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,

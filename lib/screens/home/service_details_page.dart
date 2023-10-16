@@ -10,19 +10,29 @@ import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/screens/components/servie_card.dart';
 import 'package:serv_now/screens/components/shimmer_loader.dart';
 import 'package:serv_now/utilities/constants.dart';
+import 'package:serv_now/utilities/util.dart';
 
-class ServiceDetailsPage extends StatelessWidget {
-  //ServiceModel serviceData;
+class ServiceDetailsPage extends StatefulWidget {
+  void onPageVisible() {
+    // This function will be executed when the page becomes visible.
+    // Place your logic here.
+  }
 
   const ServiceDetailsPage({super.key});
 
   @override
+  State<ServiceDetailsPage> createState() => _ServiceDetailsPageState();
+}
+
+class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
+  @override
   Widget build(BuildContext context) {
     final detailsProvider = Provider.of<DetailsPageProvider>(context);
     ServiceModel? serviceData = detailsProvider.serviceData;
-    String currency = "\$";
+    String currency = "\$ ";
     return Scaffold(
-      appBar: CustomAppBar(serviceData?.isFavorite ?? false),
+      appBar:
+          CustomAppBar(serviceData?.isFavorite ?? false, serviceData?.id ?? ""),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -83,13 +93,11 @@ class ServiceDetailsPage extends StatelessWidget {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                Flexible(
-                                    flex: 1,
-                                    child: Text(serviceData?.location ?? "",
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 12, color: Colors.grey))),
+                                Text(serviceData?.location ?? "",
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: GoogleFonts.poppins(
+                                        fontSize: 12, color: Colors.grey)),
                                 const Padding(
                                   padding: EdgeInsets.symmetric(vertical: 5.0),
                                   child: Icon(size: 12, Icons.location_on),
@@ -187,10 +195,11 @@ class ServiceDetailsPage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   return detailsProvider.dataState
                       ? GestureDetector(
-                         onTap: () {
-                          detailsProvider.fetchService(index);
-                         },
-                        child: DiscoverCard(service: detailsProvider.discover[index]))
+                          onTap: () {
+                            detailsProvider.fetchService(index);
+                          },
+                          child: DiscoverCard(
+                              service: detailsProvider.discover[index]))
                       : const SizedBox(
                           height: 200,
                           width: 160,
@@ -203,8 +212,8 @@ class ServiceDetailsPage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             const Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 16.0),
-              child:  Divider(thickness: 1.5),
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Divider(thickness: 1.5),
             ),
             const SizedBox(height: 20),
             SizedBox(
@@ -270,31 +279,40 @@ class MyGridview extends StatelessWidget {
               detailsProvider.serviceData = detailsProvider.related[index];
               detailsProvider.fetchDiscoverServices();
               detailsProvider.fetchRelatedServices();
-              print('current data: ${detailsProvider.serviceData?.title}');
               // Navigate to the details page here, passing data[index] as a parameter
-              // Navigator.push(
-              //   context,
-              //   MaterialPageRoute(
-              //     builder: (context) => const ServiceDetailsPage(),
-              //     //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
-              //   ),
-              // );
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ServiceDetailsPage(),
+                  //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+                ),
+              );
             },
             child:
                 //detailsProvider.dataState ? const LoadingIndicator() :
-                Expanded(child: ServiceCard(service: detailsProvider.related[index])),
+                ServiceCard(service: detailsProvider.related[index]),
           );
         });
   }
 }
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   bool isFavorite;
+  String servId;
   CustomAppBar(
-    this.isFavorite, {
+    this.isFavorite,
+    this.servId, {
     super.key,
   });
 
+  @override
+  State<CustomAppBar> createState() => _CustomAppBarState();
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}
+
+class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -304,26 +322,27 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-                onPressed: () => Navigator.pushNamed(context, 'home'),
-                icon: const Icon(LineAwesomeIcons.angle_left)),
-            // Text("Profile", style: Theme.of(context).textTheme.titleSmall),
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(LineAwesomeIcons.angle_left),
+            ),
             IconButton(
-                onPressed: () {
-                  isFavorite = !isFavorite;
-                  // setState();
-                  // ProfileProvider.colorMode();
-                  print(isFavorite);
-                },
-                icon: Icon(
-                    size: 20,
-                    Icons.bookmark,
-                    color: isFavorite ? mainColor : Colors.grey))
+              onPressed: () {
+                setState(() {
+                  UtilityClass.bookmarkService(
+                      widget.servId, widget.isFavorite);
+                  widget.isFavorite = !widget.isFavorite;
+                  print(widget.servId);
+                });
+              },
+              icon: Icon(
+                size: 20,
+                Icons.bookmark,
+                color: widget.isFavorite ? mainColor : Colors.grey,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
