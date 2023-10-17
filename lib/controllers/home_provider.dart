@@ -27,7 +27,6 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> fetchAllServices() async {
-print("all servicesv");
     try {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await _db.collection("services")

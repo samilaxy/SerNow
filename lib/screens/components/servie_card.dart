@@ -23,7 +23,7 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     String currency = "GHS ";
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final homeProvider = Provider.of<HomeProvider>(context, listen: false);
     
     return Container(
       // width: double.infinity,

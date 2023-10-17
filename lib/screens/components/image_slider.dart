@@ -6,6 +6,8 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/utilities/constants.dart';
 
+import '../home/zoom_imageview.dart';
+
 
 class MyImageSlider extends StatefulWidget {
   final List<dynamic> imageUrls;
@@ -39,14 +41,25 @@ class _MyImageSliderState extends State<MyImageSlider> {
             items: widget.imageUrls.map((imageUrl) {
               return Builder(
                 builder: (BuildContext context) {
-                  return Container(
-                    color: Colors.grey,
-                    width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                    child: ImageWithPlaceholder(
-                                imageUrl: imageUrl,
-                                placeholderUrl: noImg,
-                              ),
+                  return GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ZoomImageView(
+                                          imageUrl: imageUrl,
+                                  placeholderUrl: noImg,),
+                                    ));
+                    },
+                    child: Container(
+                      color: Colors.grey,
+                      width: MediaQuery.of(context).size.width,
+                      margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: ImageWithPlaceholder(
+                                  imageUrl: imageUrl,
+                                  placeholderUrl: noImg,
+                                ),
+                    ),
                   );
                 },
               );

@@ -17,14 +17,25 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> with RouteAware {
-  
+  int selectedIndex = 0;
+  final List<String> _categories = [
+    'General',
+    'Barbers',
+    'Hair Dressers',
+    'Plumbers',
+    'Fashion',
+    'Mechanics',
+    "Home Services",
+    "Health & Fitness",
+    "Others"
+  ];
   @override
   void didPush() {
     final homeProvider = Provider.of<HomeProvider>(context);
     homeProvider.fetchAllServices();
     super.didPush();
   }
-  
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -32,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
     });
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
@@ -62,8 +73,101 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                     ],
                   ),
                 )
-              : MainView(
-                  homeProvider: homeProvider, detailsProvider: detailsProvider),
+              : Builder(builder: (context) {
+                  return CustomScrollView(slivers: <Widget>[
+                    SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: 35, // Adjust the height as needed
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: _categories.length,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: const EdgeInsets.all(5.0),
+                              child: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedIndex =
+                                        index; // Update the selected index
+                                  });
+                                  // detailsProvider.fetchService(index);
+                                  print(index);
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                        12.0), // Adjust the radius as needed
+                                    color: selectedIndex == index
+                                        ? mainColor // Highlight selected item
+                                        : const Color.fromARGB(255, 225, 220,
+                                            220), // Background color
+                                  ),
+
+                                  // height: 30,
+                                  child: Center(
+                                      child: Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Text(_categories[index],
+                                        maxLines: 1,
+                                        style: GoogleFonts.poppins(
+                                            fontSize: 10,
+                                            color: selectedIndex == index
+                                                ? Colors.white
+                                                : Colors.black)),
+                                  )),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                    SliverPadding(
+                      padding: const EdgeInsets.only(
+                          top: 10.0,
+                          right: 16,
+                          left: 16,
+                          bottom: 50), // Adjust the padding as needed
+                      sliver: SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            return GridTile(
+                                child: GestureDetector(
+                              onTap: () {
+                                detailsProvider.serviceData =
+                                    homeProvider.data[index];
+                                detailsProvider.fetchDiscoverServices();
+                                detailsProvider.fetchRelatedServices();
+                                // Navigate to the details page here, passing data[index] as a parameter
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const ServiceDetailsPage(),
+                                    //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
+                                  ),
+                                );
+                              },
+                              child: homeProvider.dataState
+                                  ? const LoadingIndicator()
+                                  : ServiceCard(
+                                      service: homeProvider.data[index]),
+                            ));
+                          },
+                          childCount: homeProvider.data.length,
+                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 16,
+                                crossAxisSpacing: 16,
+                                mainAxisExtent: 200),
+                      ),
+                    ), // MainView(
+                    //   homeProvider: homeProvider,
+                    //   detailsProvider: detailsProvider)
+                  ]);
+                }),
         ));
   }
 }
@@ -80,9 +184,8 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: MainGridView(
-            homeProvider: homeProvider, detailsProvider: detailsProvider));
+    return MainGridView(
+        homeProvider: homeProvider, detailsProvider: detailsProvider);
   }
 }
 
@@ -98,8 +201,6 @@ class MainGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    
     return GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
@@ -140,7 +241,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return SafeArea(
       child: SizedBox(
         height: kToolbarHeight,

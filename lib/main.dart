@@ -72,7 +72,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ProfileProvider proProvider = ProfileProvider();
     
     return MaterialApp(
       navigatorKey: navigatorKey,
@@ -82,10 +81,6 @@ class MyApp extends StatelessWidget {
       themeMode: context.watch<ThemeProvider>().currentTheme,
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
-      // theme: ThemeData(
-      //   brightness: proProvider.isDark ? Brightness.dark : Brightness.light ,
-      //   primaryColor: const Color.fromARGB(255, 194, 111, 3),
-      // ),
       routes: {
         'phone': (context) => const MyPhone(),
         'home': (context) => const HomePage(),

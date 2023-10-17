@@ -9,6 +9,7 @@ import '../../controllers/auth_provider.dart';
 import '../../controllers/profile_proviver.dart';
 import '../../main.dart';
 import '../components/image_with_placeholder.dart';
+import '../home/zoom_imageview.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -40,50 +41,53 @@ class ProfileScreen extends StatelessWidget {
           child: Column(
             children: [
               /// -- IMAGE
-              Stack(
-                children: [
-                  SizedBox(
-                    width: 130,
-                    height: 130,
-                    child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: const Image(image: AssetImage(tProfileImage))),
-                  ),
-                  image != null
-                      ? Container(
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            border: Border.all(
-                              color: Colors.black, // Set the border color
-                              width: 2, // Set the border width
-                            ),
-                          ),
-                          child: CircleAvatar(
-                            radius: 64,
-                            backgroundImage: MemoryImage(image),
-                          ),
-                        )
-                      : SizedBox(
-                          width: 130,
-                          height: 130,
-                          child: Container(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ZoomImageView(
+                            imageUrl: profileProvider.imageUrl,
+                            placeholderUrl: tProfileImage),
+                      ));
+                },
+                child: Stack(
+                  children: [
+                    image != null
+                        ? Container(
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               border: Border.all(
-                                color: mainColor, // Set the border color
-                                width: 1, // Set the border width
+                                color: Colors.black, // Set the border color
+                                width: 2, // Set the border width
                               ),
                             ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(100),
-                              child: ImageWithPlaceholder(
-                                imageUrl: profileProvider.imageUrl,
-                                placeholderUrl: tProfileImage,
+                            child: CircleAvatar(
+                              radius: 64,
+                              backgroundImage: MemoryImage(image),
+                            ),
+                          )
+                        : SizedBox(
+                            width: 130,
+                            height: 130,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                border: Border.all(
+                                  color: mainColor, // Set the border color
+                                  width: 1, // Set the border width
+                                ),
+                              ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(100),
+                                child: ImageWithPlaceholder(
+                                    imageUrl: profileProvider.imageUrl,
+                                    placeholderUrl: tProfileImage),
                               ),
                             ),
                           ),
-                        ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: 10),
               Text(profileProvider.name,
@@ -162,49 +166,48 @@ class ProfileScreen extends StatelessWidget {
               const Divider(),
               const SizedBox(height: 40),
               GestureDetector(
-                 onTap: () {
-navigatorKey.currentState!.pushNamed('myAdverts');
-                 },
-                child: Row(children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.grey.withOpacity(0.2),
+                  onTap: () {
+                    navigatorKey.currentState!.pushNamed('myAdverts');
+                  },
+                  child: Row(children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey.withOpacity(0.2),
+                      ),
+                      child: const Icon(
+                        LineAwesomeIcons.tags,
+                        size: 20,
+                        color: Colors.grey,
+                      ),
                     ),
-                    child: const Icon(
-                          LineAwesomeIcons.tags,
-                          size: 20, color: Colors.grey,
-                        ),
-                  ),
-                  Padding(
-                      padding: const EdgeInsets.only(left: 20),
-                      child: Text("My Services",
-                          style: GoogleFonts.poppins(
-                              fontSize: 15)))
-                ])
-              ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text("My Services",
+                            style: GoogleFonts.poppins(fontSize: 15)))
+                  ])),
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                    print("Logout");
-                          authProvider.isLogin(false);
-                          navigatorKey.currentState!.pushNamed('phone');
+                  print("Logout");
+                  authProvider.isLogin(false);
+                  navigatorKey.currentState!.pushNamed('phone');
                 },
                 child: Row(children: [
                   Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                      color: Colors.grey.withOpacity(0.2),
-                    ),
-                    child: const Icon(
-                          LineAwesomeIcons.alternate_sign_out,
-                          size: 20, color: Colors.grey,
-                        )
-                  ),
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey.withOpacity(0.2),
+                      ),
+                      child: const Icon(
+                        LineAwesomeIcons.alternate_sign_out,
+                        size: 20,
+                        color: Colors.grey,
+                      )),
                   Padding(
                       padding: EdgeInsets.only(left: 20),
                       child: Text("Logout",
@@ -212,7 +215,7 @@ navigatorKey.currentState!.pushNamed('myAdverts');
                               fontSize: 15, color: Colors.red)))
                 ]),
               ),
-            const SizedBox(height: 80),
+              const SizedBox(height: 80),
             ],
           ),
         ),
@@ -226,8 +229,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final profileProvider = Provider.of<ProfileProvider>(context);
-    
+    final profileProvider =
+        Provider.of<ProfileProvider>(context, listen: false);
+
     //var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return AppBar(
       elevation: 0,
@@ -246,10 +250,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
             onPressed: () {
-               profileProvider.colorMode(context);
-               context.read<ThemeProvider>().toggleTheme();
+              profileProvider.colorMode(context);
+              context.read<ThemeProvider>().toggleTheme();
             },
-            icon: Icon(profileProvider.isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon,
+            icon: Icon(
+                profileProvider.isDark
+                    ? LineAwesomeIcons.sun
+                    : LineAwesomeIcons.moon,
                 color: Theme.of(context).iconTheme.color))
       ],
     );

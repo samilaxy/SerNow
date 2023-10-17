@@ -110,7 +110,7 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   Future<void> delayLoad() async {
-    await Future.delayed(Duration(seconds: 1)); // Delay for one second
+    await Future.delayed( const Duration(seconds: 1)); // Delay for one second
     // Call the method you want to execute after the delay
     loadprofileData();
   }

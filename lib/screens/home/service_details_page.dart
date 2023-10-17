@@ -9,15 +9,11 @@ import 'package:serv_now/screens/components/image_slider.dart';
 import 'package:serv_now/screens/components/image_with_placeholder.dart';
 import 'package:serv_now/screens/components/servie_card.dart';
 import 'package:serv_now/screens/components/shimmer_loader.dart';
+import 'package:serv_now/screens/home/zoom_imageview.dart';
 import 'package:serv_now/utilities/constants.dart';
 import 'package:serv_now/utilities/util.dart';
 
 class ServiceDetailsPage extends StatefulWidget {
-  void onPageVisible() {
-    // This function will be executed when the page becomes visible.
-    // Place your logic here.
-  }
-
   const ServiceDetailsPage({super.key});
 
   @override
@@ -55,11 +51,23 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                         height: 40,
                         child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
-                            child: Container(
-                                color: Colors.grey,
-                                child: ImageWithPlaceholder(
-                                    imageUrl: serviceData?.user?.img ?? "",
-                                    placeholderUrl: tProfileImage)))),
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => ZoomImageView(
+                                          imageUrl:
+                                              serviceData?.user?.img ?? "",
+                                          placeholderUrl: tProfileImage),
+                                    ));
+                              },
+                              child: Container(
+                                  color: Colors.grey,
+                                  child: ImageWithPlaceholder(
+                                      imageUrl: serviceData?.user?.img ?? "",
+                                      placeholderUrl: tProfileImage)),
+                            ))),
                     Expanded(
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
