@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master.swiftconstvalues",
+    "dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master.d",
+    "diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master.dia",
+    "emit-module-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master-emit-module.dia",
+    "swift-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/multi_image_picker-master.swiftdeps"
+  },
+  "/Users/amalitech-pc-4100433/.pub-cache/hosted/pub.dev/multi_image_picker-4.8.01/ios/Classes/SwiftMultiImagePickerPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/SwiftMultiImagePickerPlugin.o",
+    "llvm-bc" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/SwiftMultiImagePickerPlugin.bc",
+    "object" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/Objects-normal/arm64/SwiftMultiImagePickerPlugin.o"
+  }
+}

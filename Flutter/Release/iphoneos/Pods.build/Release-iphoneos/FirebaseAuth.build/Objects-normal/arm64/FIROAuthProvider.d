@@ -1,0 +1,45 @@
+dependencies: \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/FirebaseAuth.build/module.modulemap \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/AuthProvider/OAuth/FIROAuthProvider.m \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthProvider.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFederatedAuthProvider.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthUIDelegate.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRFacebookAuthProvider.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIROAuthCredential.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthCredential.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FirebaseCoreInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/Target\ Support\ Files/FirebaseCore/FirebaseCore-umbrella.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FirebaseCore.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponent.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRComponentType.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRDependency.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIRLogger.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAppCheck/Interop/FIRAppCheckTokenResultInterop.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Auth/FIRAuthGlobalWorkQueue.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Auth/FIRAuth_Internal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Interop/FIRAuthInterop.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuth.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthAPNSTokenType.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRAuthErrors.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/AuthProvider/OAuth/FIROAuthCredential_Internal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthBackend.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCRequest.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRPCResponse.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Backend/FIRAuthRequestConfiguration.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAppCheck/Interop/FIRAppCheckInterop.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthErrorUtils.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Public/FirebaseAuth/FIRMultiFactorInfo.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthInternalErrors.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthWebUtils.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseAuth/FirebaseAuth/Sources/Utilities/FIRAuthURLPresenter.h

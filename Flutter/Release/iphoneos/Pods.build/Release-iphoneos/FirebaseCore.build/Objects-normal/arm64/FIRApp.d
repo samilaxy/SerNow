@@ -1,0 +1,44 @@
+dependencies: \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/FirebaseCore.build/module.modulemap \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRApp.m \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRApp.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRAnalyticsConfiguration.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRBundleUtil.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRComponentContainerInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRComponentContainer.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLibrary.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRConfigurationInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRConfiguration.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRLoggerLevel.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/FIRFirebaseUserAgent.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRAppInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRHeartbeatLogger.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIRLogger.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Extension/FIROptionsInternal.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIROptions.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCore/FirebaseCore/Sources/Public/FirebaseCore/FIRVersion.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/GoogleUtilities.build/module.modulemap \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/Target\ Support\ Files/GoogleUtilities/GoogleUtilities-umbrella.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULAppDelegateSwizzler.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULApplication.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/AppDelegateSwizzler/Public/GoogleUtilities/GULSceneDelegateSwizzler.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULAppEnvironmentUtil.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorable.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorage.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULHeartbeatDateStorageUserDefaults.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainStorage.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULKeychainUtils.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULNetworkInfo.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULSecureCoding.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/GULURLSessionDataResponse.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Environment/Public/GoogleUtilities/NSURLSession+GULPromises.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLogger.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Logger/Public/GoogleUtilities/GULLoggerLevel.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/NSData+zlib/Public/GoogleUtilities/GULNSData+zlib.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULMutableDictionary.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetwork.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkConstants.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkLoggerProtocol.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkMessageCode.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Network/Public/GoogleUtilities/GULNetworkURLSession.h \
+  /Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/GoogleUtilities/GoogleUtilities/Reachability/Public/GoogleUtilities/GULReachabilityChecker.h

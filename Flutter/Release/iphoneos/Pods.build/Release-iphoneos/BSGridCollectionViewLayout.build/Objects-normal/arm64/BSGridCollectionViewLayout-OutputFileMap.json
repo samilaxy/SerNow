@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master.swiftconstvalues",
+    "dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master.d",
+    "diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master.dia",
+    "emit-module-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master-emit-module.dia",
+    "swift-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/BSGridCollectionViewLayout-master.swiftdeps"
+  },
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSGridCollectionViewLayout/Sources/GridCollectionViewLayout.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/GridCollectionViewLayout.o",
+    "llvm-bc" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/GridCollectionViewLayout.bc",
+    "object" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/Objects-normal/arm64/GridCollectionViewLayout.o"
+  }
+}

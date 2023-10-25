@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)"
+options: "2bef8875db16f4d47257de9b0383e1e12a253d2dd5ccd67b6d46048dddae19d3"
+build_start_time: [1698246426, 140448000]
+build_end_time: [1698246449, 364557000]
+inputs:
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSGridCollectionViewLayout/Sources/GridCollectionViewLayout.swift"
+  : [1698231400, 501498280]

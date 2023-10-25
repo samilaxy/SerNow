@@ -1,0 +1,39 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios9.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name BSGridCollectionViewLayout
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import BSGridCollectionViewLayout
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) final public class GridCollectionViewLayout : UIKit.UICollectionViewLayout {
+  @_Concurrency.MainActor(unsafe) final public var itemSpacing: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var itemsPerRow: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var itemHeightRatio: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) final public var itemSize: CoreFoundation.CGSize {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func prepare()
+  @_Concurrency.MainActor(unsafe) @objc override final public var collectionViewContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutAttributesForElements(in rect: CoreFoundation.CGRect) -> [UIKit.UICollectionViewLayoutAttributes]?
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutAttributesForItem(at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override final public func shouldInvalidateLayout(forBoundsChange newBounds: CoreFoundation.CGRect) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutAttributesForDecorationView(ofKind elementKind: Swift.String, at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override final public func layoutAttributesForSupplementaryView(ofKind elementKind: Swift.String, at indexPath: Foundation.IndexPath) -> UIKit.UICollectionViewLayoutAttributes?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}

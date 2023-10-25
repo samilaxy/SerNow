@@ -1,0 +1,20 @@
+{
+  "" : {
+    "const-values" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master.swiftconstvalues",
+    "dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master.d",
+    "diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master.dia",
+    "emit-module-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master-emit-module.dia",
+    "swift-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView-master.swiftdeps"
+  },
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImageView/Source/BSImageView.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView.o",
+    "llvm-bc" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView.bc",
+    "object" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/BSImageView.o"
+  },
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImageView/Source/ImageViewLayout.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/ImageViewLayout.o",
+    "llvm-bc" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/ImageViewLayout.bc",
+    "object" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSImageView.build/Objects-normal/arm64/ImageViewLayout.o"
+  }
+}

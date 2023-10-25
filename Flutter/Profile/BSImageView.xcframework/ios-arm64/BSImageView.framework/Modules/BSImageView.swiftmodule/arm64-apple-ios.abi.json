@@ -1,0 +1,1503 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImageView",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BSImageView",
+        "printedName": "BSImageView",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "isUserInteractionEnabled",
+            "printedName": "isUserInteractionEnabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(py)userInteractionEnabled",
+            "mangledName": "$s11BSImageViewAAC24isUserInteractionEnabledSbvp",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "userInteractionEnabled",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)isUserInteractionEnabled",
+                "mangledName": "$s11BSImageViewAAC24isUserInteractionEnabledSbvg",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "isUserInteractionEnabled",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)setUserInteractionEnabled:",
+                "mangledName": "$s11BSImageViewAAC24isUserInteractionEnabledSbvs",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "setUserInteractionEnabled:",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "tintColor",
+            "printedName": "tintColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ImplicitlyUnwrappedOptional",
+                "printedName": "UIKit.UIColor?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(py)tintColor",
+            "mangledName": "$s11BSImageViewAAC9tintColorSo7UIColorCSgvp",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "tintColor",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)tintColor",
+                "mangledName": "$s11BSImageViewAAC9tintColorSo7UIColorCSgvg",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "tintColor",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ImplicitlyUnwrappedOptional",
+                    "printedName": "UIKit.UIColor?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIColor",
+                        "printedName": "UIKit.UIColor",
+                        "usr": "c:objc(cs)UIColor"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)setTintColor:",
+                "mangledName": "$s11BSImageViewAAC9tintColorSo7UIColorCSgvs",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "setTintColor:",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "contentMode",
+            "printedName": "contentMode",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContentMode",
+                "printedName": "UIKit.UIView.ContentMode",
+                "usr": "c:@E@UIViewContentMode"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(py)contentMode",
+            "mangledName": "$s11BSImageViewAAC11contentModeSo013UIViewContentD0Vvp",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "contentMode",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentMode",
+                    "printedName": "UIKit.UIView.ContentMode",
+                    "usr": "c:@E@UIViewContentMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)contentMode",
+                "mangledName": "$s11BSImageViewAAC11contentModeSo013UIViewContentD0Vvg",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "contentMode",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContentMode",
+                    "printedName": "UIKit.UIView.ContentMode",
+                    "usr": "c:@E@UIViewContentMode"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)setContentMode:",
+                "mangledName": "$s11BSImageViewAAC11contentModeSo013UIViewContentD0Vvs",
+                "moduleName": "BSImageView",
+                "overriding": true,
+                "implicit": true,
+                "objc_name": "setContentMode:",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(frame:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImageView",
+                "printedName": "BSImageView.BSImageView",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)initWithFrame:",
+            "mangledName": "$s11BSImageViewAAC5frameABSo6CGRectV_tcfc",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "initWithFrame:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BSImageView.BSImageView?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BSImageView",
+                    "printedName": "BSImageView.BSImageView",
+                    "usr": "c:@M@BSImageView@objc(cs)BSImageView"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)initWithCoder:",
+            "mangledName": "$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfc",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutSubviews",
+            "printedName": "layoutSubviews()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSImageView@objc(cs)BSImageView(im)layoutSubviews",
+            "mangledName": "$s11BSImageViewAAC14layoutSubviewsyyF",
+            "moduleName": "BSImageView",
+            "overriding": true,
+            "objc_name": "layoutSubviews",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Override"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(image:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImageView",
+                "printedName": "BSImageView.BSImageView",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11BSImageViewAAC5imageABSo7UIImageCSg_tcfc",
+            "mangledName": "$s11BSImageViewAAC5imageABSo7UIImageCSg_tcfc",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "Convenience",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(image:highlightedImage:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImageView",
+                "printedName": "BSImageView.BSImageView",
+                "usr": "c:@M@BSImageView@objc(cs)BSImageView"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:11BSImageViewAAC5image16highlightedImageABSo7UIImageCSg_AGtcfc",
+            "mangledName": "$s11BSImageViewAAC5image16highlightedImageABSo7UIImageCSg_AGtcfc",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "Convenience",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "init_kind": "Convenience"
+          },
+          {
+            "kind": "Var",
+            "name": "image",
+            "printedName": "image",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImageView@objc(cs)BSImageView(py)image",
+            "mangledName": "$s11BSImageViewAAC5imageSo7UIImageCSgvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)image",
+                "mangledName": "$s11BSImageViewAAC5imageSo7UIImageCSgvg",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)setImage:",
+                "mangledName": "$s11BSImageViewAAC5imageSo7UIImageCSgvs",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "highlightedImage",
+            "printedName": "highlightedImage",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImageView@objc(cs)BSImageView(py)highlightedImage",
+            "mangledName": "$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)highlightedImage",
+                "mangledName": "$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvg",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)setHighlightedImage:",
+                "mangledName": "$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvs",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isHighlighted",
+            "printedName": "isHighlighted",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImageView@objc(cs)BSImageView(py)isHighlighted",
+            "mangledName": "$s11BSImageViewAAC13isHighlightedSbvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "IBInspectable",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)isHighlighted",
+                "mangledName": "$s11BSImageViewAAC13isHighlightedSbvg",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImageView@objc(cs)BSImageView(im)setIsHighlighted:",
+                "mangledName": "$s11BSImageViewAAC13isHighlightedSbvs",
+                "moduleName": "BSImageView",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animationImages",
+            "printedName": "animationImages",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[UIKit.UIImage]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UIImage]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvp",
+            "mangledName": "$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UIImage]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UIImage]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvg",
+                "mangledName": "$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvg",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UIImage]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UIImage]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvs",
+                "mangledName": "$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvs",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvM",
+                "mangledName": "$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvM",
+                "moduleName": "BSImageView",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "highlightedAnimationImages",
+            "printedName": "highlightedAnimationImages",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[UIKit.UIImage]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UIImage]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvp",
+            "mangledName": "$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UIImage]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UIImage]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvg",
+                "mangledName": "$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvg",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "[UIKit.UIImage]?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[UIKit.UIImage]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIImage",
+                            "printedName": "UIKit.UIImage",
+                            "usr": "c:objc(cs)UIImage"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvs",
+                "mangledName": "$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvs",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvM",
+                "mangledName": "$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvM",
+                "moduleName": "BSImageView",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animationDuration",
+            "printedName": "animationDuration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Double",
+                "printedName": "Swift.Double",
+                "usr": "s:Sd"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11BSImageViewAAC17animationDurationSdvp",
+            "mangledName": "$s11BSImageViewAAC17animationDurationSdvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC17animationDurationSdvg",
+                "mangledName": "$s11BSImageViewAAC17animationDurationSdvg",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Double",
+                    "printedName": "Swift.Double",
+                    "usr": "s:Sd"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC17animationDurationSdvs",
+                "mangledName": "$s11BSImageViewAAC17animationDurationSdvs",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC17animationDurationSdvM",
+                "mangledName": "$s11BSImageViewAAC17animationDurationSdvM",
+                "moduleName": "BSImageView",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "animationRepeatCount",
+            "printedName": "animationRepeatCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11BSImageViewAAC20animationRepeatCountSivp",
+            "mangledName": "$s11BSImageViewAAC20animationRepeatCountSivp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC20animationRepeatCountSivg",
+                "mangledName": "$s11BSImageViewAAC20animationRepeatCountSivg",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC20animationRepeatCountSivs",
+                "mangledName": "$s11BSImageViewAAC20animationRepeatCountSivs",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC20animationRepeatCountSivM",
+                "mangledName": "$s11BSImageViewAAC20animationRepeatCountSivM",
+                "moduleName": "BSImageView",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "startAnimating",
+            "printedName": "startAnimating()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11BSImageViewAAC14startAnimatingyyF",
+            "mangledName": "$s11BSImageViewAAC14startAnimatingyyF",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stopAnimating",
+            "printedName": "stopAnimating()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:11BSImageViewAAC13stopAnimatingyyF",
+            "mangledName": "$s11BSImageViewAAC13stopAnimatingyyF",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "isAnimating",
+            "printedName": "isAnimating",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:11BSImageViewAAC11isAnimatingSbvp",
+            "mangledName": "$s11BSImageViewAAC11isAnimatingSbvp",
+            "moduleName": "BSImageView",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:11BSImageViewAAC11isAnimatingSbvg",
+                "mangledName": "$s11BSImageViewAAC11isAnimatingSbvg",
+                "moduleName": "BSImageView",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BSImageView@objc(cs)BSImageView",
+        "mangledName": "$s11BSImageViewAAC",
+        "moduleName": "BSImageView",
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "IBDesignable",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UIView",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIView",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "__DefaultCustomPlaygroundQuickLookable",
+            "printedName": "__DefaultCustomPlaygroundQuickLookable",
+            "usr": "s:s38__DefaultCustomPlaygroundQuickLookableP",
+            "mangledName": "$ss38__DefaultCustomPlaygroundQuickLookableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BSImageView",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2880,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2922,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3020,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3062,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3209,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3251,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3337,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3343,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3432,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3521,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3563,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3687,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3826,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImageView\/Source\/ImageViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3885,
+      "length": 1,
+      "value": "0"
+    }
+  ]
+}

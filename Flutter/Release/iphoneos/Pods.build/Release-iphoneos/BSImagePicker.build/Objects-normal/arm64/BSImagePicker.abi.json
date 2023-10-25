@@ -1,0 +1,5193 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BSImagePickerSettings",
+        "printedName": "BSImagePickerSettings",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "maxNumberOfSelections",
+            "printedName": "maxNumberOfSelections",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP21maxNumberOfSelectionsSivM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionCharacter",
+            "printedName": "selectionCharacter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Character?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionCharacterSJSgvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionFillColor",
+            "printedName": "selectionFillColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP18selectionFillColorSo7UIColorCvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionStrokeColor",
+            "printedName": "selectionStrokeColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionStrokeColorSo7UIColorCvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionShadowColor",
+            "printedName": "selectionShadowColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP20selectionShadowColorSo7UIColorCvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionTextAttributes",
+            "printedName": "selectionTextAttributes",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Key",
+                    "printedName": "Foundation.NSAttributedString.Key",
+                    "usr": "c:@T@NSAttributedStringKey"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "AnyObject"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Key",
+                        "printedName": "Foundation.NSAttributedString.Key",
+                        "usr": "c:@T@NSAttributedStringKey"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Key",
+                        "printedName": "Foundation.NSAttributedString.Key",
+                        "usr": "c:@T@NSAttributedStringKey"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backgroundColor",
+            "printedName": "backgroundColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP15backgroundColorSo7UIColorCvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cellsPerRow",
+            "printedName": "cellsPerRow",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIUserInterfaceSizeClass",
+                        "printedName": "UIKit.UIUserInterfaceSizeClass",
+                        "usr": "c:@E@UIUserInterfaceSizeClass"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIUserInterfaceSizeClass",
+                        "printedName": "UIKit.UIUserInterfaceSizeClass",
+                        "usr": "c:@E@UIUserInterfaceSizeClass"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "takePhotos",
+            "printedName": "takePhotos",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP10takePhotosSbvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP10takePhotosSbvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP10takePhotosSbvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP10takePhotosSbvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP10takePhotosSbvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP10takePhotosSbvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP10takePhotosSbvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP10takePhotosSbvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "takePhotoIcon",
+            "printedName": "takePhotoIcon",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvp",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvp",
+            "moduleName": "BSImagePicker",
+            "protocolReq": true,
+            "declAttributes": [
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvg",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvg",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvs",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvs",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvM",
+                "mangledName": "$s13BSImagePicker0aB8SettingsP13takePhotoIconSo7UIImageCSgvM",
+                "moduleName": "BSImagePicker",
+                "genericSig": "<τ_0_0 where τ_0_0 : BSImagePicker.BSImagePickerSettings>",
+                "sugared_genericSig": "<Self where Self : BSImagePicker.BSImagePickerSettings>",
+                "protocolReq": true,
+                "implicit": true,
+                "reqNewWitnessTableEntry": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          }
+        ],
+        "declKind": "Protocol",
+        "usr": "s:13BSImagePicker0aB8SettingsP",
+        "mangledName": "$s13BSImagePicker0aB8SettingsP",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "AccessControl",
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BSImagePickerViewController",
+        "printedName": "BSImagePickerViewController",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "settings",
+            "printedName": "settings",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerSettings",
+                "printedName": "BSImagePicker.BSImagePickerSettings",
+                "usr": "s:13BSImagePicker0aB8SettingsP"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvp",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvp",
+            "moduleName": "BSImagePicker",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "HasInitialValue",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BSImagePickerSettings",
+                    "printedName": "BSImagePicker.BSImagePickerSettings",
+                    "usr": "s:13BSImagePicker0aB8SettingsP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvg",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvg",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BSImagePickerSettings",
+                    "printedName": "BSImagePicker.BSImagePickerSettings",
+                    "usr": "s:13BSImagePicker0aB8SettingsP"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvs",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvs",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC8settingsAA0aB8Settings_pvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "doneButton",
+            "printedName": "doneButton",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIBarButtonItem",
+                "printedName": "UIKit.UIBarButtonItem",
+                "usr": "c:objc(cs)UIBarButtonItem"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(py)doneButton",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC10doneButtonSo05UIBarF4ItemCvp",
+            "moduleName": "BSImagePicker",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIBarButtonItem",
+                    "printedName": "UIKit.UIBarButtonItem",
+                    "usr": "c:objc(cs)UIBarButtonItem"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)doneButton",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC10doneButtonSo05UIBarF4ItemCvg",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIBarButtonItem",
+                    "printedName": "UIKit.UIBarButtonItem",
+                    "usr": "c:objc(cs)UIBarButtonItem"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)setDoneButton:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC10doneButtonSo05UIBarF4ItemCvs",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC10doneButtonSo05UIBarF4ItemCvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC10doneButtonSo05UIBarF4ItemCvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cancelButton",
+            "printedName": "cancelButton",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIBarButtonItem",
+                "printedName": "UIKit.UIBarButtonItem",
+                "usr": "c:objc(cs)UIBarButtonItem"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(py)cancelButton",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC12cancelButtonSo05UIBarF4ItemCvp",
+            "moduleName": "BSImagePicker",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIBarButtonItem",
+                    "printedName": "UIKit.UIBarButtonItem",
+                    "usr": "c:objc(cs)UIBarButtonItem"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)cancelButton",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12cancelButtonSo05UIBarF4ItemCvg",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIBarButtonItem",
+                    "printedName": "UIKit.UIBarButtonItem",
+                    "usr": "c:objc(cs)UIBarButtonItem"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)setCancelButton:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12cancelButtonSo05UIBarF4ItemCvs",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC12cancelButtonSo05UIBarF4ItemCvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12cancelButtonSo05UIBarF4ItemCvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "defaultSelections",
+            "printedName": "defaultSelections",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Photos.PHFetchResult<Photos.PHAsset>?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PHFetchResult",
+                    "printedName": "Photos.PHFetchResult<Photos.PHAsset>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHAsset",
+                        "printedName": "Photos.PHAsset",
+                        "usr": "c:objc(cs)PHAsset"
+                      }
+                    ],
+                    "usr": "c:objc(cs)PHFetchResult"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(py)defaultSelections",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC17defaultSelectionsSo13PHFetchResultCySo7PHAssetCGSgvp",
+            "moduleName": "BSImagePicker",
+            "isOpen": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Photos.PHFetchResult<Photos.PHAsset>?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHFetchResult",
+                        "printedName": "Photos.PHFetchResult<Photos.PHAsset>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAsset",
+                            "printedName": "Photos.PHAsset",
+                            "usr": "c:objc(cs)PHAsset"
+                          }
+                        ],
+                        "usr": "c:objc(cs)PHFetchResult"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)defaultSelections",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC17defaultSelectionsSo13PHFetchResultCySo7PHAssetCGSgvg",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Photos.PHFetchResult<Photos.PHAsset>?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHFetchResult",
+                        "printedName": "Photos.PHFetchResult<Photos.PHAsset>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAsset",
+                            "printedName": "Photos.PHAsset",
+                            "usr": "c:objc(cs)PHAsset"
+                          }
+                        ],
+                        "usr": "c:objc(cs)PHFetchResult"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)setDefaultSelections:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC17defaultSelectionsSo13PHFetchResultCySo7PHAssetCGSgvs",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC17defaultSelectionsSo13PHFetchResultCySo7PHAssetCGSgvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC17defaultSelectionsSo13PHFetchResultCySo7PHAssetCGSgvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "fetchResults",
+            "printedName": "fetchResults",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Photos.PHFetchResult<Photos.PHAssetCollection>]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "PHFetchResult",
+                    "printedName": "Photos.PHFetchResult<Photos.PHAssetCollection>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHAssetCollection",
+                        "printedName": "Photos.PHAssetCollection",
+                        "usr": "c:objc(cs)PHAssetCollection"
+                      }
+                    ],
+                    "usr": "c:objc(cs)PHFetchResult"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(py)fetchResults",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC12fetchResultsSaySo13PHFetchResultCySo17PHAssetCollectionCGGvp",
+            "moduleName": "BSImagePicker",
+            "isOpen": true,
+            "declAttributes": [
+              "Custom",
+              "Lazy",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Photos.PHFetchResult<Photos.PHAssetCollection>]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHFetchResult",
+                        "printedName": "Photos.PHFetchResult<Photos.PHAssetCollection>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAssetCollection",
+                            "printedName": "Photos.PHAssetCollection",
+                            "usr": "c:objc(cs)PHAssetCollection"
+                          }
+                        ],
+                        "usr": "c:objc(cs)PHFetchResult"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)fetchResults",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12fetchResultsSaySo13PHFetchResultCySo17PHAssetCollectionCGGvg",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Photos.PHFetchResult<Photos.PHAssetCollection>]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHFetchResult",
+                        "printedName": "Photos.PHFetchResult<Photos.PHAssetCollection>",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAssetCollection",
+                            "printedName": "Photos.PHAssetCollection",
+                            "usr": "c:objc(cs)PHAssetCollection"
+                          }
+                        ],
+                        "usr": "c:objc(cs)PHFetchResult"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)setFetchResults:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12fetchResultsSaySo13PHFetchResultCySo17PHAssetCollectionCGGvs",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "declAttributes": [
+                  "ObjC"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC12fetchResultsSaySo13PHFetchResultCySo17PHAssetCollectionCGGvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC12fetchResultsSaySo13PHFetchResultCySo17PHAssetCollectionCGGvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isOpen": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerViewController",
+                "printedName": "BSImagePicker.BSImagePickerViewController",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)init",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerCACycfc",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BSImagePicker.BSImagePickerViewController?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BSImagePickerViewController",
+                    "printedName": "BSImagePicker.BSImagePickerViewController",
+                    "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)initWithCoder:",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "AccessControl",
+              "Required",
+              "RawDocComment"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "loadView",
+            "printedName": "loadView()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)loadView",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC04loadC0yyF",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "isOpen": true,
+            "objc_name": "loadView",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(navigationBarClass:toolbarClass:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerViewController",
+                "printedName": "BSImagePicker.BSImagePickerViewController",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AnyObject.Type?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ExistentialMetatype",
+                    "printedName": "AnyObject.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "AnyObject.Type?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ExistentialMetatype",
+                    "printedName": "AnyObject.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)initWithNavigationBarClass:toolbarClass:",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC18navigationBarClass07toolbarG0ACyXlXpSg_AFtcfc",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "implicit": true,
+            "intro_iOS": "5.0",
+            "objc_name": "initWithNavigationBarClass:toolbarClass:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override",
+              "Available"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rootViewController:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerViewController",
+                "printedName": "BSImagePicker.BSImagePickerViewController",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UIViewController",
+                "printedName": "UIKit.UIViewController",
+                "usr": "c:objc(cs)UIViewController"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)initWithRootViewController:",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC04rootcD0ACSo06UIViewD0C_tcfc",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithRootViewController:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(nibName:bundle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerViewController",
+                "printedName": "BSImagePicker.BSImagePickerViewController",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Foundation.Bundle?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bundle",
+                    "printedName": "Foundation.Bundle",
+                    "usr": "c:objc(cs)NSBundle"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController(im)initWithNibName:bundle:",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC7nibName6bundleACSSSg_So8NSBundleCSgtcfc",
+            "moduleName": "BSImagePicker",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithNibName:bundle:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "maxNumberOfSelections",
+            "printedName": "maxNumberOfSelections",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)maxNumberOfSelections",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC21maxNumberOfSelectionsSivp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)maxNumberOfSelections",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC21maxNumberOfSelectionsSivg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setMaxNumberOfSelections:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC21maxNumberOfSelectionsSivs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionCharacter",
+            "printedName": "selectionCharacter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Character?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Character",
+                    "printedName": "Swift.Character",
+                    "usr": "s:SJ"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvp",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Custom",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvg",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvg",
+                "moduleName": "BSImagePicker",
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Character?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Character",
+                        "printedName": "Swift.Character",
+                        "usr": "s:SJ"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvs",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvs",
+                "moduleName": "BSImagePicker",
+                "isFromExtension": true,
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvM",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionCharacterSJSgvM",
+                "moduleName": "BSImagePicker",
+                "implicit": true,
+                "isFromExtension": true,
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionFillColor",
+            "printedName": "selectionFillColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)selectionFillColor",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionFillColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)selectionFillColor",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionFillColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setSelectionFillColor:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC18selectionFillColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionStrokeColor",
+            "printedName": "selectionStrokeColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)selectionStrokeColor",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionStrokeColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)selectionStrokeColor",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionStrokeColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setSelectionStrokeColor:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionStrokeColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionShadowColor",
+            "printedName": "selectionShadowColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)selectionShadowColor",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionShadowColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)selectionShadowColor",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionShadowColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setSelectionShadowColor:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC20selectionShadowColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "selectionTextAttributes",
+            "printedName": "selectionTextAttributes",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Key",
+                    "printedName": "Foundation.NSAttributedString.Key",
+                    "usr": "c:@T@NSAttributedStringKey"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ProtocolComposition",
+                    "printedName": "AnyObject"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)selectionTextAttributes",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Key",
+                        "printedName": "Foundation.NSAttributedString.Key",
+                        "usr": "c:@T@NSAttributedStringKey"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)selectionTextAttributes",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Foundation.NSAttributedString.Key : AnyObject]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Key",
+                        "printedName": "Foundation.NSAttributedString.Key",
+                        "usr": "c:@T@NSAttributedStringKey"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "AnyObject"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setSelectionTextAttributes:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC23selectionTextAttributesSDySo21NSAttributedStringKeyayXlGvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "backgroundColor",
+            "printedName": "backgroundColor",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIColor",
+                "printedName": "UIKit.UIColor",
+                "usr": "c:objc(cs)UIColor"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)backgroundColor",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC15backgroundColorSo7UIColorCvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)backgroundColor",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC15backgroundColorSo7UIColorCvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIColor",
+                    "printedName": "UIKit.UIColor",
+                    "usr": "c:objc(cs)UIColor"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setBackgroundColor:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC15backgroundColorSo7UIColorCvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "cellsPerRow",
+            "printedName": "cellsPerRow",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Tuple",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIUserInterfaceSizeClass",
+                        "printedName": "UIKit.UIUserInterfaceSizeClass",
+                        "usr": "c:@E@UIUserInterfaceSizeClass"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIUserInterfaceSizeClass",
+                        "printedName": "UIKit.UIUserInterfaceSizeClass",
+                        "usr": "c:@E@UIUserInterfaceSizeClass"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)cellsPerRow",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)cellsPerRow",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass) -> Swift.Int",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(UIKit.UIUserInterfaceSizeClass, UIKit.UIUserInterfaceSizeClass)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "UIUserInterfaceSizeClass",
+                            "printedName": "UIKit.UIUserInterfaceSizeClass",
+                            "usr": "c:@E@UIUserInterfaceSizeClass"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setCellsPerRow:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC11cellsPerRowySiSo24UIUserInterfaceSizeClassV_AFtcvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "takePhotos",
+            "printedName": "takePhotos",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)takePhotos",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC10takePhotosSbvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)takePhotos",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC10takePhotosSbvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setTakePhotos:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC10takePhotosSbvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "takePhotoIcon",
+            "printedName": "takePhotoIcon",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UIImage?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIImage",
+                    "printedName": "UIKit.UIImage",
+                    "usr": "c:objc(cs)UIImage"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)takePhotoIcon",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC13takePhotoIconSo7UIImageCSgvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)takePhotoIcon",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC13takePhotoIconSo7UIImageCSgvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "UIKit.UIImage?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UIImage",
+                        "printedName": "UIKit.UIImage",
+                        "usr": "c:objc(cs)UIImage"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setTakePhotoIcon:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC13takePhotoIconSo7UIImageCSgvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "albumButton",
+            "printedName": "albumButton",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UIButton",
+                "printedName": "UIKit.UIButton",
+                "usr": "c:objc(cs)UIButton"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(py)albumButton",
+            "mangledName": "$s13BSImagePicker0aB14ViewControllerC11albumButtonSo8UIButtonCvp",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "AccessControl",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIButton",
+                    "printedName": "UIKit.UIButton",
+                    "usr": "c:objc(cs)UIButton"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)albumButton",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC11albumButtonSo8UIButtonCvg",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UIButton",
+                    "printedName": "UIKit.UIButton",
+                    "usr": "c:objc(cs)UIButton"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@CM@BSImagePicker@objc(cs)BSImagePickerViewController(im)setAlbumButton:",
+                "mangledName": "$s13BSImagePicker0aB14ViewControllerC11albumButtonSo8UIButtonCvs",
+                "moduleName": "BSImagePicker",
+                "declAttributes": [
+                  "Dynamic",
+                  "ObjC"
+                ],
+                "isFromExtension": true,
+                "accessorKind": "set"
+              }
+            ]
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController",
+        "mangledName": "$s13BSImagePicker0aB14ViewControllerC",
+        "moduleName": "BSImagePicker",
+        "isOpen": true,
+        "declAttributes": [
+          "Custom",
+          "AccessControl",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UINavigationController",
+        "superclassNames": [
+          "UIKit.UINavigationController",
+          "UIKit.UIViewController",
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BSImagePickerSettings",
+            "printedName": "BSImagePickerSettings",
+            "usr": "s:13BSImagePicker0aB8SettingsP",
+            "mangledName": "$s13BSImagePicker0aB8SettingsP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          }
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "AVFoundation",
+        "printedName": "AVFoundation",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Foundation",
+        "printedName": "Foundation",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "BSGridCollectionViewLayout",
+        "printedName": "BSGridCollectionViewLayout",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "Import",
+        "name": "BSImageView",
+        "printedName": "BSImageView",
+        "declKind": "Import",
+        "moduleName": "BSImagePicker"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "UIViewController",
+        "printedName": "UIViewController",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "bs_presentImagePickerController",
+            "printedName": "bs_presentImagePickerController(_:animated:select:deselect:cancel:finish:completion:selectLimitReached:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BSImagePickerViewController",
+                "printedName": "BSImagePicker.BSImagePickerViewController",
+                "usr": "c:@M@BSImagePicker@objc(cs)BSImagePickerViewController"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Photos.PHAsset) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Photos.PHAsset) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHAsset",
+                        "printedName": "Photos.PHAsset",
+                        "usr": "c:objc(cs)PHAsset"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Photos.PHAsset) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Photos.PHAsset) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "PHAsset",
+                        "printedName": "Photos.PHAsset",
+                        "usr": "c:objc(cs)PHAsset"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([Photos.PHAsset]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Photos.PHAsset]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Photos.PHAsset]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAsset",
+                            "printedName": "Photos.PHAsset",
+                            "usr": "c:objc(cs)PHAsset"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(([Photos.PHAsset]) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Photos.PHAsset]) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Array",
+                        "printedName": "[Photos.PHAsset]",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "PHAsset",
+                            "printedName": "Photos.PHAsset",
+                            "usr": "c:objc(cs)PHAsset"
+                          }
+                        ],
+                        "usr": "s:Sa"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "(() -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "() -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "((Swift.Int) -> ())?",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Int) -> ()",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ]
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@CM@BSImagePicker@@objc(cs)UIViewController(im)bs_presentImagePickerController:animated:select:deselect:cancel:finish:completion:selectLimitReached:",
+            "mangledName": "$sSo16UIViewControllerC13BSImagePickerE015bs_presentImagedB0_8animated6select8deselect6cancel6finish10completion0I12LimitReachedyAC0cd4ViewB0C_SbySo7PHAssetCcSgAPySayAOGcSgARyycSgySicSgtF",
+            "moduleName": "BSImagePicker",
+            "declAttributes": [
+              "Dynamic",
+              "Custom",
+              "ObjC",
+              "RawDocComment"
+            ],
+            "isFromExtension": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:objc(cs)UIViewController",
+        "moduleName": "UIKit",
+        "isOpen": true,
+        "intro_iOS": "2.0",
+        "objc_name": "UIViewController",
+        "declAttributes": [
+          "Available",
+          "ObjC",
+          "NonSendable",
+          "Custom",
+          "Dynamic"
+        ],
+        "superclassUsr": "c:objc(cs)UIResponder",
+        "isExternal": true,
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UIResponder",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "UITraitChangeObservable",
+            "printedName": "UITraitChangeObservable",
+            "usr": "s:5UIKit23UITraitChangeObservableP",
+            "mangledName": "$s5UIKit23UITraitChangeObservableP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "StringLiteral",
+      "offset": 1289,
+      "length": 11,
+      "value": "\"albumCell\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1737,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2220,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2345,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2532,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2636,
+      "length": 2,
+      "value": "-8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2713,
+      "length": 2,
+      "value": "84"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2789,
+      "length": 2,
+      "value": "84"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2896,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3007,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3112,
+      "length": 2,
+      "value": "-8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3538,
+      "length": 2,
+      "value": "79"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3602,
+      "length": 2,
+      "value": "79"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3681,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 3780,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 3834,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 3847,
+      "length": 4,
+      "value": "-0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 3890,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3925,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/AlbumCell.swift",
+      "kind": "StringLiteral",
+      "offset": 4678,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1337,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1958,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2090,
+      "length": 3,
+      "value": "320"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2103,
+      "length": 3,
+      "value": "300"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1170,
+      "length": 20,
+      "value": "\"BSImagePicker.AlbumsViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/AlbumsViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1170,
+      "length": 20,
+      "value": "\"BSImagePicker.AlbumsViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1727,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2382,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2681,
+      "length": 14,
+      "value": "\"creationDate\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2708,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2778,
+      "length": 16,
+      "value": "\"mediaType = %d\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2908,
+      "length": 2,
+      "value": "79"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2928,
+      "length": 2,
+      "value": "79"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3188,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3724,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4205,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4743,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AlbumTableViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 1273,
+      "length": 24,
+      "value": "\"BSImagePicker.AlbumTableViewDataSource\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AssetStore.swift",
+      "kind": "Array",
+      "offset": 1265,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/AssetStore.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1523,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 2850,
+      "length": 3,
+      "value": "6.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 2902,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 2937,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 3014,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 3048,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 3060,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 3101,
+      "length": 12,
+      "value": "\"arrow_down\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 3457,
+      "length": 4,
+      "value": "15.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 3606,
+      "length": 15,
+      "value": "\"BSImagePicker\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 3631,
+      "length": 8,
+      "value": "\"bundle\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "Array",
+      "offset": 3890,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4761,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5221,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5972,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1274,
+      "length": 27,
+      "value": "\"BSImagePicker.BSImagePickerViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1274,
+      "length": 27,
+      "value": "\"BSImagePicker.BSImagePickerViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/BSImagePickerViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1274,
+      "length": 27,
+      "value": "\"BSImagePicker.BSImagePickerViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/CameraCell.swift",
+      "kind": "StringLiteral",
+      "offset": 211,
+      "length": 22,
+      "value": "\"cameraCellIdentifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/CameraCell.swift",
+      "kind": "StringLiteral",
+      "offset": 730,
+      "length": 28,
+      "value": "\"AVCaptureVideoPreviewLayer\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/CameraCell.swift",
+      "kind": "Array",
+      "offset": 772,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/CameraCell.swift",
+      "kind": "StringLiteral",
+      "offset": 1324,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1767,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1769,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1946,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1948,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2267,
+      "length": 31,
+      "value": "\"camera_cell_\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2297,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/CameraCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 1303,
+      "length": 30,
+      "value": "\"BSImagePicker.CameraCollectionViewDataSource\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/ComposedCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1821,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/ComposedCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2089,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/ComposedCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 1246,
+      "length": 32,
+      "value": "\"BSImagePicker.ComposedCollectionViewDataSource\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Extension\/NSIndexSet+NSIndexPath.swift",
+      "kind": "Array",
+      "offset": 1470,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "StringLiteral",
+      "offset": 1273,
+      "length": 21,
+      "value": "\"photoCellIdentifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2214,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2465,
+      "length": 4,
+      "value": "0.95"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2474,
+      "length": 4,
+      "value": "0.95"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2611,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2806,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 2814,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1960,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3135,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3224,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3367,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3439,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4419,
+      "length": 2,
+      "value": "25"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4490,
+      "length": 2,
+      "value": "25"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4594,
+      "length": 2,
+      "value": "-4"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4694,
+      "length": 2,
+      "value": "-4"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "StringLiteral",
+      "offset": 4785,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "StringLiteral",
+      "offset": 5043,
+      "length": 16,
+      "value": "\"deselect image\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "StringLiteral",
+      "offset": 5062,
+      "length": 14,
+      "value": "\"select image\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5160,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 5206,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 5256,
+      "length": 3,
+      "value": "0.3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 5316,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/PhotoCell.swift",
+      "kind": "FloatLiteral",
+      "offset": 5366,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2034,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2159,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2480,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2657,
+      "length": 30,
+      "value": "\"photo_cell_\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 2686,
+      "length": 1,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2726,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2884,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3757,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3820,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3875,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3938,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4044,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/PhotoCollectionViewDataSource.swift",
+      "kind": "StringLiteral",
+      "offset": 1282,
+      "length": 29,
+      "value": "\"BSImagePicker.PhotoCollectionViewDataSource\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 2192,
+      "length": 6,
+      "value": "\"Done\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 2209,
+      "length": 6,
+      "value": "\"Done\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 3243,
+      "length": 37,
+      "value": "\"b0rk: initWithCoder not implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3595,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 3676,
+      "length": 3,
+      "value": "\" \""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 4748,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5417,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5581,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6101,
+      "length": 1,
+      "value": "2"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6344,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6608,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 6669,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7229,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8004,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8339,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8408,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8552,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 8607,
+      "length": 45,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 8629,
+      "length": 1,
+      "value": "\" (\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 8650,
+      "length": 1,
+      "value": "\")\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8986,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 9584,
+      "length": 14,
+      "value": "\"creationDate\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9611,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 9681,
+      "length": 16,
+      "value": "\"mediaType = %d\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1218,
+      "length": 20,
+      "value": "\"BSImagePicker.PhotosViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "StringLiteral",
+      "offset": 1218,
+      "length": 20,
+      "value": "\"BSImagePicker.PhotosViewController\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11083,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11250,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11305,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11506,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11636,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12269,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12398,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12508,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 12548,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 13109,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 13410,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 14141,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 15133,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 15512,
+      "length": 3,
+      "value": "2.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 16643,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 17174,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 17231,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 17717,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 17890,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18662,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18740,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18816,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18892,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18913,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 18933,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19338,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19559,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 19777,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PhotosViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 20683,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PreviewViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 1274,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PreviewViewController.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1813,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PreviewViewController.swift",
+      "kind": "FloatLiteral",
+      "offset": 2238,
+      "length": 3,
+      "value": "0.3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/PreviewViewController.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2522,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "StringLiteral",
+      "offset": 1286,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "StringLiteral",
+      "offset": 1661,
+      "length": 39,
+      "value": "\"init(coder:) has not been implemented\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 1965,
+      "length": 3,
+      "value": "0.1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 1978,
+      "length": 4,
+      "value": "-0.1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2026,
+      "length": 3,
+      "value": "2.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2181,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2209,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2242,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2277,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2416,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2422,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2465,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2471,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2504,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2510,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2537,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2543,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2578,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2584,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2612,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 2618,
+      "length": 3,
+      "value": "0.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2981,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3184,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3346,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3352,
+      "length": 4,
+      "value": "12.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3404,
+      "length": 2,
+      "value": "11"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3411,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3461,
+      "length": 4,
+      "value": "17.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3470,
+      "length": 3,
+      "value": "9.5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3760,
+      "length": 3,
+      "value": "2.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/View\/SelectionView.swift",
+      "kind": "FloatLiteral",
+      "offset": 3816,
+      "length": 3,
+      "value": "2.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "FloatLiteral",
+      "offset": 1866,
+      "length": 4,
+      "value": "10.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2408,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2487,
+      "length": 1,
+      "value": "5"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2570,
+      "length": 1,
+      "value": "7"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2608,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2658,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Model\/Settings.swift",
+      "kind": "StringLiteral",
+      "offset": 2718,
+      "length": 11,
+      "value": "\"add_photo\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Extension\/UIViewController+BSImagePicker.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2508,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 1465,
+      "length": 3,
+      "value": "0.3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2156,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2241,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2290,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 2337,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 2385,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2855,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 3349,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 3533,
+      "length": 3,
+      "value": "0.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 3587,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 3963,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4016,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "FloatLiteral",
+      "offset": 4074,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSImagePicker\/Sources\/Controller\/ZoomAnimator.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4379,
+      "length": 4,
+      "value": "true"
+    }
+  ]
+}

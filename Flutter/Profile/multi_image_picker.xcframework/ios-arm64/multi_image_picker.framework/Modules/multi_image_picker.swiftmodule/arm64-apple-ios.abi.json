@@ -1,0 +1,794 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "Flutter",
+        "printedName": "Flutter",
+        "declKind": "Import",
+        "moduleName": "multi_image_picker"
+      },
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "multi_image_picker"
+      },
+      {
+        "kind": "Import",
+        "name": "Photos",
+        "printedName": "Photos",
+        "declKind": "Import",
+        "moduleName": "multi_image_picker"
+      },
+      {
+        "kind": "Import",
+        "name": "BSImagePicker",
+        "printedName": "BSImagePicker",
+        "declKind": "Import",
+        "moduleName": "multi_image_picker"
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SwiftMultiImagePickerPlugin",
+        "printedName": "SwiftMultiImagePickerPlugin",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "register",
+            "printedName": "register(with:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterPluginRegistrar",
+                "printedName": "Flutter.FlutterPluginRegistrar",
+                "usr": "c:objc(pl)FlutterPluginRegistrar"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@multi_image_picker@objc(cs)SwiftMultiImagePickerPlugin(cm)registerWithRegistrar:",
+            "mangledName": "$s18multi_image_picker27SwiftMultiImagePickerPluginC8register4withySo07FlutterH9Registrar_p_tFZ",
+            "moduleName": "multi_image_picker",
+            "static": true,
+            "objc_name": "registerWithRegistrar:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "handle",
+            "printedName": "handle(_:result:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "FlutterMethodCall",
+                "printedName": "Flutter.FlutterMethodCall",
+                "usr": "c:objc(cs)FlutterMethodCall"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Any?) -> ()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Any?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ProtocolComposition",
+                        "printedName": "Any"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@multi_image_picker@objc(cs)SwiftMultiImagePickerPlugin(im)handleMethodCall:result:",
+            "mangledName": "$s18multi_image_picker27SwiftMultiImagePickerPluginC6handle_6resultySo17FlutterMethodCallC_yypSgctF",
+            "moduleName": "multi_image_picker",
+            "objc_name": "handleMethodCall:result:",
+            "declAttributes": [
+              "ObjC",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SwiftMultiImagePickerPlugin",
+                "printedName": "multi_image_picker.SwiftMultiImagePickerPlugin",
+                "usr": "c:@M@multi_image_picker@objc(cs)SwiftMultiImagePickerPlugin"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@multi_image_picker@objc(cs)SwiftMultiImagePickerPlugin(im)init",
+            "mangledName": "$s18multi_image_picker27SwiftMultiImagePickerPluginCACycfc",
+            "moduleName": "multi_image_picker",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@multi_image_picker@objc(cs)SwiftMultiImagePickerPlugin",
+        "mangledName": "$s18multi_image_picker27SwiftMultiImagePickerPluginC",
+        "moduleName": "multi_image_picker",
+        "declAttributes": [
+          "AccessControl",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)NSObject",
+        "hasMissingDesignatedInitializers": true,
+        "superclassNames": [
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 545,
+      "length": 10,
+      "value": "\"filename\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1116,
+      "length": 5,
+      "value": "\"500\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1412,
+      "length": 20,
+      "value": "\"multi_image_picker\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1740,
+      "length": 12,
+      "value": "\"pickImages\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 1959,
+      "length": 31,
+      "value": "\"PERMISSION_PERMANENTLY_DENIED\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2001,
+      "length": 41,
+      "value": "\"The user has denied the gallery access.\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2327,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2461,
+      "length": 11,
+      "value": "\"maxImages\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2523,
+      "length": 14,
+      "value": "\"enableCamera\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2584,
+      "length": 12,
+      "value": "\"iosOptions\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 2672,
+      "length": 16,
+      "value": "\"selectedAssets\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2746,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 2875,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2945,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3104,
+      "length": 16,
+      "value": "\"mediaType = %d\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3221,
+      "length": 26,
+      "value": "\"(mediaSubtype & %d) != 0\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3723,
+      "length": 15,
+      "value": "\"takePhotoIcon\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 3935,
+      "length": 17,
+      "value": "\"backgroundColor\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 4167,
+      "length": 20,
+      "value": "\"selectionFillColor\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 4413,
+      "length": 22,
+      "value": "\"selectionShadowColor\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 4667,
+      "length": 22,
+      "value": "\"selectionStrokeColor\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 4919,
+      "length": 20,
+      "value": "\"selectionTextColor\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 5208,
+      "length": 20,
+      "value": "\"selectionCharacter\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 5486,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 5598,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 5685,
+      "length": 27,
+      "value": "\"autoCloseOnSelectionLimit\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 5811,
+      "length": 6,
+      "value": "\"true\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6341,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6449,
+      "length": 11,
+      "value": "\"CANCELLED\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6471,
+      "length": 38,
+      "value": "\"The user has cancelled the selection\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6749,
+      "length": 12,
+      "value": "\"identifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6814,
+      "length": 7,
+      "value": "\"width\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6869,
+      "length": 8,
+      "value": "\"height\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 6926,
+      "length": 6,
+      "value": "\"name\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 7113,
+      "length": 18,
+      "value": "\"requestThumbnail\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 7249,
+      "length": 12,
+      "value": "\"identifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 7308,
+      "length": 7,
+      "value": "\"width\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 7360,
+      "length": 8,
+      "value": "\"height\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 7414,
+      "length": 9,
+      "value": "\"quality\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7493,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7794,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 7845,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8032,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8081,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 8498,
+      "length": 27,
+      "value": "\"multi_image_picker\/image\/\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 8541,
+      "length": 8,
+      "value": "\".thumb\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 8740,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 8837,
+      "length": 22,
+      "value": "\"ASSET_DOES_NOT_EXIST\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 8870,
+      "length": 37,
+      "value": "\"The requested image does not exist.\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 8937,
+      "length": 17,
+      "value": "\"requestOriginal\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 9072,
+      "length": 12,
+      "value": "\"identifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 9133,
+      "length": 9,
+      "value": "\"quality\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9212,
+      "length": 3,
+      "value": "100"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9442,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 9493,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9680,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9729,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10135,
+      "length": 27,
+      "value": "\"multi_image_picker\/image\/\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10178,
+      "length": 11,
+      "value": "\".original\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 10372,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10469,
+      "length": 22,
+      "value": "\"ASSET_DOES_NOT_EXIST\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10502,
+      "length": 37,
+      "value": "\"The requested image does not exist.\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10569,
+      "length": 17,
+      "value": "\"requestMetadata\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 10704,
+      "length": 12,
+      "value": "\"identifier\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11502,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "BooleanLiteral",
+      "offset": 11543,
+      "length": 5,
+      "value": "false"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 11902,
+      "length": 34,
+      "value": "\"metadata not found for \""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 11935,
+      "length": 2,
+      "value": "\"\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12352,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 12658,
+      "length": 3,
+      "value": "\"#\""
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12759,
+      "length": 1,
+      "value": "6"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12837,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12958,
+      "length": 8,
+      "value": "0xFF0000"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 12971,
+      "length": 2,
+      "value": "16"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "FloatLiteral",
+      "offset": 12977,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13023,
+      "length": 8,
+      "value": "0x00FF00"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13036,
+      "length": 1,
+      "value": "8"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "FloatLiteral",
+      "offset": 13041,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "IntegerLiteral",
+      "offset": 13085,
+      "length": 8,
+      "value": "0x0000FF"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "FloatLiteral",
+      "offset": 13097,
+      "length": 5,
+      "value": "255.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "FloatLiteral",
+      "offset": 13131,
+      "length": 3,
+      "value": "1.0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/.pub-cache\/hosted\/pub.dev\/multi_image_picker-4.8.01\/ios\/Classes\/SwiftMultiImagePickerPlugin.swift",
+      "kind": "StringLiteral",
+      "offset": 957,
+      "length": 27,
+      "value": "\"multi_image_picker.SwiftMultiImagePickerPlugin\""
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Release-iphoneos/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Release-iphoneos/BSGridCollectionViewLayout/BSGridCollectionViewLayout.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "BSGridCollectionViewLayout-Swift.h",
+      'external-contents': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/BSGridCollectionViewLayout.build/unextended-interface-header.h",
+    }]
+    }]
+}

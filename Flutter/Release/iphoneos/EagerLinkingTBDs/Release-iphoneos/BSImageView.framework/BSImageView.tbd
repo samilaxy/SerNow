@@ -1,0 +1,91 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_$s11BSImageViewAAC5frameABSo6CGRectV_tcfC",
+            "_$s11BSImageViewAAC11isAnimatingSbvpMV",
+            "_$s11BSImageViewAAC13stopAnimatingyyF",
+            "_$s11BSImageViewAACfD",
+            "_$s11BSImageViewAAC20animationRepeatCountSivM",
+            "_$s11BSImageViewAAC20animationRepeatCountSivs",
+            "_$s11BSImageViewAAC17animationDurationSdvpMV",
+            "_$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvg",
+            "_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvg",
+            "_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvs",
+            "_$s11BSImageViewAAC13isHighlightedSbvpMV",
+            "_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvpMV",
+            "_BSImageViewVersionNumber",
+            "_BSImageViewVersionString",
+            "_$s11BSImageViewAAC20animationRepeatCountSivg",
+            "_$s11BSImageViewAAC5imageABSo7UIImageCSg_tcfC",
+            "_Swift51Overrides",
+            "_$s11BSImageViewAAC5image16highlightedImageABSo7UIImageCSg_AGtcfC",
+            "_$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfc",
+            "_$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvs",
+            "_$s11BSImageViewAAC14startAnimatingyyF",
+            "_$s11BSImageViewAAC17animationDurationSdvM",
+            "_$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvs",
+            "_$s11BSImageViewAACMa",
+            "_$s11BSImageViewAAC17animationDurationSdvg",
+            "_$s11BSImageViewAAC5frameABSo6CGRectV_tcfc",
+            "_$s11BSImageViewAAC17animationDurationSdvs",
+            "_$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvg",
+            "_$s11BSImageViewAACMo",
+            "_$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvM",
+            "_$s11BSImageViewAAC13isHighlightedSbvs",
+            "_$s11BSImageViewAAC5imageSo7UIImageCSgvs",
+            "_Swift50Overrides",
+            "_$s11BSImageViewAAC5imageSo7UIImageCSgvpMV",
+            "_$s11BSImageViewAAC11isAnimatingSbvg",
+            "_$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvpMV",
+            "_$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfC",
+            "_$s11BSImageViewAAC13isHighlightedSbvg",
+            "_$s11BSImageViewAAC20animationRepeatCountSivpMV",
+            "_$s11BSImageViewAACN",
+            "_$s11BSImageViewAAC5imageSo7UIImageCSgvg",
+            "_$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvM",
+            "_$s11BSImageViewAACMn",
+            "_$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvpMV"
+          ],
+          "objc_class": [
+            "_TtC11BSImageView11BSImageView",
+            "PodsDummy_BSImageView"
+          ]
+        },
+        "text": {
+          "global": [
+            "__ZN5swift39swift51override_conformsToSwiftProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEN7__swift9__runtime4llvm9StringRefEPFPKNS_35TargetProtocolConformanceDescriptorIS1_EES4_S8_SC_E",
+            "__ZN5swift34swift50override_conformsToProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEPFPKNS_18TargetWitnessTableIS1_EES4_S8_E",
+            "__Z34_swiftoverride_class_getSuperclassPKN5swift14TargetMetadataINS_9InProcessEEE"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/BSImageView.framework/BSImageView"
+      }
+    ],
+    "swift_abi": [
+      {
+        "abi": 7
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "9",
+        "target": "arm64-ios"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

@@ -1,0 +1,23 @@
+{
+  'version': 0,
+  'use-external-names': 'false',
+  'case-sensitive': 'false',
+  'roots': [{
+    'type': 'directory',
+    'name': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Release-iphoneos/multi_image_picker/multi_image_picker.framework/Modules"
+    'contents': [{
+      'type': 'file',
+      'name': "module.modulemap",
+      'external-contents': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/unextended-module.modulemap",
+    }]
+    },
+    {
+    'type': 'directory',
+    'name': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Release-iphoneos/multi_image_picker/multi_image_picker.framework/Headers"
+    'contents': [{
+      'type': 'file',
+      'name': "multi_image_picker-Swift.h",
+      'external-contents': "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/multi_image_picker.build/unextended-interface-header.h",
+    }]
+    }]
+}

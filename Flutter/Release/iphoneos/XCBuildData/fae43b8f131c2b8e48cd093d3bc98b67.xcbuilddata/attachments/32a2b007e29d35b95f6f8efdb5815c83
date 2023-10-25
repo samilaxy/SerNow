@@ -1,0 +1,15 @@
+{
+  "" : {
+    "const-values" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master.swiftconstvalues",
+    "dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master.d",
+    "diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master.dia",
+    "emit-module-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master-emit-module.dia",
+    "swift-dependencies" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/smart_auth-master.swiftdeps"
+  },
+  "/Users/amalitech-pc-4100433/.pub-cache/hosted/pub.dev/smart_auth-1.1.1/ios/Classes/SwiftSmartAuthPlugin.swift" : {
+    "index-unit-output-path" : "/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/SwiftSmartAuthPlugin.o",
+    "llvm-bc" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/SwiftSmartAuthPlugin.bc",
+    "object" : "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/Flutter/Release/iphoneos/Pods.build/Release-iphoneos/smart_auth.build/Objects-normal/arm64/SwiftSmartAuthPlugin.o"
+  }
+}

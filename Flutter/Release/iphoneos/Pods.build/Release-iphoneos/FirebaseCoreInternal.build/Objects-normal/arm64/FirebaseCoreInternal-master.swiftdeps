@@ -1,0 +1,29 @@
+version: "Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)"
+options: "f89c3c782cd2aad83ae5640ccc3e0795263e531095c090bc51c5a0e7d1fac155"
+build_start_time: [1698246499, 232987000]
+build_end_time: [1698246557, 446104000]
+inputs:
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Heartbeat.swift"
+  : [1698231403, 652761959]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatController.swift"
+  : [1698231403, 655678286]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatLoggingTestUtils.swift"
+  : [1698231403, 657691557]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatStorage.swift"
+  : [1698231403, 659001781]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsBundle.swift"
+  : [1698231403, 660161416]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/HeartbeatsPayload.swift"
+  : [1698231403, 661965175]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/RingBuffer.swift"
+  : [1698231403, 653802376]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/Storage.swift"
+  : [1698231403, 651795587]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/StorageFactory.swift"
+  : [1698231403, 662737238]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/WeakContainer.swift"
+  : [1698231403, 660954847]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatController.swift"
+  : [1698231403, 654614680]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/FirebaseCoreInternal/FirebaseCore/Internal/Sources/HeartbeatLogging/_ObjC_HeartbeatsPayload.swift"
+  : [1698231403, 656474166]

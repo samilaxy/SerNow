@@ -1,0 +1,81 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivg",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvpMV",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C029layoutAttributesForDecorationC06ofKind2atSo012UICollectioncdG0CSgSS_10Foundation9IndexPathVtF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C23layoutAttributesForItem2atSo012UICollectioncdG0CSg10Foundation9IndexPathV_tF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvs",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvpMV",
+            "_BSGridCollectionViewLayoutVersionNumber",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C7prepareyyF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvM",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivpMV",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CN",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvg",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CMo",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C5coderACSgSo7NSCoderC_tcfC",
+            "_BSGridCollectionViewLayoutVersionString",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvM",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C010collectionC11ContentSizeSo6CGSizeVvg",
+            "_Swift50Overrides",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvs",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C5coderACSgSo7NSCoderC_tcfc",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C016shouldInvalidateD015forBoundsChangeSbSo6CGRectV_tF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CACycfc",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvg",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivs",
+            "_Swift51Overrides",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CfD",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C032layoutAttributesForSupplementaryC06ofKind2atSo012UICollectioncdG0CSgSS_10Foundation9IndexPathVtF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C27layoutAttributesForElements2inSaySo012UICollectioncdG0CGSgSo6CGRectV_tF",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvpMV",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CACycfC",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CMa",
+            "_$s26BSGridCollectionViewLayout04GridbcD0CMn",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvg",
+            "_$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivM"
+          ],
+          "objc_class": [
+            "PodsDummy_BSGridCollectionViewLayout",
+            "_TtC26BSGridCollectionViewLayout24GridCollectionViewLayout"
+          ]
+        },
+        "text": {
+          "global": [
+            "__Z34_swiftoverride_class_getSuperclassPKN5swift14TargetMetadataINS_9InProcessEEE",
+            "__ZN5swift34swift50override_conformsToProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEPFPKNS_18TargetWitnessTableIS1_EES4_S8_E",
+            "__ZN5swift39swift51override_conformsToSwiftProtocolEPKNS_14TargetMetadataINS_9InProcessEEEPKNS_24TargetProtocolDescriptorIS1_EEN7__swift9__runtime4llvm9StringRefEPFPKNS_35TargetProtocolConformanceDescriptorIS1_EES4_S8_SC_E"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/BSGridCollectionViewLayout.framework/BSGridCollectionViewLayout"
+      }
+    ],
+    "swift_abi": [
+      {
+        "abi": 7
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "9",
+        "target": "arm64-ios"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

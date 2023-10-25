@@ -1,0 +1,66 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)
+// swift-module-flags: -target arm64-apple-ios9.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -Onone -module-name BSImageView
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+@_exported import BSImageView
+import Foundation
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) public class BSImageView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var isUserInteractionEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var contentMode: UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+  @objc deinit
+}
+extension BSImageView.BSImageView {
+  @_Concurrency.MainActor(unsafe) convenience public init(image: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) convenience public init(image: UIKit.UIImage?, highlightedImage: UIKit.UIImage?)
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var image: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var highlightedImage: UIKit.UIImage? {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var animationImages: [UIKit.UIImage]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var highlightedAnimationImages: [UIKit.UIImage]? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var animationDuration: Foundation.TimeInterval {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var animationRepeatCount: Swift.Int {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open func startAnimating()
+  @_Concurrency.MainActor(unsafe) open func stopAnimating()
+  @_Concurrency.MainActor(unsafe) open var isAnimating: Swift.Bool {
+    get
+  }
+}

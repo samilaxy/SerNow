@@ -1,0 +1,26 @@
+version: "Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)"
+options: "375899389fe6f15718f5e91d292bdf128608b759abd269b6a40b56020aa64cd3"
+build_start_time: [1698246453, 125084000]
+build_end_time: [1698246473, 474164000]
+inputs:
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Controller/AlbumsViewController.swift": [1698231400, 537753613]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Controller/BSImagePickerViewController.swift"
+  : [1698231400, 534412147]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Controller/PhotosViewController.swift": [1698231400, 535555805]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Controller/PreviewViewController.swift": [1698231400, 533200200]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Controller/ZoomAnimator.swift": [1698231400, 539032211]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Extension/NSIndexSet+NSIndexPath.swift": [1698231400, 530367742]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Extension/UIViewController+BSImagePicker.swift"
+  : [1698231400, 529232057]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/AlbumTableViewDataSource.swift": [1698231400, 543085907]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/AssetStore.swift": [1698231400, 540916695]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/CameraCollectionViewDataSource.swift": [1698231400, 545742559]
+  ? "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/ComposedCollectionViewDataSource.swift"
+  : [1698231400, 544628150]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/PhotoCollectionViewDataSource.swift": [1698231400, 546897910]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Model/Settings.swift": [1698231400, 541898831]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/Protocol/BSImagePickerSettings.swift": [1698231400, 531515693]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/View/AlbumCell.swift": [1698231400, 550359305]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/View/CameraCell.swift": [1698231400, 552073662]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/View/PhotoCell.swift": [1698231400, 549243389]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImagePicker/Sources/View/SelectionView.swift": [1698231400, 551173216]

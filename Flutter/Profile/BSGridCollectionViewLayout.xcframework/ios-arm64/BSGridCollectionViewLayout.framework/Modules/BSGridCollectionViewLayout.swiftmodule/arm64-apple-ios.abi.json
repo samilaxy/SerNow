@@ -1,0 +1,1056 @@
+{
+  "ABIRoot": {
+    "kind": "Root",
+    "name": "TopLevel",
+    "printedName": "TopLevel",
+    "children": [
+      {
+        "kind": "Import",
+        "name": "UIKit",
+        "printedName": "UIKit",
+        "declKind": "Import",
+        "moduleName": "BSGridCollectionViewLayout",
+        "declAttributes": [
+          "RawDocComment"
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "GridCollectionViewLayout",
+        "printedName": "GridCollectionViewLayout",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "itemSpacing",
+            "printedName": "itemSpacing",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemSpacing14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvp",
+            "moduleName": "BSGridCollectionViewLayout",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemSpacing14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvg",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemSpacing14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvs",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemSpacing14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemSpacing12CoreGraphics7CGFloatVvM",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "itemsPerRow",
+            "printedName": "itemsPerRow",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivp",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivp",
+            "moduleName": "BSGridCollectionViewLayout",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivg",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivg",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivs",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivs",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivM",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C11itemsPerRowSivM",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "itemHeightRatio",
+            "printedName": "itemHeightRatio",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGFloat",
+                "printedName": "CoreGraphics.CGFloat",
+                "usr": "s:14CoreFoundation7CGFloatV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio14CoreFoundation7CGFloatVvp",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvp",
+            "moduleName": "BSGridCollectionViewLayout",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "Custom",
+              "HasStorage",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio14CoreFoundation7CGFloatVvg",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvg",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGFloat",
+                    "printedName": "CoreGraphics.CGFloat",
+                    "usr": "s:14CoreFoundation7CGFloatV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio14CoreFoundation7CGFloatVvs",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvs",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "set"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Modify",
+                "printedName": "Modify()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio14CoreFoundation7CGFloatVvM",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C15itemHeightRatio12CoreGraphics7CGFloatVvM",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "_modify"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "itemSize",
+            "printedName": "itemSize",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvp",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvp",
+            "moduleName": "BSGridCollectionViewLayout",
+            "declAttributes": [
+              "HasInitialValue",
+              "Final",
+              "HasStorage",
+              "Custom",
+              "SetterAccess",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGSize",
+                    "printedName": "CoreFoundation.CGSize",
+                    "usr": "c:@S@CGSize"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvg",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C8itemSizeSo6CGSizeVvg",
+                "moduleName": "BSGridCollectionViewLayout",
+                "implicit": true,
+                "declAttributes": [
+                  "Final"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "prepare",
+            "printedName": "prepare()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)prepareLayout",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C7prepareyyF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "prepareLayout",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "collectionViewContentSize",
+            "printedName": "collectionViewContentSize",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGSize",
+                "printedName": "CoreFoundation.CGSize",
+                "usr": "c:@S@CGSize"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(py)collectionViewContentSize",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C010collectionC11ContentSizeSo6CGSizeVvp",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "collectionViewContentSize",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGSize",
+                    "printedName": "CoreFoundation.CGSize",
+                    "usr": "c:@S@CGSize"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)collectionViewContentSize",
+                "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C010collectionC11ContentSizeSo6CGSizeVvg",
+                "moduleName": "BSGridCollectionViewLayout",
+                "overriding": true,
+                "objc_name": "collectionViewContentSize",
+                "declAttributes": [
+                  "Final",
+                  "ObjC"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "layoutAttributesForElements",
+            "printedName": "layoutAttributesForElements(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[UIKit.UICollectionViewLayoutAttributes]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[UIKit.UICollectionViewLayoutAttributes]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "UICollectionViewLayoutAttributes",
+                        "printedName": "UIKit.UICollectionViewLayoutAttributes",
+                        "usr": "c:objc(cs)UICollectionViewLayoutAttributes"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)layoutAttributesForElementsInRect:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C27layoutAttributesForElements2inSaySo012UICollectioncdG0CGSgSo6CGRectV_tF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "layoutAttributesForElementsInRect:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutAttributesForItem",
+            "printedName": "layoutAttributesForItem(at:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UICollectionViewLayoutAttributes?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UICollectionViewLayoutAttributes",
+                    "printedName": "UIKit.UICollectionViewLayoutAttributes",
+                    "usr": "c:objc(cs)UICollectionViewLayoutAttributes"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "IndexPath",
+                "printedName": "Foundation.IndexPath",
+                "usr": "s:10Foundation9IndexPathV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)layoutAttributesForItemAtIndexPath:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C23layoutAttributesForItem2atSo012UICollectioncdG0CSg10Foundation9IndexPathV_tF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "layoutAttributesForItemAtIndexPath:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "shouldInvalidateLayout",
+            "printedName": "shouldInvalidateLayout(forBoundsChange:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGRect",
+                "printedName": "CoreFoundation.CGRect",
+                "usr": "c:@S@CGRect"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)shouldInvalidateLayoutForBoundsChange:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C016shouldInvalidateD015forBoundsChangeSbSo6CGRectV_tF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "shouldInvalidateLayoutForBoundsChange:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutAttributesForDecorationView",
+            "printedName": "layoutAttributesForDecorationView(ofKind:at:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UICollectionViewLayoutAttributes?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UICollectionViewLayoutAttributes",
+                    "printedName": "UIKit.UICollectionViewLayoutAttributes",
+                    "usr": "c:objc(cs)UICollectionViewLayoutAttributes"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "IndexPath",
+                "printedName": "Foundation.IndexPath",
+                "usr": "s:10Foundation9IndexPathV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)layoutAttributesForDecorationViewOfKind:atIndexPath:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C029layoutAttributesForDecorationC06ofKind2atSo012UICollectioncdG0CSgSS_10Foundation9IndexPathVtF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "layoutAttributesForDecorationViewOfKind:atIndexPath:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "layoutAttributesForSupplementaryView",
+            "printedName": "layoutAttributesForSupplementaryView(ofKind:at:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "UIKit.UICollectionViewLayoutAttributes?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UICollectionViewLayoutAttributes",
+                    "printedName": "UIKit.UICollectionViewLayoutAttributes",
+                    "usr": "c:objc(cs)UICollectionViewLayoutAttributes"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "IndexPath",
+                "printedName": "Foundation.IndexPath",
+                "usr": "s:10Foundation9IndexPathV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)layoutAttributesForSupplementaryViewOfKind:atIndexPath:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C032layoutAttributesForSupplementaryC06ofKind2atSo012UICollectioncdG0CSgSS_10Foundation9IndexPathVtF",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "objc_name": "layoutAttributesForSupplementaryViewOfKind:atIndexPath:",
+            "declAttributes": [
+              "Final",
+              "ObjC",
+              "Custom",
+              "Override",
+              "AccessControl",
+              "RawDocComment"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "GridCollectionViewLayout",
+                "printedName": "BSGridCollectionViewLayout.GridCollectionViewLayout",
+                "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)init",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0CACycfc",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "init",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Override"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(coder:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "BSGridCollectionViewLayout.GridCollectionViewLayout?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "GridCollectionViewLayout",
+                    "printedName": "BSGridCollectionViewLayout.GridCollectionViewLayout",
+                    "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "NSCoder",
+                "printedName": "Foundation.NSCoder",
+                "usr": "c:objc(cs)NSCoder"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout(im)initWithCoder:",
+            "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C5coderACSgSo7NSCoderC_tcfc",
+            "moduleName": "BSGridCollectionViewLayout",
+            "overriding": true,
+            "implicit": true,
+            "objc_name": "initWithCoder:",
+            "declAttributes": [
+              "Dynamic",
+              "ObjC",
+              "Custom",
+              "Required"
+            ],
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Class",
+        "usr": "c:@M@BSGridCollectionViewLayout@objc(cs)GridCollectionViewLayout",
+        "mangledName": "$s26BSGridCollectionViewLayout04GridbcD0C",
+        "moduleName": "BSGridCollectionViewLayout",
+        "declAttributes": [
+          "Custom",
+          "Final",
+          "AccessControl",
+          "RawDocComment",
+          "ObjC"
+        ],
+        "superclassUsr": "c:objc(cs)UICollectionViewLayout",
+        "inheritsConvenienceInitializers": true,
+        "superclassNames": [
+          "UIKit.UICollectionViewLayout",
+          "ObjectiveC.NSObject"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CVarArg",
+            "printedName": "CVarArg",
+            "usr": "s:s7CVarArgP",
+            "mangledName": "$ss7CVarArgP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObservingPublishing",
+            "printedName": "_KeyValueCodingAndObservingPublishing",
+            "usr": "s:10Foundation37_KeyValueCodingAndObservingPublishingP",
+            "mangledName": "$s10Foundation37_KeyValueCodingAndObservingPublishingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "_KeyValueCodingAndObserving",
+            "printedName": "_KeyValueCodingAndObserving",
+            "usr": "s:10Foundation27_KeyValueCodingAndObservingP",
+            "mangledName": "$s10Foundation27_KeyValueCodingAndObservingP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomStringConvertible",
+            "printedName": "CustomStringConvertible",
+            "usr": "s:s23CustomStringConvertibleP",
+            "mangledName": "$ss23CustomStringConvertibleP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CustomDebugStringConvertible",
+            "printedName": "CustomDebugStringConvertible",
+            "usr": "s:s28CustomDebugStringConvertibleP",
+            "mangledName": "$ss28CustomDebugStringConvertibleP"
+          }
+        ]
+      }
+    ],
+    "json_format_version": 8
+  },
+  "ConstValues": [
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1379,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1532,
+      "length": 1,
+      "value": "3"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1715,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1902,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1919,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2107,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2112,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2116,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2371,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3190,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 3214,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "BooleanLiteral",
+      "offset": 4090,
+      "length": 4,
+      "value": "true"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4973,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 4985,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "Array",
+      "offset": 5001,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "Array",
+      "offset": 5314,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "Array",
+      "offset": 5645,
+      "length": 2,
+      "value": "[]"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6100,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6123,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6567,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6675,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 6768,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7529,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7548,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 7587,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8043,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8080,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8502,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8514,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8575,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 8744,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9125,
+      "length": 1,
+      "value": "1"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9460,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9497,
+      "length": 1,
+      "value": "0"
+    },
+    {
+      "filePath": "\/Users\/amalitech-pc-4100433\/Documents\/Projects\/ServNow\/ios\/Pods\/BSGridCollectionViewLayout\/Sources\/GridCollectionViewLayout.swift",
+      "kind": "IntegerLiteral",
+      "offset": 9541,
+      "length": 1,
+      "value": "0"
+    }
+  ]
+}

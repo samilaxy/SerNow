@@ -1,0 +1,7 @@
+version: "Apple Swift version 5.9 (swiftlang-5.9.0.128.108 clang-1500.0.40.1)"
+options: "8dbd33e8daff74d1bd3bd83c1a73779cbbc3120703beb8178ae821cbe2e416aa"
+build_start_time: [1698246449, 813764000]
+build_end_time: [1698246453, 49652000]
+inputs:
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImageView/Source/BSImageView.swift": [1698231400, 563348237]
+  "/Users/amalitech-pc-4100433/Documents/Projects/ServNow/ios/Pods/BSImageView/Source/ImageViewLayout.swift": [1698231400, 565683104]
