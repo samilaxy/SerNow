@@ -9,11 +9,17 @@ const String tProfileImage = "assets/profileimg.jpg";
 const String tDefaultSize = "15";
 const String logoImg = 'assets/img1.png';
 const String noImg = 'assets/noImage4.jpg';
+const String image1 = 'assets/image-1.png';
+const String image2 = 'assets/image-2.png';
+const String image3 = 'assets/image-3.png';
+const String image4 = 'assets/image-4.png';
+const String image5 = 'assets/image-5.png';
 const String barberImg = 'assets/barber1.jpg';
 const Color mainColor = Color.fromARGB(255, 245, 132, 56);//Color.fromARGB(255, 219, 147, 53);
 const String defualtImg = 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2Fbeige-blank-profile-picture-in-2022--770467448766639749%2F&psig=AOvVaw1L4YrtaI0R66HfODkUxGuV&ust=1692466199990000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCNjOkYfe5oADFQAAAAAdAAAAABAE';
 const String defualtUrl = "https://firebasestorage.googleapis.com/v0/b/sernow-7b679.appspot.com/o/profileImages%2F1694711185100_306529.jpg?alt=media&token=8056a70a-ad5e-4154-b675-e7f477677dae";
 
+  
   // List<ServiceCard> data = [
   //   const ServiceCard(
   //     serviceName: 'Haircut Haircut',

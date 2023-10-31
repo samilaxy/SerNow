@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import '../../models/discover_model.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
+import '../models/bookmark_model.dart';
 
 class DetailsPageProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -184,4 +185,33 @@ fetchUserDataTasks.add(
     }
     notifyListeners();
   }
+
+Future<void> bookmarkService(String? servId, String? userId) async {
+  final existingBookmarkQuery = await _db
+      .collection("bookmarks")
+      .where("userId", isEqualTo: userId)
+      .where("servId", isEqualTo: servId)
+      .get();
+
+  if (existingBookmarkQuery.docs.isEmpty) {
+    // No existing bookmark found, add a new bookmark
+    BookmarkModel bookmark = BookmarkModel(userId: userId, servId: servId);
+    try {
+      await _db.collection("bookmarks").add(bookmark.toJson());
+      notifyListeners();
+    } catch (error) {
+      print(error.toString());
+    }
+  } else {
+    // An existing bookmark found, remove it
+    final existingBookmarkDoc = existingBookmarkQuery.docs.first;
+    try {
+      await _db.collection("bookmarks").doc(existingBookmarkDoc.id).delete();
+      notifyListeners();
+    } catch (error) {
+      print(error.toString());
+    }
+  }
+}
+
 }

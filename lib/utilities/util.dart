@@ -7,6 +7,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../models/bookmark_model.dart';
+
 final FirebaseFirestore _db = FirebaseFirestore.instance;
 
 class UtilityClass {
@@ -56,20 +58,35 @@ static Future<String> getCurrentLocation() async {
 }
 
 
-  static Future<void> bookmarkService(String? servId, bool isFavorite) async {
-  bool isBookmark = !isFavorite;
-  BookmarkModel bookmark = BookmarkModel(isFavorite: isBookmark);
+  // static Future<void> bookmarkService(String? servId, bool isFavorite) async {
+  // bool isBookmark = !isFavorite;
+  // BookmarkModel bookmark = BookmarkModel(isFavorite: isBookmark);
     
-    try {
+  //   try {
       
-     // await Future.delayed(const Duration(seconds: 01));
-      await _db.collection("services").doc(servId).update(bookmark.toJson());
+  //    // await Future.delayed(const Duration(seconds: 01));
+  //     await _db.collection("services").doc(servId).update(bookmark.toJson());
       
-    } catch (error) {
-      print(error.toString());
-    }
+  //   } catch (error) {
+  //     print(error.toString());
+  //   }
 
-  }
+  // }
+
+  // static Future<void> bookmarkService(String servId, String userId, bool isFavorite) async {
+  // bool isBookmark = !isFavorite;
+  // BookmarkModel bookmark = BookmarkModel(isFavorite: isBookmark, userId: userId, servId: servId);
+    
+  //   try {
+      
+  //    // await Future.delayed(const Duration(seconds: 01));
+  //     await _db.collection("services").doc(servId).update(bookmark.toJson());
+      
+  //   } catch (error) {
+  //     print(error.toString());
+  //   }
+
+  // }
 }
 
 class FirebaseImageUploadException implements Exception {
@@ -78,16 +95,3 @@ class FirebaseImageUploadException implements Exception {
   FirebaseImageUploadException(this.message);
 }
 
-class BookmarkModel  {
-  final bool isFavorite;
-  
-  BookmarkModel({
-    required this.isFavorite,
-    });
-
-    toJson() {
-      return {
-        "isFavorite": isFavorite,
-      };
-    }
-}
