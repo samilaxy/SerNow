@@ -11,7 +11,20 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  
+  int currentPage = 0;
+  PageController _controller = PageController(initialPage: 0);
+  @override
+  void initState() {
+    _controller = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     List<OnBoardingModel> contents = [
@@ -31,7 +44,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           description:
               'Tired of searching endlessly for trusted services?. ServNow aims to provide a solution to this problem by making it easier to find reliable local service providers.')
     ];
-int currentPage = 0;
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(20.0),
@@ -39,19 +52,20 @@ int currentPage = 0;
           children: [
             Expanded(
               child: PageView.builder(
+                controller: _controller,
                 itemCount: contents.length,
                 onPageChanged: (int index) {
-                  setState() {
+                  setState(() {
                     currentPage = index;
                     print(currentPage);
-                  }
+                  });
                 },
                 itemBuilder: (_, i) {
                   return Column(
                     children: [
-                      const SizedBox(height: 150),
-                      SizedBox(height: 300, 
-                      child: Image.asset(contents[i].img)),
+                      const Expanded(child: SizedBox(height: 150)),
+                      SizedBox(
+                          height: 300, child: Image.asset(contents[i].img)),
                       const SizedBox(height: 30),
                       Text(
                         contents[i].title,
@@ -77,12 +91,12 @@ int currentPage = 0;
                 },
               ),
             ),
+            const SizedBox(height: 20),
             Container(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: List.generate(
-                    contents.length,
-                    (index) => buildBot(currentPage, index)),
+                    contents.length, (index) => buildBot(currentPage, index)),
               ),
             ),
             const SizedBox(height: 50),
@@ -97,9 +111,15 @@ int currentPage = 0;
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      Navigator.pushNamed(context, 'phone');
+                      if (currentPage == contents.length - 1) {
+                        Navigator.pushNamed(context, 'phone');
+                      }
+                      _controller.nextPage(
+                          duration: Duration(microseconds: 100),
+                          curve: Curves.bounceIn);
                     },
-                    child: Text("Start",
+                    child: Text(
+                        currentPage == contents.length - 1 ? "Start" : "Next",
                         style: GoogleFonts.poppins(
                           // fontSize: 13.0,
                           color: Colors.white,
@@ -113,13 +133,14 @@ int currentPage = 0;
     );
   }
 
-  Container buildBot(int currentPage, int index) {
-    return Container(
-                        height: 10,
-                        width: currentPage == index ? 20 : 10,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: mainColor),
-                      );
+  AnimatedContainer buildBot(int currentPage, int index) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: 10,
+      margin: const EdgeInsets.only(right: 3),
+      width: currentPage == index ? 20 : 10,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: mainColor),
+    );
   }
 }

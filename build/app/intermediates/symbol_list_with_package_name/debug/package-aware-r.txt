@@ -1077,6 +1077,7 @@ drawable ic_call_decline
 drawable ic_call_decline_low
 drawable ic_done_all_white_24dp
 drawable ic_done_white_24dp
+drawable ic_launcher_background
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1469,6 +1470,8 @@ layout support_simple_spinner_dropdown_item
 layout thumb_item
 menu menu_photo_album
 mipmap ic_launcher
+mipmap ic_launcher_foreground
+mipmap ic_launcher_round
 raw firebase_common_keep
 string abc_action_bar_home_description
 string abc_action_bar_up_description
