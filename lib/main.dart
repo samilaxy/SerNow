@@ -15,6 +15,7 @@ import 'screens/home/create_service_page.dart';
 import 'screens/home/home.dart';
 import 'screens/home/my_adverts.dart';
 import 'screens/home/update_service_page.dart';
+import 'screens/onboarding_screen.dart';
 import 'screens/profile/profile_page.dart';
 import 'screens/profile/update_profile_screen.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
@@ -31,8 +32,8 @@ void main() async {
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'home';
-
+  String initialRoute = userLoggedIn ? 'home' : 'onBoarding';
+ 
   runApp(
     MultiProvider(
       providers: [
@@ -92,8 +93,8 @@ class MyApp extends StatelessWidget {
         'updateAdvert': (context) => const UpdateServicePage(),
         'createService': (context) => const CreateServicePage(),
         'bookmark': (context) => const BookmarkPage(),
+        'onBoarding': (context) => const OnboardingScreen()
       },
     );
   }
 }
-

@@ -1,0 +1,126 @@
+[
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-anydpi-v21_ic_launcher_background.xml.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-anydpi-v21/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-ldpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-ldpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/drawable-v21_launch_background.xml.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/drawable-v21/launch_background.xml"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-xxxhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-xxxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-hdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/drawable_launch_background.xml.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/drawable/launch_background.xml"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-mdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-xxhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-xxhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-hdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-mdpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-mdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-hdpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-hdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-merged_res-36:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "/Users/amalitech-pc-4100433/.gradle/daemon/7.5/com.example.serv_now_new.app-main-30:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/drawable-xhdpi_ic_launcher_background.png.flat",
+        "source": "com.example.serv_now_new.app-pngs-31:/drawable-xhdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-xhdpi/ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "com.example.serv_now_new.app-merged_res-36:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.serv_now_new.app-main-30:/mipmap-mdpi/ic_launcher.webp"
+    }
+]

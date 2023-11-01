@@ -2,22 +2,28 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
+import '../models/bookmark_model.dart';
+import '../repository/shared_preference.dart';
 
 class HomeProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
   List<ServiceModel> _data = [];
+  ServiceModel? _serviceData;
   List<ServiceModel> _bookmarkData = [];
   bool _dataState = true;
   String _category = "";
+  String _userId = "";
   bool _noData = false;
   bool _noFiltaData = false;
   bool _isBook = true;
   Map<String, dynamic>? profileData;
+  ServiceModel? get serviceData => _serviceData;
   List get data => _data;
   bool get noData => _noData;
   bool get noFiltaData => _noFiltaData;
   bool get isBook => _isBook;
+  String get userId => _userId;
   String get category => _category;
   List get bookmarkData => _bookmarkData;
   UserModel? _userModel;
@@ -117,7 +123,7 @@ class HomeProvider extends ChangeNotifier {
       default:
         _category = "";
     }
-    print(_category);
+
     await Future.delayed(const Duration(seconds: 1));
     try {
       if (_category.isNotEmpty) {
@@ -152,17 +158,16 @@ class HomeProvider extends ChangeNotifier {
                 user: _userModel,
               );
               _data.add(service);
-             
             }),
           );
-           if (_data.isNotEmpty) {
-                _dataState = false;
-                _noFiltaData = false;
-              } else {
-                print("no1 data");
-                _dataState = false;
-                _noFiltaData = true;
-              }
+          if (_data.isNotEmpty) {
+            _dataState = false;
+            _noFiltaData = false;
+          } else {
+            print("no1 data");
+            _dataState = false;
+            _noFiltaData = true;
+          }
         }
       } else {
         fetchAllServices();
@@ -173,61 +178,53 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> loadprofileData() async {
+    profileData = await SharedPreferencesHelper.getContact();
+    if (profileData != null) {
+      _userId = profileData!['userId'] ?? '';
+      notifyListeners();
+    }
+  }
+
   Future<void> fetchBookmarkServices() async {
+    loadprofileData();
     await Future.delayed(const Duration(seconds: 1));
     try {
       QuerySnapshot querySnapshot = await _db
-          .collection('services')
-          .where('isFavorite', isEqualTo: true) // Replace with the user's ID
+          .collection('bookmarks')
+          .where('userId', isEqualTo: _userId) // Replace with the user's ID
           .get();
 
-// if (querySnapshot.exists) {
       _bookmarkData = [];
-      final List<Future<void>> fetchUserDataTasks = [];
-
-      // Process the documents and add fetchUserData tasks
+      final List<Future<void>> fetchServiceDataTasks = [];
 
       for (var document in querySnapshot.docs) {
         final serviceData = document.data() as Map<String, dynamic>;
-        ;
-        final userId = serviceData["userId"];
+        final servId = serviceData["servId"];
 
-        // Add a task to fetch user data concurrently
-        fetchUserDataTasks.add(
-          fetchUserData(userId).then((userModel) {
-            final serviceCard = ServiceModel(
-              id: document.id,
-              userId: userId,
-              title: serviceData["title"],
-              category: serviceData["category"],
-              price: serviceData["price"],
-              location: serviceData["location"],
-              description: serviceData["description"],
-              isFavorite: serviceData["isFavorite"],
-              status: serviceData["status"],
-              imgUrls: serviceData["imgUrls"],
-              user: _userModel,
-            );
-            _bookmarkData.add(serviceCard);
-            notifyListeners();
-          }),
-        );
-        //}
+        // Fetch the service data for the bookmarked service
+        final serviceModel = fetchService(servId);
 
-        // Wait for all fetchUserData tasks to complete concurrently
-        await Future.wait(fetchUserDataTasks);
-        notifyListeners();
+        // Add a task to fetch service data concurrently
+        fetchServiceDataTasks.add(serviceModel.then((serviceCard) {
+          _bookmarkData.add(serviceCard!);
+          notifyListeners();
+        }));
+      }
+      await Future.delayed(const Duration(seconds: 2));
+      // Wait for all fetchServiceData tasks to complete concurrently
+      await Future.wait(fetchServiceDataTasks);
+      notifyListeners();
 
-        if (_bookmarkData.isNotEmpty) {
-          _isBook = false; // Data is available
-          _noData = false;
-        } else {
-          _isBook = false; // No data available
-          _noData = true;
-        }
+      if (_bookmarkData.isNotEmpty) {
+        _isBook = false; // Data is available
+        _noData = false;
+      } else {
+        _isBook = false; // No data available
+        _noData = true;
       }
     } catch (error) {
-      if (_data.isEmpty) {
+      if (_bookmarkData.isEmpty) {
         _isBook = true;
         _noData = false;
       }
@@ -260,5 +257,78 @@ class HomeProvider extends ChangeNotifier {
       _dataState = false;
     }
     notifyListeners();
+  }
+
+  Future<void> bookmarkService(String? servId, String? userId) async {
+    final existingBookmarkQuery = await _db
+        .collection("bookmarks")
+        .where("userId", isEqualTo: userId)
+        .where("servId", isEqualTo: servId)
+        .get();
+
+    if (existingBookmarkQuery.docs.isEmpty) {
+      // No existing bookmark found, add a new bookmark
+      BookmarkModel bookmark = BookmarkModel(userId: userId, servId: servId);
+      try {
+        await _db.collection("bookmarks").add(bookmark.toJson());
+        notifyListeners();
+      } catch (error) {
+        print(error.toString());
+      }
+    } else {
+      // An existing bookmark found, remove it
+      final existingBookmarkDoc = existingBookmarkQuery.docs.first;
+      try {
+        await _db.collection("bookmarks").doc(existingBookmarkDoc.id).delete();
+        notifyListeners();
+      } catch (error) {
+        print(error.toString());
+      }
+    }
+  }
+
+  Future<ServiceModel?> fetchService(String servId) async {
+    // await Future.delayed(const Duration(seconds: 2));
+    // _dataState = true;
+    try {
+      final DocumentSnapshot<Map<String, dynamic>> querySnapshot = await _db
+          .collection('services')
+          .doc(servId) // Replace with the user's ID
+          .get();
+
+ print('here... service $servId');
+      //reset discovered items array
+      //  _discover = [];
+      // if (querySnapshot.exists) {}
+      final List<Future<void>> fetchUserDataTasks = [];
+
+      Map<String, dynamic> data = querySnapshot.data() as Map<String, dynamic>;
+      final userId = data["userId"];
+      fetchUserDataTasks.add(
+        fetchUserData(userId).then((userModel) {
+          final service = ServiceModel(
+            userId: userId,
+            title: data["title"],
+            category: data["category"],
+            price: data["price"],
+            location: data["location"],
+            description: data["description"],
+            isFavorite: data["isFavorite"],
+            status: data["status"],
+            imgUrls: data["imgUrls"],
+            user: _userModel,
+          );
+          _serviceData = service;
+          notifyListeners();
+        }),
+      );
+      await Future.wait(fetchUserDataTasks);
+      notifyListeners();
+      print('here... service $serviceData');
+      // ignore: empty_catches
+    } catch (error) {}
+
+    notifyListeners();
+    return _serviceData;
   }
 }

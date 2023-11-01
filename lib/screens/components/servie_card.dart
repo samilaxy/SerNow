@@ -133,7 +133,7 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    UtilityClass.bookmarkService(widget.service.id, widget.service.isFavorite);
+                                    homeProvider.bookmarkService(widget.service.id, widget.service.user?.id);
                                     widget.service.isFavorite = !widget.service.isFavorite;
                                     //  widget.service = widget.service.copyWith(isFavorite: !widget.service.isFavorite);
                                         print(' favorite bool:${widget.service.id}');

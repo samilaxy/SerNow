@@ -13,6 +13,7 @@ class ServiceModel  {
   final bool status;
   final List imgUrls;
   final UserModel? user;
+  final List? bookmarks;
   
   ServiceModel( {
     this.id, 
@@ -26,6 +27,7 @@ class ServiceModel  {
     required this.status,
     required this.imgUrls,
     this.user,
+    this.bookmarks
     });
 
     toJson() {
@@ -40,7 +42,8 @@ class ServiceModel  {
         "isFavorite": isFavorite,
         "imgUrls": imgUrls,
         "status": status,
-        "user": user
+        "user": user,
+        "bookmarks": bookmarks
       };
     }
 }

@@ -28,7 +28,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     String currency = "\$ ";
     return Scaffold(
       appBar:
-          CustomAppBar(serviceData?.isFavorite ?? false, serviceData?.id ?? ""),
+          CustomAppBar(serviceData?.id ?? "", serviceData?.user?.id ?? ""),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -305,11 +305,13 @@ class MyGridview extends StatelessWidget {
 }
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  bool isFavorite;
+  bool isFavorite = false;
+  String userId;
   String servId;
   CustomAppBar(
-    this.isFavorite,
-    this.servId, {
+   // this.isFavorite,
+    this.servId,
+    this.userId, {
     super.key,
   });
 
@@ -323,6 +325,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
+     final detailsProvider = Provider.of<DetailsPageProvider>(context);
+    
     return SafeArea(
       child: SizedBox(
         height: kToolbarHeight,
@@ -336,8 +340,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  UtilityClass.bookmarkService(
-                      widget.servId, widget.isFavorite);
+                  detailsProvider.bookmarkService(
+                      widget.servId, widget.userId);
                   widget.isFavorite = !widget.isFavorite;
                   print(widget.servId);
                 });
