@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/countries.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -122,6 +123,8 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                     SizedBox(
                         height: 90,
                         child: IntlPhoneField(
+                          pickerDialogStyle: PickerDialogStyle(),
+                          dropdownIconPosition: IconPosition.trailing,
                           controller: countryController,
                           focusNode: focusNode,
                           cursorColor: mainColor,
@@ -342,12 +345,12 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: service.isloading
-                            ?  const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child:  CircularProgressIndicator(
-                                  color: Colors.black26),
-                            )
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                    color: Colors.black26),
+                              )
                             : const Text("Update",
                                 style: TextStyle(color: Colors.white)),
                       ),

@@ -63,7 +63,7 @@ class _MyPhoneState extends State<MyPhone> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 40,
               ),
               Text(
                 "Add your number. We will send you a verification code!",
@@ -74,15 +74,24 @@ class _MyPhoneState extends State<MyPhone> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: 25,
+                height: 30,
               ),
               SizedBox(
-                  height: 70,
+                  height: 90,
                   child: IntlPhoneField(
+                    //textAlignVertical: TextAlignVertical.center,
                     controller: numberController,
+                    style: GoogleFonts.poppins(
+                      fontWeight: FontWeight.normal,
+                    ),
+                    disableLengthCheck: true,
+                    dropdownTextStyle: GoogleFonts.poppins(
+                      fontWeight: FontWeight.normal,
+                    ),
                     focusNode: focusNode,
                     cursorColor: mainColor,
                     decoration: InputDecoration(
+                      alignLabelWithHint: true,
                       labelStyle: const TextStyle(color: Colors.grey),
                       focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.grey),
@@ -101,19 +110,16 @@ class _MyPhoneState extends State<MyPhone> {
                       print('Country changed to: ' + country.name);
                     },
                   )),
-              const SizedBox(
-                height: 10,
-              ),
               SizedBox(
                 width: double.infinity,
-                height: 50,
+                height: 60,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         backgroundColor: mainColor,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      //  Navigator.pushNamed(context, 'verify');
+                      Navigator.pushNamed(context, 'verify');
 
                       if (numberController.text.isNotEmpty) {
                         String? verificationCode = (await authService
