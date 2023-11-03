@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -7,7 +6,6 @@ import '../../utilities/constants.dart';
 import '../../controllers/my_adverts_provider.dart';
 import '../../main.dart';
 import '../../screens/components/my_advert_card.dart';
-
 
 class MyAdverts extends StatefulWidget {
   const MyAdverts({super.key});
@@ -19,12 +17,11 @@ class MyAdverts extends StatefulWidget {
 class _MyAdvertsState extends State<MyAdverts> with RouteAware {
   @override
   void didPush() {
-   final myAdvert =
-        Provider.of<MyAdvertsProvider>(context);
-         myAdvert.fetchServices();
+    final myAdvert = Provider.of<MyAdvertsProvider>(context);
+    myAdvert.fetchServices();
     super.didPush();
   }
-  
+
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -32,21 +29,19 @@ class _MyAdvertsState extends State<MyAdverts> with RouteAware {
     });
     super.initState();
   }
-  
+
   @override
   Widget build(BuildContext context) {
-      final myAdvert =
-        Provider.of<MyAdvertsProvider>(context);
+    final myAdvert = Provider.of<MyAdvertsProvider>(context);
 
     return Scaffold(
-      appBar: const CustomAppBar(),
-      body: 
-        Center(
-          child:  
-          Stack(
+        appBar: const CustomAppBar(),
+        body: Center(
+          child: Stack(
             children: [
-               if (myAdvert.noData) Center(
-             child: Text(
+              if (myAdvert.noData)
+                Center(
+                  child: Text(
                     "No service created yet",
                     maxLines: 1,
                     style: GoogleFonts.poppins(
@@ -54,44 +49,42 @@ class _MyAdvertsState extends State<MyAdverts> with RouteAware {
                       fontWeight: FontWeight.normal,
                     ),
                   ),
-           ),
-              myAdvert.dataState ? 
-              SizedBox(
-                child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const CircularProgressIndicator(color: mainColor, strokeWidth: 6),
-                  const SizedBox(height: 10),
-                  Text(
-                    "Please wait, while services load...",
-                    maxLines: 1,
-                    style: GoogleFonts.poppins(
-                      fontSize: 13.0,
-                      fontWeight: FontWeight.normal,
-                    ),
-                  ),
-                ],
+                ),
+              myAdvert.dataState
+                  ? SizedBox(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const CircularProgressIndicator(
+                              color: mainColor, strokeWidth: 6),
+                          const SizedBox(height: 10),
+                          Text(
+                            "Please wait, while services load...",
+                            maxLines: 1,
+                            style: GoogleFonts.poppins(
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.normal,
+                            ),
                           ),
-              ):
-          
-           GridView.builder(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                childAspectRatio: 0.90,
-                crossAxisSpacing: 10.0),
-            padding: const EdgeInsets.all(20),
-            itemCount: myAdvert.data.length,
-            itemBuilder: (BuildContext context, int index) {
-              return MyAdvertCard(
-               service: myAdvert.data[index] 
-                );
-            })
-           ],
+                        ],
+                      ),
+                    )
+                  : GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 15.0,
+                              childAspectRatio: 0.97,
+                              crossAxisSpacing: 15.0),
+                      padding: const EdgeInsets.all(20),
+                      itemCount: myAdvert.data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return MyAdvertCard(service: myAdvert.data[index]);
+                      })
+            ],
           ),
-        )
-    );
+        ));
   }
 }
 

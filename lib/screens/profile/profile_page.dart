@@ -193,7 +193,7 @@ class ProfileScreen extends StatelessWidget {
                 onTap: () {
                   print("Logout");
                   authProvider.isLogin(false);
-                  navigatorKey.currentState!.pushNamed('phone');
+                  navigatorKey.currentState!.pushNamed('onBoarding');
                 },
                 child: Row(children: [
                   Container(

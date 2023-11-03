@@ -97,6 +97,8 @@ class _MyVerifyState extends State<MyVerify> {
               ),
               Pinput(
                 length: 6,
+                // onClipboardFound: (enteredCode) {},
+                autofocus: true,
                 androidSmsAutofillMethod: AndroidSmsAutofillMethod.none,
                 controller: pinController,
                 defaultPinTheme: defaultPinTheme,
@@ -116,11 +118,11 @@ class _MyVerifyState extends State<MyVerify> {
                   enteredCode = value;
                   // Perform verification of the entered code here
                 },
-                validator: (pin) {
-                  print(
-                      "pin is $pin and code is $enteredCode  htere ${authService.code}");
-                  return pin == enteredCode ? null : 'Pin is idcddcdccncorrect';
-                },
+                // validator: (pin) {
+                //   print(
+                //       "pin is $pin and code is $enteredCode  here ${authService.code}");
+                //   return pin == authService.smsCode ? null : '';
+                // },
               ),
               const SizedBox(
                 height: 20,
@@ -134,11 +136,11 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      _showSnackBar(context, "Verification code is incorrect.");
+                      // _showSnackBar(context, "Verification code is incorrect.");
                       if (await authService
                               .signInWithVerificationCode(enteredCode!) !=
                           null) {
-                        navigatorKey.currentState!.pushNamed('home');
+                        // navigatorKey.currentState!.pushNamed('home');
                         print("Hereeeeeeeeeeeeeeeeeeeeee...........");
                       }
                     },
@@ -171,22 +173,26 @@ class _MyVerifyState extends State<MyVerify> {
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 20,
               ),
               SizedBox(
-                width: 100,
-                height: 30,
+                width: 120,
+                height: 35,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor:
-                            const Color.fromARGB(255, 194, 189, 189),
+                        backgroundColor: const Color.fromARGB(255, 207, 198, 198),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      Navigator.pushNamed(context, 'updateAdvert');
-                      print("resend");
+                      // Navigator.pushNamed(context, 'createService');
+                      authService.resendCode();
                     },
-                    child: Text("01:00",
+                    child: Text(
+                        authService.seconds == 0
+                            ? "Resend"
+                            : authService
+                                .formatTime(authService.seconds)
+                                .toString(),
                         style: GoogleFonts.poppins(
                           // fontSize: 13.0,
                           color: Colors.white,

@@ -60,12 +60,11 @@ class _BookmarkPageState extends State<BookmarkPage> {
                   ),
                 )
               : GridView.builder(
-                  gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          mainAxisSpacing: 10.0,
-                          childAspectRatio: 0.77,
-                          crossAxisSpacing: 10.0),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: 15.0,
+                      childAspectRatio: 0.9,
+                      crossAxisSpacing: 15.0),
                   shrinkWrap: true,
                   padding: const EdgeInsets.all(16.0),
                   itemCount: homeProvider.bookmarkData.length,

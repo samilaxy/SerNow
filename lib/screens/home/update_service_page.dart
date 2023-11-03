@@ -1,8 +1,6 @@
+import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl_phone_field/countries.dart';
-import 'package:intl_phone_field/country_picker_dialog.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/my_adverts_provider.dart';
@@ -27,7 +25,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController descController = TextEditingController();
 
   // String? _selectedOption = "Barber";
-  Country? _selectedCountry;
+  // Country? _selectedCountry;
   // Options for the dropdown menu
   final List<String> _dropdownOptions = [
     'Barber',
@@ -120,32 +118,6 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                     ),
                     const SizedBox(height: 10),
                     const SizedBox.shrink(),
-                    SizedBox(
-                        height: 90,
-                        child: IntlPhoneField(
-                          pickerDialogStyle: PickerDialogStyle(),
-                          dropdownIconPosition: IconPosition.trailing,
-                          controller: countryController,
-                          focusNode: focusNode,
-                          cursorColor: mainColor,
-                          decoration: InputDecoration(
-                            labelStyle: const TextStyle(color: Colors.grey),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide:
-                                    const BorderSide(color: Colors.grey),
-                                borderRadius: BorderRadius.circular(100)),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(100)),
-                            labelText: "Country*",
-                          ),
-                          initialCountryCode: '+233', //authService.code,
-                          languageCode: "en",
-                          onCountryChanged: (country) {
-                            print('Country changed to: ' + country.name);
-                            countryController.text = country.name;
-                          },
-                          showCountryFlag: true,
-                        )),
                     TextFormField(
                       cursorColor: Colors.grey,
                       controller: priceController,
@@ -170,6 +142,9 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
 
                     TextFormField(
                       cursorColor: Colors.grey,
+                      onTap: () {
+                        CountryPicker(context);
+                      },
                       controller: countryController,
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
@@ -363,6 +338,40 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
           ),
         ),
       ),
+    );
+  }
+
+  void CountryPicker(BuildContext context) {
+    return showCountryPicker(
+      context: context,
+      countryListTheme: CountryListThemeData(
+        flagSize: 25,
+        backgroundColor: Colors.white,
+        textStyle: const TextStyle(fontSize: 16, color: Colors.blueGrey),
+        bottomSheetHeight: 500, // Optional. Country list modal height
+        //Optional. Sets the border radius for the bottomsheet.
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+        //Optional. Styles the search field.
+        inputDecoration: InputDecoration(
+          labelText: 'Search',
+          labelStyle: const TextStyle(color: Colors.grey),
+          prefixIcon: const Icon(Icons.search),
+          focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.grey),
+              borderRadius: BorderRadius.circular(10)),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(10),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+            ),
+          ),
+        ),
+      ),
+      showPhoneCode: false,
+      onSelect: (Country country) => countryController.text = country.name,
     );
   }
 }

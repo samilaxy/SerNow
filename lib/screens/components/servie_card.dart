@@ -10,7 +10,6 @@ import '../../utilities/constants.dart';
 
 class ServiceCard extends StatefulWidget {
   final ServiceModel service;
-  
 
   const ServiceCard({super.key, required this.service});
 
@@ -22,8 +21,8 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     String currency = "GHS ";
-    final homeProvider = Provider.of<HomeProvider>(context, listen: false);
-    
+    final homeProvider = Provider.of<HomeProvider>(context);
+
     return Container(
       // width: double.infinity,
       decoration: BoxDecoration(
@@ -56,7 +55,7 @@ class _ServiceCardState extends State<ServiceCard> {
                           placeholderUrl: noImg)),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   height: 55,
                   width: double.infinity,
                   decoration:
@@ -133,13 +132,16 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    homeProvider.bookmarkService(widget.service.id, widget.service.user?.id);
-                                    widget.service.isFavorite = !widget.service.isFavorite;
+                                    homeProvider.bookmarkService(
+                                        widget.service.id,
+                                        widget.service.user?.id);
+                                    widget.service.isFavorite =
+                                        !widget.service.isFavorite;
                                     //  widget.service = widget.service.copyWith(isFavorite: !widget.service.isFavorite);
-                                        print(' favorite bool:${widget.service.id}');
-                                       // homeProvider.fetchAllServices();
-                                        homeProvider.fetchBookmarkServices();
-
+                                    print(
+                                        ' favorite bool:${widget.service.id}');
+                                    // homeProvider.fetchAllServices();
+                                    homeProvider.fetchBookmarkServices();
                                   });
                                 },
                                 icon: Icon(
