@@ -38,55 +38,57 @@ class _ServiceCardState extends State<ServiceCard> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 120,
-            child: Stack(
-              alignment: Alignment.bottomLeft,
-              children: [
-                SizedBox(
-                  width: double.infinity,
-                  height: 160.0,
-                  child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(5),
-                          topRight: Radius.circular(5)),
-                      child: ImageWithPlaceholder(
-                          imageUrl: widget.service.imgUrls[0],
-                          placeholderUrl: noImg)),
-                ),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  height: 55,
-                  width: double.infinity,
-                  decoration:
-                      BoxDecoration(color: Colors.black.withOpacity(0.6)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(right: 8.0),
-                        child: Text(
-                          widget.service.title,
-                          maxLines: 1,
+          Expanded(
+            child: SizedBox(
+              height: 120,
+              child: Stack(
+                alignment: Alignment.bottomLeft,
+                children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: 150.0,
+                    child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(5),
+                            topRight: Radius.circular(5)),
+                        child: ImageWithPlaceholder(
+                            imageUrl: widget.service.imgUrls[0],
+                            placeholderUrl: noImg)),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    height: 55,
+                    width: double.infinity,
+                    decoration:
+                        BoxDecoration(color: Colors.black.withOpacity(0.6)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(right: 8.0, top: 5.0),
+                          child: Text(
+                            widget.service.title,
+                            maxLines: 1,
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 13.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          '$currency${widget.service.price}',
                           style: GoogleFonts.poppins(
                             color: Colors.white,
                             fontSize: 13.0,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
-                      ),
-                      Text(
-                        '$currency${widget.service.price}',
-                        style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 13.0,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           SizedBox(
@@ -137,10 +139,6 @@ class _ServiceCardState extends State<ServiceCard> {
                                         widget.service.user?.id);
                                     widget.service.isFavorite =
                                         !widget.service.isFavorite;
-                                    //  widget.service = widget.service.copyWith(isFavorite: !widget.service.isFavorite);
-                                    print(
-                                        ' favorite bool:${widget.service.id}');
-                                    // homeProvider.fetchAllServices();
                                     homeProvider.fetchBookmarkServices();
                                   });
                                 },
@@ -157,7 +155,8 @@ class _ServiceCardState extends State<ServiceCard> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 40.0, right: 10),
+                  padding:
+                      const EdgeInsets.only(left: 40.0, right: 10, bottom: 15),
                   child: SizedBox(
                     // height: 10,
                     width: double.infinity,
