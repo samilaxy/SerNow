@@ -75,9 +75,7 @@ class _BookmarkPageState extends State<BookmarkPage> {
                             homeProvider.bookmarkData[index];
                         detailsProvider.fetchDiscoverServices();
                         detailsProvider.fetchRelatedServices();
-
                         // Navigate to the details page here, passing data[index] as a parameter
-
                         Navigator.push(
                           context,
                           MaterialPageRoute(
