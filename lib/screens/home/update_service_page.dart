@@ -218,11 +218,13 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                                   fontSize: 13,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold)),
-                          Text(
-                              "First picture - is the title picture. You can change the order of photos",
-                              maxLines: 2,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 13, color: Colors.grey)),
+                          Expanded(
+                            child: Text(
+                                "First picture - is the title picture. You can change the order of photos",
+                                maxLines: 2,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 13, color: Colors.grey)),
+                          ),
                         ],
                       ),
                     ),

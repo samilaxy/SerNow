@@ -139,6 +139,7 @@ class ProfileProvider extends ChangeNotifier {
             userData['email'] ?? '',
             userData['img'] ?? '',
             userData['isUser'] ?? false);
+            _isUser = userData['isUser'];
       }
     } catch (error) {
       print("Firestore Error1 fetch: $error");
@@ -209,6 +210,7 @@ class ProfileProvider extends ChangeNotifier {
   // Get contact information using SharedPreferencesHelper
   Future<void> loadprofileData() async {
     fetchUserData();
+    notifyListeners();
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
       _name = profileData!['name'] ?? '';
@@ -217,6 +219,8 @@ class ProfileProvider extends ChangeNotifier {
       _bio = profileData!['bio'] ?? '';
       _imageUrl = profileData!['img'] ?? '';
       _isUser = profileData!['isUser'] ?? false;
+      print('_isUser: $_isUser');
+      notifyListeners();
       //  _image = base64Decode(_imageBase64);
     }
     fetchUserData();

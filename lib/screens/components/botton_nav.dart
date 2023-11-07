@@ -9,7 +9,6 @@ import '../../screens/home/my_adverts.dart';
 import '../../utilities/constants.dart';
 import '../home/Home_screen.dart';
 import '../profile/profile_page.dart';
-import '../profile/update_profile_screen.dart';
 
 class BottomNarBar extends StatefulWidget {
   const BottomNarBar({Key? key}) : super(key: key);
@@ -95,7 +94,9 @@ class _BottomNarBarState extends State<BottomNarBar> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
+                            
                             LineAwesomeIcons.search,
+                            weight: 50,
                             color: currentTab == 1 ? mainColor : Colors.grey,
                           ),
                           Text(
@@ -111,7 +112,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                   ],
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     MaterialButton(
                       // minWidth: 40,

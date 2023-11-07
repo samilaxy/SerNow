@@ -18,7 +18,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="logo-no-background" translatesAutoresizingMaskIntoConstraints="NO" id="yRE-wj-U0W">
+                                <rect key="frame" x="118.66666666666669" y="276" width="156" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="156" id="E52-Hl-pHc"/>
+                                    <constraint firstAttribute="height" constant="300" id="Y6g-RN-idw"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="yRE-wj-U0W" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="K97-GW-bjx"/>
+                            <constraint firstItem="yRE-wj-U0W" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="keX-6c-03H"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -26,4 +39,7 @@
             <point key="canvasLocation" x="80.152671755725194" y="264.08450704225356"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo-no-background" width="500" height="562.33331298828125"/>
+    </resources>
 </document>

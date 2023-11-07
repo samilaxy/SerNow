@@ -50,8 +50,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
 
   @override
   Widget build(BuildContext context) {
-    final serviceProvider =
-        Provider.of<CreateServiceProvider>(context);
+    final serviceProvider = Provider.of<CreateServiceProvider>(context);
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -120,7 +119,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label:  Text("Price*", style: GoogleFonts.poppins()),
+                          label: Text("Price*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -153,7 +152,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label:  Text("City*", style: GoogleFonts.poppins()),
+                          label: Text("City*", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -168,7 +167,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: Text("Sub",style: GoogleFonts.poppins()),
+                          label: Text("Sub", style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -183,7 +182,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(30)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(20)),
-                          label:  Text("Description*",style: GoogleFonts.poppins()),
+                          label: Text("Description*",
+                              style: GoogleFonts.poppins()),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 20),
@@ -201,11 +201,13 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                   fontSize: 13,
                                   color: Colors.grey,
                                   fontWeight: FontWeight.bold)),
-                          Text(
-                              "First picture - is the title picture. You can change the order of photos",
-                              maxLines: 2,
-                              style: GoogleFonts.poppins(
-                                  fontSize: 13, color: Colors.grey)),
+                          Expanded(
+                            child: Text(
+                                "First picture - is the title picture. You can change the order of photos",
+                                maxLines: 2,
+                                style: GoogleFonts.poppins(
+                                    fontSize: 13, color: Colors.grey)),
+                          ),
                         ],
                       ),
                     ),
@@ -228,9 +230,12 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                       width: double.infinity,
                                       color: Colors.grey,
                                       child: IconButton(
-                                          onPressed:() { serviceProvider.pickImages(context); } ,
-                                          icon: const Icon(Icons.add,  color:
-                                                Color.fromARGB(255, 87, 84, 84))),
+                                          onPressed: () {
+                                            serviceProvider.pickImages(context);
+                                          },
+                                          icon: const Icon(Icons.add,
+                                              color: Color.fromARGB(
+                                                  255, 87, 84, 84))),
                                     ),
                                   )
                                 : Container(
@@ -242,20 +247,21 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                     //             fit: BoxFit.cover)),
                                     child: Stack(children: [
                                       Container(
-                                        decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: FileImage(serviceProvider
-                                                .imgs[index - 1]),
-                                                fit: BoxFit.cover))
-                                      ),
-                                       IconButton(
-                                            onPressed: () {
-                                              serviceProvider.removeImg(index - 1);
-                                            },
-                                            icon: const Icon(
-                                              Icons.delete_outline,
-                                              color: Colors.red,
-                                            ))
+                                          decoration: BoxDecoration(
+                                              image: DecorationImage(
+                                                  image: FileImage(
+                                                      serviceProvider
+                                                          .imgs[index - 1]),
+                                                  fit: BoxFit.cover))),
+                                      IconButton(
+                                          onPressed: () {
+                                            serviceProvider
+                                                .removeImg(index - 1);
+                                          },
+                                          icon: const Icon(
+                                            Icons.delete_outline,
+                                            color: Colors.red,
+                                          ))
                                     ]),
                                   );
                           })),
@@ -267,7 +273,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                       height: 50,
                       child: ElevatedButton(
                         onPressed: () {
-                        //  String uniqueId = serviceProvider.generateUniqueId();
+                          //  String uniqueId = serviceProvider.generateUniqueId();
                           final userId = serviceProvider.userId;
                           final title = titleController.text.trim();
                           final price = priceController.text.trim();
@@ -289,25 +295,26 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             imgUrls: images,
                             status: false,
                           );
-                          
+
                           serviceProvider.isloading
                               ? null
-                              : serviceProvider.createService(serviceModel, context);
-                           // Navigator.pushNamed(context, 'home');
+                              : serviceProvider.createService(
+                                  serviceModel, context);
+                          // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: serviceProvider.isloading
-                            ?  const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child:  CircularProgressIndicator(
-                                  color: Colors.black26),
-                            )
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                    color: Colors.black26),
+                              )
                             : const Text("Create",
-                            style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 80)
@@ -320,6 +327,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
       ),
     );
   }
+
   void CountryPicker(BuildContext context) {
     return showCountryPicker(
       context: context,

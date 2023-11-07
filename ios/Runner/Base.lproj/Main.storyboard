@@ -19,12 +19,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" fixedFrame="YES" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-9K-say">
-                                <rect key="frame" x="56" y="342" width="280" height="169"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="LaunchImage" translatesAutoresizingMaskIntoConstraints="NO" id="KOf-9K-say">
+                                <rect key="frame" x="56.666666666666657" y="341.66666666666669" width="280" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="169" id="ODb-ar-WuF"/>
+                                    <constraint firstAttribute="width" constant="280" id="bd3-2z-dCI"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KOf-9K-say" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="qW1-OS-LMf"/>
+                            <constraint firstItem="KOf-9K-say" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wDF-01-YL0"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -33,6 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LaunchImage" width="500" height="500"/>
+        <image name="LaunchImage" width="50.666667938232422" height="50.666667938232422"/>
     </resources>
 </document>
