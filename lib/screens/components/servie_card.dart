@@ -156,7 +156,7 @@ class _ServiceCardState extends State<ServiceCard> {
                 ),
                 Padding(
                   padding:
-                      const EdgeInsets.only(left: 40.0, right: 10, bottom: 15),
+                      const EdgeInsets.only(left: 35.0, right: 10, bottom: 15),
                   child: SizedBox(
                     // height: 10,
                     width: double.infinity,
@@ -164,6 +164,10 @@ class _ServiceCardState extends State<ServiceCard> {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 3.0),
+                          child: Icon(size: 13, Icons.location_on),
+                        ),
                         Flexible(
                             flex: 1,
                             child: Text(widget.service.location,
@@ -171,10 +175,6 @@ class _ServiceCardState extends State<ServiceCard> {
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.poppins(
                                     fontSize: 10, color: Colors.grey))),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 3.0),
-                          child: Icon(size: 12, Icons.location_on),
-                        ),
                       ],
                     ),
                   ),
