@@ -1,0 +1,1 @@
+ /Users/amalitech-pc-4100433/Documents/Projects/ServNow/.dart_tool/flutter_build/352346dad8ce3bbb7e696a5f4a6024c9/native_assets.yaml: 
