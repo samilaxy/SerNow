@@ -27,14 +27,14 @@ void main() async {
   );
   await FirebaseAppCheck.instance.activate();
   AuthProvider authProvider = AuthProvider();
-  ProfileProvider proProvider = ProfileProvider();
-  proProvider.saveProfile(
-      "", "name", "+233249058525", "bio", "email", "img", true);
+  // ProfileProvider proProvider = ProfileProvider();
+  // proProvider.saveProfile(
+  //     "", "name", "+233249058525", "bio", "email", "img", true);
 
   bool userLoggedIn = await authProvider.loginState();
 
   String initialRoute = userLoggedIn ? 'home' : 'onBoarding';
-  initialRoute = "home";
+  //initialRoute = "home";
   runApp(
     MultiProvider(
       providers: [
