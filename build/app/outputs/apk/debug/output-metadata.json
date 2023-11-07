@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "com.example.serv_now_new",
+  "applicationId": "com.example.serv_now",
   "variantName": "debug",
   "elements": [
     {

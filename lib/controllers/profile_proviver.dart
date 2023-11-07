@@ -139,7 +139,12 @@ class ProfileProvider extends ChangeNotifier {
             userData['email'] ?? '',
             userData['img'] ?? '',
             userData['isUser'] ?? false);
-            _isUser = userData['isUser'];
+        _name = userData['name'] ?? '';
+        _contact = userData['phone'] ?? '';
+        _email = userData['email'] ?? '';
+        _bio = userData['bio'] ?? '';
+        _imageUrl = userData['img'] ?? '';
+        _isUser = userData['isUser'];
       }
     } catch (error) {
       print("Firestore Error1 fetch: $error");
@@ -219,7 +224,6 @@ class ProfileProvider extends ChangeNotifier {
       _bio = profileData!['bio'] ?? '';
       _imageUrl = profileData!['img'] ?? '';
       _isUser = profileData!['isUser'] ?? false;
-      print('_isUser: $_isUser');
       notifyListeners();
       //  _image = base64Decode(_imageBase64);
     }

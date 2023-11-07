@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.serv_now_new"
+    package="com.example.serv_now"
     android:versionCode="1"
     android:versionName="1.0.0" >
 
@@ -16,10 +16,10 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
-        android:name="com.example.serv_now_new.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+        android:name="com.example.serv_now.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
 
-    <uses-permission android:name="com.example.serv_now_new.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+    <uses-permission android:name="com.example.serv_now.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
 
     <application
         android:name="io.flutter.app.FlutterMultiDexApplication"
@@ -109,7 +109,7 @@
 
         <provider
             android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-            android:authorities="com.example.serv_now_new.flutter.image_provider"
+            android:authorities="com.example.serv_now.flutter.image_provider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -175,7 +175,7 @@
 
         <provider
             android:name="com.google.firebase.provider.FirebaseInitProvider"
-            android:authorities="com.example.serv_now_new.firebaseinitprovider"
+            android:authorities="com.example.serv_now.firebaseinitprovider"
             android:directBootAware="true"
             android:exported="false"
             android:initOrder="100" />
@@ -186,7 +186,7 @@
 
         <provider
             android:name="com.sangcomz.fishbun.FishBunFileProvider"
-            android:authorities="com.example.serv_now_new.fishbunfileprovider"
+            android:authorities="com.example.serv_now.fishbunfileprovider"
             android:exported="false"
             android:grantUriPermissions="true" >
             <meta-data
@@ -214,7 +214,7 @@
 
         <provider
             android:name="androidx.startup.InitializationProvider"
-            android:authorities="com.example.serv_now_new.androidx-startup"
+            android:authorities="com.example.serv_now.androidx-startup"
             android:exported="false" >
             <meta-data
                 android:name="androidx.profileinstaller.ProfileInstallerInitializer"

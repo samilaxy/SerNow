@@ -11,21 +11,30 @@ import '../../main.dart';
 import '../components/image_with_placeholder.dart';
 import '../home/zoom_imageview.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Container(),
-      ),
-    );
-  }
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+
+class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
+
+ @override
+  void didPush() {
+    final profileProvider = Provider.of<ProfileProvider>(context);
+    profileProvider.loadprofileData();
+    super.didPush();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

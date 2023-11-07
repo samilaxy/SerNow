@@ -56,7 +56,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     MaterialButton(
                       minWidth: 40,
@@ -90,54 +90,58 @@ class _BottomNarBarState extends State<BottomNarBar> {
                       onPressed: () {
                         onItemTapped(1, const HomeScreen());
                       },
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            
-                            LineAwesomeIcons.search,
-                            weight: 50,
-                            color: currentTab == 1 ? mainColor : Colors.grey,
-                          ),
-                          Text(
-                            "Search",
-                            style: TextStyle(
-                                color:
-                                    currentTab == 1 ? mainColor : Colors.grey,
-                                fontSize: 8),
-                          )
-                        ],
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              LineAwesomeIcons.search,
+                              color: currentTab == 1 ? mainColor : Colors.grey,
+                            ),
+                            Text(
+                              "Search",
+                              style: TextStyle(
+                                  color:
+                                      currentTab == 1 ? mainColor : Colors.grey,
+                                  fontSize: 8),
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ],
                 ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    MaterialButton(
-                      // minWidth: 40,
-                      onPressed: () {
-                        String route =
-                            profile.isUser ? "createService" : "update";
-                        navigatorKey.currentState!.pushNamed(route);
-                      },
-                      child: Container(
-                        //clipBehavior: Clip.hardEdge,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            15,
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      MaterialButton(
+                        // minWidth: 40,
+                        onPressed: () {
+                          String route =
+                              profile.isUser ? "createService" : "update";
+                          navigatorKey.currentState!.pushNamed(route);
+                        },
+                        child: Container(
+                          //clipBehavior: Clip.hardEdge,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              15,
+                            ),
+                            color: mainColor,
                           ),
-                          color: mainColor,
-                        ),
-                        height: 55,
-                        width: 55,
-                        child: const Icon(
-                          LineAwesomeIcons.plus,
-                          color: Colors.black,
+                          height: 55,
+                          width: 55,
+                          child: const Icon(
+                            LineAwesomeIcons.plus,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
