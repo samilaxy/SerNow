@@ -18,7 +18,7 @@ class _MyVerifyState extends State<MyVerify> {
   final pinController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final authService = Provider.of<AuthProvider>(context);
+    final authService = Provider.of<AuthService>(context);
     String? contact = authService.contact;
     final defaultPinTheme = PinTheme(
       width: 56,
@@ -92,6 +92,7 @@ class _MyVerifyState extends State<MyVerify> {
                 ),
                 textAlign: TextAlign.center,
               ),
+
               const SizedBox(
                 height: 30,
               ),
@@ -118,11 +119,6 @@ class _MyVerifyState extends State<MyVerify> {
                   enteredCode = value;
                   // Perform verification of the entered code here
                 },
-                // validator: (pin) {
-                //   print(
-                //       "pin is $pin and code is $enteredCode  here ${authService.code}");
-                //   return pin == authService.smsCode ? null : '';
-                // },
               ),
               const SizedBox(
                 height: 20,
@@ -136,56 +132,59 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      // _showSnackBar(context, "Verification code is incorrect.");
-                      if (await authService
-                              .signInWithVerificationCode(enteredCode!) !=
-                          null) {
-                        // navigatorKey.currentState!.pushNamed('home');
-                        print("Hereeeeeeeeeeeeeeeeeeeeee...........");
+                      // if (await authService
+                      //         .signInWithVerificationCode(enteredCode!) !=
+                      //     null) {
+                      // }
+                      print(authService.isVerify);
+                      if (!authService.isVerify) {
+                        await authService.verifyCode(enteredCode!, context);
                       }
                     },
-                    child: Text(
-                      "Verify Phone Number",
-                      style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontWeight: FontWeight.normal,
-                      ),
-                    )),
+                    child: authService.isVerify
+                        ? const SizedBox(
+                            width: 20,
+                            height: 20,
+                            child: CircularProgressIndicator(
+                                color: Colors.black26),
+                          )
+                        : Text(
+                            "Verify Phone Number",
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          )),
               ),
-              Row(
-                children: [
-                  TextButton(
-                      onPressed: () async {
-                        // Navigator.pushNamedAndRemoveUntil(
-                        //   context,
-                        //   'phone',
-                        //   (route) => false,
-                        // );
-                        navigatorKey.currentState!.pushNamed('phone');
-                      },
-                      child: Text(
-                        "Edit Phone Number ?",
-                        style: GoogleFonts.poppins(
-                          fontSize: 14.0,
-                          color: Colors.black,
-                        ),
-                      )),
-                ],
-              ),
+              // Row(
+              //   children: [
+              //     TextButton(
+              //         onPressed: () async {
+              //           navigatorKey.currentState!.pushNamed('phone');
+              //         },
+              //         child: Text(
+              //           "Edit Phone Number ?",
+              //           style: GoogleFonts.poppins(
+              //             fontSize: 14.0,
+              //             color: Colors.black,
+              //           ),
+              //         )),
+              //   ],
+              // ),
               const SizedBox(
-                height: 20,
+                height: 15,
               ),
               SizedBox(
                 width: 120,
                 height: 35,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromARGB(255, 207, 198, 198),
+                        backgroundColor:
+                            const Color.fromARGB(255, 207, 198, 198),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      // Navigator.pushNamed(context, 'createService');
-                      authService.resendCode();
+                      authService.resendCode(context);
                     },
                     child: Text(
                         authService.seconds == 0

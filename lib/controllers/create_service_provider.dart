@@ -110,7 +110,7 @@ class CreateServiceProvider extends ChangeNotifier {
       navigatorKey.currentState!.pushNamed('myAdverts');
     } catch (error) {
       _message = "Update Failed, Try again.";
-      showErrorSnackbar(context, _message);
+       showSuccessSnackbar(context, _message);
       // Handle error as needed
     }
   }
@@ -124,6 +124,7 @@ class CreateServiceProvider extends ChangeNotifier {
   void showSuccessSnackbar(BuildContext context, String message) {
     final snackBar = SnackBar(
       content: Text(message),
+      duration: const Duration(seconds: 1),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.green,
       dismissDirection: DismissDirection.up,
@@ -134,6 +135,7 @@ class CreateServiceProvider extends ChangeNotifier {
   void showErrorSnackbar(BuildContext context, String message) {
     final snackBar = SnackBar(
       content: Text(message),
+      duration: const Duration(seconds: 1),
       backgroundColor: Colors.red,
       behavior: SnackBarBehavior.floating,
       // dismissDirection: DismissDirection.endToStart,

@@ -1,12 +1,12 @@
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import '../../controllers/auth_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:serv_now_new/screens/components/message_alert.dart';
-import '../../controllers/auth_provider.dart';
+
 import '../../utilities/constants.dart';
-import '../../main.dart';
 
 class MyPhone extends StatefulWidget {
   const MyPhone({Key? key}) : super(key: key);
@@ -22,7 +22,7 @@ class _MyPhoneState extends State<MyPhone> {
   @override
   void initState() {
     // TODO: implement initState
-   // countryController.text = "+233";
+    // countryController.text = "+233";
 
     super.initState();
   }
@@ -38,7 +38,7 @@ class _MyPhoneState extends State<MyPhone> {
   Widget build(BuildContext context) {
     FocusNode focusNode = FocusNode();
 
-    final authService = Provider.of<AuthProvider>(context);
+    final authService = Provider.of<AuthService>(context);
     //numberController.text = authService.contact;
     return Scaffold(
       body: Stack(
@@ -126,34 +126,19 @@ class _MyPhoneState extends State<MyPhone> {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(100))),
                           onPressed: () async {
-                            //  Navigator.pushNamed(context, 'verify');
-
-                            //   if (numberController.text.isNotEmpty) {
-                            String? verificationCode = (await authService
-                                    .sendCodeToPhone(numberController.text))
-                                as String?;
-                            // navigatorKey.currentState!.pushNamed('verify');
-                            if (verificationCode != null) {
-                              // Proceed with verification using the `verificationCode`
-                              print(
-                                  'Verification code received: $verificationCode');
-
-                              // Call the signInWithVerificationCode method to sign in the user
-                              User? user = await authService
-                                  .signInWithVerificationCode(verificationCode);
-
-                              if (user != null) {
-                                // The user is successfully signed in.
-                                navigatorKey.currentState!.pushNamed('verify');
-                                print('User signed in: ${user.uid}');
-                              } else {
-                                // Sign-in failed or verification code is invalid.
-                                print('Failed to sign in.');
-                              }
+                          //  await navigatorKey.currentState!.pushNamed('verify');
+                            if (!authService.isLoading) {
+ await authService.verifyPhone(numberController.text, context);
                             }
-                            // }
+                            
                           },
-                          child: Text("Send Code",
+                          child: authService.isLoading
+                            ?  const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child:  CircularProgressIndicator(
+                                  color: Colors.black26),
+                            ) : Text("Send Code",
                               style: GoogleFonts.poppins(
                                 // fontSize: 13.0,
                                 color: Colors.white,
@@ -174,5 +159,4 @@ class _MyPhoneState extends State<MyPhone> {
       ),
     );
   }
-  
 }

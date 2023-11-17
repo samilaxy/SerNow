@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import '../../controllers/home_provider.dart';
 import '../../controllers/profile_proviver.dart';
 import '../../main.dart';
 import '../../screens/home/boomark_page.dart';
@@ -40,7 +41,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
   @override
   Widget build(BuildContext context) {
     final profile = Provider.of<ProfileProvider>(context);
-
+    final homeProvider = Provider.of<HomeProvider>(context);
     return Scaffold(
         body: PageStorage(
           bucket: bucket,
@@ -62,6 +63,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                       minWidth: 40,
                       onPressed: () {
                         onItemTapped(0, const HomeScreen());
+                        homeProvider.fetchAllServices();
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -148,8 +150,9 @@ class _BottomNarBarState extends State<BottomNarBar> {
                   children: [
                     MaterialButton(
                       minWidth: 40,
-                      onPressed: () {
+                      onPressed: () async {
                         onItemTapped(2, const BookmarkPage());
+                       await homeProvider.fetchBookmarkServices();
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -177,6 +180,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                       minWidth: 40,
                       onPressed: () {
                         onItemTapped(3, const ProfileScreen());
+                        profile.loadprofileData();
                       },
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,

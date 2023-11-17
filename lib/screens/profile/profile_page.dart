@@ -39,7 +39,7 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
   @override
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
-    final authProvider = Provider.of<AuthProvider>(context);
+    final authProvider = Provider.of<AuthService>(context);
 
     Uint8List? image = profileProvider.image;
     return Scaffold(

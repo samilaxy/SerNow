@@ -17,7 +17,22 @@ class BookmarkPage extends StatefulWidget {
   State<BookmarkPage> createState() => _BookmarkPageState();
 }
 
-class _BookmarkPageState extends State<BookmarkPage> {
+class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
+  @override
+  void didPush() {
+    final homeProvider = Provider.of<HomeProvider>(context);
+    homeProvider.fetchBookmarkServices();
+    super.didPush();
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final homeProvider = Provider.of<HomeProvider>(context);
@@ -102,10 +117,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
     return AppBar(
       elevation: 0,
       leading: IconButton(
-          onPressed: () => navigatorKey.currentState!.pushNamed('home'),
+          onPressed: () {
+            homeProvider.fetchAllServices();
+            navigatorKey.currentState!.pushNamed('home');
+          },
           icon: Icon(LineAwesomeIcons.angle_left,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,

@@ -24,7 +24,8 @@ class ProfileProvider extends ChangeNotifier {
   Uint8List? _image;
   String _imageBase64 = "";
   String _imageUrl = "";
-
+  List _bookmarks = [];
+  List get bookmarks => _bookmarks;
   String get imageUrl => _imageUrl;
   String get name => _name;
   bool get isUser => _isUser;
@@ -68,7 +69,7 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
     try {
       saveProfile(_userId, user.fullName, user.phone, user.bio ?? '',
-          user.email ?? '', user.img ?? '', true);
+          user.email ?? '', user.img ?? '', true, []);
 
       //showLoadingDialog(context); // Show loading spinner
 
@@ -128,9 +129,7 @@ class ProfileProvider extends ChangeNotifier {
       for (var document in documents) {
         // Access document data using document.data()
         final userData = document.data();
-        _userId = document.id;
-        print(
-            'my userId $userId'); // Print user data // Save user data using the saveContact function
+        _userId = document.id; // Print user data // Save user data using the saveContact function
         saveProfile(
             _userId,
             userData['name'] ?? '',
@@ -138,13 +137,15 @@ class ProfileProvider extends ChangeNotifier {
             userData['bio'] ?? '',
             userData['email'] ?? '',
             userData['img'] ?? '',
-            userData['isUser'] ?? false);
+            userData['isUser'] ?? false,
+            userData['bookmarks'] ?? []);
         _name = userData['name'] ?? '';
         _contact = userData['phone'] ?? '';
         _email = userData['email'] ?? '';
         _bio = userData['bio'] ?? '';
         _imageUrl = userData['img'] ?? '';
         _isUser = userData['isUser'];
+        _bookmarks = userData['bookmarks'];
       }
     } catch (error) {
       print("Firestore Error1 fetch: $error");
@@ -166,9 +167,9 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   Future<void> saveProfile(String userId, String name, String phoneNumber,
-      String bio, String email, String img, bool isUser) async {
+      String bio, String email, String img, bool isUser, List bookmarks) async {
     await SharedPreferencesHelper.saveProfile(
-        userId, name, phoneNumber, bio, email, img, isUser);
+        userId, name, phoneNumber, bio, email, img, isUser, bookmarks);
   }
 
   Future<bool> isPhoneExists(String phoneNumber) async {
@@ -195,6 +196,7 @@ class ProfileProvider extends ChangeNotifier {
   void showSuccessSnackbar(BuildContext context, String message) {
     final snackBar = SnackBar(
       content: Text(message),
+      duration: const Duration(seconds: 1),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.green,
       dismissDirection: DismissDirection.up,
@@ -206,6 +208,7 @@ class ProfileProvider extends ChangeNotifier {
     final snackBar = SnackBar(
       content: Text(message),
       backgroundColor: Colors.red,
+      duration: const Duration(seconds: 1),
       behavior: SnackBarBehavior.floating,
       // dismissDirection: DismissDirection.endToStart,
     );

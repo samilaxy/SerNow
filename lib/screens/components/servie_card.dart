@@ -3,8 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/home_provider.dart';
 import '../../models/service_model.dart';
-
-import '../../utilities/util.dart';
 import '../../screens/components/image_with_placeholder.dart';
 import '../../utilities/constants.dart';
 
@@ -21,7 +19,7 @@ class _ServiceCardState extends State<ServiceCard> {
   @override
   Widget build(BuildContext context) {
     String currency = "GHS ";
-    final homeProvider = Provider.of<HomeProvider>(context);
+    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
 
     return Container(
       // width: double.infinity,
@@ -139,13 +137,14 @@ class _ServiceCardState extends State<ServiceCard> {
                                         widget.service.user?.id);
                                     widget.service.isFavorite =
                                         !widget.service.isFavorite;
-                                    homeProvider.fetchBookmarkServices();
+                                   // homeProvider.fetchBookmarkServices();
                                   });
                                 },
                                 icon: Icon(
                                     size: 20,
                                     Icons.bookmark,
                                     color: widget.service.isFavorite
+                                        // homeProvider.bookmarkIds.contains(widget.service.id)
                                         ? mainColor
                                         : Colors.grey)),
                           ),

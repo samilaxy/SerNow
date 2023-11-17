@@ -27,8 +27,7 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
     ServiceModel? serviceData = detailsProvider.serviceData;
     String currency = "\$ ";
     return Scaffold(
-      appBar:
-          CustomAppBar(serviceData?.id ?? "", serviceData?.user?.id ?? ""),
+      appBar: CustomAppBar(serviceData?.isFavorite ?? false,serviceData?.id ?? "", serviceData?.user?.id ?? ""),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -205,6 +204,12 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                       ? GestureDetector(
                           onTap: () {
                             detailsProvider.fetchService(index);
+                             Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ServiceDetailsPage(),
+                ),
+              );
                           },
                           child: DiscoverCard(
                               service: detailsProvider.discover[index]))
@@ -292,7 +297,6 @@ class MyGridview extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const ServiceDetailsPage(),
-                  //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
                 ),
               );
             },
@@ -305,11 +309,11 @@ class MyGridview extends StatelessWidget {
 }
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  bool isFavorite = false;
+  bool isFavorite;
   String userId;
   String servId;
   CustomAppBar(
-   // this.isFavorite,
+    this.isFavorite,
     this.servId,
     this.userId, {
     super.key,
@@ -325,8 +329,8 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 class _CustomAppBarState extends State<CustomAppBar> {
   @override
   Widget build(BuildContext context) {
-     final detailsProvider = Provider.of<DetailsPageProvider>(context);
-    
+    final detailsProvider = Provider.of<DetailsPageProvider>(context);
+ print(widget.isFavorite);
     return SafeArea(
       child: SizedBox(
         height: kToolbarHeight,
@@ -340,10 +344,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
             IconButton(
               onPressed: () {
                 setState(() {
-                  detailsProvider.bookmarkService(
-                      widget.servId, widget.userId);
+                  detailsProvider.bookmarkService(widget.servId, widget.userId);
                   widget.isFavorite = !widget.isFavorite;
-                  print(widget.servId);
+                  print(widget.isFavorite);
                 });
               },
               icon: Icon(

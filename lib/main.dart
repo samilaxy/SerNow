@@ -26,10 +26,10 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate();
-  AuthProvider authProvider = AuthProvider();
-  ProfileProvider proProvider = ProfileProvider();
-  proProvider.saveProfile(
-      "", "name", "+233249058525", "bio", "email", "img", true);
+  AuthService authProvider = AuthService();
+  // ProfileProvider proProvider = ProfileProvider();
+  // proProvider.saveProfile(
+  //     "", "name", "+233249058525", "bio", "email", "img", true, []);
 
   bool userLoggedIn = await authProvider.loginState();
 
@@ -38,15 +38,15 @@ void main() async {
   runApp(
     MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthProvider>(
-          create: (_) => AuthProvider(),
+        ChangeNotifierProvider<AuthService>(
+          create: (_) => AuthService(),
+        ),
+         ChangeNotifierProvider<ProfileProvider>(
+          create: (_) => ProfileProvider(),
         ),
         ChangeNotifierProvider<HomeProvider>(
           create: (_) => HomeProvider(),
-        ),
-        ChangeNotifierProvider<ProfileProvider>(
-          create: (_) => ProfileProvider(),
-        ),
+        ),  
         ChangeNotifierProvider<CreateServiceProvider>(
           create: (_) => CreateServiceProvider(),
         ),

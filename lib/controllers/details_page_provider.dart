@@ -6,6 +6,7 @@ import '../../models/discover_model.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
 import '../models/bookmark_model.dart';
+import 'home_provider.dart';
 
 class DetailsPageProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -16,6 +17,7 @@ class DetailsPageProvider extends ChangeNotifier {
   List<ServiceModel> _related = [];
   bool _dataState = true;
   UserModel? _userModel;
+  HomeProvider homeProvider = HomeProvider();
 
   UserModel? get userModel => _userModel;
   ServiceModel? get serviceData => _serviceData;
@@ -64,7 +66,7 @@ class DetailsPageProvider extends ChangeNotifier {
         }
       }
     } catch (error) {
-     _dataState = false;
+      _dataState = false;
     }
     notifyListeners();
   }
@@ -89,25 +91,25 @@ class DetailsPageProvider extends ChangeNotifier {
             document.data() as Map<String, dynamic>;
         final userId = serviceData["userId"];
 
-         fetchUserDataTasks.add(
+        fetchUserDataTasks.add(
           fetchUserData(userId).then((userModel) {
-        final service = ServiceModel(
-          userId: userId,
-          title: serviceData["title"],
-          category: serviceData["category"],
-          price: serviceData["price"],
-          location: serviceData["location"],
-          description: serviceData["description"],
-          isFavorite: serviceData["isFavorite"],
-          status: serviceData["status"],
-          imgUrls: serviceData["imgUrls"],
-          user: _userModel,
-        );
-        _related.add(service);
-        if (_related.isNotEmpty) {
-          _dataState = true;
-        }
-        }),
+            final service = ServiceModel(
+              userId: userId,
+              title: serviceData["title"],
+              category: serviceData["category"],
+              price: serviceData["price"],
+              location: serviceData["location"],
+              description: serviceData["description"],
+              isFavorite: serviceData["isFavorite"],
+              status: serviceData["status"],
+              imgUrls: serviceData["imgUrls"],
+              user: _userModel,
+            );
+            _related.add(service);
+            if (_related.isNotEmpty) {
+              _dataState = true;
+            }
+          }),
         );
       }
     } catch (error) {
@@ -116,7 +118,7 @@ class DetailsPageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
- Future<void> fetchService(int index) async {
+  Future<void> fetchService(int index) async {
     // await Future.delayed(const Duration(seconds: 2));
     // _dataState = true;
     _serId = discover[index].id;
@@ -127,33 +129,33 @@ class DetailsPageProvider extends ChangeNotifier {
           .get();
 
       //reset discovered items array
-      //  _discover = []; 
-     // if (querySnapshot.exists) {}
-     final List<Future<void>> fetchUserDataTasks = [];
+      //  _discover = [];
+      // if (querySnapshot.exists) {}
+      final List<Future<void>> fetchUserDataTasks = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-final userId = data["userId"];
-fetchUserDataTasks.add(
-        fetchUserData(userId).then((userModel) {
-        final service = ServiceModel(
-          userId: userId,
-          title: data["title"],
-          category: data["category"],
-          price: data["price"],
-          location: data["location"],
-          description: data["description"],
-          isFavorite: data["isFavorite"],
-          status: data["status"],
-          imgUrls: data["imgUrls"],
-          user: _userModel,
+        final userId = data["userId"];
+        fetchUserDataTasks.add(
+          fetchUserData(userId).then((userModel) {
+            final service = ServiceModel(
+              userId: userId,
+              title: data["title"],
+              category: data["category"],
+              price: data["price"],
+              location: data["location"],
+              description: data["description"],
+              isFavorite: data["isFavorite"],
+              status: data["status"],
+              imgUrls: data["imgUrls"],
+              user: _userModel,
+            );
+            _serviceData = service;
+            notifyListeners();
+          }),
         );
-        _serviceData = service;
         notifyListeners();
-        }),
-        );
-         notifyListeners();
       }
-    // ignore: empty_catches
+      // ignore: empty_catches
     } catch (error) {}
 
     notifyListeners();
@@ -186,32 +188,26 @@ fetchUserDataTasks.add(
     notifyListeners();
   }
 
-Future<void> bookmarkService(String? servId, String? userId) async {
-  final existingBookmarkQuery = await _db
-      .collection("bookmarks")
-      .where("userId", isEqualTo: userId)
-      .where("servId", isEqualTo: servId)
-      .get();
+  Future<void> bookmarkService(String? servId, String? userId) async {
+    if (homeProvider.bookmarkIds.contains(servId)) {
+      homeProvider.bookmarkIds.remove(servId);
+    } else {
+      homeProvider.bookmarkIds.add(servId);
+    }
+    notifyListeners();
 
-  if (existingBookmarkQuery.docs.isEmpty) {
-    // No existing bookmark found, add a new bookmark
-    BookmarkModel bookmark = BookmarkModel(userId: userId, servId: servId);
     try {
-      await _db.collection("bookmarks").add(bookmark.toJson());
+      await _db
+          .collection("users")
+          .doc(userId)
+          .update({'bookmarks': homeProvider.bookmarkIds});
+
+      homeProvider.fetchBookmarkServices();
+      homeProvider.fetchAllServices();
       notifyListeners();
     } catch (error) {
       print(error.toString());
     }
-  } else {
-    // An existing bookmark found, remove it
-    final existingBookmarkDoc = existingBookmarkQuery.docs.first;
-    try {
-      await _db.collection("bookmarks").doc(existingBookmarkDoc.id).delete();
-      notifyListeners();
-    } catch (error) {
-      print(error.toString());
-    }
+    notifyListeners();
   }
-}
-
 }
