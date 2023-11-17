@@ -11,7 +11,6 @@ import '../../screens/components/servie_card.dart';
 import '../../screens/components/shimmer_loader.dart';
 import '../../screens/home/zoom_imageview.dart';
 import '../../utilities/constants.dart';
-import '../../utilities/util.dart';
 
 class ServiceDetailsPage extends StatefulWidget {
   const ServiceDetailsPage({super.key});
@@ -342,13 +341,13 @@ class _CustomAppBarState extends State<CustomAppBar> {
               icon: const Icon(LineAwesomeIcons.angle_left),
             ),
             IconButton(
-              onPressed: () {
-                setState(() {
-                  detailsProvider.bookmarkService(widget.servId, widget.userId);
-                  widget.isFavorite = !widget.isFavorite;
-                  print(widget.isFavorite);
-                });
-              },
+              onPressed: () async {
+  setState(() async {
+    await detailsProvider.bookmarkService(widget.servId, widget.userId);
+    widget.isFavorite = !widget.isFavorite;
+    print(widget.isFavorite);
+  });
+},
               icon: Icon(
                 size: 20,
                 Icons.bookmark,
