@@ -70,18 +70,49 @@ class _MyAdvertsState extends State<MyAdverts> with RouteAware {
                         ],
                       ),
                     )
-                  : GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
-                              mainAxisSpacing: 15.0,
-                              childAspectRatio: 0.97,
-                              crossAxisSpacing: 15.0),
-                      padding: const EdgeInsets.all(20),
-                      itemCount: myAdvert.data.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return MyAdvertCard(service: myAdvert.data[index]);
-                      })
+                  // :
+                  // GridView.builder(
+                  //     gridDelegate:
+                  //         const SliverGridDelegateWithFixedCrossAxisCount(
+                  //             crossAxisCount: 2,
+                  //             mainAxisSpacing: 15.0,
+                  //             childAspectRatio: 0.97,
+                  //             crossAxisSpacing: 15.0),
+                  //     padding: const EdgeInsets.all(20),
+                  //     itemCount: myAdvert.data.length,
+                  //     itemBuilder: (BuildContext context, int index) {
+                  //       return MyAdvertCard(service: myAdvert.data[index]);
+                  //     }),
+               : Builder(builder: (context) {
+                  return CustomScrollView(slivers: <Widget>[
+ SliverPadding(
+                      padding: const EdgeInsets.only(
+                          top: 10.0,
+                          right: 16,
+                          left: 16,
+                          bottom: 50), // Adjust the padding as needed
+                      sliver: SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                              return GridTile(
+                                  child: GestureDetector(
+                                onTap: () {
+                                },
+                                child:  MyAdvertCard(service: myAdvert.data[index]),
+                              ));
+                            
+                          },
+                          childCount: myAdvert.data.length,
+                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 16,
+                                crossAxisSpacing: 16,
+                                mainAxisExtent: 180),
+                      )),
+                  ]);})
+                      
             ],
           ),
         ));

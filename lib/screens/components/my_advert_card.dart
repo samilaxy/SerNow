@@ -36,14 +36,16 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
             Stack(
               alignment: Alignment.bottomLeft,
               children: [
-                SizedBox(
-                  height: 100,
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: ImageWithPlaceholder(
-                      imageUrl: widget.service.img,
-                      placeholderUrl: noImg,
+                Expanded(
+                  child: SizedBox(
+                    height: 120,
+                    width: double.infinity,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: ImageWithPlaceholder(
+                        imageUrl: widget.service.img,
+                        placeholderUrl: noImg,
+                      ),
                     ),
                   ),
                 ),
@@ -97,32 +99,30 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                 ),
               ],
             ),
-            Expanded(
-              child: SizedBox(
-                //height: 50,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          size: 20,
-                          Icons.delete,
-                          color: Colors.red,
-                        )),
-                    IconButton(
-                        onPressed: () {
-                          //myAdvert.servId = widget.service.id!;
-                          myAdvert.fetchService(widget.service.id ?? "", context);
-                         navigatorKey.currentState!.pushNamed('updateAdvert');
-                        },
-                        icon: const Icon(
-                          size: 20,
-                          LineAwesomeIcons.edit,
-                          color: Colors.grey,
-                        ))
-                  ],
-                ),
+            SizedBox(
+              height: 50,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        size: 20,
+                        Icons.delete,
+                        color: Colors.red,
+                      )),
+                  IconButton(
+                      onPressed: () {
+                        //myAdvert.servId = widget.service.id!;
+                        myAdvert.fetchService(widget.service.id ?? "", context);
+                       navigatorKey.currentState!.pushNamed('updateAdvert');
+                      },
+                      icon: const Icon(
+                        size: 20,
+                        LineAwesomeIcons.edit,
+                        color: Colors.grey,
+                      ))
+                ],
               ),
             ),
           ],
