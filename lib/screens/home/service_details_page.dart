@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/details_page_provider.dart';
+import '../../controllers/home_provider.dart';
 import '../../models/service_model.dart';
 import '../../screens/components/discover_card.dart';
 import '../../screens/components/image_slider.dart';
@@ -24,9 +25,9 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
   Widget build(BuildContext context) {
     final detailsProvider = Provider.of<DetailsPageProvider>(context);
     ServiceModel? serviceData = detailsProvider.serviceData;
-    String currency = "\$ ";
+    String currency = "Ghs ";
     return Scaffold(
-      appBar: CustomAppBar(serviceData?.isFavorite ?? false,serviceData?.id ?? "", serviceData?.user?.id ?? ""),
+      appBar: CustomAppBar(serviceData?.id ?? "", serviceData?.user?.id ?? ""),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -203,12 +204,13 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                       ? GestureDetector(
                           onTap: () {
                             detailsProvider.fetchService(index);
-                             Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ServiceDetailsPage(),
-                ),
-              );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const ServiceDetailsPage(),
+                              ),
+                            );
                           },
                           child: DiscoverCard(
                               service: detailsProvider.discover[index]))
@@ -279,7 +281,7 @@ class MyGridview extends StatelessWidget {
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
             mainAxisSpacing: 10.0,
-            childAspectRatio: 0.8,
+            childAspectRatio: 0.9,
             crossAxisSpacing: 10.0),
         physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
@@ -308,11 +310,10 @@ class MyGridview extends StatelessWidget {
 }
 
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
-  bool isFavorite;
   String userId;
   String servId;
   CustomAppBar(
-    this.isFavorite,
+    //this.isFavorite,
     this.servId,
     this.userId, {
     super.key,
@@ -326,10 +327,22 @@ class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _CustomAppBarState extends State<CustomAppBar> {
+  late bool isFavorite;
+  @override
+  void initState() {
+    // TODO: implement initState
+    isFavorite = Provider.of<HomeProvider>(context, listen: false)
+        .bookmarkIds
+        .contains(widget.servId);
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final detailsProvider = Provider.of<DetailsPageProvider>(context);
- print(widget.isFavorite);
+    final detailsProvider =
+        Provider.of<DetailsPageProvider>(context, listen: true);
+    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
+
     return SafeArea(
       child: SizedBox(
         height: kToolbarHeight,
@@ -337,21 +350,26 @@ class _CustomAppBarState extends State<CustomAppBar> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () {
+                homeProvider.fetchAllServices();
+                Navigator.pop(context);
+              },
               icon: const Icon(LineAwesomeIcons.angle_left),
             ),
             IconButton(
-              onPressed: () async {
-  setState(() async {
-    await detailsProvider.bookmarkService(widget.servId, widget.userId);
-    widget.isFavorite = !widget.isFavorite;
-    print(widget.isFavorite);
-  });
-},
+              onPressed: () {
+                detailsProvider.bookmarkService(widget.servId, widget.userId);
+                setState(() {
+        
+                 isFavorite = !isFavorite;
+                 homeProvider.fetchAllServices();
+                  print(isFavorite);
+                });
+              },
               icon: Icon(
                 size: 20,
                 Icons.bookmark,
-                color: widget.isFavorite ? mainColor : Colors.grey,
+                color: isFavorite ? mainColor : Colors.grey,
               ),
             ),
           ],

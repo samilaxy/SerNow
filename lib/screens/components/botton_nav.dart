@@ -49,22 +49,22 @@ class _BottomNarBarState extends State<BottomNarBar> {
         ),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomAppBar(
-          shape: const CircularNotchedRectangle(),
-          notchMargin: 5,
-          child: SizedBox(
-            height: 60,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
+          // notchMargin: 5,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: SizedBox(
+              height: 60,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  GestureDetector(
+                                  onTap: () {
                         onItemTapped(0, const HomeScreen());
                         homeProvider.fetchAllServices();
-                      },
+                                  },
+                    child: SizedBox(
+                      width: 45,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -75,85 +75,68 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           Text(
                             "Home",
                             style: TextStyle(
-                                color:
-                                    currentTab == 0 ? mainColor : Colors.grey,
+                                color: currentTab == 0 ? mainColor : Colors.grey,
                                 fontSize: 8),
                           )
                         ],
                       ),
                     ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
-                        onItemTapped(1, const HomeScreen());
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 8.0),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              LineAwesomeIcons.search,
-                              color: currentTab == 1 ? mainColor : Colors.grey,
-                            ),
-                            Text(
-                              "Search",
-                              style: TextStyle(
-                                  color:
-                                      currentTab == 1 ? mainColor : Colors.grey,
-                                  fontSize: 8),
-                            )
-                          ],
+                  ),
+                   GestureDetector(
+                                  onTap: () {
+                                    onItemTapped(1, const HomeScreen());
+                                  },
+                    child: SizedBox(
+                      width: 45,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            LineAwesomeIcons.search,
+                            color: currentTab == 1 ? mainColor : Colors.grey,
+                          ),
+                          Text(
+                            "Search",
+                            style: TextStyle(
+                                color: currentTab == 1 ? mainColor : Colors.grey,
+                                fontSize: 8),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                 GestureDetector(
+                                  onTap: () {
+                        String route = profile.isUser ? "createService" : "update";
+                        navigatorKey.currentState!.pushNamed(route);
+                                  },
+                    child: SizedBox(
+                      height: 45,
+                      width: 45,
+                      child: Container(
+                        //clipBehavior: Clip.hardEdge,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                            10,
+                          ),
+                          color: mainColor,
+                        ),
+                        // height: 55,
+                        // width: 55,
+                        child: const Icon(
+                          LineAwesomeIcons.plus,
+                          color: Colors.black,
                         ),
                       ),
                     ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      MaterialButton(
-                        // minWidth: 40,
-                        onPressed: () {
-                          String route =
-                              profile.isUser ? "createService" : "update";
-                          navigatorKey.currentState!.pushNamed(route);
-                        },
-                        child: Container(
-                          //clipBehavior: Clip.hardEdge,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              15,
-                            ),
-                            color: mainColor,
-                          ),
-                          height: 55,
-                          width: 55,
-                          child: const Icon(
-                            LineAwesomeIcons.plus,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
-                    ],
                   ),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () async {
+                  GestureDetector(
+                                  onTap: () async {
                         onItemTapped(2, const BookmarkPage());
-                       await homeProvider.fetchBookmarkServices();
-                      },
+                        await homeProvider.fetchBookmarkServices();
+                                  },
+                    child: SizedBox(
+                      width: 45,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -164,24 +147,20 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           Text(
                             "Bookmarks",
                             style: TextStyle(
-                                color:
-                                    currentTab == 2 ? mainColor : Colors.grey,
+                                color: currentTab == 2 ? mainColor : Colors.grey,
                                 fontSize: 8),
                           )
                         ],
                       ),
                     ),
-                  ],
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      minWidth: 40,
-                      onPressed: () {
+                  ),
+                  GestureDetector(
+                                  onTap: () {
                         onItemTapped(3, const ProfileScreen());
                         profile.loadprofileData();
-                      },
+                                  },
+                    child: SizedBox(
+                      width: 45,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -192,16 +171,15 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           Text(
                             "Profile",
                             style: TextStyle(
-                                color:
-                                    currentTab == 3 ? mainColor : Colors.grey,
+                                color: currentTab == 3 ? mainColor : Colors.grey,
                                 fontSize: 8),
                           )
                         ],
                       ),
                     ),
-                  ],
-                )
-              ],
+                  )
+                ],
+              ),
             ),
           ),
         ));

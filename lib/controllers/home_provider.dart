@@ -263,7 +263,8 @@ class HomeProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> bookmarkService(String? servId, String? userId) async {
+ Future<void> bookmarkService(String? servId, String? userId) async {
+  try {
     if (_bookmarkIds.contains(servId)) {
       _bookmarkIds.remove(servId);
     } else {
@@ -271,18 +272,16 @@ class HomeProvider extends ChangeNotifier {
     }
     notifyListeners();
 
-    try {
-      await _db
-          .collection("users")
-          .doc(_userId)
-          .update({'bookmarks': _bookmarkIds});
+    // Update Firestore with the updated bookmarks list
+    await _db.collection("users").doc(userId).update({'bookmarks': _bookmarkIds});
 
-      fetchBookmarkServices();
-      notifyListeners();
-    } catch (error) {
-      print(error.toString());
-    }
+    // Fetch updated bookmark services after Firestore update
+    await fetchBookmarkServices();
+    notifyListeners();
+  } catch (error) {
+    print(error.toString());
   }
+}
 
   Future<ServiceModel?> fetchService(String servId) async {
 

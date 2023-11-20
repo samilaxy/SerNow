@@ -78,7 +78,6 @@ class ProfileProvider extends ChangeNotifier {
         updateUserInfo(contact, user, context);
       } else {
         // Phone number doesn't exist, create user
-        print("new user");
         await _db.collection("users").add(user.toJson());
         _message = "Saved Successfully!";
         await navigatorKey.currentState!.pushNamed('profile');
@@ -120,12 +119,13 @@ class ProfileProvider extends ChangeNotifier {
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await FirebaseFirestore.instance
               .collection("users")
-              .where("phone", isEqualTo: contact)
+              .where("phone", isEqualTo: _contact)
               .get();
 
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
           querySnapshot.docs;
       // Process the documents as needed
+      if (documents.isNotEmpty) {
       for (var document in documents) {
         // Access document data using document.data()
         final userData = document.data();
@@ -145,8 +145,12 @@ class ProfileProvider extends ChangeNotifier {
         _bio = userData['bio'] ?? '';
         _imageUrl = userData['img'] ?? '';
         _isUser = userData['isUser'];
-        _bookmarks = userData['bookmarks'];
+        _bookmarks = userData['bookmarks'] ?? [];
       }
+
+      } else {
+    print("No user found for phone: $contact");
+}
     } catch (error) {
       print("Firestore Error1 fetch: $error");
     }

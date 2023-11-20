@@ -132,19 +132,19 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
+                                    print("ids: ${widget.service.id}: ${widget.service.user?.id}");
                                     homeProvider.bookmarkService(
                                         widget.service.id,
                                         widget.service.user?.id);
                                     widget.service.isFavorite =
                                         !widget.service.isFavorite;
-                                   // homeProvider.fetchBookmarkServices();
+                                    // homeProvider.fetchBookmarkServices();
                                   });
                                 },
                                 icon: Icon(
                                     size: 20,
                                     Icons.bookmark,
                                     color: widget.service.isFavorite
-                                        // homeProvider.bookmarkIds.contains(widget.service.id)
                                         ? mainColor
                                         : Colors.grey)),
                           ),

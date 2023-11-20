@@ -1,11 +1,9 @@
-import 'dart:ffi';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import '../../models/discover_model.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
-import '../models/bookmark_model.dart';
 import 'home_provider.dart';
 
 class DetailsPageProvider extends ChangeNotifier {
@@ -40,7 +38,6 @@ class DetailsPageProvider extends ChangeNotifier {
 
   Future<void> fetchDiscoverServices() async {
     await Future.delayed(const Duration(seconds: 2));
-    print(" userId: ${_serviceData?.userId}");
     _dataState = true;
     try {
       QuerySnapshot querySnapshot = await _db
@@ -94,6 +91,7 @@ class DetailsPageProvider extends ChangeNotifier {
         fetchUserDataTasks.add(
           fetchUserData(userId).then((userModel) {
             final service = ServiceModel(
+              id: document.id,
               userId: userId,
               title: serviceData["title"],
               category: serviceData["category"],
@@ -202,9 +200,9 @@ class DetailsPageProvider extends ChangeNotifier {
           .doc(userId)
           .update({'bookmarks': homeProvider.bookmarkIds});
 
-      homeProvider.fetchBookmarkServices();
-      homeProvider.fetchAllServices();
-      notifyListeners();
+    //  homeProvider.fetchBookmarkServices();
+    //  homeProvider.fetchAllServices();
+    //  notifyListeners();
     } catch (error) {
       print(error.toString());
     }
