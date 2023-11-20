@@ -351,7 +351,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
           children: [
             IconButton(
               onPressed: () {
-                homeProvider.fetchAllServices();
                 Navigator.pop(context);
               },
               icon: const Icon(LineAwesomeIcons.angle_left),
