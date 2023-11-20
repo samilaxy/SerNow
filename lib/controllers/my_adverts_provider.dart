@@ -1,6 +1,4 @@
-
 import 'dart:io';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -66,53 +64,52 @@ class MyAdvertsProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
   MyAdvertsProvider() {
     fetchServices();
   }
 
-Future<void> fetchServices() async {
-  loadprofileData();
-  await Future.delayed(const Duration(seconds: 1));
-  _dataState = true;
+  Future<void> fetchServices() async {
+    loadprofileData();
+    await Future.delayed(const Duration(seconds: 1));
+    _dataState = true;
 
-  try {
-    QuerySnapshot querySnapshot = await _db
-        .collection('services')
-        .where('userId', isEqualTo: _userId) // Replace with the user's ID
-        .get();
+    try {
+      QuerySnapshot querySnapshot = await _db
+          .collection('services')
+          .where('userId', isEqualTo: _userId) // Replace with the user's ID
+          .get();
 
-    _data.clear(); // Reset the _data array
+      _data.clear(); // Reset the _data array
 
-    for (QueryDocumentSnapshot document in querySnapshot.docs) {
-      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-      DiscoverModel service = DiscoverModel(
-        id: data['id'],
-        title: data['title'] ?? '',
-        price: data['price'] ?? '',
-        img: data['imgUrls'][0] ?? '',
-        status: data['status'],
-      );
-      _data.add(service);
-      notifyListeners();
-    }
+      for (QueryDocumentSnapshot document in querySnapshot.docs) {
+        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+        DiscoverModel service = DiscoverModel(
+          id: data['id'],
+          title: data['title'] ?? '',
+          price: data['price'] ?? '',
+          img: data['imgUrls'][0] ?? '',
+          status: data['status'],
+        );
+        _data.add(service);
+        notifyListeners();
+      }
 
-    if (_data.isNotEmpty) {
-      _dataState = false; // Data is available
-      _noData = false;
-    } else {
-      _dataState = false; // No data available
+      if (_data.isNotEmpty) {
+        _dataState = false; // Data is available
+        _noData = false;
+      } else {
+        _dataState = false; // No data available
+        _noData = true;
+      }
+    } catch (error) {
+      // Handle errors here
+      _dataState = false;
       _noData = true;
     }
 
-  } catch (error) {
-    // Handle errors here
-    _dataState = false;
-    _noData = true;
+    notifyListeners();
   }
-  
-  notifyListeners();
-}
+
   Future<void> loadprofileData() async {
     profileData = await SharedPreferencesHelper.getContact();
     if (profileData != null) {
@@ -122,7 +119,7 @@ Future<void> fetchServices() async {
   }
 
   Future<void> fetchService(String servId, BuildContext context) async {
-    // await Future.delayed(const Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 1));
     // _dataState = true;
     try {
       QuerySnapshot querySnapshot = await _db
@@ -131,8 +128,8 @@ Future<void> fetchServices() async {
           .get();
 
       //reset discovered items array
-      //  _discover = []; 
-     // if (querySnapshot.exists) {}
+      //  _discover = [];
+      // if (querySnapshot.exists) {}
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
 
@@ -157,16 +154,15 @@ Future<void> fetchServices() async {
         // Extract the sub (the second part of citySubParts)
         _area = subParts[0].trim();
         _isInternet = true;
-         notifyListeners();
       }
+      print('category here..$_category');
+      notifyListeners();
     } catch (error) {
       _isInternet = false;
-      _message = "No internet Connection, Try again later.";
-      showErrorSnackbar(context, _message);
+
       notifyListeners();
     }
-     _message = "No internet Connection, Try again later.";
-      showErrorSnackbar(context, _message);
+
     print(' message: $_message');
     notifyListeners();
   }
@@ -194,32 +190,30 @@ Future<void> fetchServices() async {
       return;
       // Exit early if any field is empty
     }
-  //  showLoadingDialog(context);
-    _isloading = true; 
+    //  showLoadingDialog(context);
+    _isloading = true;
     notifyListeners();
     try {
-      
       await Future.delayed(const Duration(seconds: 2));
       await _db.collection("services").doc(_docId).update(serv.toJson());
       await Future.delayed(const Duration(seconds: 2));
-      _isloading = false; 
+      _isloading = false;
       _message = "Service updated successfully.";
       fetchServices();
       notifyListeners();
       showSuccessSnackbar(context, _message);
-   
-      
+
       await navigatorKey.currentState!.pushNamed('myAdverts');
     } catch (error) {
-       _isloading = false;
+      _isloading = false;
       _message = "Update Failed, Try again.";
       print(' code message : $error');
-       notifyListeners();
+      notifyListeners();
       showErrorSnackbar(context, _message);
       // Handle error as needed
     }
-     print(' code message : $_message');
-    // _isloading = true; 
+    print(' code message : $_message');
+    // _isloading = true;
     // notifyListeners();
   }
 
@@ -249,25 +243,25 @@ Future<void> fetchServices() async {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return const Center(
-          child: CircularProgressIndicator(color: mainColor), // Show loading spinner
+          child: CircularProgressIndicator(
+              color: mainColor), // Show loading spinner
         );
       },
     );
   }
 
   Future<void> pickImages(BuildContext context) async {
-     _imgs = [];
+    _imgs = [];
     final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
       _imgs.add(File(img.path));
       notifyListeners();
     }
-     print('images count ${_imgs.length}');
+    print('images count ${_imgs.length}');
     // Upload images in the background using microtask
     Future.microtask(() async {
-      
       await uploadImageToStorage();
-      notifyListeners(); 
+      notifyListeners();
       // Optionally, you can show a completion message or perform other actions when the upload is done.
       // For example, you can show a snackbar:
       // ScaffoldMessenger.of(context).showSnackBar(
@@ -277,7 +271,6 @@ Future<void> fetchServices() async {
   }
 
   Future<void> uploadImageToStorage() async {
-    
     if (_imgs.isNotEmpty) {
       _uploading = true;
       try {
@@ -287,18 +280,18 @@ Future<void> fetchServices() async {
         }).toList();
         _imgUrls += await Future.wait(uploadFutures);
         _uploading = false;
-        notifyListeners(); 
+        notifyListeners();
       } catch (err) {
         _message = err.toString();
         print(_message);
       }
     }
   }
-void removeImg(int index) {
-  _imgUrls.removeAt(index);
-   notifyListeners();
-  _imgs.removeAt(index);
-  notifyListeners();
-}
 
+  void removeImg(int index) {
+    _imgUrls.removeAt(index);
+    notifyListeners();
+    _imgs.removeAt(index);
+    notifyListeners();
+  }
 }

@@ -359,10 +359,8 @@ class _CustomAppBarState extends State<CustomAppBar> {
               onPressed: () {
                 detailsProvider.bookmarkService(widget.servId, widget.userId);
                 setState(() {
-        
                  isFavorite = !isFavorite;
                  homeProvider.fetchAllServices();
-                  print(isFavorite);
                 });
               },
               icon: Icon(
