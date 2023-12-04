@@ -54,7 +54,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     Expanded(
                       child: TextFormField(
                         autofocus: true,
-                        cursorColor: Colors.grey,
+                        cursorColor: mainColor,
                         controller: searchTextController,
                         style: const TextStyle(fontSize: 10),
                         onFieldSubmitted: (value) {
@@ -76,6 +76,8 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
+                          focusColor: mainColor,
+                          
                             contentPadding:
                                 const EdgeInsets.symmetric(vertical: 10),
                             labelStyle: const TextStyle(

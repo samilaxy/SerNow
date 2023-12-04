@@ -51,133 +51,136 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
 
     return Scaffold(
         appBar: const CustomAppBar(),
-        body: Container(
-          child: homeProvider.dataState
-              ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const CircularProgressIndicator(
-                        color: mainColor,
-                        strokeWidth: 6,
-                      ),
-                      const SizedBox(height: 10),
-                      Text(
-                        "Please wait, while services load...",
-                        maxLines: 1,
-                        style: GoogleFonts.poppins(
-                          fontSize: 13.0,
-                          fontWeight: FontWeight.normal,
+        body: Column(
+          children: [
+            SizedBox(
+              height: 35, // Adjust the height as needed
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: _categories.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedIndex = index; // Update the selected index
+                          homeProvider.filtersServices(index);
+                        });
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(
+                              12.0), // Adjust the radius as needed
+                          color: selectedIndex == index
+                              ? mainColor // Highlight selected item
+                              : const Color.fromARGB(
+                                  255, 225, 220, 220), // Background color
                         ),
-                      ),
-                    ],
-                  ),
-                )
-              : Builder(builder: (context) {
-                  return CustomScrollView(slivers: <Widget>[
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 35, // Adjust the height as needed
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: _categories.length,
-                          itemBuilder: (context, index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(5.0),
-                              child: GestureDetector(
-                                onTap: () {
-                                  setState(() {
-                                    selectedIndex =
-                                        index; // Update the selected index
-                                    homeProvider.filtersServices(index);
-                                  });
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                        12.0), // Adjust the radius as needed
-                                    color: selectedIndex == index
-                                        ? mainColor // Highlight selected item
-                                        : const Color.fromARGB(255, 225, 220,
-                                            220), // Background color
-                                  ),
-                                  // height: 30,
-                                  child: Center(
-                                      child: Padding(
-                                    padding: const EdgeInsets.all(5.0),
-                                    child: Text(_categories[index],
-                                        maxLines: 1,
-                                        style: GoogleFonts.poppins(
-                                            fontSize: 10,
-                                            color: selectedIndex == index
-                                                ? Colors.white
-                                                : Colors.black)),
-                                  )),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
+                        // height: 30,
+                        child: Center(
+                            child: Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: Text(_categories[index],
+                              maxLines: 1,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 10,
+                                  color: selectedIndex == index
+                                      ? Colors.white
+                                      : Colors.black)),
+                        )),
                       ),
                     ),
-
-                    SliverPadding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0,
-                          right: 16,
-                          left: 16,
-                          bottom: 50), // Adjust the padding as needed
-                      sliver: SliverGrid(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            if (homeProvider.data.isEmpty) {
-                              return Center(
-                                child: Text(
-                                  "No service created yet",
-                                  maxLines: 1,
-                                  style: GoogleFonts.poppins(
-                                    fontSize: 13.0,
-                                    fontWeight: FontWeight.normal,
-                                  ),
-                                ),
-                              );
-                            } else {
-                              return GridTile(
-                                  child: GestureDetector(
-                                onTap: () {
-                                  detailsProvider.serviceData =
-                                      homeProvider.data[index];
-                                  detailsProvider.fetchDiscoverServices();
-                                  detailsProvider.fetchRelatedServices();
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ServiceDetailsPage(),
-                                    ),
-                                  );
-                                },
-                                child: homeProvider.dataState
-                                    ? const LoadingIndicator()
-                                    : ServiceCard(
-                                        service: homeProvider.data[index]),
-                              ));
-                            }
-                          },
-                          childCount: homeProvider.data.length,
-                        ),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 16,
-                                crossAxisSpacing: 16,
-                                mainAxisExtent: 210),
+                  );
+                },
+              ),
+            ),
+            Expanded(
+              child: Stack(children: [
+                if (homeProvider.noData || homeProvider.noFiltaData)
+                  Center(
+                    child: Text(
+                      "No service found",
+                      maxLines: 1,
+                      style: GoogleFonts.poppins(
+                        fontSize: 13.0,
+                        fontWeight: FontWeight.normal,
                       ),
-                    ), // MainView(
-                    //   homeProvider: homeProvider,
-                    //   detailsProvider: detailsProvider)
-                  ]);
-                }),
+                    ),
+                  ),
+                Container(
+                  child: homeProvider.dataState
+                      ? Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const CircularProgressIndicator(
+                                color: mainColor,
+                                strokeWidth: 6,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                "Please wait, while services load...",
+                                maxLines: 1,
+                                style: GoogleFonts.poppins(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.normal,
+                                ),
+                              ),
+                            ],
+                          ),
+                        )
+                      : Builder(builder: (context) {
+                          return CustomScrollView(slivers: <Widget>[
+                            SliverPadding(
+                              padding: const EdgeInsets.only(
+                                  top: 10.0,
+                                  right: 16,
+                                  left: 16,
+                                  bottom: 50), // Adjust the padding as needed
+                              sliver: SliverGrid(
+                                delegate: SliverChildBuilderDelegate(
+                                  (context, index) {
+                                    return GridTile(
+                                        child: GestureDetector(
+                                      onTap: () {
+                                        detailsProvider.serviceData =
+                                            homeProvider.data[index];
+                                        detailsProvider.fetchDiscoverServices();
+                                        detailsProvider.fetchRelatedServices();
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ServiceDetailsPage(),
+                                          ),
+                                        );
+                                      },
+                                      child: homeProvider.dataState
+                                          ? const LoadingIndicator()
+                                          : ServiceCard(
+                                              service:
+                                                  homeProvider.data[index]),
+                                    ));
+                                  },
+                                  childCount: homeProvider.data.length,
+                                ),
+                                gridDelegate:
+                                    const SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 2,
+                                        mainAxisSpacing: 16,
+                                        crossAxisSpacing: 16,
+                                        mainAxisExtent: 210),
+                              ),
+                            ), // MainView(
+                            //   homeProvider: homeProvider,
+                            //   detailsProvider: detailsProvider)
+                          ]);
+                        }),
+                ),
+              ]),
+            ),
+          ],
         ));
   }
 }

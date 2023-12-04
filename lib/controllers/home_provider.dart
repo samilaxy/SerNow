@@ -21,7 +21,7 @@ class HomeProvider extends ChangeNotifier {
   bool _searchState = false;
   String _category = "";
   String _userId = "";
-  bool _noData = true;
+  bool _noData = false;
   bool _noSearchData = false;
   bool _noFiltaData = false;
   bool _isBook = false;
@@ -29,7 +29,6 @@ class HomeProvider extends ChangeNotifier {
   Map<String, dynamic>? profileData;
   ServiceModel? get serviceData => _serviceData;
   List get data => _data;
-  //List get searchData => _searchData;
   List<ServiceModel> get searchData => _searchData;
   List get bookmarkIds => _bookmarkIds;
   bool get noData => _noData;
@@ -56,7 +55,10 @@ class HomeProvider extends ChangeNotifier {
 
   Future<void> fetchAllServices() async {
     try {
-      await profile.fetchUserData;
+      _noData = false;
+      _noFiltaData = false;
+      notifyListeners();
+      profile.fetchUserData;
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await _db.collection("services").get();
 
@@ -64,6 +66,7 @@ class HomeProvider extends ChangeNotifier {
           querySnapshot.docs;
 
       _data = [];
+
       // Process the documents and add fetchUserData tasks
       for (var document in documents) {
         final serviceData = document.data();
@@ -91,21 +94,27 @@ class HomeProvider extends ChangeNotifier {
             _data.add(serviceCard);
             _searchData = List.from(_data);
             notifyListeners();
-            if (_data.isNotEmpty) {
-              _dataState = false;
-              notifyListeners();
-            }
           }),
         );
-
         // Wait for all fetchUserData tasks to complete concurrently for each document
         await Future.wait(fetchUserDataTasks);
+      }
+
+      if (_data.isNotEmpty) {
+        _dataState = false;
+        _noData = false;
+        notifyListeners();
+      } else {
+        _noData = true;
+        _dataState = false;
+        notifyListeners();
       }
 
       notifyListeners();
     } catch (error) {
       if (_data.isEmpty) {
-        _dataState = true;
+        _noData = true;
+        _dataState = false;
         notifyListeners();
       }
     }
@@ -113,55 +122,25 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> filtersServices(int index) async {
-    // await Future.delayed(const Duration(seconds: 3));
-    //_dataState = true;
-    _category = "";
-    switch (index) {
-      case 1:
-        _category = "Barber";
-        break;
-      case 2:
-        _category = "Hair Dresser";
-        break;
-      case 3:
-        _category = "Plumber";
-        break;
-      case 4:
-        _category = "Fashion";
-        break;
-      case 5:
-        _category = "Mechanic";
-        break;
-      case 6:
-        _category = "Home Service";
-        break;
-      case 7:
-        _category = "Health & Fitness";
-        break;
-      case 8:
-        _category = "Others";
-        break;
-      default:
-        _category = "";
-    }
-
+    _dataState = true;
+    _noFiltaData = false;
+    _noData = false;
+    _category = getCategoryByIndex(index);
+    notifyListeners();
     await Future.delayed(const Duration(seconds: 1));
+
     try {
       if (_category.isNotEmpty) {
         QuerySnapshot querySnapshot = await _db
             .collection('services')
-            .where('category',
-                isEqualTo: _category) // Replace with the user's ID
+            .where('category', isEqualTo: _category)
             .get();
 
-        //if (querySnapshot.exists) {
-        //reset discovered items array
         final List<Future<void>> fetchUserDataTasks = [];
         _data = [];
 
-        for (QueryDocumentSnapshot document in querySnapshot.docs) {
-          Map<String, dynamic> serviceData =
-              document.data() as Map<String, dynamic>;
+        await Future.forEach(querySnapshot.docs, (document) async {
+          final serviceData = document.data() as Map<String, dynamic>;
           final userId = serviceData["userId"];
 
           fetchUserDataTasks.add(
@@ -181,22 +160,50 @@ class HomeProvider extends ChangeNotifier {
               _data.add(service);
             }),
           );
-          if (_data.isNotEmpty) {
-            _dataState = false;
-            _noFiltaData = false;
-          } else {
-            print("no1 data");
-            _dataState = false;
-            _noFiltaData = true;
-          }
+        });
+        await Future.delayed(const Duration(seconds: 1));
+        
+        if (_data.isNotEmpty) {
+        _dataState = false;
+        _noFiltaData = false;
+         notifyListeners();
+        }else{
+        _dataState = false;
+        _noFiltaData = true;
+         notifyListeners();
         }
+        print(' bool filter data$_noFiltaData ${_data.length}');
       } else {
-        fetchAllServices();
+        await fetchAllServices();
       }
     } catch (error) {
       _dataState = false;
     }
+
     notifyListeners();
+  }
+
+  String getCategoryByIndex(int index) {
+    switch (index) {
+      case 1:
+        return "Barber";
+      case 2:
+        return "Hair Dresser";
+      case 3:
+        return "Plumber";
+      case 4:
+        return "Fashion";
+      case 5:
+        return "Mechanic";
+      case 6:
+        return "Home Service";
+      case 7:
+        return "Health & Fitness";
+      case 8:
+        return "Others";
+      default:
+        return "";
+    }
   }
 
   Future<void> loadprofileData() async {
@@ -307,9 +314,6 @@ class HomeProvider extends ChangeNotifier {
           _noSearchData = false;
           notifyListeners();
         } else {
-          // Delay to show no data text
-          //  await Future.delayed(const Duration(seconds: 5));
-
           // Show no data text
           _noSearchData = true;
           _searchState = false;
