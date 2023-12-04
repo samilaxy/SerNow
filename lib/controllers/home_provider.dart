@@ -22,9 +22,10 @@ class HomeProvider extends ChangeNotifier {
   String _category = "";
   String _userId = "";
   bool _noData = false;
+  bool _noBookData = false;
   bool _noSearchData = false;
   bool _noFiltaData = false;
-  bool _isBook = false;
+  bool _isBook = true;
 
   Map<String, dynamic>? profileData;
   ServiceModel? get serviceData => _serviceData;
@@ -35,6 +36,7 @@ class HomeProvider extends ChangeNotifier {
   bool get noSearchData => _noSearchData;
   bool get noFiltaData => _noFiltaData;
   bool get isBook => _isBook;
+  bool get noBookData => _noBookData;
   bool get searchState => _searchState;
   String get userId => _userId;
   String get category => _category;
@@ -99,7 +101,7 @@ class HomeProvider extends ChangeNotifier {
         // Wait for all fetchUserData tasks to complete concurrently for each document
         await Future.wait(fetchUserDataTasks);
       }
-
+      await Future.delayed(const Duration(seconds: 1));
       if (_data.isNotEmpty) {
         _dataState = false;
         _noData = false;
@@ -152,7 +154,7 @@ class HomeProvider extends ChangeNotifier {
                 price: serviceData["price"],
                 location: serviceData["location"],
                 description: serviceData["description"],
-                isFavorite: serviceData["isFavorite"],
+                isFavorite: profile.bookmarks.contains(document.id),
                 status: serviceData["status"],
                 imgUrls: serviceData["imgUrls"],
                 user: _userModel,
@@ -162,17 +164,16 @@ class HomeProvider extends ChangeNotifier {
           );
         });
         await Future.delayed(const Duration(seconds: 1));
-        
+
         if (_data.isNotEmpty) {
-        _dataState = false;
-        _noFiltaData = false;
-         notifyListeners();
-        }else{
-        _dataState = false;
-        _noFiltaData = true;
-         notifyListeners();
+          _dataState = false;
+          _noFiltaData = false;
+          notifyListeners();
+        } else {
+          _dataState = false;
+          _noFiltaData = true;
+          notifyListeners();
         }
-        print(' bool filter data$_noFiltaData ${_data.length}');
       } else {
         await fetchAllServices();
       }
@@ -219,34 +220,44 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> fetchBookmarkServices() async {
+   // _isBook = true;
     await loadprofileData();
-    await Future.delayed(const Duration(seconds: 2));
-    _noData = true;
-    _isBook = false;
+    await Future.delayed(const Duration(seconds: 1));
+   
+    _noBookData = false;
     _bookmarkData = [];
+    notifyListeners();
     final List<Future<void>> fetchServiceDataTasks = [];
-
+    
     try {
       for (var document in _bookmarkIds) {
         fetchServiceDataTasks.add(fetchService(document).then((serviceCard) {
           _bookmarkData.add(serviceCard!);
         }));
       }
+
       await Future.wait(fetchServiceDataTasks);
+
+      await Future.delayed(const Duration(seconds: 1));
+      print('data state : ${_bookmarkData.isNotEmpty}');
       if (_bookmarkData.isNotEmpty) {
         _isBook = false; // Data is available
-        _noData = false;
+        _noBookData = false;
+        notifyListeners();
       } else {
         // await Future.delayed(const Duration(seconds: 5));
-        _noData = false;
+        _noBookData = false;
         _isBook = true;
+        notifyListeners();
       }
 
-      _noData = false; // No data available
+      // _noBookData = false; // No data available
     } catch (error) {
       if (_bookmarkData.isEmpty) {
         _isBook = true;
-        _noData = false;
+        await Future.delayed(const Duration(seconds: 1));
+        _isBook = false;
+        _noBookData = true;
       }
     } finally {
       notifyListeners();

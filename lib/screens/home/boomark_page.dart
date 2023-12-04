@@ -41,18 +41,20 @@ class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
     return Scaffold(
         appBar: const CustomAppBar(),
         body: Stack(children: [
-          if (homeProvider.isBook)
-            Center(
-              child: Text(
-                "No service bookmarked yet",
-                maxLines: 1,
-                style: GoogleFonts.poppins(
-                  fontSize: 13.0,
-                  fontWeight: FontWeight.normal,
+            Visibility(
+              visible: homeProvider.noBookData,
+              child: Center(
+                child: Text(
+                  "No service bookmarked yet",
+                  maxLines: 1,
+                  style: GoogleFonts.poppins(
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.normal,
+                  ),
                 ),
               ),
             ),
-          homeProvider.noData
+          homeProvider.isBook
               ? SizedBox(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
