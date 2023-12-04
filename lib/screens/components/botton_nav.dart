@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now_new/screens/home/search.dart';
 import '../../controllers/home_provider.dart';
 import '../../controllers/profile_proviver.dart';
 import '../../main.dart';
@@ -49,7 +51,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
         ),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomAppBar(
-          // notchMargin: 5,
+           notchMargin: 5,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SizedBox(
@@ -61,7 +63,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                   GestureDetector(
                                   onTap: () {
                         onItemTapped(0, const HomeScreen());
-                        homeProvider.fetchAllServices();
+                        //homeProvider.fetchAllServices();
                                   },
                     child: SizedBox(
                       width: 45,
@@ -74,17 +76,14 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           ),
                           Text(
                             "Home",
-                            style: TextStyle(
-                                color: currentTab == 0 ? mainColor : Colors.grey,
-                                fontSize: 8),
-                          )
+                           style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 0 ? mainColor : Colors.grey))
                         ],
                       ),
                     ),
                   ),
                    GestureDetector(
                                   onTap: () {
-                                    onItemTapped(1, const HomeScreen());
+                                    onItemTapped(1, const SearchScreen());
                                   },
                     child: SizedBox(
                       width: 45,
@@ -97,10 +96,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           ),
                           Text(
                             "Search",
-                            style: TextStyle(
-                                color: currentTab == 1 ? mainColor : Colors.grey,
-                                fontSize: 8),
-                          )
+                            style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 1 ? mainColor : Colors.grey))
                         ],
                       ),
                     ),
@@ -146,10 +142,8 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           ),
                           Text(
                             "Bookmarks",
-                            style: TextStyle(
-                                color: currentTab == 2 ? mainColor : Colors.grey,
-                                fontSize: 8),
-                          )
+                            maxLines: 1,
+style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 2 ? mainColor : Colors.grey))
                         ],
                       ),
                     ),
@@ -170,10 +164,8 @@ class _BottomNarBarState extends State<BottomNarBar> {
                           ),
                           Text(
                             "Profile",
-                            style: TextStyle(
-                                color: currentTab == 3 ? mainColor : Colors.grey,
-                                fontSize: 8),
-                          )
+                           style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 3 ? mainColor : Colors.grey))
+
                         ],
                       ),
                     ),

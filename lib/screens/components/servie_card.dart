@@ -132,7 +132,6 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    print("ids: ${widget.service.id}: ${widget.service.user?.id}");
                                     homeProvider.bookmarkService(
                                         widget.service.id,
                                         widget.service.user?.id);

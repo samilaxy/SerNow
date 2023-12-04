@@ -51,7 +51,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
   @override
   Widget build(BuildContext context) {
     final serviceProvider = Provider.of<CreateServiceProvider>(context);
-
+    priceController.text = ".00";
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),

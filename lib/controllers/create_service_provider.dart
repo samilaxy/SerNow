@@ -80,18 +80,17 @@ class CreateServiceProvider extends ChangeNotifier {
       // Exit early if any field is empty
     }
 
-   // showLoadingDialog(context); // Show loading spinner
-     _isloading = true; 
+    // showLoadingDialog(context); // Show loading spinner
+    _isloading = true;
     notifyListeners();
 
     try {
-      
       await _db.collection("services").add(serv.toJson());
       await Future.delayed(const Duration(seconds: 4));
       _isloading = false;
       _message = "Created Successfully!";
       showSuccessSnackbar(context, _message);
-     await navigatorKey.currentState!.pushNamed('home');
+      await navigatorKey.currentState!.pushNamed('home');
     } catch (error) {
       _message = "Something went wrong, Try again!";
       showErrorSnackbar(context, _message);
@@ -110,7 +109,7 @@ class CreateServiceProvider extends ChangeNotifier {
       navigatorKey.currentState!.pushNamed('myAdverts');
     } catch (error) {
       _message = "Update Failed, Try again.";
-       showSuccessSnackbar(context, _message);
+      showSuccessSnackbar(context, _message);
       // Handle error as needed
     }
   }
@@ -176,6 +175,7 @@ class CreateServiceProvider extends ChangeNotifier {
       _imgs.add(File(img.path));
       notifyListeners();
     }
+    print("images: $_imgs");
     // Upload images in the background using microtask
     Future.microtask(() async {
       await uploadImageToStorage();
@@ -189,7 +189,7 @@ class CreateServiceProvider extends ChangeNotifier {
 
   Future<void> uploadImageToStorage() async {
     if (_imgs.isNotEmpty) {
-       _uploading = true;
+      _uploading = true;
       try {
         final List<Future<String>> uploadFutures = _imgs.map((img) async {
           final fileBytes = await img.readAsBytes(); // Read file contents

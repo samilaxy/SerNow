@@ -1,0 +1,62 @@
+---
+triple:          'arm64-apple-darwin'
+binary-path:     '/Users/amalitech-pc-4100433/Documents/Projects/ServNow/build/ios/Release-iphoneos/BSImageView/BSImageView.framework/BSImageView'
+relocations:
+  - { offsetInCU: 0x34, offset: 0x53879, size: 0x8, addend: 0x0, symName: _BSImageViewVersionString, symObjAddr: 0x0, symBinAddr: 0xB6E0, symSize: 0x0 }
+  - { offsetInCU: 0x69, offset: 0x538AE, size: 0x8, addend: 0x0, symName: _BSImageViewVersionNumber, symObjAddr: 0x30, symBinAddr: 0xB710, symSize: 0x0 }
+  - { offsetInCU: 0x43, offset: 0x53907, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC05imageB033_3376EF28A2CB4519447F372EB94EE3EELLSo07UIImageB0Cvpfi', symObjAddr: 0x0, symBinAddr: 0x8000, symSize: 0x34 }
+  - { offsetInCU: 0xB0, offset: 0x53974, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC24isUserInteractionEnabledSbvgTo', symObjAddr: 0x34, symBinAddr: 0x8034, symSize: 0x3C }
+  - { offsetInCU: 0xEB, offset: 0x539AF, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC24isUserInteractionEnabledSbvg', symObjAddr: 0x70, symBinAddr: 0x8070, symSize: 0x30 }
+  - { offsetInCU: 0x150, offset: 0x53A14, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC24isUserInteractionEnabledSbvsTo', symObjAddr: 0xC0, symBinAddr: 0x80C0, symSize: 0x90 }
+  - { offsetInCU: 0x199, offset: 0x53A5D, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC24isUserInteractionEnabledSbvs', symObjAddr: 0x150, symBinAddr: 0x8150, symSize: 0x74 }
+  - { offsetInCU: 0x1FD, offset: 0x53AC1, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC9tintColorSo7UIColorCSgvgTo', symObjAddr: 0x1C4, symBinAddr: 0x81C4, symSize: 0x44 }
+  - { offsetInCU: 0x238, offset: 0x53AFC, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC9tintColorSo7UIColorCSgvg', symObjAddr: 0x208, symBinAddr: 0x8208, symSize: 0x34 }
+  - { offsetInCU: 0x29D, offset: 0x53B61, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC9tintColorSo7UIColorCSgvsTo', symObjAddr: 0x23C, symBinAddr: 0x823C, symSize: 0xC0 }
+  - { offsetInCU: 0x2F0, offset: 0x53BB4, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC9tintColorSo7UIColorCSgvs', symObjAddr: 0x2FC, symBinAddr: 0x82FC, symSize: 0x90 }
+  - { offsetInCU: 0x356, offset: 0x53C1A, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC11contentModeSo013UIViewContentD0VvgTo', symObjAddr: 0x38C, symBinAddr: 0x838C, symSize: 0x3C }
+  - { offsetInCU: 0x391, offset: 0x53C55, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC11contentModeSo013UIViewContentD0Vvg', symObjAddr: 0x3C8, symBinAddr: 0x83C8, symSize: 0x30 }
+  - { offsetInCU: 0x3F6, offset: 0x53CBA, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC11contentModeSo013UIViewContentD0VvsTo', symObjAddr: 0x3F8, symBinAddr: 0x83F8, symSize: 0x84 }
+  - { offsetInCU: 0x447, offset: 0x53D0B, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC11contentModeSo013UIViewContentD0Vvs', symObjAddr: 0x47C, symBinAddr: 0x847C, symSize: 0x60 }
+  - { offsetInCU: 0x48D, offset: 0x53D51, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5frameABSo6CGRectV_tcfC', symObjAddr: 0x4DC, symBinAddr: 0x84DC, symSize: 0x50 }
+  - { offsetInCU: 0x4AB, offset: 0x53D6F, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5frameABSo6CGRectV_tcfc', symObjAddr: 0x52C, symBinAddr: 0x852C, symSize: 0xEC }
+  - { offsetInCU: 0x52E, offset: 0x53DF2, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5frameABSo6CGRectV_tcfcTo', symObjAddr: 0x618, symBinAddr: 0x8618, symSize: 0xF0 }
+  - { offsetInCU: 0x587, offset: 0x53E4B, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfC', symObjAddr: 0x708, symBinAddr: 0x8708, symSize: 0x44 }
+  - { offsetInCU: 0x5A5, offset: 0x53E69, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfc', symObjAddr: 0x74C, symBinAddr: 0x874C, symSize: 0xF4 }
+  - { offsetInCU: 0x60E, offset: 0x53ED2, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5coderABSgSo7NSCoderC_tcfcTo', symObjAddr: 0x840, symBinAddr: 0x8840, symSize: 0x30 }
+  - { offsetInCU: 0x62A, offset: 0x53EEE, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC14layoutSubviewsyyF', symObjAddr: 0x870, symBinAddr: 0x8870, symSize: 0x1C0 }
+  - { offsetInCU: 0x7D2, offset: 0x54096, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC14layoutSubviewsyyFTo', symObjAddr: 0xA40, symBinAddr: 0x8A40, symSize: 0x2C }
+  - { offsetInCU: 0x7EE, offset: 0x540B2, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAACfD', symObjAddr: 0xA6C, symBinAddr: 0x8A6C, symSize: 0x30 }
+  - { offsetInCU: 0x81C, offset: 0x540E0, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAACMa', symObjAddr: 0xA0, symBinAddr: 0x80A0, symSize: 0x20 }
+  - { offsetInCU: 0x93D, offset: 0x54201, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAACfETo', symObjAddr: 0xA9C, symBinAddr: 0x8A9C, symSize: 0x10 }
+  - { offsetInCU: 0x96C, offset: 0x54230, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5imageABSo7UIImageCSg_tcfC', symObjAddr: 0xAAC, symBinAddr: 0x8AAC, symSize: 0x98 }
+  - { offsetInCU: 0x9AB, offset: 0x5426F, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5image16highlightedImageABSo7UIImageCSg_AGtcfC', symObjAddr: 0xB44, symBinAddr: 0x8B44, symSize: 0xDC }
+  - { offsetInCU: 0xA24, offset: 0x542E8, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5imageSo7UIImageCSgvsTo', symObjAddr: 0xC38, symBinAddr: 0x8C38, symSize: 0x88 }
+  - { offsetInCU: 0xA63, offset: 0x54327, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC5imageSo7UIImageCSgvs', symObjAddr: 0xCC0, symBinAddr: 0x8CC0, symSize: 0x5C }
+  - { offsetInCU: 0xAB6, offset: 0x5437A, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvsTo', symObjAddr: 0xD8C, symBinAddr: 0x8D8C, symSize: 0x18 }
+  - { offsetInCU: 0xAD6, offset: 0x5439A, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvsTo', symObjAddr: 0xD8C, symBinAddr: 0x8D8C, symSize: 0x18 }
+  - { offsetInCU: 0xAFB, offset: 0x543BF, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC16highlightedImageSo7UIImageCSgvs', symObjAddr: 0xDA4, symBinAddr: 0x8DA4, symSize: 0x3C }
+  - { offsetInCU: 0xB42, offset: 0x54406, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvgTo', symObjAddr: 0xDE0, symBinAddr: 0x8DE0, symSize: 0x18 }
+  - { offsetInCU: 0xB62, offset: 0x54426, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvgTo', symObjAddr: 0xDE0, symBinAddr: 0x8DE0, symSize: 0x18 }
+  - { offsetInCU: 0xB7F, offset: 0x54443, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvg', symObjAddr: 0xDF8, symBinAddr: 0x8DF8, symSize: 0x28 }
+  - { offsetInCU: 0xBC6, offset: 0x5448A, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvsTo', symObjAddr: 0xE20, symBinAddr: 0x8E20, symSize: 0x18 }
+  - { offsetInCU: 0xBE6, offset: 0x544AA, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvsTo', symObjAddr: 0xE20, symBinAddr: 0x8E20, symSize: 0x18 }
+  - { offsetInCU: 0xC0B, offset: 0x544CF, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13isHighlightedSbvs', symObjAddr: 0xE38, symBinAddr: 0x8E38, symSize: 0x20 }
+  - { offsetInCU: 0xC50, offset: 0x54514, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC15animationImagesSaySo7UIImageCGSgvM', symObjAddr: 0xE70, symBinAddr: 0x8E70, symSize: 0x88 }
+  - { offsetInCU: 0xCB4, offset: 0x54578, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC26highlightedAnimationImagesSaySo7UIImageCGSgvM', symObjAddr: 0xFFC, symBinAddr: 0x8FFC, symSize: 0x88 }
+  - { offsetInCU: 0xCFA, offset: 0x545BE, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC17animationDurationSdvg', symObjAddr: 0x114C, symBinAddr: 0x914C, symSize: 0x18 }
+  - { offsetInCU: 0xD17, offset: 0x545DB, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC17animationDurationSdvs', symObjAddr: 0x1164, symBinAddr: 0x9164, symSize: 0x18 }
+  - { offsetInCU: 0xD5B, offset: 0x5461F, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC17animationDurationSdvM', symObjAddr: 0x117C, symBinAddr: 0x917C, symSize: 0x48 }
+  - { offsetInCU: 0xDCB, offset: 0x5468F, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC17animationDurationSdvM.resume.0', symObjAddr: 0x11C4, symBinAddr: 0x91C4, symSize: 0x1C }
+  - { offsetInCU: 0xDF9, offset: 0x546BD, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC17animationDurationSdvM.resume.0', symObjAddr: 0x11C4, symBinAddr: 0x91C4, symSize: 0x1C }
+  - { offsetInCU: 0xE16, offset: 0x546DA, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC20animationRepeatCountSivg', symObjAddr: 0x11E0, symBinAddr: 0x91E0, symSize: 0x18 }
+  - { offsetInCU: 0xE33, offset: 0x546F7, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC20animationRepeatCountSivs', symObjAddr: 0x11F8, symBinAddr: 0x91F8, symSize: 0x1C }
+  - { offsetInCU: 0xE78, offset: 0x5473C, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC20animationRepeatCountSivM', symObjAddr: 0x1214, symBinAddr: 0x9214, symSize: 0x48 }
+  - { offsetInCU: 0xEE8, offset: 0x547AC, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC20animationRepeatCountSivM.resume.0', symObjAddr: 0x125C, symBinAddr: 0x925C, symSize: 0x18 }
+  - { offsetInCU: 0xF16, offset: 0x547DA, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC20animationRepeatCountSivM.resume.0', symObjAddr: 0x125C, symBinAddr: 0x925C, symSize: 0x18 }
+  - { offsetInCU: 0xF3B, offset: 0x547FF, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC14startAnimatingyyF', symObjAddr: 0x1274, symBinAddr: 0x9274, symSize: 0x18 }
+  - { offsetInCU: 0xF68, offset: 0x5482C, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC13stopAnimatingyyF', symObjAddr: 0x128C, symBinAddr: 0x928C, symSize: 0x18 }
+  - { offsetInCU: 0xF95, offset: 0x54859, size: 0x8, addend: 0x0, symName: '_$s11BSImageViewAAC11isAnimatingSbvg', symObjAddr: 0x12A4, symBinAddr: 0x92A4, symSize: 0x28 }
+  - { offsetInCU: 0xFC2, offset: 0x54886, size: 0x8, addend: 0x0, symName: '_$sSo7UIImageCMa', symObjAddr: 0x12CC, symBinAddr: 0x92CC, symSize: 0x3C }
+  - { offsetInCU: 0x2B, offset: 0x54B38, size: 0x8, addend: 0x0, symName: '_$s11BSImageView05ImageB6LayoutV011positionForC033_236E416D1770FBCDB78F93EDC4C11DCELL_16previousPosition9container11contentModeSo7CGPointVSo6CGSizeV_AjLSo013UIViewContentR0VtFZTf4nnnnd_n', symObjAddr: 0x0, symBinAddr: 0x9308, symSize: 0xC8 }
+  - { offsetInCU: 0x4A, offset: 0x54B57, size: 0x8, addend: 0x0, symName: '_$s11BSImageView05ImageB6LayoutV011positionForC033_236E416D1770FBCDB78F93EDC4C11DCELL_16previousPosition9container11contentModeSo7CGPointVSo6CGSizeV_AjLSo013UIViewContentR0VtFZTf4nnnnd_n', symObjAddr: 0x0, symBinAddr: 0x9308, symSize: 0xC8 }
+...

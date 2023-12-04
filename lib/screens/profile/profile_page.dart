@@ -4,10 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now_new/screens/home/home.dart';
+import 'package:serv_now_new/screens/onboarding_screen.dart';
 import '../../utilities/constants.dart';
 import '../../controllers/auth_provider.dart';
 import '../../controllers/profile_proviver.dart';
 import '../../main.dart';
+import '../components/custom_alertdialog.dart';
 import '../components/image_with_placeholder.dart';
 import '../home/zoom_imageview.dart';
 
@@ -18,10 +21,8 @@ class ProfileScreen extends StatefulWidget {
   State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-
 class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
-
- @override
+  @override
   void didPush() {
     final profileProvider = Provider.of<ProfileProvider>(context);
     profileProvider.loadprofileData();
@@ -200,9 +201,19 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               const SizedBox(height: 20),
               GestureDetector(
                 onTap: () {
-                  print("Logout");
-                  authProvider.isLogin(false);
-                  navigatorKey.currentState!.pushNamed('onBoarding');
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return CustomAlertDialog(
+                          context: context,
+                          onOkPressed: () async {
+                            authProvider.isLogin(false);
+                            navigatorKey.currentState!.pushNamed('onBoarding');
+                          },
+                          title: 'Log Out',
+                          content: "Are you sure you want to Log out?");
+                    },
+                  );
                 },
                 child: Row(children: [
                   Container(

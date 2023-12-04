@@ -101,7 +101,6 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                                         : const Color.fromARGB(255, 225, 220,
                                             220), // Background color
                                   ),
-
                                   // height: 30,
                                   child: Center(
                                       child: Padding(

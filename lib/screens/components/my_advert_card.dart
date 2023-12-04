@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';  
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -7,6 +7,7 @@ import '../../main.dart';
 import '../../models/discover_model.dart';
 import '../../screens/components/image_with_placeholder.dart';
 import '../../utilities/constants.dart';
+import 'custom_alertdialog.dart';
 
 class MyAdvertCard extends StatefulWidget {
   final DiscoverModel service;
@@ -18,11 +19,10 @@ class MyAdvertCard extends StatefulWidget {
 }
 
 class _MyAdvertCardState extends State<MyAdvertCard> {
-
+  late String serId;
   @override
   Widget build(BuildContext context) {
-    final myAdvert =
-        Provider.of<MyAdvertsProvider>(context);
+    final myAdvert = Provider.of<MyAdvertsProvider>(context);
     String currency = "GHS ";
     return Expanded(
       child: Container(
@@ -41,7 +41,9 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                     height: 120,
                     width: double.infinity,
                     child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)),
                       child: ImageWithPlaceholder(
                         imageUrl: widget.service.img,
                         placeholderUrl: noImg,
@@ -78,20 +80,27 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                                 color: Colors.white,
                                 fontSize: 13.0,
                               )),
-      
-                              Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(4.0),
-                                    child: Text(widget.service.status ? "Active" : "Pending",
-                                        style: GoogleFonts.poppins(
-                                          color: Colors.white,
-                                          fontSize: 10.0,
-                                        )),
-                                  ),
-                                  Icon(size: 10, Icons.circle, color: widget.service.status ? Colors.green : Colors.red)
-                                ],
-                              )
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Text(
+                                    widget.service.status
+                                        ? "Active"
+                                        : "Pending",
+                                    style: GoogleFonts.poppins(
+                                      color: Colors.white,
+                                      fontSize: 10.0,
+                                    )),
+                              ),
+                              Icon(
+                                  size: 10,
+                                  Icons.circle,
+                                  color: widget.service.status
+                                      ? Colors.green
+                                      : Colors.red)
+                            ],
+                          )
                         ],
                       ),
                     ],
@@ -105,7 +114,25 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomAlertDialog(
+                              context: context,
+                              onOkPressed: () {
+                                // Place your logic here for the 'OK' button action
+                                serId = widget.service.id ?? '';
+                                myAdvert.deleteService(
+                                    serId, context);
+                              },
+                              title: 'Delete Service',
+                              content:
+                                  "Services deleted can't be recoverd, Are you sure you want to delete?"
+                            );
+                          },
+                        );
+                      },
                       icon: const Icon(
                         size: 20,
                         Icons.delete,
@@ -115,7 +142,7 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                       onPressed: () {
                         //myAdvert.servId = widget.service.id!;
                         myAdvert.fetchService(widget.service.id ?? "", context);
-                       navigatorKey.currentState!.pushNamed('updateAdvert');
+                        navigatorKey.currentState!.pushNamed('updateAdvert');
                       },
                       icon: const Icon(
                         size: 20,

@@ -13,7 +13,7 @@ import '../../utilities/util.dart';
 class MyAdvertsProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
 
-  final List<DiscoverModel> _data = [];
+  List<DiscoverModel> _data = [];
   bool _dataState = true;
   bool _noData = false;
   bool _uploading = false;
@@ -68,47 +68,46 @@ class MyAdvertsProvider extends ChangeNotifier {
     fetchServices();
   }
 
-  Future<void> fetchServices() async {
-    loadprofileData();
-    await Future.delayed(const Duration(seconds: 1));
-    _dataState = true;
+Future<void> fetchServices() async {
+  loadprofileData();
+  await Future.delayed(const Duration(seconds: 1));
+  _dataState = true;
 
-    try {
-      QuerySnapshot querySnapshot = await _db
-          .collection('services')
-          .where('userId', isEqualTo: _userId) // Replace with the user's ID
-          .get();
+  try {
+    QuerySnapshot querySnapshot = await _db
+        .collection('services')
+        .where('userId', isEqualTo: _userId) // Replace with the user's ID
+        .get();
 
-      _data.clear(); // Reset the _data array
+    _data = []; // Reset the _data array
 
-      for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-        DiscoverModel service = DiscoverModel(
-          id: data['id'],
-          title: data['title'] ?? '',
-          price: data['price'] ?? '',
-          img: data['imgUrls'][0] ?? '',
-          status: data['status'],
-        );
-        _data.add(service);
-        notifyListeners();
-      }
-
-      if (_data.isNotEmpty) {
-        _dataState = false; // Data is available
-        _noData = false;
-      } else {
-        _dataState = false; // No data available
-        _noData = true;
-      }
-    } catch (error) {
-      // Handle errors here
-      _dataState = false;
-      _noData = true;
+    for (QueryDocumentSnapshot document in querySnapshot.docs) {
+      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      DiscoverModel service = DiscoverModel(
+        id: document.id,
+        title: data['title'] ?? '',
+        price: data['price'] ?? '',
+        img: data['imgUrls'][0] ?? '',
+        status: data['status'],
+      );
+      _data.add(service);
     }
 
-    notifyListeners();
+    if (_data.isNotEmpty) {
+      _dataState = false; // Data is available
+      _noData = false;
+    } else {
+      _dataState = false; // No data available
+      _noData = true;
+    }
+  } catch (error) {
+    // Handle errors here
+    _dataState = false;
+    _noData = true;
   }
+
+  notifyListeners();
+}
 
   Future<void> loadprofileData() async {
     profileData = await SharedPreferencesHelper.getContact();
@@ -285,6 +284,40 @@ class MyAdvertsProvider extends ChangeNotifier {
         _message = err.toString();
         print(_message);
       }
+    }
+  }
+
+  Future<void> deleteService(String servId, BuildContext context) async {
+    try {
+      // Get a reference to the Firestore collection
+      CollectionReference originalCollection =
+          FirebaseFirestore.instance.collection('services');
+      DocumentReference originalDocument = originalCollection.doc(servId);
+
+      // Read data from the original document
+      DocumentSnapshot snapshot = await originalDocument.get();
+      Map<String, dynamic> deletedData =
+          snapshot.data() as Map<String, dynamic>;
+
+      // Get a reference to the new Firestore collection
+      CollectionReference archiveCollection =
+          FirebaseFirestore.instance.collection('archived_services');
+
+      // Use the reference to write the data to the new collection
+      await archiveCollection.add(deletedData);
+
+      // Use the reference to delete the original document
+      await originalDocument.delete();
+
+      _message = "Service deleted and archived successfully.";
+      fetchServices();
+      notifyListeners();
+      showSuccessSnackbar(context, _message);
+    } catch (e) {
+      print("object here $e");
+      _message = 'Error deleting service ';
+      notifyListeners();
+      // showErrorSnackbar(context, _message);
     }
   }
 
