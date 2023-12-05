@@ -56,11 +56,13 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> fetchAllServices() async {
+    await loadprofileData();
+    _bookmarkIds = profile.bookmarks;
+
     try {
       _noData = false;
       _noFiltaData = false;
-      notifyListeners();
-      profile.fetchUserData;
+
       final QuerySnapshot<Map<String, dynamic>> querySnapshot =
           await _db.collection("services").get();
 
@@ -95,32 +97,27 @@ class HomeProvider extends ChangeNotifier {
             );
             _data.add(serviceCard);
             _searchData = List.from(_data);
-            notifyListeners();
           }),
         );
         // Wait for all fetchUserData tasks to complete concurrently for each document
         await Future.wait(fetchUserDataTasks);
       }
-      await Future.delayed(const Duration(seconds: 1));
+
       if (_data.isNotEmpty) {
         _dataState = false;
         _noData = false;
-        notifyListeners();
       } else {
         _noData = true;
         _dataState = false;
-        notifyListeners();
       }
-
-      notifyListeners();
     } catch (error) {
       if (_data.isEmpty) {
         _noData = true;
         _dataState = false;
-        notifyListeners();
       }
+    } finally {
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   Future<void> filtersServices(int index) async {
@@ -128,7 +125,6 @@ class HomeProvider extends ChangeNotifier {
     _noFiltaData = false;
     _noData = false;
     _category = getCategoryByIndex(index);
-    notifyListeners();
     await Future.delayed(const Duration(seconds: 1));
 
     try {
@@ -168,20 +164,18 @@ class HomeProvider extends ChangeNotifier {
         if (_data.isNotEmpty) {
           _dataState = false;
           _noFiltaData = false;
-          notifyListeners();
         } else {
           _dataState = false;
           _noFiltaData = true;
-          notifyListeners();
         }
       } else {
         await fetchAllServices();
       }
     } catch (error) {
       _dataState = false;
+    } finally {
+      notifyListeners();
     }
-
-    notifyListeners();
   }
 
   String getCategoryByIndex(int index) {
@@ -208,27 +202,20 @@ class HomeProvider extends ChangeNotifier {
   }
 
   Future<void> loadprofileData() async {
-    profile.fetchUserData();
-    await Future.delayed(const Duration(seconds: 1));
+    await profile.fetchUserData();
     profileData = await SharedPreferencesHelper.getContact();
     _bookmarkIds = [];
-    if (profileData != null) {
-      _userId = profileData!['userId'] ?? '';
-      _bookmarkIds = profileData!['bookmarks'] ?? [];
-      notifyListeners();
-    }
+    _userId = profileData!['userId'] ?? '';
+    _bookmarkIds = profile.bookmarks;
+    notifyListeners();
   }
 
   Future<void> fetchBookmarkServices() async {
-   // _isBook = true;
     await loadprofileData();
-    await Future.delayed(const Duration(seconds: 1));
-   
     _noBookData = false;
     _bookmarkData = [];
-    notifyListeners();
     final List<Future<void>> fetchServiceDataTasks = [];
-    
+
     try {
       for (var document in _bookmarkIds) {
         fetchServiceDataTasks.add(fetchService(document).then((serviceCard) {
@@ -239,19 +226,14 @@ class HomeProvider extends ChangeNotifier {
       await Future.wait(fetchServiceDataTasks);
 
       await Future.delayed(const Duration(seconds: 1));
-      print('data state : ${_bookmarkData.isNotEmpty}');
+
       if (_bookmarkData.isNotEmpty) {
         _isBook = false; // Data is available
         _noBookData = false;
-        notifyListeners();
       } else {
-        // await Future.delayed(const Duration(seconds: 5));
-        _noBookData = false;
-        _isBook = true;
-        notifyListeners();
+        _noBookData = true;
+        _isBook = false;
       }
-
-      // _noBookData = false; // No data available
     } catch (error) {
       if (_bookmarkData.isEmpty) {
         _isBook = true;
@@ -275,8 +257,6 @@ class HomeProvider extends ChangeNotifier {
 
         _searchState = true;
         _searchData = [];
-        notifyListeners();
-
         // Fetch documents where the title contains the search query
         final QuerySnapshot<Map<String, dynamic>> titleQuerySnapshot = await _db
             .collection('services')
@@ -306,7 +286,7 @@ class HomeProvider extends ChangeNotifier {
               price: serviceData["price"],
               location: serviceData["location"],
               description: serviceData["description"],
-              isFavorite: serviceData["isFavorite"],
+              isFavorite: profile.bookmarks.contains(document.id),
               status: serviceData["status"],
               imgUrls: serviceData["imgUrls"],
               user: userModel,
@@ -323,21 +303,18 @@ class HomeProvider extends ChangeNotifier {
           // Hide loader
           _searchState = false;
           _noSearchData = false;
-          notifyListeners();
         } else {
           // Show no data text
           _noSearchData = true;
           _searchState = false;
-          notifyListeners();
         }
       } catch (error) {
         // Handle errors, and notify listeners if needed
         _noSearchData = true;
         _searchState = false;
+      } finally {
         notifyListeners();
-        print('Error: $error');
       }
-      notifyListeners();
     } else {
       _searchData = _data;
       notifyListeners();
@@ -362,7 +339,6 @@ class HomeProvider extends ChangeNotifier {
             img: data['img'] ?? '',
             fullName: data['name'] ?? '',
             bookmarks: data['bookmarks'] ?? []);
-        _bookmarkIds = data['bookmarks'] ?? [];
         notifyListeners();
       } else {
         // Handle the case where the document does not exist
@@ -375,7 +351,7 @@ class HomeProvider extends ChangeNotifier {
     return _userModel;
   }
 
-  Future<void> bookmarkService(String? servId, String? userId) async {
+  Future<void> bookmarkService(String? servId) async {
     try {
       if (_bookmarkIds.contains(servId)) {
         _bookmarkIds.remove(servId);
@@ -383,11 +359,11 @@ class HomeProvider extends ChangeNotifier {
         _bookmarkIds.add(servId);
       }
       notifyListeners();
-
+      print('userId: $_userId, ${_bookmarkIds}');
       // Update Firestore with the updated bookmarks list
       await _db
           .collection("users")
-          .doc(userId)
+          .doc(profile.userId)
           .update({'bookmarks': _bookmarkIds});
 
       // Fetch updated bookmark services after Firestore update

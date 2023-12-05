@@ -63,6 +63,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
                   GestureDetector(
                                   onTap: () {
                         onItemTapped(0, const HomeScreen());
+                         profile.loadprofileData();
                         //homeProvider.fetchAllServices();
                                   },
                     child: SizedBox(

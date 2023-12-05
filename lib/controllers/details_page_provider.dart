@@ -1,10 +1,10 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import '../../models/discover_model.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
 import 'home_provider.dart';
+import 'profile_proviver.dart';
 
 class DetailsPageProvider extends ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
@@ -16,6 +16,7 @@ class DetailsPageProvider extends ChangeNotifier {
   bool _dataState = true;
   UserModel? _userModel;
   HomeProvider homeProvider = HomeProvider();
+  ProfileProvider profile = ProfileProvider();
 
   UserModel? get userModel => _userModel;
   ServiceModel? get serviceData => _serviceData;
@@ -64,8 +65,9 @@ class DetailsPageProvider extends ChangeNotifier {
       }
     } catch (error) {
       _dataState = false;
+    } finally {
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   Future<void> fetchRelatedServices() async {
@@ -112,8 +114,9 @@ class DetailsPageProvider extends ChangeNotifier {
       }
     } catch (error) {
       _dataState = false;
+    } finally {
+      notifyListeners();
     }
-    notifyListeners();
   }
 
   Future<void> fetchService(int index) async {
@@ -127,8 +130,6 @@ class DetailsPageProvider extends ChangeNotifier {
           .get();
 
       //reset discovered items array
-      //  _discover = [];
-      // if (querySnapshot.exists) {}
       final List<Future<void>> fetchUserDataTasks = [];
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
@@ -154,9 +155,10 @@ class DetailsPageProvider extends ChangeNotifier {
         notifyListeners();
       }
       // ignore: empty_catches
-    } catch (error) {}
-
-    notifyListeners();
+    } catch (error) {
+    } finally {
+      notifyListeners();
+    }
   }
 
   Future<void> fetchUserData(String documentId) async {
@@ -182,30 +184,31 @@ class DetailsPageProvider extends ChangeNotifier {
       }
     } catch (error) {
       _dataState = false;
+    } finally {
+      notifyListeners();
     }
-    notifyListeners();
   }
 
-  Future<void> bookmarkService(String? servId, String? userId) async {
+  Future<void> bookmarkService(String? servId) async {
     if (homeProvider.bookmarkIds.contains(servId)) {
       homeProvider.bookmarkIds.remove(servId);
     } else {
       homeProvider.bookmarkIds.add(servId);
     }
-    notifyListeners();
 
     try {
       await _db
           .collection("users")
-          .doc(userId)
+          .doc(profile.userId)
           .update({'bookmarks': homeProvider.bookmarkIds});
 
-    //  homeProvider.fetchBookmarkServices();
-    //  homeProvider.fetchAllServices();
-    //  notifyListeners();
+      //  homeProvider.fetchBookmarkServices();
+      //  homeProvider.fetchAllServices();
+      //  notifyListeners();
     } catch (error) {
       print(error.toString());
+    } finally {
+      notifyListeners();
     }
-    notifyListeners();
   }
 }

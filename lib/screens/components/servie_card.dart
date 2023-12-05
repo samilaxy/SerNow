@@ -133,8 +133,7 @@ class _ServiceCardState extends State<ServiceCard> {
                                 onPressed: () {
                                   setState(() {
                                     homeProvider.bookmarkService(
-                                        widget.service.id,
-                                        widget.service.user?.id);
+                                        widget.service.id);
                                     widget.service.isFavorite =
                                         !widget.service.isFavorite;
                                     // homeProvider.fetchBookmarkServices();

@@ -125,7 +125,7 @@ class ProfileProvider extends ChangeNotifier {
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
           querySnapshot.docs;
       // Process the documents as needed
-      if (documents.isNotEmpty) {
+
       for (var document in documents) {
         // Access document data using document.data()
         final userData = document.data();
@@ -147,10 +147,6 @@ class ProfileProvider extends ChangeNotifier {
         _isUser = userData['isUser'];
         _bookmarks = userData['bookmarks'] ?? [];
       }
-
-      } else {
-    print("No user found for phone: $contact");
-}
     } catch (error) {
       print("Firestore Error1 fetch: $error");
     }

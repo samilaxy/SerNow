@@ -357,7 +357,7 @@ class _CustomAppBarState extends State<CustomAppBar> {
             ),
             IconButton(
               onPressed: () {
-                detailsProvider.bookmarkService(widget.servId, widget.userId);
+                detailsProvider.bookmarkService(widget.servId);
                 setState(() {
                  isFavorite = !isFavorite;
                  homeProvider.fetchAllServices();
