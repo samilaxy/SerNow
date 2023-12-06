@@ -9,7 +9,8 @@ class CustomAlertDialog extends StatelessWidget {
   final String title;
   final String content;
 
-  const CustomAlertDialog({super.key, 
+  const CustomAlertDialog({
+    super.key,
     required this.context,
     required this.onOkPressed,
     required this.title,
@@ -26,7 +27,6 @@ class CustomAlertDialog extends StatelessWidget {
   }
 
   Widget _buildCupertinoAlertDialog() {
-
     return CupertinoAlertDialog(
       title: Text(title),
       content: Text(content),
@@ -39,7 +39,7 @@ class CustomAlertDialog extends StatelessWidget {
         ),
         CupertinoDialogAction(
           onPressed: () {
-              onOkPressed();              
+            onOkPressed();
             Navigator.of(context).pop(); // Close the alert dialog
           },
           child: Text('OK', style: GoogleFonts.poppins(color: Colors.green)),
