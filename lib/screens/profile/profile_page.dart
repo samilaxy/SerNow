@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:serv_now_new/screens/home/home.dart';
-import 'package:serv_now_new/screens/onboarding_screen.dart';
 import '../../utilities/constants.dart';
 import '../../controllers/auth_provider.dart';
 import '../../controllers/profile_proviver.dart';
@@ -207,8 +205,7 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
                       return CustomAlertDialog(
                           context: context,
                           onOkPressed: () async {
-                            authProvider.isLogin(false);
-                            navigatorKey.currentState!.pushNamed('onBoarding');
+                            authProvider.logOut();
                           },
                           title: 'Log Out',
                           content: "Are you sure you want to Log out?");
@@ -229,7 +226,7 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
                         color: Colors.grey,
                       )),
                   Padding(
-                      padding: EdgeInsets.only(left: 20),
+                      padding: const EdgeInsets.only(left: 20),
                       child: Text("Logout",
                           style: GoogleFonts.poppins(
                               fontSize: 15, color: Colors.red)))
@@ -257,7 +254,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
           onPressed: () => Navigator.pushNamed(context, 'home'),
-          icon: Icon(LineAwesomeIcons.angle_left,
+          icon: Icon(Icons.arrow_back_ios_rounded,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,

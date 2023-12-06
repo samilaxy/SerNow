@@ -51,7 +51,7 @@ class _BottomNarBarState extends State<BottomNarBar> {
         ),
         resizeToAvoidBottomInset: false,
         bottomNavigationBar: BottomAppBar(
-           notchMargin: 5,
+          notchMargin: 5,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             child: SizedBox(
@@ -61,11 +61,11 @@ class _BottomNarBarState extends State<BottomNarBar> {
                 // crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
                   GestureDetector(
-                                  onTap: () {
-                        onItemTapped(0, const HomeScreen());
-                         profile.loadprofileData();
-                        //homeProvider.fetchAllServices();
-                                  },
+                    onTap: () {
+                      onItemTapped(0, const HomeScreen());
+                      profile.loadprofileData();
+                      homeProvider.fetchAllServices();
+                    },
                     child: SizedBox(
                       width: 45,
                       child: Column(
@@ -75,17 +75,20 @@ class _BottomNarBarState extends State<BottomNarBar> {
                             LineAwesomeIcons.home,
                             color: currentTab == 0 ? mainColor : Colors.grey,
                           ),
-                          Text(
-                            "Home",
-                           style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 0 ? mainColor : Colors.grey))
+                          Text("Home",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 7.5,
+                                  color: currentTab == 0
+                                      ? mainColor
+                                      : Colors.grey))
                         ],
                       ),
                     ),
                   ),
-                   GestureDetector(
-                                  onTap: () {
-                                    onItemTapped(1, const SearchScreen());
-                                  },
+                  GestureDetector(
+                    onTap: () {
+                      onItemTapped(1, const SearchScreen());
+                    },
                     child: SizedBox(
                       width: 45,
                       child: Column(
@@ -95,18 +98,22 @@ class _BottomNarBarState extends State<BottomNarBar> {
                             LineAwesomeIcons.search,
                             color: currentTab == 1 ? mainColor : Colors.grey,
                           ),
-                          Text(
-                            "Search",
-                            style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 1 ? mainColor : Colors.grey))
+                          Text("Search",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 7.5,
+                                  color: currentTab == 1
+                                      ? mainColor
+                                      : Colors.grey))
                         ],
                       ),
                     ),
                   ),
-                 GestureDetector(
-                                  onTap: () {
-                        String route = profile.isUser ? "createService" : "update";
-                        navigatorKey.currentState!.pushNamed(route);
-                                  },
+                  GestureDetector(
+                    onTap: () {
+                      String route =
+                          profile.isUser ? "createService" : "update";
+                      navigatorKey.currentState!.pushNamed(route);
+                    },
                     child: SizedBox(
                       height: 45,
                       width: 45,
@@ -128,10 +135,10 @@ class _BottomNarBarState extends State<BottomNarBar> {
                     ),
                   ),
                   GestureDetector(
-                                  onTap: () async {
-                        onItemTapped(2, const BookmarkPage());
-                        await homeProvider.fetchBookmarkServices();
-                                  },
+                    onTap: () async {
+                      onItemTapped(2, const BookmarkPage());
+                      // await homeProvider.fetchBookmarkServices();
+                    },
                     child: SizedBox(
                       width: 45,
                       child: Column(
@@ -141,19 +148,22 @@ class _BottomNarBarState extends State<BottomNarBar> {
                             LineAwesomeIcons.bookmark,
                             color: currentTab == 2 ? mainColor : Colors.grey,
                           ),
-                          Text(
-                            "Bookmarks",
-                            maxLines: 1,
-style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 2 ? mainColor : Colors.grey))
+                          Text("Bookmarks",
+                              maxLines: 1,
+                              style: GoogleFonts.poppins(
+                                  fontSize: 7.5,
+                                  color: currentTab == 2
+                                      ? mainColor
+                                      : Colors.grey))
                         ],
                       ),
                     ),
                   ),
                   GestureDetector(
-                                  onTap: () {
-                        onItemTapped(3, const ProfileScreen());
-                        profile.loadprofileData();
-                                  },
+                    onTap: () {
+                      onItemTapped(3, const ProfileScreen());
+                      profile.loadprofileData();
+                    },
                     child: SizedBox(
                       width: 45,
                       child: Column(
@@ -163,10 +173,12 @@ style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 2 ? mainColor : C
                             LineAwesomeIcons.user_tag,
                             color: currentTab == 3 ? mainColor : Colors.grey,
                           ),
-                          Text(
-                            "Profile",
-                           style: GoogleFonts.poppins(fontSize: 7.5, color: currentTab == 3 ? mainColor : Colors.grey))
-
+                          Text("Profile",
+                              style: GoogleFonts.poppins(
+                                  fontSize: 7.5,
+                                  color: currentTab == 3
+                                      ? mainColor
+                                      : Colors.grey))
                         ],
                       ),
                     ),

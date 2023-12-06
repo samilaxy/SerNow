@@ -31,22 +31,24 @@ void main() async {
   // proProvider.saveProfile(
   //     "", "name", "+233249058525", "bio", "email", "img", true, []);
 
+ //  authProvider.isLogin(true);
+
   bool userLoggedIn = await authProvider.loginState();
 
   String initialRoute = userLoggedIn ? 'home' : 'onBoarding';
-  initialRoute = "home";
+
   runApp(
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AuthService>(
           create: (_) => AuthService(),
         ),
-         ChangeNotifierProvider<ProfileProvider>(
+        ChangeNotifierProvider<ProfileProvider>(
           create: (_) => ProfileProvider(),
         ),
         ChangeNotifierProvider<HomeProvider>(
           create: (_) => HomeProvider(),
-        ),  
+        ),
         ChangeNotifierProvider<CreateServiceProvider>(
           create: (_) => CreateServiceProvider(),
         ),

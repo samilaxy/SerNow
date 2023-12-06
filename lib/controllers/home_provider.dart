@@ -4,7 +4,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
-import '../repository/shared_preference.dart';
 import 'profile_proviver.dart';
 
 class HomeProvider extends ChangeNotifier {
@@ -46,8 +45,6 @@ class HomeProvider extends ChangeNotifier {
   UserModel? get userModel => _userModel;
   bool get dataState => _dataState;
   HomeProvider() {
-    fetchAllServices();
-    // fetchBookmarkServices();
     _searchData = _data;
   }
   set noSearchData(bool value) {
@@ -203,9 +200,8 @@ class HomeProvider extends ChangeNotifier {
 
   Future<void> loadprofileData() async {
     await profile.fetchUserData();
-    profileData = await SharedPreferencesHelper.getContact();
     _bookmarkIds = [];
-    _userId = profileData!['userId'] ?? '';
+    _userId = profile.userId;
     _bookmarkIds = profile.bookmarks;
     notifyListeners();
   }

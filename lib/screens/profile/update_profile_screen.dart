@@ -12,11 +12,10 @@ class UpdateProfileScreen extends StatefulWidget {
   const UpdateProfileScreen({Key? key}) : super(key: key);
 
   @override
- State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
+  State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
 }
 
 class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController phoneController = TextEditingController();
@@ -72,8 +71,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                               borderRadius: BorderRadius.circular(100),
                               child: ImageWithPlaceholder(
                                   imageUrl: profileProvider.imageUrl,
-                                  placeholderUrl:
-                                      tProfileImage)),
+                                  placeholderUrl: tProfileImage)),
                         ),
                   Positioned(
                     bottom: 0,
@@ -88,9 +86,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                           onPressed: () {
                             profileProvider.selectImg();
                           },
-                          icon: const Icon(LineAwesomeIcons.camera,
-                          color: Colors.white,
-                          size: 20,),
+                          icon: const Icon(
+                            LineAwesomeIcons.camera,
+                            color: Colors.white,
+                            size: 20,
+                          ),
                         )),
                   ),
                 ],
@@ -168,12 +168,12 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             email: email,
                             phone: phone,
                             bio: bio,
-                            img: imgUrl, 
+                            img: imgUrl,
                             isUser: true,
                           );
                           profileProvider.isLoading
                               ? null
-                              :profileProvider.createUser(userModel, context);
+                              : profileProvider.createUser(userModel, context);
                           //  Navigator.pushNamed(context, 'profile');
                         },
                         //  },
@@ -182,14 +182,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             side: BorderSide.none,
                             shape: const StadiumBorder()),
                         child: profileProvider.isLoading
-                            ?  const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child:  CircularProgressIndicator(
-                                  color: Colors.black26),
-                            )
+                            ? const SizedBox(
+                                width: 20,
+                                height: 20,
+                                child: CircularProgressIndicator(
+                                    color: Colors.black26),
+                              )
                             : const Text("Update",
-                            style: TextStyle(color: Colors.white)),
+                                style: TextStyle(color: Colors.white)),
                       ),
                     ),
                     const SizedBox(height: 20),
@@ -243,11 +243,17 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       elevation: 0,
       leading: IconButton(
-                onPressed: () => Navigator.pushNamed(context, 'profile'),
-                icon: Icon(LineAwesomeIcons.angle_left, color: Theme.of(context).iconTheme.color)) ,
+          onPressed: () => Navigator.pushNamed(context, 'profile'),
+          icon: Icon(Icons.arrow_back_ios_rounded,
+              color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,
-      title: Text("Edit Profile", style: GoogleFonts.poppins(textStyle: TextStyle(color: Theme.of(context).iconTheme.color), fontSize: 15, fontWeight: FontWeight.w600, fontStyle: FontStyle.normal)),
+      title: Text("Edit Profile",
+          style: GoogleFonts.poppins(
+              textStyle: TextStyle(color: Theme.of(context).iconTheme.color),
+              fontSize: 15,
+              fontWeight: FontWeight.w600,
+              fontStyle: FontStyle.normal)),
     );
   }
 

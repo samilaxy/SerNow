@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 
 import '../../controllers/details_page_provider.dart';
 import '../../controllers/home_provider.dart';
-import '../../models/service_model.dart';
 import '../../utilities/constants.dart';
 import '../components/servie_card.dart';
 import '../components/shimmer_loader.dart';
@@ -21,7 +20,7 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController searchTextController = TextEditingController();
   bool showClearButton = false;
-  bool showButton = false;
+  bool showButton = true;
   late SearchBar searchBar;
   String searchQuery = '';
 
@@ -56,7 +55,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         autofocus: true,
                         cursorColor: mainColor,
                         controller: searchTextController,
-                        style: const TextStyle(fontSize: 10),
+                        style: const TextStyle(fontSize: 15),
                         onFieldSubmitted: (value) {
                           homeProvider.searchServices(value);
                         },
@@ -81,7 +80,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             contentPadding:
                                 const EdgeInsets.symmetric(vertical: 10),
                             labelStyle: const TextStyle(
-                                color: Colors.grey, fontSize: 10),
+                                color: Colors.grey, fontSize: 15),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
                                     const BorderSide(color: Colors.grey),

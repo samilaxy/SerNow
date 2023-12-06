@@ -1,7 +1,6 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/my_adverts_provider.dart';
 import '../../screens/components/image_with_placeholder.dart';
@@ -60,7 +59,6 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     cityController.text = service.city;
     areaController.text = service.area ?? '';
     descController.text = service.description;
-    FocusNode focusNode = FocusNode();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),
@@ -387,7 +385,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
           onPressed: () => Navigator.pushNamed(context, 'myAdverts'),
-          icon: Icon(LineAwesomeIcons.angle_left,
+          icon: Icon(Icons.arrow_back_ios_rounded,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,

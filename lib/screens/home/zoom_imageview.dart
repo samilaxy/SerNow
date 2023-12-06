@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:photo_view/photo_view.dart';
 
 class ZoomImageView extends StatelessWidget {
@@ -15,13 +14,14 @@ class ZoomImageView extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
         leading: IconButton(
-              onPressed: () => Navigator.pop(context),
-              icon: Icon(LineAwesomeIcons.angle_left, color: Theme.of(context).iconTheme.color),
-            ),
+          onPressed: () => Navigator.pop(context),
+          icon: Icon(Icons.arrow_back_ios_rounded,
+              color: Theme.of(context).iconTheme.color),
+        ),
       ),
       body: Center(
         child: SizedBox(
-        //  height: 400,
+            //  height: 400,
             child: PhotoView(
           imageProvider: NetworkImage(imageUrl),
         )),

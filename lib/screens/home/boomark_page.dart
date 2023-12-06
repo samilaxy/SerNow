@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/details_page_provider.dart';
 import '../../controllers/home_provider.dart';
@@ -20,8 +19,8 @@ class BookmarkPage extends StatefulWidget {
 class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
   @override
   void didPush() {
-    final homeProvider = Provider.of<HomeProvider>(context);
-    homeProvider.fetchBookmarkServices();
+    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
+   homeProvider.fetchBookmarkServices();
     super.didPush();
   }
 
@@ -41,19 +40,19 @@ class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
     return Scaffold(
         appBar: const CustomAppBar(),
         body: Stack(children: [
-            Visibility(
-              visible: homeProvider.noBookData,
-              child: Center(
-                child: Text(
-                  "No service bookmarked yet",
-                  maxLines: 1,
-                  style: GoogleFonts.poppins(
-                    fontSize: 13.0,
-                    fontWeight: FontWeight.normal,
-                  ),
+          Visibility(
+            visible: homeProvider.noBookData,
+            child: Center(
+              child: Text(
+                "No service bookmarked yet",
+                maxLines: 1,
+                style: GoogleFonts.poppins(
+                  fontSize: 13.0,
+                  fontWeight: FontWeight.normal,
                 ),
               ),
             ),
+          ),
           homeProvider.isBook
               ? SizedBox(
                   child: Column(
@@ -76,41 +75,67 @@ class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
                     ],
                   ),
                 )
-              : GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15.0,
-                      childAspectRatio: 0.9,
-                      crossAxisSpacing: 15.0),
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.all(16.0),
-                  itemCount: homeProvider.bookmarkData.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return GestureDetector(
-                      onTap: () {
-                        detailsProvider.serviceData =
-                            homeProvider.bookmarkData[index];
-                        detailsProvider.fetchDiscoverServices();
-                        detailsProvider.fetchRelatedServices();
-                        // Navigate to the details page here, passing data[index] as a parameter
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const ServiceDetailsPage(),
-
-                            //                    builder: (context) => ServiceDetailsPage(homeProvider.data[index]),
-                          ),
-                        );
-                      },
-                      child: homeProvider.isBook
-                          ? const LoadingIndicator()
-                          : Flexible(
-                              child: ServiceCard(
-                                  service: homeProvider.bookmarkData[index]),
-                            ),
-                    );
-                  }),
+              : GridView(
+                  detailsProvider: detailsProvider, homeProvider: homeProvider),
         ]));
+  }
+}
+
+class GridView extends StatelessWidget {
+  const GridView({
+    super.key,
+    required this.detailsProvider,
+    required this.homeProvider,
+  });
+
+  final DetailsPageProvider detailsProvider;
+  final HomeProvider homeProvider;
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(builder: (context) {
+      return CustomScrollView(slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.only(
+              top: 10.0,
+              right: 16,
+              left: 16,
+              bottom: 50), // Adjust the padding as needed
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return GridTile(
+                    child: GestureDetector(
+                  onTap: () {
+                    detailsProvider.serviceData =
+                        homeProvider.bookmarkData[index];
+                    detailsProvider.fetchDiscoverServices();
+                    detailsProvider.fetchRelatedServices();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ServiceDetailsPage(),
+                      ),
+                    );
+                  },
+                  child: homeProvider.isBook
+                      ? const LoadingIndicator()
+                      : ServiceCard(service: homeProvider.bookmarkData[index]),
+                ));
+              },
+              childCount: homeProvider.bookmarkData.length,
+            ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                mainAxisExtent: 210),
+          ),
+        ), // MainView(
+        //   homeProvider: homeProvider,
+        //   detailsProvider: detailsProvider)
+      ]);
+    });
   }
 }
 
@@ -119,15 +144,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
     return AppBar(
       elevation: 0,
       leading: IconButton(
           onPressed: () {
-            homeProvider.fetchAllServices();
             navigatorKey.currentState!.pushNamed('home');
           },
-          icon: Icon(LineAwesomeIcons.angle_left,
+          icon: Icon(Icons.arrow_back_ios_rounded,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,

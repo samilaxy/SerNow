@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../utilities/constants.dart';
 import '../../controllers/my_adverts_provider.dart';
 import '../../main.dart';
 import '../../screens/components/my_advert_card.dart';
+import '../components/shimmer_loader.dart';
 
 class MyAdverts extends StatefulWidget {
   const MyAdverts({super.key});
@@ -70,39 +70,89 @@ class _MyAdvertsState extends State<MyAdverts> with RouteAware {
                         ],
                       ),
                     )
-               : Builder(builder: (context) {
-                  return CustomScrollView(slivers: <Widget>[
- SliverPadding(
-                      padding: const EdgeInsets.only(
-                          top: 10.0,
-                          right: 16,
-                          left: 16,
-                          bottom: 50), // Adjust the padding as needed
-                      sliver: SliverGrid(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                              return GridTile(
-                                  child: GestureDetector(
-                                onTap: () {
-                                },
-                                child:  MyAdvertCard(service: myAdvert.data[index]),
-                              ));
-                            
-                          },
-                          childCount: myAdvert.data.length,
-                        ),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 16,
-                                crossAxisSpacing: 16,
-                                mainAxisExtent: 180),
-                      )),
-                  ]);})
-                      
+                  : GridView(myAdvert: myAdvert)
             ],
           ),
         ));
+  }
+}
+
+class GridView1 extends StatelessWidget {
+  const GridView1({
+    Key? key,
+    required this.myAdvert,
+  }) : super(key: key);
+
+  final MyAdvertsProvider myAdvert;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+      slivers: [
+        SliverPadding(
+            padding:
+                const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 16),
+            sliver: SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return GridTile(
+                    child: MyAdvertCard(service: myAdvert.data[index]),
+                  );
+                },
+                childCount: myAdvert.data.length,
+              ),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                mainAxisExtent: 200,
+              ),
+            ))
+      ],
+    );
+  }
+}
+
+class GridView extends StatelessWidget {
+  const GridView({
+    super.key,
+    required this.myAdvert,
+  });
+
+  final MyAdvertsProvider myAdvert;
+
+  @override
+  Widget build(BuildContext context) {
+    return Builder(builder: (context) {
+      return CustomScrollView(slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.only(
+              top: 10.0,
+              right: 16,
+              left: 16,
+              bottom: 50), // Adjust the padding as needed
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return GridTile(
+                    child: myAdvert.dataState
+                        ? const LoadingIndicator()
+                        : MyAdvertCard(service: myAdvert.data[index]));
+              },
+              childCount: myAdvert.data.length,
+            ),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 16,
+              crossAxisSpacing: 16,
+              // mainAxisExtent: 210
+            ),
+          ),
+        ), // MainView(
+        //   homeProvider: homeProvider,
+        //   detailsProvider: detailsProvider)
+      ]);
+    });
   }
 }
 
@@ -115,7 +165,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: 0,
       leading: IconButton(
           onPressed: () => navigatorKey.currentState!.pushNamed('profile'),
-          icon: Icon(LineAwesomeIcons.angle_left,
+          icon: Icon(Icons.arrow_back_ios_rounded,
               color: Theme.of(context).iconTheme.color)),
       centerTitle: true,
       backgroundColor: Colors.transparent,

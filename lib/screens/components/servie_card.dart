@@ -28,7 +28,7 @@ class _ServiceCardState extends State<ServiceCard> {
         borderRadius: const BorderRadius.all(Radius.circular(10.0)),
         border: Border.all(
           color: Colors.grey, // Set the border color
-          width: 0.2, // Set the border width
+          width: 0.3, // Set the border width
         ),
       ),
       child: Column(

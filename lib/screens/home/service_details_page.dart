@@ -163,8 +163,23 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                                     textAlign: TextAlign.end,
                                     style: GoogleFonts.poppins(
                                         fontSize: 14, color: Colors.grey)),
-                                Text(serviceData?.user!.phone ?? "",
-                                    style: GoogleFonts.poppins(fontSize: 16))
+                                GestureDetector(
+                                  onTap: () {
+                                    detailsProvider
+                                        .launchTel(serviceData?.user!.phone);
+                                  },
+                                  child: Row(
+                                    children: [
+                                      const Icon(size: 15, Icons.phone),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(serviceData?.user!.phone ?? "",
+                                          style: GoogleFonts.poppins(
+                                              fontSize: 16)),
+                                    ],
+                                  ),
+                                )
                               ])
                         ]),
                     const SizedBox(height: 30),
@@ -353,14 +368,15 @@ class _CustomAppBarState extends State<CustomAppBar> {
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: const Icon(LineAwesomeIcons.angle_left),
+              icon: Icon(Icons.arrow_back_ios_rounded,
+                  color: Theme.of(context).iconTheme.color),
             ),
             IconButton(
               onPressed: () {
                 detailsProvider.bookmarkService(widget.servId);
                 setState(() {
-                 isFavorite = !isFavorite;
-                 homeProvider.fetchAllServices();
+                  isFavorite = !isFavorite;
+                  homeProvider.fetchAllServices();
                 });
               },
               icon: Icon(

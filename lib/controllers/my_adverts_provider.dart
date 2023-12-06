@@ -68,46 +68,46 @@ class MyAdvertsProvider extends ChangeNotifier {
     fetchServices();
   }
 
-Future<void> fetchServices() async {
-  loadprofileData();
-  await Future.delayed(const Duration(seconds: 1));
-  _dataState = true;
+  Future<void> fetchServices() async {
+    loadprofileData();
+    await Future.delayed(const Duration(seconds: 1));
+    _dataState = true;
 
-  try {
-    QuerySnapshot querySnapshot = await _db
-        .collection('services')
-        .where('userId', isEqualTo: _userId) // Replace with the user's ID
-        .get();
+    try {
+      QuerySnapshot querySnapshot = await _db
+          .collection('services')
+          .where('userId', isEqualTo: _userId) // Replace with the user's ID
+          .get();
 
-    _data = []; // Reset the _data array
+      _data = []; // Reset the _data array
 
-    for (QueryDocumentSnapshot document in querySnapshot.docs) {
-      Map<String, dynamic> data = document.data() as Map<String, dynamic>;
-      DiscoverModel service = DiscoverModel(
-        id: document.id,
-        title: data['title'] ?? '',
-        price: data['price'] ?? '',
-        img: data['imgUrls'][0] ?? '',
-        status: data['status'],
-      );
-      _data.add(service);
-    }
+      for (QueryDocumentSnapshot document in querySnapshot.docs) {
+        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+        DiscoverModel service = DiscoverModel(
+          id: document.id,
+          title: data['title'] ?? '',
+          price: data['price'] ?? '',
+          img: data['imgUrls'][0] ?? '',
+          status: data['status'],
+        );
+        _data.add(service);
+      }
 
-    if (_data.isNotEmpty) {
-      _dataState = false; // Data is available
-      _noData = false;
-    } else {
-      _dataState = false; // No data available
+      if (_data.isNotEmpty) {
+        _dataState = false; // Data is available
+        _noData = false;
+      } else {
+        _dataState = false; // No data available
+        _noData = true;
+      }
+    } catch (error) {
+      // Handle errors here
+      _dataState = false;
       _noData = true;
     }
-  } catch (error) {
-    // Handle errors here
-    _dataState = false;
-    _noData = true;
-  }
 
-  notifyListeners();
-}
+    notifyListeners();
+  }
 
   Future<void> loadprofileData() async {
     profileData = await SharedPreferencesHelper.getContact();
@@ -120,19 +120,20 @@ Future<void> fetchServices() async {
   Future<void> fetchService(String servId, BuildContext context) async {
     await Future.delayed(const Duration(seconds: 1));
     // _dataState = true;
+    _message = "Please wait...";
+    showSuccessSnackbar(context, _message);
     try {
-      QuerySnapshot querySnapshot = await _db
-          .collection('services')
-          .where('id', isEqualTo: servId) // Replace with the user's ID
-          .get();
+      final DocumentSnapshot<Map<String, dynamic>> querySnapshot =
+          await _db.collection('services').doc(servId).get();
 
       //reset discovered items array
       //  _discover = [];
       // if (querySnapshot.exists) {}
-      for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+      if (querySnapshot.exists && querySnapshot.data() != null) {
+        Map<String, dynamic> data =
+            querySnapshot.data() as Map<String, dynamic>;
 
-        _docId = document.id;
+        _docId = querySnapshot.id;
         _servId = data['id'] ?? '';
         _title = data['title'] ?? '';
         _category = data['category'] ?? '';
@@ -153,17 +154,15 @@ Future<void> fetchServices() async {
         // Extract the sub (the second part of citySubParts)
         _area = subParts[0].trim();
         _isInternet = true;
+      } else {
+        _message = "Something went wrong, Please check your internet!!";
+        showErrorSnackbar(context, _message);
       }
-      print('category here..$_category');
-      notifyListeners();
     } catch (error) {
       _isInternet = false;
-
+    } finally {
       notifyListeners();
     }
-
-    print(' message: $_message');
-    notifyListeners();
   }
 
   Future<void> updateService(UpdateModel serv, BuildContext context) async {
@@ -191,7 +190,6 @@ Future<void> fetchServices() async {
     }
     //  showLoadingDialog(context);
     _isloading = true;
-    notifyListeners();
     try {
       await Future.delayed(const Duration(seconds: 2));
       await _db.collection("services").doc(_docId).update(serv.toJson());
@@ -199,7 +197,6 @@ Future<void> fetchServices() async {
       _isloading = false;
       _message = "Service updated successfully.";
       fetchServices();
-      notifyListeners();
       showSuccessSnackbar(context, _message);
 
       await navigatorKey.currentState!.pushNamed('myAdverts');
@@ -207,13 +204,11 @@ Future<void> fetchServices() async {
       _isloading = false;
       _message = "Update Failed, Try again.";
       print(' code message : $error');
-      notifyListeners();
       showErrorSnackbar(context, _message);
       // Handle error as needed
+    } finally {
+      notifyListeners();
     }
-    print(' code message : $_message');
-    // _isloading = true;
-    // notifyListeners();
   }
 
   void showSuccessSnackbar(BuildContext context, String message) {
@@ -221,6 +216,7 @@ Future<void> fetchServices() async {
       content: Text(message),
       behavior: SnackBarBehavior.floating,
       backgroundColor: Colors.green,
+      duration: const Duration(seconds: 1),
       dismissDirection: DismissDirection.up,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -231,6 +227,7 @@ Future<void> fetchServices() async {
       content: Text(message),
       backgroundColor: Colors.red,
       behavior: SnackBarBehavior.floating,
+      duration: const Duration(seconds: 2),
       // dismissDirection: DismissDirection.endToStart,
     );
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
@@ -250,16 +247,17 @@ Future<void> fetchServices() async {
   }
 
   Future<void> pickImages(BuildContext context) async {
+    try {
+
     _imgs = [];
     final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
     for (var img in pickedImgs) {
       _imgs.add(File(img.path));
       notifyListeners();
     }
-    print('images count ${_imgs.length}');
     // Upload images in the background using microtask
     Future.microtask(() async {
-      await uploadImageToStorage();
+      await uploadImageToStorage(context);
       notifyListeners();
       // Optionally, you can show a completion message or perform other actions when the upload is done.
       // For example, you can show a snackbar:
@@ -267,9 +265,16 @@ Future<void> fetchServices() async {
       //   SnackBar(content: Text('Images uploaded successfully')),
       // );
     });
+    } catch (e) {
+      _message = e.toString();
+      showErrorSnackbar(context, _message);
+    }finally {
+       notifyListeners();
+    }
+
   }
 
-  Future<void> uploadImageToStorage() async {
+  Future<void> uploadImageToStorage(BuildContext context) async {
     if (_imgs.isNotEmpty) {
       _uploading = true;
       try {
@@ -280,10 +285,12 @@ Future<void> fetchServices() async {
         _imgUrls += await Future.wait(uploadFutures);
         _uploading = false;
         notifyListeners();
-      } catch (err) {
-        _message = err.toString();
-        print(_message);
-      }
+      } catch (e) {
+        _message = e.toString();
+      showErrorSnackbar(context, _message);
+      }finally {
+       notifyListeners();
+    }
     }
   }
 
@@ -314,10 +321,12 @@ Future<void> fetchServices() async {
       notifyListeners();
       showSuccessSnackbar(context, _message);
     } catch (e) {
-      print("object here $e");
       _message = 'Error deleting service ';
+       showErrorSnackbar(context, _message);
       notifyListeners();
       // showErrorSnackbar(context, _message);
+    }finally {
+       notifyListeners();
     }
   }
 

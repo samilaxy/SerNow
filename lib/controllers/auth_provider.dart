@@ -235,53 +235,6 @@ class AuthService extends ChangeNotifier {
     }
   }
 
-  // Future<User?> signInWithVerificationCode(String verificationCode) async {
-  //   Completer<User?> completer = Completer<User?>();
-
-  //   if (verificationCode.length < 6) {
-  //     alertMessage("code incomplete ");
-  //     print(_message);
-  //   }
-  //   if (verificationCode.length < 6) {
-  //     alertMessage("code incorrect ");
-  //     print(_message);
-  //   }
-
-  //   try {
-  //     PhoneAuthCredential _credential = PhoneAuthProvider.credential(
-  //       verificationId: AuthProvider.verificationId!,
-  //       smsCode: verificationCode,
-  //     );
-
-  //     UserCredential userCredential =
-  //         await _auth.signInWithCredential(_credential);
-  //     // Save the user's phone number after verification
-
-  //     _auth
-  //         .signInWithCredential(_credential)
-  //         .then((result) => {
-  //               if (result != null)
-  //                 {
-  //                   if (_contact != null)
-  //                     {
-  //                       navigatorKey.currentState!.pushNamed('home'),
-  //                       saveContact(_contact!),
-  //                     }
-  //                 }
-  //             })
-  //         .catchError((error) {
-  //       print('verication error: $error');
-  //     });
-  //     // save login state
-  //     isLogin(true);
-  //     notifyListeners();
-  //     completer.complete(userCredential.user);
-  //   } catch (e) {
-  //     completer.complete(null); // Complete with null in case of sign-in error
-  //   }
-  //   return completer.future;
-  // }
-
   // Save contact information using SharedPreferencesHelper
   Future<void> saveContact(String phoneNumber) async {
     final prefs = await SharedPreferences.getInstance();
@@ -300,11 +253,6 @@ class AuthService extends ChangeNotifier {
     notifyListeners();
   }
 
-  void logout() {
-    _user = null;
-    notifyListeners();
-  }
-
   Future<bool> loginState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isLoggedIn = prefs.getBool('login') ?? false;
@@ -313,6 +261,18 @@ class AuthService extends ChangeNotifier {
     }
     notifyListeners();
     return isLoggedIn;
+  }
+
+  Future<void> logOut() async {
+    try {
+      isLogin(false);
+      bool userLoggedIn = await loginState();
+      await navigatorKey.currentState!.pushNamed('onBoarding');
+    } catch (e) {
+      print(e);
+    } finally {
+      notifyListeners();
+    }
   }
 
   Future<void> getCode() async {

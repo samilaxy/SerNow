@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/discover_model.dart';
 import '../../models/service_model.dart';
 import '../../models/user_model.dart';
@@ -118,6 +119,21 @@ class DetailsPageProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+  
+  dynamic launchTel(String? path) async {
+  try
+  {
+    Uri phone = Uri(
+      scheme: 'tel',
+      path: path,
+    );
+
+    await launchUrl(phone);
+  }
+  catch(e) {
+    debugPrint(e.toString());
+  }
+}
 
   Future<void> fetchService(int index) async {
     // await Future.delayed(const Duration(seconds: 2));

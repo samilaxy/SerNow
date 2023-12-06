@@ -2,10 +2,6 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-
-import '../../controllers/auth_provider.dart';
-import '../../main.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   final BuildContext context;
@@ -54,21 +50,21 @@ class CustomAlertDialog extends StatelessWidget {
 
   Widget _buildMaterialAlertDialog() {
     return AlertDialog(
-      title: Text('Alert Title'),
-      content: Text('Alert Content'),
+      title: Text(title),
+      content: Text(content),
       actions: <Widget>[
         TextButton(
           onPressed: () {
             Navigator.of(context).pop(); // Close the alert dialog
           },
-          child: Text('Cancel'),
+          child: const Text('Cancel'),
         ),
         TextButton(
           onPressed: () {
             onOkPressed();
             Navigator.of(context).pop(); // Close the alert dialog
           },
-          child: Text('OK'),
+          child: const Text('OK'),
         ),
       ],
     );
