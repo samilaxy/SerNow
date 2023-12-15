@@ -29,10 +29,10 @@ class AuthService extends ChangeNotifier {
   bool get showAlert => _showAlert;
   String get message => _message;
   String _code = "";
-  String _smsCode = "";
+  final String _smsCode = "";
   String get code => _code;
   String get smsCode => _smsCode;
-  String _userPin = "";
+  final String _userPin = "";
   String get coduserPine => _userPin;
   UserModel? _user;
   UserModel? get user => _user;
@@ -157,7 +157,7 @@ class AuthService extends ChangeNotifier {
       }
 
       codeAutoRetrievalTimeout(String verificationId) {
-        this._verificationId = verificationId;
+        _verificationId = verificationId;
       }
 
       try {
@@ -169,9 +169,7 @@ class AuthService extends ChangeNotifier {
           codeSent: codeSent,
           codeAutoRetrievalTimeout: codeAutoRetrievalTimeout,
         );
-      } catch (e) {
-        print('Failed to verify phone: $e');
-      }
+      } catch(_) { }
     }
   }
 
@@ -182,12 +180,9 @@ class AuthService extends ChangeNotifier {
     final isInteger = int.tryParse(code);
     if (smsCode.isEmpty || isInteger == null || smsCode.length < 6) {
       _message = "Invalid code";
-      print(_message);
-      notifyListeners();
       showErrorSnackbar(context, _message);
     } else {
       _isVerify = true;
-      notifyListeners();
       try {
         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
           verificationId:
@@ -202,17 +197,11 @@ class AuthService extends ChangeNotifier {
           // User successfully authenticated
           // You can navigate to the next screen or perform any desired actions
           _isVerify = false;
-          notifyListeners();
           navigatorKey.currentState!.pushNamed('home');
           if (_contact != null) {
             saveContact(_contact!);
           }
           isLogin(true);
-          notifyListeners();
-          print('User authenticated: ${userCredential.user!.uid}');
-        } else {
-          // Handle authentication failure
-          print('Failed to authenticate with OTP');
         }
       } catch (e) {
         // Handle exceptions, such as invalid OTP code or expired verification ID
@@ -225,12 +214,14 @@ class AuthService extends ChangeNotifier {
           _message = 'Code Invalid, Please try again.';
         } else {
           // Handle other exceptions
-          print('Error verifying OTP: $e');
           _message = 'Something went wrong, Please try again.';
         }
         _isVerify = false;
         notifyListeners();
         showErrorSnackbar(context, _message);
+      } finally {
+        notifyListeners();
+     
       }
     }
   }
@@ -240,9 +231,9 @@ class AuthService extends ChangeNotifier {
     final prefs = await SharedPreferences.getInstance();
     final savedPhoneNumber = prefs.getString('phoneNumber');
     if (savedPhoneNumber == null) {
-      _user = UserModel(fullName: "fullName", phone: phoneNumber, bio: '');
+      _user = UserModel(fullName: "fullName", phone: phoneNumber,role: "", bio: '');
       await SharedPreferencesHelper.saveProfile(
-          "", "", phoneNumber, "", "", "", false, []);
+          "", "", phoneNumber, "", "", "", "", false, []);
       notifyListeners();
     }
   }
@@ -268,8 +259,7 @@ class AuthService extends ChangeNotifier {
       isLogin(false);
       bool userLoggedIn = await loginState();
       await navigatorKey.currentState!.pushNamed('onBoarding');
-    } catch (e) {
-      print(e);
+    } catch (_) {
     } finally {
       notifyListeners();
     }

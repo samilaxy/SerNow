@@ -40,6 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
     final homeProvider = Provider.of<HomeProvider>(context);
     final detailsProvider = Provider.of<DetailsPageProvider>(context);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: const CustomAppBar(),
         body: Column(
           children: [
@@ -54,8 +55,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       child: TextFormField(
                         autofocus: true,
                         cursorColor: mainColor,
+                        keyboardType: TextInputType.text,
                         controller: searchTextController,
-                        style: const TextStyle(fontSize: 15),
+                        style: const TextStyle(fontSize: 13),
                         onFieldSubmitted: (value) {
                           homeProvider.searchServices(value);
                         },
@@ -64,23 +66,20 @@ class _SearchScreenState extends State<SearchScreen> {
                             showClearButton =
                                 searchTextController.text.isNotEmpty;
                             showButton = true;
-                            // homeProvider.searchServices(searchTextController.text);
                           });
                         },
                         onChanged: (text) {
                           setState(() {
                             showClearButton = text.isNotEmpty;
-                            // homeProvider.searchServices(text);
                           });
                         },
                         textAlignVertical: TextAlignVertical.center,
                         decoration: InputDecoration(
-                          focusColor: mainColor,
-                          
+                            focusColor: mainColor,
                             contentPadding:
                                 const EdgeInsets.symmetric(vertical: 10),
                             labelStyle: const TextStyle(
-                                color: Colors.grey, fontSize: 15),
+                                color: Colors.grey, fontSize: 13),
                             focusedBorder: OutlineInputBorder(
                                 borderSide:
                                     const BorderSide(color: Colors.grey),
@@ -247,16 +246,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 height: 100,
               ),
             ),
-            // IconButton(
-            //     onPressed: () {
-            //       // ProfileProvider.colorMode();
-            //     },
-            //     icon: Padding(
-            //       padding: const EdgeInsets.only(right: 20),
-            //       child: Icon(isDark
-            //           ? LineAwesomeIcons.sun
-            //           : LineAwesomeIcons.horizontal_ellipsis),
-            //     ))
           ],
         ),
       ),

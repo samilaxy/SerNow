@@ -8,9 +8,9 @@ class LunchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: SizedBox(
-        child: Image.asset(logoImg),
         height: 50,
-        width: 50)
+        width: 50,
+        child: Image.asset(logoImg))
     );
   }
 }

@@ -75,12 +75,33 @@ class _ServiceCardState extends State<ServiceCard> {
                             ),
                           ),
                         ),
-                        Text(
-                          '$currency${widget.service.price}',
-                          style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 13.0,
-                          ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '$currency${widget.service.price}',
+                              style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 13.0,
+                              ),
+                            ),
+                            Row(
+                              children: [
+                                const Icon(
+                                    size: 12,
+                                    Icons.bar_chart,
+                                    color: Colors.grey),
+                                Text(
+                                  homeProvider
+                                      .formatNumber(widget.service.views),
+                                  style: GoogleFonts.poppins(
+                                    color: Colors.grey,
+                                    fontSize: 9.0,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
                         ),
                       ],
                     ),
@@ -132,8 +153,8 @@ class _ServiceCardState extends State<ServiceCard> {
                             child: IconButton(
                                 onPressed: () {
                                   setState(() {
-                                    homeProvider.bookmarkService(
-                                        widget.service.id);
+                                    homeProvider
+                                        .bookmarkService(widget.service.id);
                                     widget.service.isFavorite =
                                         !widget.service.isFavorite;
                                     // homeProvider.fetchBookmarkServices();

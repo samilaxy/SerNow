@@ -1,5 +1,4 @@
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:math';
 import 'dart:typed_data';
@@ -7,9 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
-import '../models/bookmark_model.dart';
-
-final FirebaseFirestore _db = FirebaseFirestore.instance;
 
 class UtilityClass {
 
@@ -48,11 +44,8 @@ static Future<String> getCurrentLocation() async {
         String? countryCode = placemarks[0].isoCountryCode;
         defaultCountry = countryCode ?? 'US';
       }
-    } else {
-      print('Location permission denied');
-    }
-  } catch (e) {
-    print('Error getting location: $e');
+    } 
+  } catch (_) {
   }
   return defaultCountry;
 }

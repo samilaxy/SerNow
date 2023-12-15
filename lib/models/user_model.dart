@@ -5,6 +5,7 @@ class UserModel {
   final String phone;
   final String? bio;
   final String? img;
+  final String role;
   final bool? isUser;
   List? bookmarks;
 
@@ -15,6 +16,7 @@ class UserModel {
       required this.phone,
       required this.bio,
       this.img,
+      required this.role,
       this.isUser,
       this.bookmarks});
 
@@ -26,6 +28,7 @@ class UserModel {
       "phone": phone,
       "bio": bio,
       "img": img,
+      "role": role,
       "isUser": isUser,
       "bookmarks": bookmarks
     };

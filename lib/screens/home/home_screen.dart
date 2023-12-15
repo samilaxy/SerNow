@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
   ];
   @override
   void didPush() {
-    final homeProvider = Provider.of<HomeProvider>(context, listen: true);
+    final homeProvider = Provider.of<HomeProvider>(context);
     homeProvider.fetchAllServices();
     super.didPush();
   }

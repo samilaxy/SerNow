@@ -41,6 +41,7 @@ class _MyPhoneState extends State<MyPhone> {
     final authService = Provider.of<AuthService>(context);
     //numberController.text = authService.contact;
     return Scaffold(
+       resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Center(

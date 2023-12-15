@@ -5,7 +5,7 @@ import 'dart:convert';
 class SharedPreferencesHelper {
   static const String _keyContact = 'contact';
 
-  static Future<void> saveProfile(String userId, String name, String phoneNumber, String bio, String email, String img, bool isUser, List bookmarks) async {
+  static Future<void> saveProfile(String userId, String name, String phoneNumber, String bio, String email, String img, String role, bool isUser, List bookmarks) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     // Create a map to represent the contact
     Map<String, dynamic> contact = {
@@ -15,6 +15,7 @@ class SharedPreferencesHelper {
       'bio': bio,
       'email': email,
       'img': img,
+       'role': role,
       'isUser': isUser,
       'bookmarks': bookmarks
     };
@@ -50,7 +51,7 @@ class SharedPreferencesHelper {
 
     static Future<void> isLogin(bool isLogin) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool("login", isLogin as bool);
+    prefs.setBool("login", isLogin);
   }
   
 }

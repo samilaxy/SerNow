@@ -57,7 +57,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 onPageChanged: (int index) {
                   setState(() {
                     currentPage = index;
-                    print(currentPage);
                   });
                 },
                 itemBuilder: (_, i) {
@@ -92,12 +91,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                    contents.length, (index) => buildBot(currentPage, index)),
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                  contents.length, (index) => buildBot(currentPage, index)),
             ),
             const SizedBox(height: 50),
             Padding(
@@ -115,7 +112,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                         Navigator.pushNamed(context, 'phone');
                       }
                       _controller.nextPage(
-                          duration: Duration(microseconds: 100),
+                          duration: const Duration(microseconds: 100),
                           curve: Curves.bounceIn);
                     },
                     child: Text(

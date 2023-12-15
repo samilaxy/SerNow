@@ -85,7 +85,7 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                             Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Text(
-                                widget.service.status ? "Active" : "Pending",
+                                widget.service.status,
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
                                   fontSize: 10.0,
@@ -93,12 +93,9 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                               ),
                             ),
                             Icon(
-                              size: 10,
-                              Icons.circle,
-                              color: widget.service.status
-                                  ? Colors.green
-                                  : Colors.red,
-                            )
+                                size: 10,
+                                Icons.circle,
+                                color: myAdvert.setColor(widget.service.status))
                           ],
                         )
                       ],
@@ -137,11 +134,21 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                     color: Colors.red,
                   ),
                 ),
+                if (widget.service.comments.isNotEmpty)
+                  IconButton(
+                    onPressed: () async {
+                      showMyDialog(context, widget.service.comments);
+                    },
+                    icon: const Icon(
+                      size: 20,
+                      LineAwesomeIcons.facebook_messenger,
+                      color: Colors.grey,
+                    ),
+                  ),
                 IconButton(
                   onPressed: () async {
                     await myAdvert.fetchService(
                         widget.service.id ?? "", context);
-                    print("service: ${widget.service.id}");
                     navigatorKey.currentState!.pushNamed('updateAdvert');
                   },
                   icon: const Icon(
@@ -155,6 +162,26 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
           ),
         ],
       ),
+    );
+  }
+
+  void showMyDialog(BuildContext context, String message) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Message'),
+          content: Text(message),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
     );
   }
 }

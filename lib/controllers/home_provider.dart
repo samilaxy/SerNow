@@ -25,6 +25,7 @@ class HomeProvider extends ChangeNotifier {
   bool _noSearchData = false;
   bool _noFiltaData = false;
   bool _isBook = true;
+  String status = 'Active';
 
   Map<String, dynamic>? profileData;
   ServiceModel? get serviceData => _serviceData;
@@ -45,6 +46,7 @@ class HomeProvider extends ChangeNotifier {
   UserModel? get userModel => _userModel;
   bool get dataState => _dataState;
   HomeProvider() {
+    fetchAllServices();
     _searchData = _data;
   }
   set noSearchData(bool value) {
@@ -60,19 +62,17 @@ class HomeProvider extends ChangeNotifier {
       _noData = false;
       _noFiltaData = false;
 
-      final QuerySnapshot<Map<String, dynamic>> querySnapshot =
-          await _db.collection("services").get();
-
+      final QuerySnapshot<Map<String, dynamic>> querySnapshot = await _db
+          .collection("services")
+          .where('status', isEqualTo: status)
+          .get();
       final List<QueryDocumentSnapshot<Map<String, dynamic>>> documents =
           querySnapshot.docs;
-
       _data = [];
-
       // Process the documents and add fetchUserData tasks
       for (var document in documents) {
         final serviceData = document.data();
         final userId = serviceData["userId"];
-
         // Create a new list for each document
         final List<Future<void>> fetchUserDataTasks = [];
 
@@ -91,6 +91,8 @@ class HomeProvider extends ChangeNotifier {
               status: serviceData["status"],
               imgUrls: serviceData["imgUrls"],
               user: _userModel,
+              views: serviceData["views"],
+              comments: serviceData["comments"],
             );
             _data.add(serviceCard);
             _searchData = List.from(_data);
@@ -108,6 +110,7 @@ class HomeProvider extends ChangeNotifier {
         _dataState = false;
       }
     } catch (error) {
+      print('fetch error: $error');
       if (_data.isEmpty) {
         _noData = true;
         _dataState = false;
@@ -129,6 +132,7 @@ class HomeProvider extends ChangeNotifier {
         QuerySnapshot querySnapshot = await _db
             .collection('services')
             .where('category', isEqualTo: _category)
+            .where('status', isEqualTo: status)
             .get();
 
         final List<Future<void>> fetchUserDataTasks = [];
@@ -151,6 +155,8 @@ class HomeProvider extends ChangeNotifier {
                 status: serviceData["status"],
                 imgUrls: serviceData["imgUrls"],
                 user: _userModel,
+                views: serviceData["views"],
+                comments: serviceData["comments"],
               );
               _data.add(service);
             }),
@@ -172,6 +178,18 @@ class HomeProvider extends ChangeNotifier {
       _dataState = false;
     } finally {
       notifyListeners();
+    }
+  }
+
+  String formatNumber(int number) {
+    if (number < 1000) {
+      return number.toString();
+    } else if (number < 1000000) {
+      double result = number / 1000;
+      return '${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)}k';
+    } else {
+      double result = number / 1000000;
+      return '${result.toStringAsFixed(result.truncateToDouble() == result ? 0 : 1)}M';
     }
   }
 
@@ -256,11 +274,11 @@ class HomeProvider extends ChangeNotifier {
         // Fetch documents where the title contains the search query
         final QuerySnapshot<Map<String, dynamic>> titleQuerySnapshot = await _db
             .collection('services')
+            .where('status', isEqualTo: status)
             .orderBy("title")
             .startAt([newVal]).endAt([newVal + '\uf8ff']).get();
 
         await Future.delayed(const Duration(seconds: 2));
-        print('$searchQuery,  SNAP SHOT :  ${titleQuerySnapshot.docs.length}');
 
         final List<QueryDocumentSnapshot<Map<String, dynamic>>> titleDocuments =
             titleQuerySnapshot.docs;
@@ -286,6 +304,8 @@ class HomeProvider extends ChangeNotifier {
               status: serviceData["status"],
               imgUrls: serviceData["imgUrls"],
               user: userModel,
+              views: serviceData["views"],
+              comments: serviceData["comments"],
             );
 
             // Add the service to _searchData
@@ -328,22 +348,23 @@ class HomeProvider extends ChangeNotifier {
       if (documentSnapshot.exists) {
         final Map<String, dynamic> data = documentSnapshot.data()!;
         _userModel = UserModel(
-            id: documentId,
-            phone: data['phone'] ?? '',
-            bio: data['bio'] ?? '',
-            email: data['email'] ?? '',
-            img: data['img'] ?? '',
-            fullName: data['name'] ?? '',
-            bookmarks: data['bookmarks'] ?? []);
-        notifyListeners();
+          id: documentId,
+          phone: data['phone'] ?? '',
+          bio: data['bio'] ?? '',
+          email: data['email'] ?? '',
+          img: data['img'] ?? '',
+          role: data['role'],
+          fullName: data['name'] ?? '',
+          bookmarks: data['bookmarks'] ?? [],
+        );
       } else {
         // Handle the case where the document does not exist
       }
     } catch (error) {
       _dataState = false;
+    } finally {
       notifyListeners();
     }
-    notifyListeners();
     return _userModel;
   }
 
@@ -355,7 +376,6 @@ class HomeProvider extends ChangeNotifier {
         _bookmarkIds.add(servId);
       }
       notifyListeners();
-      print('userId: $_userId, ${_bookmarkIds}');
       // Update Firestore with the updated bookmarks list
       await _db
           .collection("users")
@@ -367,6 +387,8 @@ class HomeProvider extends ChangeNotifier {
       notifyListeners();
     } catch (error) {
       print(error.toString());
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -396,6 +418,8 @@ class HomeProvider extends ChangeNotifier {
               status: data["status"],
               imgUrls: data["imgUrls"],
               user: _userModel,
+              views: data["views"],
+              comments: data["comments"],
             );
             _serviceData = service;
 

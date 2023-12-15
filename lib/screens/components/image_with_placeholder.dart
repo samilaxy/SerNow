@@ -6,7 +6,7 @@ class ImageWithPlaceholder extends StatelessWidget {
   final String imageUrl;
   final String placeholderUrl;
 
-  ImageWithPlaceholder({
+  const ImageWithPlaceholder({super.key, 
     required this.imageUrl,
     required this.placeholderUrl,
   });

@@ -12,6 +12,7 @@ class DetailsPageProvider extends ChangeNotifier {
   ServiceModel? _serviceData;
   DiscoverModel? _discoverData;
   String _serId = '';
+  int _views = 0;
   List<DiscoverModel> _discover = [];
   List<ServiceModel> _related = [];
   bool _dataState = true;
@@ -20,16 +21,24 @@ class DetailsPageProvider extends ChangeNotifier {
   ProfileProvider profile = ProfileProvider();
 
   UserModel? get userModel => _userModel;
-  ServiceModel? get serviceData => _serviceData;
+  ServiceModel? get serviceData => _serviceDataNotifier.value;
+  // Define a ValueNotifier for serviceData
+  final ValueNotifier<ServiceModel?> _serviceDataNotifier = ValueNotifier(null);
+
   DiscoverModel? get discoverData => _discoverData;
   List get discover => _discover;
   String get serId => _serId;
+  int get views => _views;
   List get related => _related;
 
   bool get dataState => _dataState;
 
   set serviceData(ServiceModel? value) {
     _serviceData = value;
+    _serviceDataNotifier.value = value;
+    print("here object");
+    updateServiceView(
+        _serviceDataNotifier.value?.id ?? "", _serviceData?.views ?? 0);
     notifyListeners();
   }
 
@@ -53,11 +62,13 @@ class DetailsPageProvider extends ChangeNotifier {
       for (QueryDocumentSnapshot document in querySnapshot.docs) {
         Map<String, dynamic> data = document.data() as Map<String, dynamic>;
         DiscoverModel service = DiscoverModel(
-          id: data['id'],
+          id: document.id,
           title: data['title'] ?? '',
           price: data['price'] ?? '',
+          views: data['views'] ?? '',
           img: data['imgUrls'][0] ?? '',
           status: data['status'],
+          comments: data['comments'],
         );
         _discover.add(service);
         if (_discover.isNotEmpty) {
@@ -105,6 +116,8 @@ class DetailsPageProvider extends ChangeNotifier {
               status: serviceData["status"],
               imgUrls: serviceData["imgUrls"],
               user: _userModel,
+              views: serviceData["views"],
+              comments: serviceData["comments"],
             );
             _related.add(service);
             if (_related.isNotEmpty) {
@@ -119,21 +132,19 @@ class DetailsPageProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
-  
-  dynamic launchTel(String? path) async {
-  try
-  {
-    Uri phone = Uri(
-      scheme: 'tel',
-      path: path,
-    );
 
-    await launchUrl(phone);
+  dynamic launchTel(String? path) async {
+    try {
+      Uri phone = Uri(
+        scheme: 'tel',
+        path: path,
+      );
+
+      await launchUrl(phone);
+    } catch (e) {
+      debugPrint(e.toString());
+    }
   }
-  catch(e) {
-    debugPrint(e.toString());
-  }
-}
 
   Future<void> fetchService(int index) async {
     // await Future.delayed(const Duration(seconds: 2));
@@ -163,7 +174,10 @@ class DetailsPageProvider extends ChangeNotifier {
               status: data["status"],
               imgUrls: data["imgUrls"],
               user: _userModel,
+              views: data["views"],
+              comments: data["comments"],
             );
+            _views = data["views"];
             _serviceData = service;
             notifyListeners();
           }),
@@ -194,12 +208,29 @@ class DetailsPageProvider extends ChangeNotifier {
           email: data['email'] ?? '',
           img: data['img'] ?? '',
           fullName: data['name'] ?? '',
+          role: data['role'],
         );
       } else {
         // Handle the case where the document does not exist
       }
     } catch (error) {
       _dataState = false;
+    } finally {
+      notifyListeners();
+    }
+  }
+
+  Future<void> updateServiceView(String servId, int views) async {
+    // await Future.delayed(const Duration(seconds: 2));
+    int updatedViews = views + 1;
+    try {
+      // Update Firestore with the updated bookmarks list
+      await _db
+          .collection("services")
+          .doc(servId)
+          .update({'views': updatedViews});
+    } catch (error) {
+      print(error.toString());
     } finally {
       notifyListeners();
     }

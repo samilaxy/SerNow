@@ -41,7 +41,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     bioController.text = profileProvider.bio;
     Uint8List? image = profileProvider.image;
     String? imgUrl = profileProvider.imageUrl;
-
+    String? role = profileProvider.role;
     return Scaffold(
       appBar: const CustomAppBar(),
       body: SingleChildScrollView(
@@ -169,7 +169,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                             phone: phone,
                             bio: bio,
                             img: imgUrl,
-                            isUser: true,
+                            isUser: true, 
+                            role: role,
                           );
                           profileProvider.isLoading
                               ? null

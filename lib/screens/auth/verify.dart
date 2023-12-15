@@ -4,7 +4,6 @@ import 'package:pinput/pinput.dart';
 import 'package:provider/provider.dart';
 import '../../utilities/constants.dart';
 import '../../controllers/auth_provider.dart';
-import '../../main.dart';
 
 class MyVerify extends StatefulWidget {
   const MyVerify({Key? key}) : super(key: key);
@@ -45,7 +44,6 @@ class _MyVerifyState extends State<MyVerify> {
     );
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         leading: IconButton(
@@ -132,11 +130,6 @@ class _MyVerifyState extends State<MyVerify> {
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(100))),
                     onPressed: () async {
-                      // if (await authService
-                      //         .signInWithVerificationCode(enteredCode!) !=
-                      //     null) {
-                      // }
-                      print(authService.isVerify);
                       if (!authService.isVerify) {
                         await authService.verifyCode(enteredCode!, context);
                       }
@@ -156,21 +149,6 @@ class _MyVerifyState extends State<MyVerify> {
                             ),
                           )),
               ),
-              // Row(
-              //   children: [
-              //     TextButton(
-              //         onPressed: () async {
-              //           navigatorKey.currentState!.pushNamed('phone');
-              //         },
-              //         child: Text(
-              //           "Edit Phone Number ?",
-              //           style: GoogleFonts.poppins(
-              //             fontSize: 14.0,
-              //             color: Colors.black,
-              //           ),
-              //         )),
-              //   ],
-              // ),
               const SizedBox(
                 height: 15,
               ),
@@ -208,12 +186,4 @@ class _MyVerifyState extends State<MyVerify> {
     );
   }
 
-  void _showSnackBar(BuildContext context, String message) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(message),
-        duration: Duration(seconds: 2), // Adjust the duration as needed
-      ),
-    );
-  }
 }

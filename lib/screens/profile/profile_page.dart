@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now_new/controllers/admin_provider.dart';
 import '../../utilities/constants.dart';
 import '../../controllers/auth_provider.dart';
 import '../../controllers/profile_proviver.dart';
@@ -22,8 +23,10 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
   @override
   void didPush() {
+    final admin = Provider.of<AdminProvider>(context);
     final profileProvider = Provider.of<ProfileProvider>(context);
     profileProvider.loadprofileData();
+    admin.fetchServices();
     super.didPush();
   }
 
@@ -39,6 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
   Widget build(BuildContext context) {
     final profileProvider = Provider.of<ProfileProvider>(context);
     final authProvider = Provider.of<AuthService>(context);
+    final admin = Provider.of<AdminProvider>(context);
 
     Uint8List? image = profileProvider.image;
     return Scaffold(
@@ -101,7 +105,8 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
               Text(profileProvider.name,
                   style: GoogleFonts.poppins(fontSize: 18)),
               const SizedBox(height: 5),
-              Text("Barber", style: GoogleFonts.poppins(fontSize: 12)),
+              Text(profileProvider.role,
+                  style: GoogleFonts.poppins(fontSize: 12)),
               const SizedBox(height: 8),
 
               /// -- BUTTON
@@ -198,6 +203,80 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
                   ])),
               const SizedBox(height: 20),
               GestureDetector(
+                  onTap: () {
+                    navigatorKey.currentState!.pushNamed('users');
+                  },
+                  child: Row(children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                        color: Colors.grey.withOpacity(0.2),
+                      ),
+                      child: const Icon(
+                        LineAwesomeIcons.user_friends,
+                        size: 20,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text("Users",
+                            style: GoogleFonts.poppins(fontSize: 15)))
+                  ])),
+              const SizedBox(height: 20),
+              GestureDetector(
+                onTap: () {
+                  navigatorKey.currentState!.pushNamed('pending');
+                },
+                child: InkWell(
+                  splashColor: Colors.grey,
+                  child: Row(children: [
+                    Stack(
+                      children: [
+                        Container(
+                          width: 40,
+                          height: 40,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(100),
+                            color: Colors.grey.withOpacity(0.2),
+                          ),
+                          child: const Icon(
+                            LineAwesomeIcons.shopping_basket,
+                            size: 20,
+                            color: Colors.grey,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 25,
+                          right: 0,
+                          child: Container(
+                            width: 15,
+                            height: 15,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(100),
+                              color: mainColor,
+                            ),
+                            child: Center(
+                              child: Text('${admin.count}',
+                                  style: GoogleFonts.poppins(
+                                      fontSize: 9, color: Colors.black)),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 20),
+                        child: Text("Pending Services",
+                            style: GoogleFonts.poppins(fontSize: 15)))
+                  ]),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+              GestureDetector(
                 onTap: () {
                   showDialog(
                     context: context,
@@ -232,6 +311,7 @@ class _ProfileScreenState extends State<ProfileScreen> with RouteAware {
                               fontSize: 15, color: Colors.red)))
                 ]),
               ),
+
               const SizedBox(height: 80),
             ],
           ),
@@ -248,8 +328,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     final profileProvider =
         Provider.of<ProfileProvider>(context, listen: false);
-
-    //var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
     return AppBar(
       elevation: 0,
       leading: IconButton(

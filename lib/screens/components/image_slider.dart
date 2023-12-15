@@ -12,9 +12,10 @@ import '../home/zoom_imageview.dart';
 class MyImageSlider extends StatefulWidget {
   final List<dynamic> imageUrls;
 
-  MyImageSlider({required this.imageUrls});
+  const MyImageSlider({super.key, required this.imageUrls});
 
   @override
+  // ignore: library_private_types_in_public_api
   _MyImageSliderState createState() => _MyImageSliderState();
 }
 

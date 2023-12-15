@@ -17,6 +17,7 @@ class UpdateServicePage extends StatefulWidget {
 class _UpdateServicePageState extends State<UpdateServicePage> {
   final TextEditingController titleController = TextEditingController();
   final TextEditingController catController = TextEditingController();
+  final TextEditingController statusController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
   final TextEditingController cityController = TextEditingController();
@@ -36,6 +37,9 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     "Health & Fitness",
     "Others"
   ];
+  final List<String> _statusOptions = ['Active', 'In-Active'];
+  String? submitOption;
+  String? selectedOpt;
 
   @override
   void dispose() {
@@ -46,6 +50,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     cityController.dispose();
     areaController.dispose();
     descController.dispose();
+    statusController.dispose();
     super.dispose();
   }
 
@@ -54,6 +59,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     final service = Provider.of<MyAdvertsProvider>(context);
     titleController.text = service.title;
     String? selectedOption = service.category;
+    String? statusOption = service.status;
     priceController.text = service.price;
     countryController.text = service.country;
     cityController.text = service.city;
@@ -93,13 +99,14 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                       onChanged: (String? newValue) {
                         setState(() {
                           selectedOption = newValue;
+                          selectedOpt = newValue;
                         });
                       },
                       items: _dropdownOptions.map((option) {
                         return DropdownMenuItem<String>(
                           value: option,
                           child: SizedBox(
-                            width: 100, // Set the width of the container
+                            //  width: 100, // Set the width of the container
                             child: Text(option),
                           ),
                         );
@@ -141,7 +148,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                     TextFormField(
                       cursorColor: Colors.grey,
                       onTap: () {
-                        CountryPicker(context);
+                        countryPicker(context);
                       },
                       controller: countryController,
                       keyboardType: TextInputType.name,
@@ -281,6 +288,35 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                                   );
                           })),
                     ),
+                    DropdownButtonFormField(
+                      value: statusOption.toString(),
+                      onChanged: (String? newValue) {
+                        setState(() {
+                          statusOption = newValue;
+                          submitOption = newValue;
+                          print('here $statusOption');
+                        });
+                      },
+                      items: _statusOptions.map((staOption) {
+                        return DropdownMenuItem<String>(
+                          value: staOption.toString(),
+                          child: SizedBox(
+                            //width: 100, // Set the width of the container
+                            child: Text(staOption),
+                          ),
+                        );
+                      }).toList(),
+                      decoration: InputDecoration(
+                          labelStyle: const TextStyle(color: Colors.grey),
+                          labelText: 'Status*',
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(100)),
+                          prefixIcon: Container(width: 10),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(color: Colors.grey),
+                              borderRadius: BorderRadius.circular(100))),
+                    ),
+                    const SizedBox(height: 10),
                     const SizedBox(height: 20),
                     // -- Form Submit Button
                     SizedBox(
@@ -297,23 +333,19 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                           final area = areaController.text.trim();
                           final description = descController.text.trim();
                           final images = service.imgUrls;
-                          String? category = selectedOption;
-
+                          String? category = selectedOpt;
+                          String? status = submitOption;
                           final serviceModel = UpdateModel(
-                            //id: uniqueId,
-                            //  userId: userId,
-                            title: title,
-                            category: category ?? "",
-                            price: price,
-                            location: "$country-$city, $area",
-                            description: description,
-                            imgUrls: images,
-                          );
+                              title: title,
+                              category: category ?? "Others",
+                              price: price,
+                              location: "$country-$city, $area",
+                              description: description,
+                              imgUrls: images,
+                              status: status ?? "Active");
                           service.isloading
                               ? null
                               : service.updateService(serviceModel, context);
-
-                          // Navigator.pushNamed(context, 'home');
                         },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: mainColor,
@@ -341,7 +373,7 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     );
   }
 
-  void CountryPicker(BuildContext context) {
+  void countryPicker(BuildContext context) {
     return showCountryPicker(
       context: context,
       countryListTheme: CountryListThemeData(

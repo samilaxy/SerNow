@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/details_page_provider.dart';
 import '../../controllers/home_provider.dart';
@@ -170,13 +169,18 @@ class _ServiceDetailsPageState extends State<ServiceDetailsPage> {
                                   },
                                   child: Row(
                                     children: [
-                                      const Icon(size: 15, Icons.phone),
-                                      SizedBox(
+                                      const Icon(
+                                          size: 20,
+                                          weight: 5,
+                                          Icons.phone,
+                                          color: Colors.green),
+                                      const SizedBox(
                                         width: 5,
                                       ),
                                       Text(serviceData?.user!.phone ?? "",
                                           style: GoogleFonts.poppins(
-                                              fontSize: 16)),
+                                              fontSize: 16,
+                                              color: Colors.green)),
                                     ],
                                   ),
                                 )
@@ -324,6 +328,7 @@ class MyGridview extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class CustomAppBar extends StatefulWidget implements PreferredSizeWidget {
   String userId;
   String servId;
@@ -345,7 +350,6 @@ class _CustomAppBarState extends State<CustomAppBar> {
   late bool isFavorite;
   @override
   void initState() {
-    // TODO: implement initState
     isFavorite = Provider.of<HomeProvider>(context, listen: false)
         .bookmarkIds
         .contains(widget.servId);

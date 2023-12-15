@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/create_service_provider.dart';
 import '../../utilities/constants.dart';
@@ -51,7 +50,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
   @override
   Widget build(BuildContext context) {
     final serviceProvider = Provider.of<CreateServiceProvider>(context);
-    priceController.text = ".00";
+    priceController.text = "";
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: const CustomAppBar(),
@@ -81,31 +80,41 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     ),
                     const SizedBox(height: 10),
 
-                    DropdownButtonFormField(
-                      value: _selectedOption,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          _selectedOption = newValue;
-                        });
-                      },
-                      items: _dropdownOptions.map((option) {
-                        return DropdownMenuItem(
-                          value: option,
-                          child: SizedBox(
-                            width: 200, // Set the width of the container
-                            child: Text(option),
-                          ),
-                        );
-                      }).toList(),
-                      decoration: InputDecoration(
-                          labelStyle: const TextStyle(color: Colors.grey),
-                          labelText: 'Category*',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(100)),
-                          prefixIcon: Container(width: 10),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(100))),
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.only(
+                            right: 16, left: 45, top: 5, bottom: 5),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(100)),
+                        child: DropdownButton(
+                          isExpanded: true,
+                          underline: const SizedBox(),
+                          hint: Text("Category*",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.grey, fontSize: 15)),
+                          value: _selectedOption,
+                          elevation: 16,
+                          //  isExpanded: true,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              _selectedOption = newValue;
+                            });
+                          },
+                          style: GoogleFonts.poppins(
+                              fontSize: 15,
+                              color: Theme.of(context).iconTheme.color),
+                          items: _dropdownOptions.map((option) {
+                            return DropdownMenuItem(
+                              value: option,
+                              child: SizedBox(
+                                //width: 20, // Set the width of the container
+                                child: Text(option),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
                     ),
                     const SizedBox(height: 10),
                     TextFormField(
@@ -126,7 +135,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                     TextFormField(
                       cursorColor: Colors.grey,
                       onTap: () {
-                        CountryPicker(context);
+                        countryPicker(context);
                       },
                       controller: countryController,
                       keyboardType: TextInputType.name,
@@ -137,7 +146,8 @@ class _CreateServicePageState extends State<CreateServicePage> {
                               borderRadius: BorderRadius.circular(100)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(100)),
-                          label: Text("Country*", style: GoogleFonts.poppins()),
+                          label: Text("Country*",
+                              style: GoogleFonts.poppins(color: Colors.grey)),
                           prefixIcon: Container(width: 10)),
                     ),
                     const SizedBox(height: 10),
@@ -293,7 +303,9 @@ class _CreateServicePageState extends State<CreateServicePage> {
                             description: description,
                             isFavorite: false,
                             imgUrls: images,
-                            status: false,
+                            status: "Pending",
+                            views: 0,
+                            comments: '',
                           );
 
                           serviceProvider.isloading
@@ -317,6 +329,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
                                 style: TextStyle(color: Colors.white)),
                       ),
                     ),
+
                     const SizedBox(height: 80)
                   ],
                 ),
@@ -328,7 +341,7 @@ class _CreateServicePageState extends State<CreateServicePage> {
     );
   }
 
-  void CountryPicker(BuildContext context) {
+  void countryPicker(BuildContext context) {
     return showCountryPicker(
       context: context,
       countryListTheme: CountryListThemeData(

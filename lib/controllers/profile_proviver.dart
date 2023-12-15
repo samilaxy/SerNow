@@ -17,6 +17,7 @@ class ProfileProvider extends ChangeNotifier {
   String _name = "";
   String _email = "";
   String _bio = "";
+  String _role = "";
   String _userId = "";
   bool _isDark = false;
   bool _isLoading = false;
@@ -28,6 +29,7 @@ class ProfileProvider extends ChangeNotifier {
   List get bookmarks => _bookmarks;
   String get imageUrl => _imageUrl;
   String get name => _name;
+  String get role => _role;
   bool get isUser => _isUser;
   bool get isDark => _isDark;
   bool get isLoading => _isLoading;
@@ -69,7 +71,7 @@ class ProfileProvider extends ChangeNotifier {
     notifyListeners();
     try {
       saveProfile(_userId, user.fullName, user.phone, user.bio ?? '',
-          user.email ?? '', user.img ?? '', true, []);
+          user.email ?? '', user.img ?? '', user.role, true, []);
 
       //showLoadingDialog(context); // Show loading spinner
 
@@ -137,15 +139,19 @@ class ProfileProvider extends ChangeNotifier {
             userData['bio'] ?? '',
             userData['email'] ?? '',
             userData['img'] ?? '',
+            userData['role'] ?? '',
             userData['isUser'] ?? false,
-            userData['bookmarks'] ?? []);
+            userData['bookmarks'] ?? []
+            );
         _name = userData['name'] ?? '';
         _contact = userData['phone'] ?? '';
         _email = userData['email'] ?? '';
         _bio = userData['bio'] ?? '';
         _imageUrl = userData['img'] ?? '';
+        _role = userData['role'] ?? '';
         _isUser = userData['isUser'];
         _bookmarks = userData['bookmarks'] ?? [];
+       
       }
     } catch (error) {
       print("Firestore Error1 fetch: $error");
@@ -157,6 +163,7 @@ class ProfileProvider extends ChangeNotifier {
     try {
       await _db.collection("users").doc(_userId).update(updatedUser.toJson());
       _message = "Info updated successfully.";
+      // ignore: use_build_context_synchronously
       showSuccessSnackbar(context, _message);
       await navigatorKey.currentState!.pushNamed('profile');
     } catch (error) {
@@ -167,9 +174,9 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   Future<void> saveProfile(String userId, String name, String phoneNumber,
-      String bio, String email, String img, bool isUser, List bookmarks) async {
+      String bio, String email, String img, String role, bool isUser,  List bookmarks) async {
     await SharedPreferencesHelper.saveProfile(
-        userId, name, phoneNumber, bio, email, img, isUser, bookmarks);
+        userId, name, phoneNumber, bio, email, img, role, isUser, bookmarks);
   }
 
   Future<bool> isPhoneExists(String phoneNumber) async {
@@ -181,8 +188,7 @@ class ProfileProvider extends ChangeNotifier {
               .get();
 
       return querySnapshot.docs.isNotEmpty;
-    } catch (error) {
-      print("Firestore Error: $error");
+    } catch (_) {
       return false; // Return false on error or if phone number doesn't exist
     }
   }

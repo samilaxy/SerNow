@@ -87,29 +87,7 @@ class GridView1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverPadding(
-            padding:
-                const EdgeInsets.only(top: 16, right: 16, left: 16, bottom: 16),
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return GridTile(
-                    child: MyAdvertCard(service: myAdvert.data[index]),
-                  );
-                },
-                childCount: myAdvert.data.length,
-              ),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 16,
-                crossAxisSpacing: 16,
-                mainAxisExtent: 200,
-              ),
-            ))
-      ],
-    );
+    return GridView(myAdvert: myAdvert);
   }
 }
 

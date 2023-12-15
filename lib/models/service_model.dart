@@ -1,78 +1,84 @@
-
 import 'user_model.dart';
 
-class ServiceModel  {
+class ServiceModel {
   final String? id;
-  final String?userId;
+  final String? userId;
   final String title;
   final String category;
   final String price;
   final String location;
   final String description;
   bool isFavorite;
-  final bool status;
   final List imgUrls;
+  final String status;
   final UserModel? user;
   final List? bookmarks;
-  
-  ServiceModel( {
-    this.id, 
-    this.userId,
-    required this.title, 
-    required this.category,
-    required this.price,
-    required this.location,    
-    required this.description,
-    required this.isFavorite,
-    required this.status,
-    required this.imgUrls,
-    this.user,
-    this.bookmarks
-    });
+  final int views;
+  final String comments;
 
-    toJson() {
-      return {
-        "id" : id,
-        "title" : title,
-        "userId" : userId,
-        "category" : category,
-        "price" : price,
-        "location": location,
-        "description": description,
-        "isFavorite": isFavorite,
-        "imgUrls": imgUrls,
-        "status": status,
-        "user": user,
-        "bookmarks": bookmarks
-      };
-    }
+  ServiceModel(
+      {this.id,
+      this.userId,
+      required this.title,
+      required this.category,
+      required this.price,
+      required this.location,
+      required this.description,
+      required this.isFavorite,
+      required this.imgUrls,
+      required this.status,
+      this.user,
+      this.bookmarks,
+      required this.views,
+      required this.comments});
+
+  toJson() {
+    return {
+      "id": id,
+      "title": title,
+      "userId": userId,
+      "category": category,
+      "price": price,
+      "location": location,
+      "description": description,
+      "isFavorite": isFavorite,
+      "imgUrls": imgUrls,
+      "status": status,
+      "user": user,
+      "bookmarks": bookmarks,
+      "views": views,
+      "comments": comments
+    };
+  }
 }
 
-class UpdateModel  {
+class UpdateModel {
   final String title;
   final String category;
   final String price;
   final String location;
   final String description;
   final List imgUrls;
-  
-  UpdateModel( {
-    required this.title, 
-    required this.category,
-    required this.price,
-    required this.location,    
-    required this.description,
-    required this.imgUrls,
-    });
+  final String status;
 
-    toJson() {
-      return {
-        "title" : title,
-        "category" : category,
-        "price" : price,
-        "location": location,
-        "description": description,
-        "imgUrls": imgUrls
-      };
-    }
+  UpdateModel(
+      {required this.title,
+      required this.category,
+      required this.price,
+      required this.location,
+      required this.description,
+      required this.imgUrls,
+      required this.status});
+
+  toJson() {
+    return {
+      "title": title,
+      "category": category,
+      "price": price,
+      "location": location,
+      "description": description,
+      "imgUrls": imgUrls,
+      "status": status
+    };
+  }
 }

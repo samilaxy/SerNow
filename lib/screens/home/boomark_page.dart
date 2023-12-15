@@ -20,7 +20,7 @@ class _BookmarkPageState extends State<BookmarkPage> with RouteAware {
   @override
   void didPush() {
     final homeProvider = Provider.of<HomeProvider>(context, listen: true);
-   homeProvider.fetchBookmarkServices();
+    homeProvider.fetchBookmarkServices();
     super.didPush();
   }
 

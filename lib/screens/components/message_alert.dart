@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../utilities/constants.dart';
 
+// ignore: must_be_immutable
 class MessageAlert extends StatelessWidget {
   String message;
   int colorInt;

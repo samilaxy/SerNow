@@ -21,10 +21,12 @@ class MyAdvertsProvider extends ChangeNotifier {
   bool _isInternet = false;
   String _userId = "";
   String _servId = "";
+  Color color = Colors.blue;
   String _docId = "";
   String _message = "";
   String _title = "";
   String _category = "Barber";
+  String _status = "Active";
   String _price = "";
   String _location = "";
   String _country = "";
@@ -51,6 +53,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   List get imgUrls => _imgUrls;
   String get title => _title;
   String get category => _category;
+  String get status => _status;
   String get price => _price;
   String get location => _location;
   String get country => _country;
@@ -87,8 +90,10 @@ class MyAdvertsProvider extends ChangeNotifier {
           id: document.id,
           title: data['title'] ?? '',
           price: data['price'] ?? '',
+          views: data['views'] ?? '',
           img: data['imgUrls'][0] ?? '',
           status: data['status'],
+          comments: data['comments'],
         );
         _data.add(service);
       }
@@ -141,6 +146,7 @@ class MyAdvertsProvider extends ChangeNotifier {
         _imgUrls = data['imgUrls'] ?? [];
         _location = data['location'] ?? '';
         _description = data['description'] ?? '';
+        _status = data['status'] ?? '';
         // Split the inputString by '-'
         List<String> splitParts = _location.split('-');
         // Extract the country (the first part)
@@ -248,30 +254,28 @@ class MyAdvertsProvider extends ChangeNotifier {
 
   Future<void> pickImages(BuildContext context) async {
     try {
-
-    _imgs = [];
-    final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
-    for (var img in pickedImgs) {
-      _imgs.add(File(img.path));
-      notifyListeners();
-    }
-    // Upload images in the background using microtask
-    Future.microtask(() async {
-      await uploadImageToStorage(context);
-      notifyListeners();
-      // Optionally, you can show a completion message or perform other actions when the upload is done.
-      // For example, you can show a snackbar:
-      // ScaffoldMessenger.of(context).showSnackBar(
-      //   SnackBar(content: Text('Images uploaded successfully')),
-      // );
-    });
+      _imgs = [];
+      final List<XFile> pickedImgs = await _imgPicker.pickMultiImage();
+      for (var img in pickedImgs) {
+        _imgs.add(File(img.path));
+        notifyListeners();
+      }
+      // Upload images in the background using microtask
+      Future.microtask(() async {
+        await uploadImageToStorage(context);
+        notifyListeners();
+        // Optionally, you can show a completion message or perform other actions when the upload is done.
+        // For example, you can show a snackbar:
+        // ScaffoldMessenger.of(context).showSnackBar(
+        //   SnackBar(content: Text('Images uploaded successfully')),
+        // );
+      });
     } catch (e) {
       _message = e.toString();
       showErrorSnackbar(context, _message);
-    }finally {
-       notifyListeners();
+    } finally {
+      notifyListeners();
     }
-
   }
 
   Future<void> uploadImageToStorage(BuildContext context) async {
@@ -287,10 +291,10 @@ class MyAdvertsProvider extends ChangeNotifier {
         notifyListeners();
       } catch (e) {
         _message = e.toString();
-      showErrorSnackbar(context, _message);
-      }finally {
-       notifyListeners();
-    }
+        showErrorSnackbar(context, _message);
+      } finally {
+        notifyListeners();
+      }
     }
   }
 
@@ -322,11 +326,11 @@ class MyAdvertsProvider extends ChangeNotifier {
       showSuccessSnackbar(context, _message);
     } catch (e) {
       _message = 'Error deleting service ';
-       showErrorSnackbar(context, _message);
+      showErrorSnackbar(context, _message);
       notifyListeners();
       // showErrorSnackbar(context, _message);
-    }finally {
-       notifyListeners();
+    } finally {
+      notifyListeners();
     }
   }
 
@@ -335,5 +339,23 @@ class MyAdvertsProvider extends ChangeNotifier {
     notifyListeners();
     _imgs.removeAt(index);
     notifyListeners();
+  }
+
+  dynamic setColor(String status) {
+    switch (status) {
+      case "Pending":
+        color = Colors.orange;
+        break;
+      case "Active":
+        color = Colors.green;
+        break;
+      case "In-Active":
+        color = Colors.blue;
+        break;
+      case "Rejected":
+        color = Colors.red;
+        break;
+    }
+    return color;
   }
 }

@@ -1,7 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:serv_now_new/controllers/admin_provider.dart';
 import 'package:serv_now_new/firebase_options.dart';
+import 'package:serv_now_new/screens/admin/pending_services.dart';
+import 'package:serv_now_new/screens/admin/review_service.dart';
+import 'package:serv_now_new/screens/admin/users_page.dart';
 import 'controllers/auth_provider.dart';
 import 'controllers/create_service_provider.dart';
 import 'controllers/details_page_provider.dart';
@@ -22,16 +26,16 @@ import 'package:firebase_app_check/firebase_app_check.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
+  await Firebase.initializeApp( 
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseAppCheck.instance.activate();
   AuthService authProvider = AuthService();
   // ProfileProvider proProvider = ProfileProvider();
   // proProvider.saveProfile(
-  //     "", "name", "+233249058525", "bio", "email", "img", true, []);
+  //     "", "name", "+233249058525", "bio", "email", "img", "", true, []);
 
- //  authProvider.isLogin(true);
+  // authProvider.isLogin(true);
 
   bool userLoggedIn = await authProvider.loginState();
 
@@ -60,6 +64,9 @@ void main() async {
         ),
         ChangeNotifierProvider<ThemeProvider>(
           create: (_) => ThemeProvider(),
+        ),
+        ChangeNotifierProvider<AdminProvider>(
+          create: (_) => AdminProvider(),
         )
       ],
       child: MyApp(initialRoute: initialRoute),
@@ -96,7 +103,10 @@ class MyApp extends StatelessWidget {
         'updateAdvert': (context) => const UpdateServicePage(),
         'createService': (context) => const CreateServicePage(),
         'bookmark': (context) => const BookmarkPage(),
-        'onBoarding': (context) => const OnboardingScreen()
+        'onBoarding': (context) => const OnboardingScreen(),
+        'users': (context) => const UsersPage(),
+        'review': (context) => const ReviewService(),
+        'pending': (context) => const PendingServices()
       },
     );
   }
