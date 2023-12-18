@@ -37,7 +37,11 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     "Health & Fitness",
     "Others"
   ];
-  final List<String> _statusOptions = ['Active', 'In-Active'];
+  final List<String> _statusOptions = [
+    'Active',
+    'In-Active'
+  ];
+
   String? submitOption;
   String? selectedOpt;
 
@@ -59,7 +63,11 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
     final service = Provider.of<MyAdvertsProvider>(context);
     titleController.text = service.title;
     String? selectedOption = service.category;
-    String? statusOption = service.status;
+    String? statusOption;
+    if (!service.setStatus) {
+      statusOption = service.status;
+    }
+    statusOption = service.status;
     priceController.text = service.price;
     countryController.text = service.country;
     cityController.text = service.city;
@@ -288,34 +296,40 @@ class _UpdateServicePageState extends State<UpdateServicePage> {
                                   );
                           })),
                     ),
-                    DropdownButtonFormField(
-                      value: statusOption.toString(),
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          statusOption = newValue;
-                          submitOption = newValue;
-                          print('here $statusOption');
-                        });
-                      },
-                      items: _statusOptions.map((staOption) {
-                        return DropdownMenuItem<String>(
-                          value: staOption.toString(),
-                          child: SizedBox(
-                            //width: 100, // Set the width of the container
-                            child: Text(staOption),
-                          ),
-                        );
-                      }).toList(),
-                      decoration: InputDecoration(
-                          labelStyle: const TextStyle(color: Colors.grey),
-                          labelText: 'Status*',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(100)),
-                          prefixIcon: Container(width: 10),
-                          focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(color: Colors.grey),
-                              borderRadius: BorderRadius.circular(100))),
+
+                    Visibility(
+                      visible: !service.setStatus,
+                      child: DropdownButtonFormField(
+                        value: statusOption.toString(),
+                        onChanged: (String? newValue) {
+                          setState(() {
+                            // statusOption = newValue;
+                            submitOption = newValue;
+                            print('here $statusOption');
+                          });
+                        },
+                        items: _statusOptions.map((staOption) {
+                          return DropdownMenuItem<String>(
+                            value: staOption.toString(),
+                            child: SizedBox(
+                              //width: 100, // Set the width of the container
+                              child: Text(staOption),
+                            ),
+                          );
+                        }).toList(),
+                        decoration: InputDecoration(
+                            labelStyle: const TextStyle(color: Colors.grey),
+                            labelText: 'Status*',
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(100)),
+                            prefixIcon: Container(width: 10),
+                            focusedBorder: OutlineInputBorder(
+                                borderSide:
+                                    const BorderSide(color: Colors.grey),
+                                borderRadius: BorderRadius.circular(100))),
+                      ),
                     ),
+
                     const SizedBox(height: 10),
                     const SizedBox(height: 20),
                     // -- Form Submit Button

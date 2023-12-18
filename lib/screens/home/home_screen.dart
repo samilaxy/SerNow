@@ -115,8 +115,10 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const CircularProgressIndicator(
+                               // valueColor: AlwaysStoppedAnimation<Color>(mainColor),
                                 color: mainColor,
-                                strokeWidth: 6,
+                                backgroundColor: Colors.grey,
+                                strokeWidth: 6, 
                               ),
                               const SizedBox(height: 10),
                               Text(

@@ -16,6 +16,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   List<DiscoverModel> _data = [];
   bool _dataState = true;
   bool _noData = false;
+  bool _setStatus = false;
   bool _uploading = false;
   bool _isloading = false;
   bool _isInternet = false;
@@ -25,8 +26,8 @@ class MyAdvertsProvider extends ChangeNotifier {
   String _docId = "";
   String _message = "";
   String _title = "";
-  String _category = "Barber";
-  String _status = "Active";
+  String? _category;
+  String? _status = "Active";
   String _price = "";
   String _location = "";
   String _country = "";
@@ -36,6 +37,7 @@ class MyAdvertsProvider extends ChangeNotifier {
   List<File> _imgs = [];
   List _imgUrls = [];
 
+  bool get setStatus => _setStatus;
   List get data => _data;
   List get imgs => _imgs;
   UserModel? _userModel;
@@ -52,8 +54,8 @@ class MyAdvertsProvider extends ChangeNotifier {
   String get message => _message;
   List get imgUrls => _imgUrls;
   String get title => _title;
-  String get category => _category;
-  String get status => _status;
+  String? get category => _category;
+  String? get status => _status;
   String get price => _price;
   String get location => _location;
   String get country => _country;
@@ -146,6 +148,7 @@ class MyAdvertsProvider extends ChangeNotifier {
         _imgUrls = data['imgUrls'] ?? [];
         _location = data['location'] ?? '';
         _description = data['description'] ?? '';
+       
         _status = data['status'] ?? '';
         // Split the inputString by '-'
         List<String> splitParts = _location.split('-');
@@ -160,6 +163,11 @@ class MyAdvertsProvider extends ChangeNotifier {
         // Extract the sub (the second part of citySubParts)
         _area = subParts[0].trim();
         _isInternet = true;
+        if (_status == "Rejected" || _status == "Pending") {
+          _setStatus = true;
+        } else {
+          _setStatus = false;
+        }
       } else {
         _message = "Something went wrong, Please check your internet!!";
         showErrorSnackbar(context, _message);
@@ -179,7 +187,7 @@ class MyAdvertsProvider extends ChangeNotifier {
     _description = serv.description.trim();
 
     if (_title.isEmpty ||
-        _category.isEmpty ||
+        _category!.isEmpty ||
         _price.isEmpty ||
         _location.isEmpty ||
         _description.isEmpty) {

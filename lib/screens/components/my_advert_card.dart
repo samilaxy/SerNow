@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -135,15 +136,23 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
                   ),
                 ),
                 if (widget.service.comments.isNotEmpty)
-                  IconButton(
-                    onPressed: () async {
-                      showMyDialog(context, widget.service.comments);
-                    },
-                    icon: const Icon(
-                      size: 20,
-                      LineAwesomeIcons.facebook_messenger,
-                      color: Colors.grey,
-                    ),
+                  Stack(
+                    children: [
+                      IconButton(
+                        onPressed: () async {
+                          showMyDialog(context, widget.service.comments);
+                        },
+                        icon: const Icon(
+                          size: 20,
+                          LineAwesomeIcons.facebook_messenger,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      const Positioned(
+                          bottom: 25,
+                          right: 15,
+                          child: Icon(size: 10, Icons.circle, color: mainColor))
+                    ],
                   ),
                 IconButton(
                   onPressed: () async {
@@ -170,14 +179,14 @@ class _MyAdvertCardState extends State<MyAdvertCard> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Message'),
+          title: const Text('Message'),
           content: Text(message),
           actions: <Widget>[
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop(); // Close the dialog
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
