@@ -46,7 +46,7 @@ class HomeProvider extends ChangeNotifier {
   UserModel? get userModel => _userModel;
   bool get dataState => _dataState;
   HomeProvider() {
-    fetchAllServices();
+   // fetchAllServices();
     _searchData = _data;
   }
   set noSearchData(bool value) {

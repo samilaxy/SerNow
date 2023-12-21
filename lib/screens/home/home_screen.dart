@@ -115,10 +115,9 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               const CircularProgressIndicator(
-                               // valueColor: AlwaysStoppedAnimation<Color>(mainColor),
+                                // valueColor: AlwaysStoppedAnimation<Color>(mainColor),
                                 color: mainColor,
-                                backgroundColor: Colors.grey,
-                                strokeWidth: 6, 
+                                strokeWidth: 6,
                               ),
                               const SizedBox(height: 10),
                               Text(
@@ -132,8 +131,13 @@ class _HomeScreenState extends State<HomeScreen> with RouteAware {
                             ],
                           ),
                         )
-                      : GridView(detailsProvider: detailsProvider, homeProvider: homeProvider),
-                ),
+                      : RefreshIndicator(
+                          color: mainColor,
+                          onRefresh: homeProvider.fetchAllServices,
+                          child: GridView(
+                              detailsProvider: detailsProvider,
+                              homeProvider: homeProvider)),
+                )
               ]),
             ),
           ],
@@ -154,52 +158,47 @@ class GridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Builder(builder: (context) {
-        return CustomScrollView(slivers: <Widget>[
-          SliverPadding(
-            padding: const EdgeInsets.only(
-                top: 10.0,
-                right: 16,
-                left: 16,
-                bottom: 50), // Adjust the padding as needed
-            sliver: SliverGrid(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  return GridTile(
-                      child: GestureDetector(
-                    onTap: () {
-                      detailsProvider.serviceData =
-                          homeProvider.data[index];
-                      detailsProvider.fetchDiscoverServices();
-                      detailsProvider.fetchRelatedServices();
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              const ServiceDetailsPage(),
-                        ),
-                      );
-                    },
-                    child: homeProvider.dataState
-                        ? const LoadingIndicator()
-                        : ServiceCard(
-                            service:
-                                homeProvider.data[index]),
-                  ));
-                },
-                childCount: homeProvider.data.length,
-              ),
-              gridDelegate:
-                  const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                      mainAxisExtent: 210),
+      return CustomScrollView(slivers: <Widget>[
+        SliverPadding(
+          padding: const EdgeInsets.only(
+              top: 10.0,
+              right: 16,
+              left: 16,
+              bottom: 50), // Adjust the padding as needed
+          sliver: SliverGrid(
+            delegate: SliverChildBuilderDelegate(
+              (context, index) {
+                return GridTile(
+                    child: GestureDetector(
+                  onTap: () {
+                    detailsProvider.serviceData = homeProvider.data[index];
+                    detailsProvider.fetchDiscoverServices();
+                    detailsProvider.fetchRelatedServices();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const ServiceDetailsPage(),
+                      ),
+                    );
+                  },
+                  child: homeProvider.dataState
+                      ? const LoadingIndicator()
+                      : ServiceCard(service: homeProvider.data[index]),
+                ));
+              },
+              childCount: homeProvider.data.length,
             ),
-          ), // MainView(
-          //   homeProvider: homeProvider,
-          //   detailsProvider: detailsProvider)
-        ]);
-      });
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                mainAxisSpacing: 16,
+                crossAxisSpacing: 16,
+                mainAxisExtent: 210),
+          ),
+        ), // MainView(
+        //   homeProvider: homeProvider,
+        //   detailsProvider: detailsProvider)
+      ]);
+    });
   }
 }
 
