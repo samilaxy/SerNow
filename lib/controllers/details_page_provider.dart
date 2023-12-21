@@ -21,9 +21,8 @@ class DetailsPageProvider extends ChangeNotifier {
   ProfileProvider profile = ProfileProvider();
 
   UserModel? get userModel => _userModel;
-  ServiceModel? get serviceData => _serviceDataNotifier.value;
+  ServiceModel? get serviceData => _serviceData;
   // Define a ValueNotifier for serviceData
-  final ValueNotifier<ServiceModel?> _serviceDataNotifier = ValueNotifier(null);
 
   DiscoverModel? get discoverData => _discoverData;
   List get discover => _discover;
@@ -35,10 +34,7 @@ class DetailsPageProvider extends ChangeNotifier {
 
   set serviceData(ServiceModel? value) {
     _serviceData = value;
-    _serviceDataNotifier.value = value;
-    print("here object");
-    updateServiceView(
-        _serviceDataNotifier.value?.id ?? "", _serviceData?.views ?? 0);
+    updateServiceView(_serviceData?.id ?? "", _serviceData?.views ?? 0);
     notifyListeners();
   }
 
@@ -150,27 +146,29 @@ class DetailsPageProvider extends ChangeNotifier {
     // await Future.delayed(const Duration(seconds: 2));
     // _dataState = true;
     _serId = discover[index].id;
-    try {
-      QuerySnapshot querySnapshot = await _db
-          .collection('services')
-          .where('id', isEqualTo: _serId) // Replace with the user's ID
-          .get();
 
-      //reset discovered items array
-      final List<Future<void>> fetchUserDataTasks = [];
-      for (QueryDocumentSnapshot document in querySnapshot.docs) {
-        Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+    try {
+      final DocumentSnapshot<Map<String, dynamic>> querySnapshot =
+          await _db.collection('services').doc(_serId).get();
+
+      // Check if data exists and is of the expected type
+      if (querySnapshot.exists && querySnapshot.data() != null) {
+        Map<String, dynamic> data = querySnapshot.data()!;
         final userId = data["userId"];
+
+        final List<Future<void>> fetchUserDataTasks = [];
+
         fetchUserDataTasks.add(
           fetchUserData(userId).then((userModel) {
             final service = ServiceModel(
+              id: _serId,
               userId: userId,
               title: data["title"],
               category: data["category"],
               price: data["price"],
               location: data["location"],
               description: data["description"],
-              isFavorite: data["isFavorite"],
+              isFavorite: true,
               status: data["status"],
               imgUrls: data["imgUrls"],
               user: _userModel,
@@ -179,9 +177,9 @@ class DetailsPageProvider extends ChangeNotifier {
             );
             _views = data["views"];
             _serviceData = service;
-            notifyListeners();
           }),
         );
+        await Future.wait(fetchUserDataTasks);
         notifyListeners();
       }
       // ignore: empty_catches
