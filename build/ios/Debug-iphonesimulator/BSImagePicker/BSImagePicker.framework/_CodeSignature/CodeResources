@@ -6,7 +6,7 @@
 	<dict>
 		<key>BSImagePicker.bundle/Info.plist</key>
 		<data>
-		+BopdpYDGyDoHhzh6xJCAaHb/0M=
+		ubN77fa89G9kVF9FJGbnED44KKo=
 		</data>
 		<key>BSImagePicker.bundle/add_photo.png</key>
 		<data>
@@ -34,7 +34,7 @@
 		</data>
 		<key>Headers/BSImagePicker-Swift.h</key>
 		<data>
-		Bc5HF2Aecvt0oNu4s3n+XAJOGRM=
+		nuGdtTbc4K2tjCHwwyXJ2dGOnSo=
 		</data>
 		<key>Headers/BSImagePicker-umbrella.h</key>
 		<data>
@@ -42,15 +42,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		COadOMU5sDU/f751JgJf1FkNWGY=
+		+294QYhVQbLJtlycOB9V1UrJCgw=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		TlTUlSLrBaXJqy6/5z07U/tVO8I=
+		tIyRcNMt2WJX2XFxztZKIhGBXto=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		tKYuoJ2h/GWiFAxD0qehOZJIYjA=
+		YXBAU2JYVpdoiqgbChEPvLHynqc=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -58,11 +58,11 @@
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		+tOPsuFqtaKvX649Xy75Fn1dLrM=
+		mjpprw5sGRxOlzO0jm4GWoBjT9w=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		KPx3mV8msUGM9KXQPLsEAtuyiaE=
+		hsDd0/sW6WTXgqWX6a1slsozMAQ=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -70,11 +70,11 @@
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		S6kapJQF/GX/pvr+6rimGJNqM9M=
+		yDM44adKQl0sJ5VgNEnLRbsS93c=
 		</data>
 		<key>Modules/BSImagePicker.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		XSPEsXm3bE3EzUIJ0oVHBnriqoI=
+		QJXURjL4cUO++JZFYC5ls0vZEPc=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -87,11 +87,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+BopdpYDGyDoHhzh6xJCAaHb/0M=
+			ubN77fa89G9kVF9FJGbnED44KKo=
 			</data>
 			<key>hash2</key>
 			<data>
-			fSyVwalhc3+GcTT7fjufRf5+umAOpspmpmZbdU82TGI=
+			AqBG960R0G7dfmz/VVhDwWVQkVe19VKS6xay2PZ+k1g=
 			</data>
 		</dict>
 		<key>BSImagePicker.bundle/add_photo.png</key>
@@ -164,11 +164,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Bc5HF2Aecvt0oNu4s3n+XAJOGRM=
+			nuGdtTbc4K2tjCHwwyXJ2dGOnSo=
 			</data>
 			<key>hash2</key>
 			<data>
-			ry/rrIURtgRMY5edUgqcIUatW185aFWvQTyPn6RGKrM=
+			grzFHoyEM/FDBsdATfNw6ml7f5HgkuY/dEjP/YWIpT4=
 			</data>
 		</dict>
 		<key>Headers/BSImagePicker-umbrella.h</key>
@@ -186,22 +186,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TlTUlSLrBaXJqy6/5z07U/tVO8I=
+			tIyRcNMt2WJX2XFxztZKIhGBXto=
 			</data>
 			<key>hash2</key>
 			<data>
-			Au9wpgXYYmwb5buLN8UoFzJWB14ZQMnvzXTYdjhXU4g=
+			n4VVAb1gFeuxrBTntiAzjVCoVUBILYkUi20CI3Vjugc=
 			</data>
 		</dict>
 		<key>Modules/BSImagePicker.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tKYuoJ2h/GWiFAxD0qehOZJIYjA=
+			YXBAU2JYVpdoiqgbChEPvLHynqc=
 			</data>
 			<key>hash2</key>
 			<data>
-			tGv7W3eGrSmj40crB6RZfMclqw8cVjbhwFfzvZqdSFo=
+			k6Bm3RSmBEnCScxSD899vWcffKhtjT/EFcBKxSAF80Y=
 			</data>
 		</dict>
 		<key>Modules/BSImagePicker.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -219,22 +219,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+tOPsuFqtaKvX649Xy75Fn1dLrM=
+			mjpprw5sGRxOlzO0jm4GWoBjT9w=
 			</data>
 			<key>hash2</key>
 			<data>
-			W/M8B9D/9qdgkwLUF5uDUhzrDp7rO3pitYLCyOKDlM8=
+			SdypC5l8SOYU6I9Enw4OCfOOrT0A39BrlJdZXNhuAwM=
 			</data>
 		</dict>
 		<key>Modules/BSImagePicker.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			KPx3mV8msUGM9KXQPLsEAtuyiaE=
+			hsDd0/sW6WTXgqWX6a1slsozMAQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			zUj/gU9I4iAI43hJTbylRFpXYTUSoiEUCnAp8XAhW3E=
+			IL0Q/yRTdbinFIGgKrLwnG0IFjKiB8UY15iqQk1EWgA=
 			</data>
 		</dict>
 		<key>Modules/BSImagePicker.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -252,22 +252,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			S6kapJQF/GX/pvr+6rimGJNqM9M=
+			yDM44adKQl0sJ5VgNEnLRbsS93c=
 			</data>
 			<key>hash2</key>
 			<data>
-			3Enwk/l51WZ2PTLpBFWaey/JHA0oDb7JliDwOebBlB4=
+			q4REtRkm4uLfattmiIFHBkOx6gD/wAislggaBIUq8qE=
 			</data>
 		</dict>
 		<key>Modules/BSImagePicker.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			XSPEsXm3bE3EzUIJ0oVHBnriqoI=
+			QJXURjL4cUO++JZFYC5ls0vZEPc=
 			</data>
 			<key>hash2</key>
 			<data>
-			MDXDse6+Y/Bs3PaHUb6GdqEaYMcwKzOgic2BJjbH6Vc=
+			nTjnD/jdl69h5xIozW2kdNNcIlwUBvhRrnTxCM79vm4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

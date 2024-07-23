@@ -14,7 +14,7 @@
 		</data>
 		<key>Headers/FirestoreMessages.g.h</key>
 		<data>
-		7uVzsKOCfczpNzsLq23mJkUYDIA=
+		oWJRTtP/RuXaNJpHOXH7bIFG0bE=
 		</data>
 		<key>Headers/cloud_firestore-umbrella.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		c02097GyzauSNRfMuk5T1WJubzw=
+		YqoxyIQaAz0jbjv51xQFek7i+9s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>PrivateHeaders/FLTDocumentSnapshotStreamHandler.h</key>
 		<data>
-		FQtQK8u/y3rNhfR7+xkCFS8THaI=
+		B/Ha477VNa4ieCeCuO5gaUz8XA4=
 		</data>
 		<key>PrivateHeaders/FLTFirebaseFirestoreExtension.h</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>PrivateHeaders/FLTQuerySnapshotStreamHandler.h</key>
 		<data>
-		e3Rb0bfuJZ2SPum46mcrTQnZYjg=
+		DFHNvq034hRgFQJsm2nHRKn9eIY=
 		</data>
 		<key>PrivateHeaders/FLTSnapshotsInSyncStreamHandler.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>PrivateHeaders/FirestorePigeonParser.h</key>
 		<data>
-		sdwHYzqQ39uaVsRl2jVmlM2Y04I=
+		maQNGdZcsgxLICjA0KFJcIzMy80=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -97,11 +97,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			7uVzsKOCfczpNzsLq23mJkUYDIA=
+			oWJRTtP/RuXaNJpHOXH7bIFG0bE=
 			</data>
 			<key>hash2</key>
 			<data>
-			rVwsPcvDMxA9tlTunRYuDC3WFmT3bK4gnJ2XSiRS6E4=
+			Aors/dkbCjF0hsIFThPFqjWmeddHc/J6oKia8mN7TfQ=
 			</data>
 		</dict>
 		<key>Headers/cloud_firestore-umbrella.h</key>
@@ -130,11 +130,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			FQtQK8u/y3rNhfR7+xkCFS8THaI=
+			B/Ha477VNa4ieCeCuO5gaUz8XA4=
 			</data>
 			<key>hash2</key>
 			<data>
-			1+LJNlXynl4AdePsOdeuHvydxYMOlstjpjNvnzsSTWU=
+			8ckMhrJ/8RVof2RvkVLbHyOI4KIBdUn/5sArakdUHLs=
 			</data>
 		</dict>
 		<key>PrivateHeaders/FLTFirebaseFirestoreExtension.h</key>
@@ -196,11 +196,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			e3Rb0bfuJZ2SPum46mcrTQnZYjg=
+			DFHNvq034hRgFQJsm2nHRKn9eIY=
 			</data>
 			<key>hash2</key>
 			<data>
-			e/SIAvuWGNDmwJ0oJuqgUeAtr+JV345wov/n74VANkU=
+			w7xBhkSq0/yqe+tVnpe0sv46jyJmK+STQuA7vynXAd4=
 			</data>
 		</dict>
 		<key>PrivateHeaders/FLTSnapshotsInSyncStreamHandler.h</key>
@@ -229,11 +229,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sdwHYzqQ39uaVsRl2jVmlM2Y04I=
+			maQNGdZcsgxLICjA0KFJcIzMy80=
 			</data>
 			<key>hash2</key>
 			<data>
-			HspnX9QDJVjYGUnA7hwljWTTeX21WdJtWTk8ItHZrWY=
+			3RdLuuaoq8nV62duEOxG9BuGA0wTMsLXubRVrvra0ZA=
 			</data>
 		</dict>
 	</dict>

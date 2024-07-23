@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/BSGridCollectionViewLayout-Swift.h</key>
 		<data>
-		0G1GwbF51UNDWE/Q1qLSAcGG3wM=
+		K19s97LmyibA9Pfo/qWhPUlu4dY=
 		</data>
 		<key>Headers/BSGridCollectionViewLayout-umbrella.h</key>
 		<data>
@@ -18,15 +18,15 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		jaTDrpTPbFXnRg2UBZjupzAoW5o=
+		M3iUDJJgBuPLQrBe/JAu6NBv+F8=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/Project/arm64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		EHkg0lrLmqW5bbLbs0A3e6E3YCI=
+		rhK9hGpVts367mrRsoZQjEZDOJ0=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<data>
-		0JrRiAY4ccPNdXQOi+3Itg0I5QY=
+		4Pxh66zQIvukbWqiWgPbnRCvGW4=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -34,11 +34,11 @@
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		fNeCqoh5/7A4H6NZKURBMggRd18=
+		PClOox1RMG8VxngpOSbhPvIjqMs=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		O/kqu+yHwHonhQqr0bItTmk4hRU=
+		4/xh15H/dwvQeRGhWM+AYbtbyIk=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -46,11 +46,11 @@
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		l8Jem46mEApwGiQ/ExIm9KCYLZ4=
+		8YmWHMqY2KYJENzkUZdbtVIDvaM=
 		</data>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		+s5ErmFxsKqM+gME27P3QwV/uSw=
+		rMyay+s6oqdY3huBsjDSvQh5fbs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -63,11 +63,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			0G1GwbF51UNDWE/Q1qLSAcGG3wM=
+			K19s97LmyibA9Pfo/qWhPUlu4dY=
 			</data>
 			<key>hash2</key>
 			<data>
-			EMrM5d27hXoO1oE0r04JVzdaz2k6dCfKlleVGTYJGWc=
+			p6oroDBklTceTcg4gd+QhBaK3GoMF0WnSC9bKzayXsI=
 			</data>
 		</dict>
 		<key>Headers/BSGridCollectionViewLayout-umbrella.h</key>
@@ -96,22 +96,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			EHkg0lrLmqW5bbLbs0A3e6E3YCI=
+			rhK9hGpVts367mrRsoZQjEZDOJ0=
 			</data>
 			<key>hash2</key>
 			<data>
-			Fq7gCBkZHdV9Os3B+3hzZRgD8m/kSEoel0/+H7nXxbs=
+			PeAYKx46VTtHrEK+Qj9QBlhniU8WChgQGZtYATKJhW0=
 			</data>
 		</dict>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/Project/x86_64-apple-ios-simulator.swiftsourceinfo</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0JrRiAY4ccPNdXQOi+3Itg0I5QY=
+			4Pxh66zQIvukbWqiWgPbnRCvGW4=
 			</data>
 			<key>hash2</key>
 			<data>
-			D/anUBY1Ygin+fB8gArH087vSbsgpydsiqGqDTvAMdM=
+			+ZWU/XjW5PRsaVC4zcwYi3dpsb2NECRtYG3LfI0yYwc=
 			</data>
 		</dict>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
@@ -129,22 +129,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			fNeCqoh5/7A4H6NZKURBMggRd18=
+			PClOox1RMG8VxngpOSbhPvIjqMs=
 			</data>
 			<key>hash2</key>
 			<data>
-			6an0Uz7jF9t108IXmIeFTgjxqyDt25pxco5OLFX/liI=
+			K636Ir92by8/KcwuYk757zGTBeLGx2K1HEGbo4eScMc=
 			</data>
 		</dict>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			O/kqu+yHwHonhQqr0bItTmk4hRU=
+			4/xh15H/dwvQeRGhWM+AYbtbyIk=
 			</data>
 			<key>hash2</key>
 			<data>
-			Snq9EUjcJVD7U3e27kIBhNU8DMRkUgsbL17rXkN40wA=
+			r28QNh477QFtBrJLXiz/8Xfj9m1/Ggzmdp6VDJ/cgiY=
 			</data>
 		</dict>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -162,22 +162,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			l8Jem46mEApwGiQ/ExIm9KCYLZ4=
+			8YmWHMqY2KYJENzkUZdbtVIDvaM=
 			</data>
 			<key>hash2</key>
 			<data>
-			TO7PsrvIXIzR+qgkwZGNqmy9qFtQOTOYByaBwR2geVc=
+			Kld9atCw4tPvC7lIcEpXus/OJVbCetIzCtdTIZveBMQ=
 			</data>
 		</dict>
 		<key>Modules/BSGridCollectionViewLayout.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			+s5ErmFxsKqM+gME27P3QwV/uSw=
+			rMyay+s6oqdY3huBsjDSvQh5fbs=
 			</data>
 			<key>hash2</key>
 			<data>
-			pU9vhiN1m/lFDQtmFjZ9m5KpuoauO3Ob7MzWURPBsEs=
+			8SASxT18EY3gfFxTvH8dC4bdJJ3Dn+u39oJAqH7/waQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
