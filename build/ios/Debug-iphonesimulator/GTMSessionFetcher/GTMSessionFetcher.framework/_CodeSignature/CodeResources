@@ -4,29 +4,37 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
+		<data>
+		BmWn3WKyGFsNkIkTc1XqB78JcWI=
+		</data>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		GqeAMkwbcNQeG0K4qQhQh2vHhHo=
+		</data>
 		<key>Headers/GTMSessionFetcher-umbrella.h</key>
 		<data>
 		uk5tfn4+qFjgRMutCcPDErlSaiE=
 		</data>
 		<key>Headers/GTMSessionFetcher.h</key>
 		<data>
-		RK2hBTATXj/0fuqq5swAzbEnJxg=
+		zquCZA+JT10lq1T+mwUNrdUroOU=
 		</data>
 		<key>Headers/GTMSessionFetcherLogging.h</key>
 		<data>
-		vFtOipBuEf02JCLgs39Y4wvulB8=
+		OarAK/xhbLrf3l1Rs7fmZYjpY+s=
 		</data>
 		<key>Headers/GTMSessionFetcherService.h</key>
 		<data>
-		wHsf5w5Av94Z8npXr/JUyIlLh70=
+		ClMW+EGewONyIVj90dqQryYgU8c=
 		</data>
 		<key>Headers/GTMSessionUploadFetcher.h</key>
 		<data>
-		g+gU93Tlop/ULWHnpDIV0PA6GWc=
+		TE76DD4mdfx7YpyWkF/mndCsbHc=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		MvBlPhInTjaNQju0W1o7UVBX5PM=
+		k71fr0hfvMn2G8ATfmHb82CkzdM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -35,6 +43,28 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			BmWn3WKyGFsNkIkTc1XqB78JcWI=
+			</data>
+			<key>hash2</key>
+			<data>
+			MF5Tp9I4GYHLvBtkyrLhvTR3ZYMlrvG/2RKQG0NVZ4M=
+			</data>
+		</dict>
+		<key>GTMSessionFetcher_Core_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			GqeAMkwbcNQeG0K4qQhQh2vHhHo=
+			</data>
+			<key>hash2</key>
+			<data>
+			PkqTy+hqzvfdfgY6KMhJmS9Vbn9SytxfN8HosOG1RoY=
+			</data>
+		</dict>
 		<key>Headers/GTMSessionFetcher-umbrella.h</key>
 		<dict>
 			<key>hash</key>
@@ -50,44 +80,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			RK2hBTATXj/0fuqq5swAzbEnJxg=
+			zquCZA+JT10lq1T+mwUNrdUroOU=
 			</data>
 			<key>hash2</key>
 			<data>
-			jKmqCKa/NWLLQVZZ3n4r/PKjRC9e0LUPBjZ5Gll8ufw=
+			BCumu4zZk/3HmGxwHUYsY6zwQ56H6EjlRqOUgl1aVBk=
 			</data>
 		</dict>
 		<key>Headers/GTMSessionFetcherLogging.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			vFtOipBuEf02JCLgs39Y4wvulB8=
+			OarAK/xhbLrf3l1Rs7fmZYjpY+s=
 			</data>
 			<key>hash2</key>
 			<data>
-			F7xvUlqnZ4ZstcfQaleLxrVyaal/wPqL9msBVjsAXxo=
+			kLGAoYz9D1T929Ogar/2lyKQDrsGraqasNrbJRZXBLw=
 			</data>
 		</dict>
 		<key>Headers/GTMSessionFetcherService.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			wHsf5w5Av94Z8npXr/JUyIlLh70=
+			ClMW+EGewONyIVj90dqQryYgU8c=
 			</data>
 			<key>hash2</key>
 			<data>
-			3pnrMAjcACOV9N34dpU/QhnKJkO/LoLA0DyJUp2Z6Eo=
+			azIV5/Xnt07mwWket4bHfpWSd1wneL3H7NevcdUrDaQ=
 			</data>
 		</dict>
 		<key>Headers/GTMSessionUploadFetcher.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			g+gU93Tlop/ULWHnpDIV0PA6GWc=
+			TE76DD4mdfx7YpyWkF/mndCsbHc=
 			</data>
 			<key>hash2</key>
 			<data>
-			sd5I5NTlbkAGFBQCcfr80mHfIKlbQQO2DyFA1iW6pZM=
+			m16aSuNPO4Nhe+6CY0J+wAtOfcsdlDJfkHvD4BqLg9s=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

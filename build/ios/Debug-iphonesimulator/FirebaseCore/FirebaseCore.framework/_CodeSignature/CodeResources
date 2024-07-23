@@ -4,6 +4,14 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>FirebaseCore_Privacy.bundle/Info.plist</key>
+		<data>
+		r+jWuz+uPZlmrxeIuP6cK5OtR+o=
+		</data>
+		<key>FirebaseCore_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		sa2OhFlqdCIyz9oV7fUdDKWzFL0=
+		</data>
 		<key>Headers/FIRApp.h</key>
 		<data>
 		RVUhkr39XRyPMnen0ismAtN9W7w=
@@ -34,7 +42,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		N0Ib729v9/cBYI2OYq74UpilyIY=
+		hHBZK2nGp/xqOIN4Q8cbuPv+2io=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -43,6 +51,28 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>FirebaseCore_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			r+jWuz+uPZlmrxeIuP6cK5OtR+o=
+			</data>
+			<key>hash2</key>
+			<data>
+			FICvkPGSqdhSlBmaX7YJT3OaX4cXttpnwlfZ29MZ6xw=
+			</data>
+		</dict>
+		<key>FirebaseCore_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			sa2OhFlqdCIyz9oV7fUdDKWzFL0=
+			</data>
+			<key>hash2</key>
+			<data>
+			EeMfX2tg6A69WQFUn85QQ/mvPmg/h0AilFAAtAUwbD8=
+			</data>
+		</dict>
 		<key>Headers/FIRApp.h</key>
 		<dict>
 			<key>hash</key>

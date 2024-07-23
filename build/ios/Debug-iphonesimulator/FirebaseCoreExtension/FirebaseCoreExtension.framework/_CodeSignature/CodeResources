@@ -4,6 +4,14 @@
 <dict>
 	<key>files</key>
 	<dict>
+		<key>FirebaseCoreExtension_Privacy.bundle/Info.plist</key>
+		<data>
+		FkimE/vms1LvKQwUeDGq61W/WrI=
+		</data>
+		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		6iBlSEWzrD6zouHx4NqeDhjKSGQ=
+		</data>
 		<key>Headers/FIRAppInternal.h</key>
 		<data>
 		KBu6H9y60Wi09ZN4fPmqhynn+ks=
@@ -18,7 +26,7 @@
 		</data>
 		<key>Headers/FIRComponentType.h</key>
 		<data>
-		9nv5PF7PDECI+Yv/H9j0mOA0pVE=
+		LGXGsMROAgiS7VUzjy7gfFCelcw=
 		</data>
 		<key>Headers/FIRDependency.h</key>
 		<data>
@@ -34,7 +42,7 @@
 		</data>
 		<key>Headers/FIRLogger.h</key>
 		<data>
-		TUMz7hgYVZ9K7C1MzLgEENXxgyU=
+		ACqXR/e/LmxOTnOrL0Uawu2rQjk=
 		</data>
 		<key>Headers/FIROptionsInternal.h</key>
 		<data>
@@ -50,7 +58,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		ybs0cDRopfqN8HoF7vS8aLU2xls=
+		YWqMJcepShnY9YF8IEXDMqPZq+M=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -59,6 +67,28 @@
 	</dict>
 	<key>files2</key>
 	<dict>
+		<key>FirebaseCoreExtension_Privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FkimE/vms1LvKQwUeDGq61W/WrI=
+			</data>
+			<key>hash2</key>
+			<data>
+			MEXzhmOmBtrargIYP91pji0qmf0MJ3lgaSfNyx2F1k4=
+			</data>
+		</dict>
+		<key>FirebaseCoreExtension_Privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			6iBlSEWzrD6zouHx4NqeDhjKSGQ=
+			</data>
+			<key>hash2</key>
+			<data>
+			E3fszt/4+DIPeAQOnJ0+F+zA6laVlLVq8O8XvkQZfHo=
+			</data>
+		</dict>
 		<key>Headers/FIRAppInternal.h</key>
 		<dict>
 			<key>hash</key>
@@ -96,11 +126,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			9nv5PF7PDECI+Yv/H9j0mOA0pVE=
+			LGXGsMROAgiS7VUzjy7gfFCelcw=
 			</data>
 			<key>hash2</key>
 			<data>
-			M+PvfFqg886ZzZXaO3W9AP+nfHlgK6eNckNDQosdffA=
+			vc5fR3OptAq45a+caZ4vC+cIb/QipIM3rSso8zI/sBc=
 			</data>
 		</dict>
 		<key>Headers/FIRDependency.h</key>
@@ -140,11 +170,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			TUMz7hgYVZ9K7C1MzLgEENXxgyU=
+			ACqXR/e/LmxOTnOrL0Uawu2rQjk=
 			</data>
 			<key>hash2</key>
 			<data>
-			BIJhBl1kiiTsYq/k5oIRzZwwWSC5jdi8WytF96848cI=
+			p2xD8WXcJn71bveqA3iE6R+8Y7Hs3a5AY54jeG3Hruo=
 			</data>
 		</dict>
 		<key>Headers/FIROptionsInternal.h</key>
