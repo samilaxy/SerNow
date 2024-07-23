@@ -130,8 +130,6 @@ class _MyPhoneState extends State<MyPhone> {
                           //  await navigatorKey.currentState!.pushNamed('verify');
                             if (!authService.isLoading) {
  await authService.verifyPhone(numberController.text, context);
-                            }
-                            
                           },
                           child: authService.isLoading
                             ?  const SizedBox(
