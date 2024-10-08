@@ -6,11 +6,34 @@
 	<dict>
 		<key>Info.plist</key>
 		<data>
-		IPIpAshiwbEJYOeXS+EH98NHpps=
+		nMB50Z05Dm5U4zsjT/YmUTBmfs0=
+		</data>
+		<key>geolocator_apple_privacy.bundle/Info.plist</key>
+		<data>
+		R5mKSn4jrdcT6X1ThRlpbO1Ccq0=
+		</data>
+		<key>geolocator_apple_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		KFiVi4mWKmBFkTjfe3H4jsOvLNM=
 		</data>
 	</dict>
 	<key>files2</key>
-	<dict/>
+	<dict>
+		<key>geolocator_apple_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			CdLuLnjmkY2u/+ClUl53BUQ2JT9WXKjxUkRgi88umPY=
+			</data>
+		</dict>
+		<key>geolocator_apple_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			p+c+xOFN/pYr5bFknUH/y01YGEb8+JJchzbtJ60mdTI=
+			</data>
+		</dict>
+	</dict>
 	<key>rules</key>
 	<dict>
 		<key>^.*</key>

@@ -122,27 +122,34 @@ class _MyPhoneState extends State<MyPhone> {
                       width: double.infinity,
                       height: 60,
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: mainColor,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(100))),
-                          onPressed: () async {
-                          //  await navigatorKey.currentState!.pushNamed('verify');
-                            if (!authService.isLoading) {
- await authService.verifyPhone(numberController.text, context);
-                          },
-                          child: authService.isLoading
-                            ?  const SizedBox(
-                              width: 20,
-                              height: 20,
-                              child:  CircularProgressIndicator(
-                                  color: Colors.black26),
-                            ) : Text("Send Code",
-                              style: GoogleFonts.poppins(
-                                // fontSize: 13.0,
-                                color: Colors.white,
-                                fontWeight: FontWeight.normal,
-                              ))),
+  style: ElevatedButton.styleFrom(
+    backgroundColor: mainColor,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(100),
+    ),
+  ),
+  onPressed: () async {
+    if (!authService.isLoading) {
+      await authService.verifyPhone(numberController.text, context);
+    }
+  },
+  child: authService.isLoading
+    ? const SizedBox(
+        width: 20,
+        height: 20,
+        child: CircularProgressIndicator(
+          color: Colors.black26,
+        ),
+      )
+    : Text(
+        "Send Code",
+        style: GoogleFonts.poppins(
+          color: Colors.white,
+          fontWeight: FontWeight.normal,
+        ),
+      ),
+),
+
                     ),
                     const SizedBox(
                       height: 100,

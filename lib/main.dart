@@ -39,8 +39,8 @@ void main() async {
 
   bool userLoggedIn = await authProvider.loginState();
 
-  String initialRoute = userLoggedIn ? 'home' : 'onBoarding';
-
+ // String initialRoute = userLoggedIn ? 'home' : 'onBoarding';
+String initialRoute = userLoggedIn ? 'home' : 'home';
   runApp(
     MultiProvider(
       providers: [
